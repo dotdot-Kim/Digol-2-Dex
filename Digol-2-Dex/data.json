@@ -1,0 +1,26 @@
+{
+  "SPECIES_KAMMON": {
+    "name_ko": "깜몬",
+    "image": "images/1_Baby/botamon.jpg",
+    "personal_data": {
+      "base_stats": [50, 50, 50, 50, 50, 50],
+      "types": ["TYPE_NORMAL", "TYPE_NORMAL"],
+      "catch_rate": 255,
+      "base_exp": 40,
+      "ev_yield": [0, 0, 0, 0, 0, 0],
+      "items": ["ITEM_NONE", "ITEM_NONE"],
+      "gender_ratio": 255,
+      "hatch_cycles": 1,
+      "base_friendship": 70,
+      "exp_growth": "GROWTH_MEDIUM_FAST",
+      "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
+      "abilities": ["ABILITY_NATURAL_CURE", "ABILITY_PICKUP", "ABILITY_CHLOROPHYLL"],
+      "flee_rate": 0
+    },
+    "evolutions": [
+      { "method": "EVO_LEVEL_ATK_GT_DEF", "condition": 5, "target": "SPECIES_KOROMON" },
+	  { "method": "EVO_LEVEL_ATK_LT_DEF", "condition": 5, "target": "SPECIES_KOMAMON" },
+	  { "method": "EVO_LEVEL_ATK_EQ_DEF", "condition": 5, "target": "SPECIES_KOROMON" }
+    ]
+  }
+}
