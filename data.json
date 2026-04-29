@@ -757,7 +757,7 @@
   },
   "SPECIES_BETAMON": {
     "personal_data": {
-      "base_stats": [65, 65, 60, 50, 50, 50],
+      "base_stats": [70, 50, 70, 58, 72, 80],
       "types": ["TYPE_WATER", "TYPE_ELECTRIC"],
       "catch_rate": 255,
       "base_exp": 50,
