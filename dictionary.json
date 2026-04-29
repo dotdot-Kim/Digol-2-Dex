@@ -4,7 +4,9 @@
     "ABILITY_PICKUP": "픽업",
     "ABILITY_CHLOROPHYLL": "엽록소",
     "ABILITY_INTIMIDATE": "위협",
-    "ABILITY_NONE": "없음"
+    "ABILITY_NONE": "없음",
+    "ABILITY_BLAZE": "맹화",
+    "ABILITY_GLUTTONY": "먹보"
   },
   "items": {
     "ITEM_NONE": "없음",

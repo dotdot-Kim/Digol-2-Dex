@@ -177,7 +177,7 @@
   },
   "SPECIES_KOROMON": {
     "personal_data": {
-      "base_stats": [65, 65, 60, 50, 50, 50],
+      "base_stats": [65, 65, 55, 55, 50, 50],
       "types": ["TYPE_FIRE", "TYPE_FIRE"],
       "catch_rate": 255,
       "base_exp": 50,
@@ -223,7 +223,7 @@
   },
   "SPECIES_PULMON": {
     "personal_data": {
-      "base_stats": [65, 65, 60, 50, 50, 50],
+      "base_stats": [60, 60, 55, 55, 55, 55],
       "types": ["TYPE_ICE", "TYPE_ICE"],
       "catch_rate": 255,
       "base_exp": 50,
@@ -244,7 +244,7 @@
   },
   "SPECIES_YAONGMON": {
     "personal_data": {
-      "base_stats": [65, 65, 60, 50, 50, 50],
+      "base_stats": [50, 50, 55, 60, 65, 60],
       "types": ["TYPE_NORMAL", "TYPE_NORMAL"],
       "catch_rate": 255,
       "base_exp": 50,
@@ -265,7 +265,7 @@
   },
   "SPECIES_MOTIMON": {
     "personal_data": {
-      "base_stats": [65, 65, 60, 50, 50, 50],
+      "base_stats": [60, 55, 55, 50, 60, 60],
       "types": ["TYPE_BUG", "TYPE_BUG"],
       "catch_rate": 255,
       "base_exp": 50,
@@ -286,7 +286,7 @@
   },
   "SPECIES_SEEDMON": {
     "personal_data": {
-      "base_stats": [65, 65, 60, 50, 50, 50],
+      "base_stats": [60, 55, 60, 50, 55, 60],
       "types": ["TYPE_GRASS", "TYPE_GRASS"],
       "catch_rate": 255,
       "base_exp": 50,
@@ -306,7 +306,7 @@
   },
   "SPECIES_DUNGSILMON": {
     "personal_data": {
-      "base_stats": [65, 65, 60, 50, 50, 50],
+      "base_stats": [65, 50, 50, 55, 65, 55],
       "types": ["TYPE_WATER", "TYPE_WATER"],
       "catch_rate": 255,
       "base_exp": 50,
@@ -327,7 +327,7 @@
   },
   "SPECIES_UPAMON": {
     "personal_data": {
-      "base_stats": [65, 65, 60, 50, 50, 50],
+      "base_stats": [65, 50, 60, 50, 50, 65],
       "types": ["TYPE_GROUND", "TYPE_GROUND"],
       "catch_rate": 255,
       "base_exp": 50,
@@ -349,7 +349,7 @@
   },
   "SPECIES_POROMON": {
     "personal_data": {
-      "base_stats": [65, 65, 60, 50, 50, 50],
+      "base_stats": [50, 60, 50, 65, 60, 55],
       "types": ["TYPE_FLYING", "TYPE_FLYING"],
       "catch_rate": 255,
       "base_exp": 50,
@@ -369,7 +369,7 @@
   },
   "SPECIES_ONIMON": {
     "personal_data": {
-      "base_stats": [65, 65, 60, 50, 50, 50],
+      "base_stats": [65, 50, 65, 50, 50, 60],
       "types": ["TYPE_PSYCHIC", "TYPE_PSYCHIC"],
       "catch_rate": 255,
       "base_exp": 50,
@@ -389,7 +389,7 @@
   },
   "SPECIES_TOKOMON": {
     "personal_data": {
-      "base_stats": [65, 65, 60, 50, 50, 50],
+      "base_stats": [50, 60, 55, 65, 60, 50],
       "types": ["TYPE_FIGHTING", "TYPE_FIGHTING"],
       "catch_rate": 255,
       "base_exp": 50,
@@ -410,7 +410,7 @@
   },
   "SPECIES_CUPIMON": {
     "personal_data": {
-      "base_stats": [65, 65, 60, 50, 50, 50],
+      "base_stats": [60, 50, 60, 60, 65, 55],
       "types": ["TYPE_FAIRY", "TYPE_FAIRY"],
       "catch_rate": 255,
       "base_exp": 50,
@@ -430,7 +430,7 @@
   },
   "SPECIES_CAPRIMON": {
     "personal_data": {
-      "base_stats": [65, 65, 60, 50, 50, 50],
+      "base_stats": [50, 55, 65, 50, 55, 65],
       "types": ["TYPE_STEEL", "TYPE_STEEL"],
       "catch_rate": 255,
       "base_exp": 50,
@@ -451,7 +451,7 @@
   },
   "SPECIES_PICKMON": {
     "personal_data": {
-      "base_stats": [65, 65, 60, 50, 50, 50],
+      "base_stats": [50, 65, 60, 60, 55, 50],
       "types": ["TYPE_ROCK", "TYPE_ROCK"],
       "catch_rate": 255,
       "base_exp": 50,
@@ -472,7 +472,7 @@
   },
   "SPECIES_TSUMEMON": {
     "personal_data": {
-      "base_stats": [65, 65, 60, 50, 50, 50],
+      "base_stats": [60, 65, 55, 60, 50, 50],
       "types": ["TYPE_DARK", "TYPE_DARK"],
       "catch_rate": 255,
       "base_exp": 50,
@@ -495,7 +495,7 @@
   },
   "SPECIES_PAGUMON": {
     "personal_data": {
-      "base_stats": [65, 65, 60, 50, 50, 50],
+      "base_stats": [50, 60, 50, 65, 60, 55],
       "types": ["TYPE_POISON", "TYPE_POISON"],
       "catch_rate": 255,
       "base_exp": 50,
@@ -517,7 +517,7 @@
   },
   "SPECIES_AGUMON": {
     "personal_data": {
-      "base_stats": [65, 65, 60, 50, 50, 50],
+      "base_stats": [65, 82, 61, 75, 60, 61],
       "types": ["TYPE_FIRE", "TYPE_FIRE"],
       "catch_rate": 255,
       "base_exp": 50,
@@ -528,7 +528,7 @@
       "base_friendship": 70,
       "exp_growth": "GROWTH_MEDIUM_FAST",
       "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
-      "abilities": ["ABILITY_INTIMIDATE", "ABILITY_NONE", "ABILITY_NONE"],
+      "abilities": ["ABILITY_BLAZE", "ABILITY_GLUTTONY", "ABILITY_NONE"],
       "flee_rate": 0
     },
     "evolutions": [
@@ -537,7 +537,7 @@
   },
   "SPECIES_PAPIMON": {
     "personal_data": {
-      "base_stats": [65, 65, 60, 50, 50, 50],
+      "base_stats": [75, 75, 65, 68, 62, 65],
       "types": ["TYPE_ICE", "TYPE_ICE"],
       "catch_rate": 255,
       "base_exp": 50,
@@ -557,7 +557,7 @@
   },
   "SPECIES_TENTAMON": {
     "personal_data": {
-      "base_stats": [65, 65, 60, 50, 50, 50],
+      "base_stats": [66, 63, 77, 64, 70, 60],
       "types": ["TYPE_BUG", "TYPE_ELECTRIC"],
       "catch_rate": 255,
       "base_exp": 50,
@@ -577,7 +577,7 @@
   },
   "SPECIES_PIYOMON": {
     "personal_data": {
-      "base_stats": [65, 65, 60, 50, 50, 50],
+      "base_stats": [61, 66, 60, 72, 71, 70],
       "types": ["TYPE_NORMAL", "TYPE_FLYING"],
       "catch_rate": 255,
       "base_exp": 50,
@@ -597,7 +597,7 @@
   },
   "SPECIES_PALMON": {
     "personal_data": {
-      "base_stats": [65, 65, 60, 50, 50, 50],
+      "base_stats": [70, 75, 72, 55, 61, 67],
       "types": ["TYPE_GRASS", "TYPE_POISON"],
       "catch_rate": 255,
       "base_exp": 50,
@@ -617,7 +617,7 @@
   },
   "SPECIES_SHIRAMON": {
     "personal_data": {
-      "base_stats": [65, 65, 60, 50, 50, 50],
+      "base_stats": [83, 60, 60, 70, 72, 55],
       "types": ["TYPE_WATER", "TYPE_WATER"],
       "catch_rate": 255,
       "base_exp": 50,
@@ -637,7 +637,7 @@
   },
   "SPECIES_PADAKMON": {
     "personal_data": {
-      "base_stats": [65, 65, 60, 50, 50, 50],
+      "base_stats": [63, 67, 56, 78, 76, 70],
       "types": ["TYPE_NORMAL", "TYPE_FLYING"],
       "catch_rate": 255,
       "base_exp": 50,
@@ -657,7 +657,7 @@
   },
   "SPECIES_PLOTMON": {
     "personal_data": {
-      "base_stats": [65, 65, 60, 50, 50, 50],
+      "base_stats": [64, 65, 60, 71, 70, 80],
       "types": ["TYPE_NORMAL", "TYPE_FAIRY"],
       "catch_rate": 255,
       "base_exp": 50,
@@ -677,7 +677,7 @@
   },
   "SPECIES_V-MON": {
     "personal_data": {
-      "base_stats": [65, 65, 60, 50, 50, 50],
+      "base_stats": [66, 87, 60, 63, 59, 65],
       "types": ["TYPE_DRAGON", "TYPE_DRAGON"],
       "catch_rate": 255,
       "base_exp": 50,
@@ -697,7 +697,7 @@
   },
   "SPECIES_HAWKMON": {
     "personal_data": {
-      "base_stats": [65, 65, 60, 50, 50, 50],
+      "base_stats": [60, 80, 55, 81, 64, 60],
       "types": ["TYPE_FLYING", "TYPE_FLYING"],
       "catch_rate": 255,
       "base_exp": 50,
@@ -717,7 +717,7 @@
   },
   "SPECIES_ARMAMON": {
     "personal_data": {
-      "base_stats": [65, 65, 60, 50, 50, 50],
+      "base_stats": [83, 63, 88, 43, 51, 72],
       "types": ["TYPE_GROUND", "TYPE_GROUND"],
       "catch_rate": 255,
       "base_exp": 50,
@@ -737,7 +737,7 @@
   },
   "SPECIES_CHUCHUMON": {
     "personal_data": {
-      "base_stats": [65, 65, 60, 50, 50, 50],
+      "base_stats": [63, 70, 77, 62, 66, 62],
       "types": ["TYPE_BUG", "TYPE_BUG"],
       "catch_rate": 255,
       "base_exp": 50,
@@ -777,7 +777,7 @@
   },
   "SPECIES_CHUMON": {
     "personal_data": {
-      "base_stats": [65, 60, 60, 50, 50, 50],
+      "base_stats": [75, 60, 69, 66, 60, 60],
       "types": ["TYPE_NORMAL", "TYPE_POISON"],
       "catch_rate": 255,
       "base_exp": 50,
@@ -799,7 +799,7 @@
   },
   "SPECIES_PICODEVILMON": {
     "personal_data": {
-      "base_stats": [65, 65, 60, 50, 50, 50],
+      "base_stats": [61, 70, 57, 88, 70, 64],
       "types": ["TYPE_DARK", "TYPE_FLYING"],
       "catch_rate": 255,
       "base_exp": 50,
@@ -819,7 +819,7 @@
   },
   "SPECIES_KERAMON": {
     "personal_data": {
-      "base_stats": [65, 65, 60, 50, 50, 50],
+      "base_stats": [78, 82, 57, 75, 55, 53],
       "types": ["TYPE_DARK", "TYPE_DARK"],
       "catch_rate": 255,
       "base_exp": 50,
