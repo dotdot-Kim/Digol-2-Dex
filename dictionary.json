@@ -1,0 +1,49 @@
+{
+  "abilities": {
+    "ABILITY_NATURAL_CURE": "자연회복",
+    "ABILITY_PICKUP": "픽업",
+    "ABILITY_CHLOROPHYLL": "엽록소",
+    "ABILITY_INTIMIDATE": "위협",
+    "ABILITY_NONE": "없음"
+  },
+  "items": {
+    "ITEM_NONE": "없음",
+    "ITEM_ORAN_BERRY": "오랭열매"
+  },
+  "evo_methods": {
+    "EVO_LEVEL": "레벨 {cond}",
+    "EVO_LEVEL_ATK_GT_DEF": "공격이 방어보다 높을 때, 레벨 {cond}",
+    "EVO_LEVEL_ATK_LT_DEF": "방어가 공격보다 높을 때, 레벨 {cond}",
+    "EVO_LEVEL_ATK_EQ_DEF": "공격과 방어가 같을 때, 레벨 {cond}",
+    "EVO_HAS_MOVE": "{move}를 배우고 레벨업",
+    "EVO_ITEM": "{item} 사용",
+    "EVO_TRADE": "통신 교환",
+    "EVO_HAPPINESS": "친밀도 {cond} 이상일 때 레벨업"
+  },
+  "moves": {
+    "MOVE_EMBER": "불꽃세례",
+    "MOVE_HEADBUTT": "박치기",
+    "MOVE_BUBBLE": "거품",
+    "MOVE_PECK": "쪼기",
+    "MOVE_WATER_GUN": "물대포",
+    "MOVE_THUNDER_SHOCK": "전기쇼크",
+    "MOVE_ROCK_SMASH": "바위깨기",
+    "MOVE_ECHOED_VOICE": "에코보이스",
+    "MOVE_CUT": "풀베기",
+    "MOVE_BARRAGE": "구슬던지기",
+    "MOVE_POWDER_SNOW": "눈싸라기",
+    "MOVE_CONFUSION": "염동력",
+    "MOVE_STRING_SHOT": "실뿜기",
+    "MOVE_VINE_WHIP": "덩굴채찍",
+    "MOVE_ROLLOUT": "구르기",
+    "MOVE_VICE_GRIP": "찝기",
+    "MOVE_GUST": "바람일으키기",
+    "MOVE_TWISTER": "회오리",
+    "MOVE_DAZZLING_GLEAM": "매지컬샤인",
+    "MOVE_ROCK_THROW": "돌떨구기",
+    "MOVE_FAKE_OUT": "속이기",
+    "MOVE_ASTONISH": "놀래키기",
+    "MOVE_SMOG": "스모그",
+    "MOVE_LICK": "핥기"
+  }
+}

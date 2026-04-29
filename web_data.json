@@ -1,0 +1,299 @@
+{
+  "SPECIES_KAMMON": {
+    "name_ko": "깜몬",
+    "image": "images/1_Baby/botamon.jpg",
+    "generation": "유아기 I",
+    "description": "표면이 검은 솜털로 덮인 디지몬."
+  },
+  "SPECIES_PUNIMON": {
+    "name_ko": "푸니몬",
+    "image": "images/1_Baby/punimon.jpg",
+    "generation": "유아기 I"
+  },
+  "SPECIES_POGLMON": {
+    "name_ko": "뽀글몬",
+    "image": "images/1_Baby/bubbmon.jpg",
+    "generation": "유아기 I"
+  },
+  "SPECIES_PICHIMON": {
+    "name_ko": "피치몬",
+    "image": "images/1_Baby/pitchmon.jpg",
+    "generation": "유아기 I"
+  },
+  "SPECIES_PURURUMON": {
+    "name_ko": "푸르르몬",
+    "image": "images/1_Baby/pururumon.jpg",
+    "generation": "유아기 I"
+  },
+  "SPECIES_POYOMON": {
+    "name_ko": "포요몬",
+    "image": "images/1_Baby/poyomon.jpg",
+    "generation": "유아기 I"
+  },
+  "SPECIES_POLPOLMON": {
+    "name_ko": "뽈뽈몬",
+    "image": "images/1_Baby/choromon.jpg",
+    "generation": "유아기 I"
+  },
+  "SPECIES_KURAMON": {
+    "name_ko": "쿠라몬",
+    "image": "images/1_Baby/kuramon.jpg",
+    "generation": "유아기 I"
+  },
+  "SPECIES_KOROMON": {
+    "name_ko": "코로몬",
+    "image": "images/1_Baby/koromon.jpg",
+    "generation": "유년기 II",
+    "description": "표면의 솜털이 빠지고 몸이 한층 커진 소형 디지몬."
+  },
+  "SPECIES_KOMAMON": {
+    "name_ko": "꼬마몬",
+    "image": "images/1_Baby/chibimon.jpg",
+    "generation": "유년기 II"
+  },
+  "SPECIES_PULMON": {
+    "name_ko": "뿔몬",
+    "image": "images/1_Baby/tunomon.jpg",
+    "generation": "유년기 II"
+  },
+  "SPECIES_YAONGMON": {
+    "name_ko": "야옹몬",
+    "image": "images/1_Baby/nyaromon.jpg",
+    "generation": "유년기 II"
+  },
+  "SPECIES_MOTIMON": {
+    "name_ko": "모티몬",
+    "image": "images/1_Baby/mochimon.jpg",
+    "generation": "유년기 II"
+  },
+  "SPECIES_SEEDMON": {
+    "name_ko": "시드몬",
+    "image": "images/1_Baby/tanemon.jpg",
+    "generation": "유년기 II"
+  },
+  "SPECIES_DUNGSILMON": {
+    "name_ko": "둥실몬",
+    "image": "images/1_Baby/pukamon.jpg",
+    "generation": "유년기 II"
+  },
+  "SPECIES_UPAMON": {
+    "name_ko": "우파몬",
+    "image": "images/1_Baby/upamon.jpg",
+    "generation": "유년기 II"
+  },
+  "SPECIES_POROMON": {
+    "name_ko": "포로몬",
+    "image": "images/1_Baby/poromon.jpg",
+    "generation": "유년기 II"
+  },
+  "SPECIES_ONIMON": {
+    "name_ko": "어니몬",
+    "image": "images/1_Baby/pyocomon.jpg",
+    "generation": "유년기 II"
+  },
+  "SPECIES_TOKOMON": {
+    "name_ko": "토코몬",
+    "image": "images/1_Baby/tokomon.jpg",
+    "generation": "유년기 II"
+  },
+  "SPECIES_CUPIMON": {
+    "name_ko": "큐피몬",
+    "image": "images/1_Baby/cupimon.jpg",
+    "generation": "유년기 II"
+  },
+  "SPECIES_CAPRIMON": {
+    "name_ko": "카프리몬",
+    "image": "images/1_Baby/capromon.jpg",
+    "generation": "유년기 II"
+  },
+  "SPECIES_PICKMON": {
+    "name_ko": "픽크몬",
+    "image": "images/1_Baby/pickmon.jpg",
+    "generation": "유년기 II"
+  },
+  "SPECIES_TSUMEMON": {
+    "name_ko": "츠메몬",
+    "image": "images/1_Baby/tsumemon.jpg",
+    "generation": "유년기 II"
+  },
+  "SPECIES_PAGUMON": {
+    "name_ko": "퍼그몬",
+    "image": "images/1_Baby/pagumon.jpg",
+    "generation": "유년기 II"
+  },
+  "SPECIES_AGUMON": {
+    "name_ko": "아구몬",
+    "image": "images/2_Child/agumon.jpg",
+    "generation": "성장기"
+  },
+  "SPECIES_PAPIMON": {
+    "name_ko": "파피몬",
+    "image": "images/2_Child/gabumon.jpg",
+    "generation": "성장기"
+  },
+  "SPECIES_TENTAMON": {
+    "name_ko": "텐타몬",
+    "image": "images/2_Child/tentomon.jpg",
+    "generation": "성장기"
+  },
+  "SPECIES_PIYOMON": {
+    "name_ko": "피요몬",
+    "image": "images/2_Child/piyomon.jpg",
+    "generation": "성장기"
+  },
+  "SPECIES_PALMON": {
+    "name_ko": "팔몬",
+    "image": "images/2_Child/palmon.jpg",
+    "generation": "성장기"
+  },
+  "SPECIES_SHIRAMON": {
+    "name_ko": "쉬라몬",
+    "image": "images/2_Child/gomamon.jpg",
+    "generation": "성장기"
+  },
+  "SPECIES_PADAKMON": {
+    "name_ko": "파닥몬",
+    "image": "images/2_Child/patamon.jpg",
+    "generation": "성장기"
+  },
+  "SPECIES_PLOTMON": {
+    "name_ko": "플롯트몬",
+    "image": "images/2_Child/plotmon.jpg",
+    "generation": "성장기"
+  },
+  "SPECIES_V-MON": {
+    "name_ko": "브이몬",
+    "image": "images/2_Child/v-mon.jpg",
+    "generation": "성장기"
+  },
+  "SPECIES_HAWKMON": {
+    "name_ko": "호크몬",
+    "image": "images/2_Child/hawkmon.jpg",
+    "generation": "성장기"
+  },
+  "SPECIES_ARMAMON": {
+    "name_ko": "아르마몬",
+    "image": "images/2_Child/armadimon.jpg",
+    "generation": "성장기"
+  },
+  "SPECIES_CHUCHUMON": {
+    "name_ko": "추추몬",
+    "image": "images/2_Child/wormmon.jpg",
+    "generation": "성장기"
+  },
+  "SPECIES_BETAMON": {
+    "name_ko": "베타몬",
+    "image": "images/2_Child/betamon.jpg",
+    "generation": "성장기"
+  },
+  "SPECIES_CHUMON": {
+    "name_ko": "츄몬",
+    "image": "images/2_Child/tyumon.jpg",
+    "generation": "성장기"
+  },
+  "SPECIES_PICODEVILMON": {
+    "name_ko": "피코데블몬",
+    "image": "images/2_Child/picodevimon.jpg",
+    "generation": "성장기"
+  },
+  "SPECIES_KERAMON": {
+    "name_ko": "케라몬",
+    "image": "images/2_Child/keramon.jpg",
+    "generation": "성장기"
+  },
+  "SPECIES_GUILMON": {
+    "name_ko": "길몬",
+    "image": "images/2_Child/guilmon.jpg",
+    "generation": "성장기"
+  },
+  "SPECIES_RENAMON": {
+    "name_ko": "레나몬",
+    "image": "images/2_Child/renamon.jpg",
+    "generation": "성장기"
+  },
+  "SPECIES_TERRIERMON": {
+    "name_ko": "테리어몬",
+    "image": "images/2_Child/terriermon.jpg",
+    "generation": "성장기"
+  },
+  "SPECIES_LOPMON": {
+    "name_ko": "로프몬",
+    "image": "images/2_Child/lopmon.jpg",
+    "generation": "성장기"
+  },
+  "SPECIES_ELECMON": {
+    "name_ko": "에렉몬",
+    "image": "images/2_Child/elecmon.jpg",
+    "generation": "성장기"
+  },
+  "SPECIES_IMPMON": {
+    "name_ko": "임프몬",
+    "image": "images/2_Child/impmon.jpg",
+    "generation": "성장기"
+  },
+  "SPECIES_ULTUNGMON": {
+    "name_ko": "울퉁몬",
+    "image": "images/2_Child/gottsumon.jpg",
+    "generation": "성장기"
+  },
+  "SPECIES_TOPNIMON": {
+    "name_ko": "톱니몬",
+    "image": "images/2_Child/hagurumon.jpg",
+    "generation": "성장기"
+  },
+  "SPECIES_GAZIMON": {
+    "name_ko": "가지몬",
+    "image": "images/2_Child/gazimon.jpg",
+    "generation": "성장기"
+  },
+  "SPECIES_LUCEMON": {
+    "name_ko": "루체몬",
+    "image": "images/2_Child/lucemon.jpg",
+    "generation": "성장기"
+  },
+  "SPECIES_BURGERMON": {
+    "name_ko": "버거몬",
+    "image": "images/2_Child/burgamon.jpg",
+    "generation": "성장기"
+  },
+  "SPECIES_BLUCOMON": {
+    "name_ko": "블루코몬",
+    "image": "images/2_Child/bulucomon.jpg",
+    "generation": "성장기"
+  },
+  "SPECIES_COMANDRAMON": {
+    "name_ko": "코만드라몬",
+    "image": "images/2_Child/commandramon.jpg",
+    "generation": "성장기"
+  },
+  "SPECIES_SHOUTMON": {
+    "name_ko": "샤우트몬",
+    "image": "images/2_Child/shoutmon.jpg",
+    "generation": "성장기"
+  },
+  "SPECIES_STARMONS": {
+    "name_ko": "스타몬즈",
+    "image": "images/2_Child/starmons.jpg",
+    "generation": "성장기"
+  },
+  "SPECIES_SPARROWMON": {
+    "name_ko": "스패로우몬",
+    "image": "images/2_Child/sparrowmon.jpg",
+    "generation": "성장기"
+  },
+  "SPECIES_IGOSMON": {
+    "name_ko": "아이고스몬",
+    "image": "images/2_Child/ghostmon.jpg",
+    "generation": "성장기"
+  },
+  "SPECIES_ELIZAMON": {
+    "name_ko": "엘리자몬",
+    "image": "images/2_Child/elizamon.jpg",
+    "generation": "성장기"
+  },
+  "SPECIES_UKKOMON": {
+    "name_ko": "웃코몬",
+    "image": "images/2_Child/ukkomon.jpg",
+    "generation": "성장기"
+  }
+}

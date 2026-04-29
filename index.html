@@ -2,108 +2,537 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <title>내 디지몬 도감 테스트</title>
+  <title>디골-2 위키</title>
   <style>
-    /* 화면 디자인 (CSS) */
     body {
       background-color: #f4f4f9;
       font-family: 'Malgun Gothic', sans-serif;
-      display: flex;
-      justify-content: center;
       padding: 50px;
     }
-    .card {
-      background: white;
-      width: 250px;
+
+    /* 🎛️ 검색 툴바 디자인 */
+    .toolbar-container {
+      background-color: #1e293b;
+      color: white;
       padding: 20px;
       border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      text-align: center;
+      margin-bottom: 40px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     }
-	.card h2 {
-      margin-top: 8px;    /* 이미지와 이름 사이의 간격 */
-      margin-bottom: 8px; /* 이름과 타입 뱃지 사이의 간격 */
-      font-size: 22px;    /* 덤으로 글자 크기도 취향껏 조절 가능합니다 */
+    .toolbar-header { display: flex; justify-content: space-between; align-items: center; }
+    .toolbar-header h1 { margin: 0; font-size: 24px; }
+    .search-toggle-btn { background-color: #334155; color: white; border: 1px solid #475569; padding: 10px 20px; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; transition: 0.2s; display: flex; align-items: center; gap: 8px; }
+    .search-toggle-btn:hover { background-color: #475569; }
+    
+    .search-panel { display: none; flex-direction: column; gap: 15px; margin-top: 20px; padding-top: 20px; border-top: 1px solid #475569; }
+    .search-row { display: flex; align-items: center; gap: 15px; }
+    .filter-row { display: flex; align-items: center; gap: 25px; flex-wrap: wrap; }
+    .filter-group { display: flex; align-items: center; gap: 10px; }
+    .search-label { font-weight: bold; font-size: 16px; min-width: 40px; }
+    
+    #search-name { flex: 1; padding: 12px; border: none; border-radius: 6px; font-size: 15px; }
+    #search-name:focus { outline: 2px solid #3b82f6; }
+    .search-panel select { padding: 10px 30px 10px 10px; border: none; border-radius: 6px; font-size: 15px; cursor: pointer; }
+    .reset-btn { background-color: #e2e8f0; color: #1e293b; border: none; padding: 10px 20px; border-radius: 6px; font-weight: bold; cursor: pointer; margin-left: auto; }
+    .reset-btn:hover { background-color: #cbd5e1; }
+
+
+    /* 세대별 그룹 및 한 줄에 5개 고정 디자인 */
+    #dex-container { display: flex; flex-direction: column; gap: 50px; }
+    .gen-section { width: 100%; max-width: 1320px; margin: 0 auto; }
+    .gen-section-title { font-size: 24px; font-weight: bold; border-bottom: 2px solid #cbd5e1; padding-bottom: 10px; margin-bottom: 20px; }
+    .gen-cards { display: flex; flex-wrap: wrap; gap: 30px; justify-content: flex-start; }
+
+    /* 카드 디자인 */
+    .card { background: white; width: 200px; padding: 20px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); text-align: center; cursor: pointer; transition: transform 0.2s; }
+    .card:hover { transform: translateY(-5px); }
+    .card h2 { margin-top: 8px; margin-bottom: 1px; font-size: 20px; }
+    .monster-image { width: 100%; max-width: 150px; height: 150px; object-fit: contain; border: 2px solid #ddd; border-radius: 8px; background-color: #fff; }
+    
+    .badge { display: inline-block; color: white; padding: 4px 10px; border-radius: 6px; font-size: 16px; font-weight: bold; margin-top: 8px; }
+    .badge-small { display: inline-block; color: white; padding: 4px 10px; border-radius: 4px; font-size: 12px; font-weight: bold; }
+    .gen-badge { display: inline-block; border: 1.5px solid; background-color: #f8fafc; padding: 4px 12px; border-radius: 6px; font-size: 12px; font-weight: bold; margin-top: 8px; }
+   
+    /* 모달(팝업창) 디자인 */
+    .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.6); z-index: 1000; justify-content: center; align-items: center; }
+    .modal-content { background-color: white; width: 90%; max-width: 650px; border-radius: 15px; padding: 30px; position: relative; max-height: 85vh; overflow-y: auto; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+    .close-btn { position: absolute; top: 15px; right: 20px; font-size: 28px; font-weight: bold; color: #666; cursor: pointer; }
+    .close-btn:hover { color: #000; }
+    .modal-header { display: flex; flex-direction: column; align-items: center; border-bottom: 2px solid #eee; padding-bottom: 20px; margin-bottom: 20px; }
+    .modal-header img { width: 150px; height: 150px; object-fit: contain; border: 2px solid #ddd; border-radius: 8px; }
+    
+    /* 💡 새롭게 추가된 좌우 화살표 내비게이션 디자인 */
+    .modal-image-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px; /* 화살표와 이미지 사이 간격 */
+      margin-bottom: 10px;
     }
-    .monster-image {
-      /* 크기를 80px로 고정하지 않고 유연하게 바꿉니다 */
-      width: 100%; 
-      max-width: 150px; /* 카드를 넘어가지 않게 최대 크기 설정 */
-      height: auto; 
-      object-fit: contain; /* 비율이 찌그러지지 않게 유지 */
-      
-      /* image-rendering: pixelated; 는 지웠습니다! */
-      border: 2px solid #ddd;
+    .nav-arrow {
+      background: none;
+      border: none;
+      font-size: 35px;
+      color: #94a3b8; /* 기본 회색 */
+      cursor: pointer;
+      transition: color 0.2s, transform 0.2s;
+      padding: 0 10px;
+    }
+    .nav-arrow:hover {
+      color: #1e293b; /* 마우스 올리면 테마색(다크 네이비)으로 변경 */
+      transform: scale(1.2); /* 살짝 커지는 애니메이션 */
+    }
+
+    .info-section { background: #f9f9f9; padding: 15px; border-radius: 8px; margin-bottom: 20px; font-size: 15px; line-height: 1.6;}
+    .info-section h3 { margin-top: 0; color: #334155; border-bottom: 1px solid #ddd; padding-bottom: 5px; margin-bottom: 10px; }
+    
+    /* 💡 밝은 테마로 변경된 종족치 바 그래프 디자인 */
+    .stat-container {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      background: #f9f9f9; /* 배경 밝게 변경 */
+      padding: 15px; /* 패딩 살짝 줄임 */
       border-radius: 8px;
-      background-color: #fff;
     }
-    .badge {
-      display: inline-block;
-      background-color: #a8a878; /* 노말 타입 색상 */
-      color: white;
-      padding: 4px 12px;
-      border-radius: 20px;
-      font-size: 16px;
-      font-weight: bold;
-      margin-bottom: 15px;
+    .stat-row { display: flex; align-items: center; font-size: 15px; }
+    .stat-name { width: 80px; font-weight: bold; color: #64748b; font-size: 13px; }
+    .stat-val { width: 45px; text-align: right; margin-right: 15px; color: #334155; font-weight: bold; } /* 글자색 어둡게 */
+    .stat-bar-bg { flex: 1; height: 14px; background-color: #e2e8f0; border-radius: 8px; overflow: hidden; } /* 바 배경 연하게 */
+    .stat-bar-fill { height: 100%; border-radius: 8px; transition: width 0.5s ease-out; }
+    .stat-total { border-top: 1px solid #ddd; margin-top: 5px; padding-top: 15px; font-weight: bold; display: flex; } /* 구분선 연하게 */
+    
+    /* 진화 트리 디자인 */
+    .evo-section { margin-bottom: 20px; }
+    .evo-header { 
+      background: #1e293b; color: white;padding: 10px; border-radius: 8px 8px 0 0; text-align: center; font-weight: bold; 
     }
-    .stats {
-      text-align: left;
-      font-size: 14px;
-      line-height: 1.6;
-      background: #f9f9f9;
-      padding: 10px;
-      border-radius: 8px;
-    }
+    .evo-table { display: flex; flex-direction: column; border: 1px solid #ddd; border-top: none; border-radius: 0 0 8px 8px; overflow: hidden; }
+    .evo-row { display: flex; align-items: center; padding: 10px; border-bottom: 1px solid #eee; cursor: pointer; transition: background 0.2s; }
+    .evo-row:last-child { border-bottom: none; }
+    .evo-row:hover { background: #f1f5f9; }
+    .evo-col-img { width: 60px; text-align: center; }
+    .evo-col-img img { width: 50px; height: 50px; object-fit: contain; }
+    .evo-col-name { flex: 1.2; padding-left: 15px; font-size: 16px; color: #334155; }
+    .evo-col-type { width: 80px; text-align: center; }
+    .evo-col-cond { flex: 2; font-size: 13px; color: #64748b; border-left: 1px dashed #ddd; padding-left: 15px; }
+    .evo-col-cond ul { margin: 0; padding-left: 20px; list-style-type: disc; }
+    .evo-empty { padding: 15px; text-align: center; color: #94a3b8; }
   </style>
 </head>
 <body>
 
+  <div class="toolbar-container">
+    <div class="toolbar-header">
+      <h1>디골-2 위키</h1>
+      <button class="search-toggle-btn" onclick="toggleSearchPanel()">
+        🔍 검색 및 필터
+      </button>
+    </div>
+    <div id="search-panel" class="search-panel">
+      <div class="search-row">
+        <span class="search-label">검색</span>
+        <input type="text" id="search-name" placeholder="디지몬 이름 또는 키워드를 입력 (예: 아구몬)" oninput="applyFilters()">
+      </div>
+      <div class="filter-row">
+        <div class="filter-group">
+          <span class="search-label">등급</span>
+          <select id="search-gen" onchange="applyFilters()">
+            <option value="전체">지정 없음</option>
+            <option value="유아기 I">유아기 I</option>
+            <option value="유년기 II">유년기 II</option>
+            <option value="성장기">성장기</option>
+            <option value="성숙기">성숙기</option>
+            <option value="완전체">완전체</option>
+            <option value="궁극체">궁극체</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <span class="search-label">속성</span>
+          <select id="search-type" onchange="applyFilters()">
+            <option value="전체">지정 없음</option>
+            <option value="노말">노말</option>
+            <option value="불꽃">불꽃</option>
+            <option value="물">물</option>
+            <option value="풀">풀</option>
+            <option value="전기">전기</option>
+            <option value="얼음">얼음</option>
+            <option value="격투">격투</option>
+            <option value="독">독</option>
+            <option value="땅">땅</option>
+            <option value="비행">비행</option>
+            <option value="에스퍼">에스퍼</option>
+            <option value="벌레">벌레</option>
+            <option value="바위">바위</option>
+            <option value="고스트">고스트</option>
+            <option value="드래곤">드래곤</option>
+            <option value="악">악</option>
+            <option value="강철">강철</option>
+            <option value="페어리">페어리</option>
+          </select>
+        </div>
+        <button class="reset-btn" onclick="resetFilters()">초기화</button>
+      </div>
+    </div>
+  </div>
+
   <div id="dex-container"></div>
 
-<script>
-  // 한글 번역 사전
-  const typeDic = {
-    "TYPE_NORMAL": "노말",
-    "TYPE_FIRE": "불꽃",
-    "TYPE_WATER": "물",
-    "TYPE_GRASS": "풀",
-    "TYPE_ELECTRIC": "전기"
-  };
+  <div id="monster-modal" class="modal-overlay" onclick="closeModal(event)">
+    <div class="modal-content" onclick="event.stopPropagation()">
+      <span class="close-btn" onclick="closeModal(true)">&times;</span>
+      <div id="modal-body"></div>
+    </div>
+  </div>
 
-  // 1. 외부 JSON 파일을 읽어옵니다
-  fetch('data.json')
-    .then(response => response.json()) // 읽어온 데이터를 JSON으로 변환
-    .then(db => {
-      // 2. 데이터에서 특정 몬스터 정보를 가져옵니다
-      const target = db["SPECIES_KAMMON"];
-      const stats = target.personal_data.base_stats;
-      const rawType = target.personal_data.types[0];
-      const typeName = typeDic[rawType] || rawType.replace("TYPE_", "");
+  <script>
+    const typeDic = {
+      "TYPE_NORMAL": "노말", "TYPE_FIRE": "불꽃", "TYPE_WATER": "물", "TYPE_GRASS": "풀",
+      "TYPE_ELECTRIC": "전기", "TYPE_ICE": "얼음", "TYPE_FIGHTING": "격투", "TYPE_POISON": "독",
+      "TYPE_GROUND": "땅", "TYPE_FLYING": "비행", "TYPE_PSYCHIC": "에스퍼", "TYPE_BUG": "벌레",
+      "TYPE_ROCK": "바위", "TYPE_GHOST": "고스트", "TYPE_DRAGON": "드래곤", "TYPE_DARK": "악",
+      "TYPE_STEEL": "강철", "TYPE_FAIRY": "페어리"
+    };
 
-      // 3. 화면에 카드를 그립니다
-      document.getElementById("dex-container").innerHTML = `
-        <div class="card">
-          <img src="${target.image}" class="monster-image" alt="몬스터 이미지">
-          <h2>${target.name_ko}</h2>
-          <div class="badge">${typeName}</div>
+    const typeColorDic = {
+      "노말": "#A8A878", "불꽃": "#F08030", "물": "#6890F0", "풀": "#78C850",
+      "전기": "#F8D030", "얼음": "#98D8D8", "격투": "#C03028", "독": "#A040A0",
+      "땅": "#E0C068", "비행": "#A890F0", "에스퍼": "#F85888", "벌레": "#A8B820",
+      "바위": "#B8A038", "고스트": "#705898", "드래곤": "#7038F8", "악": "#705848",
+      "강철": "#B8B8D0", "페어리": "#EE99AC"
+    };
+
+    const genColorDic = {
+      "유아기 I": "#e48e00", "유년기 I": "#e48e00", "유년기 II": "#971e9b",
+      "성장기": "#e34ba4", "성숙기": "#415ab5", "완전체": "#bc4d21",
+      "궁극체": "#7baa17", "아머체": "#008bd4", "하이브리드체": "#009140"
+    };
+
+    let globalDB = {}; 
+    let webDB = {};
+    let dictDB = {}; 
+    let currentFilteredKeys = []; // 💡 현재 화면에 표시된 몬스터 순서를 저장할 배열 추가
+
+    Promise.all([
+      fetch('data.json').then(res => res.json()),
+      fetch('web_data.json').then(res => res.json()),
+      fetch('dictionary.json').then(res => res.json())
+    ])
+    .then(([engineData, webData, dictionary]) => {
+      globalDB = engineData; 
+      webDB = webData;
+      dictDB = dictionary; 
+      applyFilters(); 
+    })
+    .catch(error => {
+      console.error('오류:', error);
+      document.getElementById("dex-container").innerHTML = "데이터 로딩 실패. JSON 파일 문법을 확인하세요.";
+    });
+
+    function toggleSearchPanel() {
+      const panel = document.getElementById('search-panel');
+      const btn = document.querySelector('.search-toggle-btn');
+      if (panel.style.display === 'none' || panel.style.display === '') {
+        panel.style.display = 'flex';
+        btn.innerHTML = '❌ 닫기';
+      } else {
+        panel.style.display = 'none';
+        btn.innerHTML = '🔍 검색 및 필터';
+      }
+    }
+
+    function resetFilters() {
+      document.getElementById('search-name').value = '';
+      document.getElementById('search-gen').value = '전체';
+      document.getElementById('search-type').value = '전체';
+      applyFilters();
+    }
+
+    function applyFilters() {
+      const keyword = document.getElementById('search-name').value.trim().toLowerCase();
+      const selectedGen = document.getElementById('search-gen').value;
+      const selectedType = document.getElementById('search-type').value;
+
+      const groupedResults = {};
+      currentFilteredKeys = []; // 💡 화면을 새로 그릴 때마다 순서 초기화
+
+      for (const key in globalDB) {
+        const target = globalDB[key];
+        const webTarget = webDB[key] || {};
+
+        const name = webTarget.name_ko || "";
+        const types = target.personal_data.types;
+        const typeNames = [...new Set(types.map(t => typeDic[t] || t.replace("TYPE_", "")))];
+        const generationName = webTarget.generation || "미분류";
+
+        const isNameMatch = keyword === "" || name.toLowerCase().includes(keyword);
+        const isGenMatch = selectedGen === "전체" || generationName === selectedGen;
+        const isTypeMatch = selectedType === "전체" || typeNames.includes(selectedType);
+
+        if (isNameMatch && isGenMatch && isTypeMatch) {
+          if (!groupedResults[generationName]) {
+            groupedResults[generationName] = [];
+          }
+          groupedResults[generationName].push({ key, target, webTarget, typeNames, generationName });
+        }
+      }
+
+      let allSectionsHTML = "";
+      const genOrder = ["유아기 I", "유년기 I", "유년기 II", "성장기", "성숙기", "완전체", "궁극체", "아머체", "하이브리드체", "미분류"];
+
+      genOrder.forEach(gen => {
+        if (groupedResults[gen] && groupedResults[gen].length > 0) {
+          const genColor = genColorDic[gen] || "#94a3b8";
           
-          <div class="stats">
-            <strong>📊 종족치 (Base Stats)</strong><br>
-            HP : ${stats[0]}<br>
-            공격 : ${stats[1]}<br>
-            방어 : ${stats[2]}<br>
-            특수공격 : ${stats[4]}<br>
-            특수방어 : ${stats[5]}<br>
-			스피드 : ${stats[3]}
+          let cardsHTML = "";
+          groupedResults[gen].forEach(item => {
+            currentFilteredKeys.push(item.key); // 💡 화면에 그려지는 순서대로 배열에 저장
+
+            let typeBadgesHTML = "";
+            item.typeNames.forEach(name => {
+              const color = typeColorDic[name] || "#A8A878";
+              typeBadgesHTML += `<div class="badge" style="background-color: ${color}; margin-right: 2px; margin-left: 2px;">${name}</div>`;
+            });
+
+            cardsHTML += `
+              <div class="card" onclick="openModal('${item.key}')">
+                <img src="${item.webTarget.image}" loading="lazy" class="monster-image" alt="${item.webTarget.name_ko}">
+                <h2>${item.webTarget.name_ko}</h2>
+                <div style="display: flex; justify-content: center; flex-wrap: wrap;">
+                  ${typeBadgesHTML}
+                </div>
+                <div class="gen-badge" style="border-color: ${genColor}; color: ${genColor};">${item.generationName}</div>
+              </div>
+            `;
+          });
+
+          allSectionsHTML += `
+            <div class="gen-section">
+              <div class="gen-section-title" style="color: ${genColor}; border-bottom-color: ${genColor};">${gen}</div>
+              <div class="gen-cards">${cardsHTML}</div>
+            </div>
+          `;
+        }
+      });
+      
+      if(allSectionsHTML === "") {
+        allSectionsHTML = "<div style='color: #64748b; font-size: 18px; text-align: center; width:100%;'>검색 조건에 맞는 디지몬이 없습니다.</div>";
+      }
+      document.getElementById("dex-container").innerHTML = allSectionsHTML;
+    }
+
+    function openModal(key) {
+      const data = globalDB[key];
+      const webData = webDB[key] || {};
+      const stats = data.personal_data.base_stats;
+      
+      const types = data.personal_data.types;
+      const typeNames = [...new Set(types.map(t => typeDic[t] || t.replace("TYPE_", "")))];
+
+      let headerTypeBadges = "";
+      typeNames.forEach(name => {
+        const color = typeColorDic[name] || "#A8A878";
+        headerTypeBadges += `<div class="badge" style="background-color: ${color}; margin: 0 2px 5px 2px;">${name}</div>`;
+      });
+
+      const generationName = (webDB[key] && webDB[key].generation) ? webDB[key].generation : "미분류";
+      const genColor = genColorDic[generationName] || "#94a3b8";
+
+      let abilities = data.personal_data.abilities
+        .filter(ab => ab !== "ABILITY_NONE")
+        .map(ab => (dictDB.abilities && dictDB.abilities[ab]) ? dictDB.abilities[ab] : ab.replace("ABILITY_", ""))
+        .join(", ");
+      if(!abilities) abilities = "없음";
+
+      const rawItem = data.personal_data.items[0];
+      const itemName = (dictDB.items && dictDB.items[rawItem]) ? dictDB.items[rawItem] : rawItem.replace("ITEM_", "");
+
+      // 💡 [이전/다음 몬스터 화살표 로직]
+      let currentIndex = currentFilteredKeys.indexOf(key);
+      let arrowsHTML = `<img src="${webData.image}" alt="${webData.name_ko}">`; // 기본 이미지
+      
+      // 검색된 몬스터가 2마리 이상일 때만 화살표를 표시합니다
+      if (currentFilteredKeys.length > 1 && currentIndex !== -1) {
+        // 첫 번째 몬스터에서 이전(<)을 누르면 맨 끝으로 가고, 마지막에서 다음(>)을 누르면 맨 처음으로 오도록 계산
+        let prevIndex = currentIndex === 0 ? currentFilteredKeys.length - 1 : currentIndex - 1;
+        let nextIndex = currentIndex === currentFilteredKeys.length - 1 ? 0 : currentIndex + 1;
+        
+        let prevKey = currentFilteredKeys[prevIndex];
+        let nextKey = currentFilteredKeys[nextIndex];
+        
+        arrowsHTML = `
+          <button class="nav-arrow" onclick="openModal('${prevKey}')">&#10094;</button>
+          <img src="${webData.image}" alt="${webData.name_ko}">
+          <button class="nav-arrow" onclick="openModal('${nextKey}')">&#10095;</button>
+        `;
+      }
+
+      // 종족치 바 그래프
+      const statLabels = ["HP", "공격 (ATK)", "방어 (DEF)", "특수공격 (SPA)", "특수방어 (SPD)", "스피드 (SPE)"];
+      const statValues = [stats[0], stats[1], stats[2], stats[4], stats[5], stats[3]];
+      const maxStat = 255; 
+      let totalStats = 0;
+      const barColor = "#3b82f6"; 
+
+      let statsHTML = `<div class="stat-container">`;
+      for(let i=0; i<6; i++) {
+          totalStats += statValues[i];
+          const percent = Math.min((statValues[i] / maxStat) * 100, 100);
+          statsHTML += `
+            <div class="stat-row">
+              <span class="stat-name">${statLabels[i].split(" ")[0]}</span>
+              <span class="stat-val">${statValues[i]}</span>
+              <div class="stat-bar-bg">
+                <div class="stat-bar-fill" style="width: ${percent}%; background-color: ${barColor};"></div>
+              </div>
+            </div>
+          `;
+      }
+      statsHTML += `
+          <div class="stat-total">
+            <span class="stat-name" style="color: #334155; width: 80px;">TOTAL</span>
+            <span class="stat-val" style="color: #334155; margin-right: 0;">${totalStats}</span>
           </div>
         </div>
       `;
-    })
-    .catch(error => {
-      console.error('데이터를 불러오는 중 오류 발생:', error);
-      document.getElementById("dex-container").innerHTML = "데이터를 불러올 수 없습니다. 콘솔창(F12)을 확인하세요.";
-    });
-</script>
+
+      function getEvoText(evo) {
+        const method = evo.method;
+        const cond = evo.condition;
+        let template = (dictDB.evo_methods && dictDB.evo_methods[method]) 
+                       ? dictDB.evo_methods[method] 
+                       : `${method} (${cond})`;
+
+        template = template.replace("{cond}", cond);
+        if (template.includes("{move}")) {
+          const moveName = (dictDB.moves && dictDB.moves[cond]) ? dictDB.moves[cond] : String(cond).replace("MOVE_", "");
+          template = template.replace("{move}", moveName);
+        }
+        if (template.includes("{item}")) {
+          const itemName = (dictDB.items && dictDB.items[cond]) ? dictDB.items[cond] : String(cond).replace("ITEM_", "");
+          template = template.replace("{item}", itemName);
+        }
+        return template;
+      }
+
+      let preEvoHTML = "";
+      let hasPreEvo = false;
+      for (const pKey in globalDB) {
+        const pData = globalDB[pKey];
+        const pWebData = webDB[pKey] || {}; 
+
+        if (pData.evolutions) {
+          let matchingEvos = pData.evolutions.filter(evo => evo.target === key);
+          
+          if (matchingEvos.length > 0) {
+            hasPreEvo = true;
+            
+            const pTypes = pData.personal_data.types;
+            const pTypeNames = [...new Set(pTypes.map(t => typeDic[t] || t.replace("TYPE_", "")))];
+            let pTypeBadges = pTypeNames.map(name => {
+              const color = typeColorDic[name] || "#A8A878";
+              return `<span class="badge-small" style="background-color: ${color}; margin: 2px;">${name}</span>`;
+            }).join("");
+
+            let condList = matchingEvos.map(evo => `<li>${getEvoText(evo)}</li>`).join("");
+
+            preEvoHTML += `
+              <div class="evo-row" onclick="openModal('${pKey}')">
+                <div class="evo-col-img"><img src="${pWebData.image}" alt="${pWebData.name_ko}"></div>
+                <div class="evo-col-name"><strong>${pWebData.name_ko}</strong></div>
+                <div class="evo-col-type" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">${pTypeBadges}</div>
+                <div class="evo-col-cond"><ul>${condList}</ul></div>
+              </div>
+            `;
+          }
+        }
+      }
+      if (!hasPreEvo) preEvoHTML = "<div class='evo-empty'>진화 전 데이터 없음</div>";
+
+      let groupedEvos = {};
+      if (data.evolutions && data.evolutions.length > 0) {
+        data.evolutions.forEach(evo => {
+          if (!groupedEvos[evo.target]) groupedEvos[evo.target] = [];
+          groupedEvos[evo.target].push(evo);
+        });
+      }
+
+      let postEvoHTML = "";
+      if (Object.keys(groupedEvos).length === 0) {
+        postEvoHTML = "<div class='evo-empty'>다음 진화 없음</div>";
+      } else {
+        for (const targetKey in groupedEvos) {
+          const tData = globalDB[targetKey];
+          const tWebData = webDB[targetKey] || {}; 
+
+          if (tData) {
+            const tTypes = tData.personal_data.types;
+            const tTypeNames = [...new Set(tTypes.map(t => typeDic[t] || t.replace("TYPE_", "")))];
+            let tTypeBadges = tTypeNames.map(name => {
+              const color = typeColorDic[name] || "#A8A878";
+              return `<span class="badge-small" style="background-color: ${color}; margin: 2px;">${name}</span>`;
+            }).join("");
+
+            let condList = groupedEvos[targetKey].map(evo => `<li>${getEvoText(evo)}</li>`).join("");
+
+            postEvoHTML += `
+              <div class="evo-row" onclick="openModal('${targetKey}')">
+                <div class="evo-col-img"><img src="${tWebData.image}" alt="${tWebData.name_ko}"></div>
+                <div class="evo-col-name"><strong>${tWebData.name_ko}</strong></div>
+                <div class="evo-col-type" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">${tTypeBadges}</div>
+                <div class="evo-col-cond"><ul>${condList}</ul></div>
+              </div>
+            `;
+          }
+        }
+      }
+
+      const modalHTML = `
+        <div class="modal-header">
+          <div class="modal-image-wrapper">
+            ${arrowsHTML}
+          </div>
+          <h2>${webData.name_ko}</h2>
+          <div style="display: flex; justify-content: center; flex-wrap: wrap; margin-bottom: 5px;">
+            ${headerTypeBadges}
+          </div>
+          <div class="gen-badge" style="border-color: ${genColor}; color: ${genColor};">${generationName}</div>
+        </div>
+
+        <div class="info-section">
+          <h3>📋 기본 정보</h3>
+          <li><strong>특성:</strong> ${abilities}</li>
+          <li><strong>등장 위치:</strong> ${data.location || "정보 없음"}</li>
+          <li><strong>지닌 도구:</strong> ${itemName}</li>
+        </div>
+
+        <div class="info-section" style="background: none; padding: 0;">
+          <h3 style="margin-bottom: 15px;">📊 종족치 (Base Stats)</h3>
+          ${statsHTML}
+        </div>
+
+        <div class="evo-section">
+          <div class="evo-header">진화 전 (Evolves from)</div>
+          <div class="evo-table">${preEvoHTML}</div>
+        </div>
+
+        <div class="evo-section">
+          <div class="evo-header">진화 후 (Evolves to)</div>
+          <div class="evo-table">${postEvoHTML}</div>
+        </div>
+      `;
+
+      document.getElementById("modal-body").innerHTML = modalHTML;
+      document.getElementById("monster-modal").style.display = "flex";
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeModal(force = false) {
+      if (force || event.target.id === "monster-modal") {
+        document.getElementById("monster-modal").style.display = "none";
+        document.body.style.overflow = "auto"; 
+      }
+    }
+  </script>
 </body>
 </html>
