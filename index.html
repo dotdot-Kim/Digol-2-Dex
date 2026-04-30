@@ -340,7 +340,7 @@
 
       let abilities = data.personal_data.abilities
         .filter(ab => ab !== "ABILITY_NONE")
-        .map(ab => (dictDB.abilities && dictDB.abilities[ab]) ? dictDB.abilities[ab] : ab.replace("ABILITY_", ""))
+        .map(ab => (dictDB.abilities && dictDB.abilities[ab]) ? dictDB.abilities[ab].name : ab.replace("ABILITY_", ""))
         .join(", ");
       if(!abilities) abilities = "없음";
 

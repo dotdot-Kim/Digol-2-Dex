@@ -126,17 +126,17 @@
     "image": "images/2_Child/agumon.jpg",
     "generation": "성장기"
   },
-  "SPECIES_PAPIMON": {
+  "SPECIES_GABUMON": {
     "name_ko": "파피몬",
     "image": "images/2_Child/gabumon.jpg",
     "generation": "성장기"
   },
-  "SPECIES_TENTAMON": {
+  "SPECIES_TENTOMON": {
     "name_ko": "텐타몬",
     "image": "images/2_Child/tentomon.jpg",
     "generation": "성장기"
   },
-  "SPECIES_PIYOMON": {
+  "SPECIES_BIYOMON": {
     "name_ko": "피요몬",
     "image": "images/2_Child/piyomon.jpg",
     "generation": "성장기"
@@ -146,22 +146,22 @@
     "image": "images/2_Child/palmon.jpg",
     "generation": "성장기"
   },
-  "SPECIES_SHIRAMON": {
+  "SPECIES_GOMAMON": {
     "name_ko": "쉬라몬",
     "image": "images/2_Child/gomamon.jpg",
     "generation": "성장기"
   },
-  "SPECIES_PADAKMON": {
+  "SPECIES_PATAMON": {
     "name_ko": "파닥몬",
     "image": "images/2_Child/patamon.jpg",
     "generation": "성장기"
   },
-  "SPECIES_PLOTMON": {
+  "SPECIES_SALAMON": {
     "name_ko": "플롯트몬",
     "image": "images/2_Child/plotmon.jpg",
     "generation": "성장기"
   },
-  "SPECIES_V-MON": {
+  "SPECIES_VEEMON": {
     "name_ko": "브이몬",
     "image": "images/2_Child/v-mon.jpg",
     "generation": "성장기"
@@ -176,7 +176,7 @@
     "image": "images/2_Child/armadimon.jpg",
     "generation": "성장기"
   },
-  "SPECIES_CHUCHUMON": {
+  "SPECIES_WORMMON": {
     "name_ko": "추추몬",
     "image": "images/2_Child/wormmon.jpg",
     "generation": "성장기"
@@ -186,12 +186,12 @@
     "image": "images/2_Child/betamon.jpg",
     "generation": "성장기"
   },
-  "SPECIES_CHUMON": {
+  "SPECIES_CHUUMON": {
     "name_ko": "츄몬",
     "image": "images/2_Child/tyumon.jpg",
     "generation": "성장기"
   },
-  "SPECIES_PICODEVILMON": {
+  "SPECIES_DEMIDEVIMON": {
     "name_ko": "피코데블몬",
     "image": "images/2_Child/picodevimon.jpg",
     "generation": "성장기"
@@ -231,12 +231,12 @@
     "image": "images/2_Child/impmon.jpg",
     "generation": "성장기"
   },
-  "SPECIES_ULTUNGMON": {
+  "SPECIES_GOTSUMON": {
     "name_ko": "울퉁몬",
     "image": "images/2_Child/gottsumon.jpg",
     "generation": "성장기"
   },
-  "SPECIES_TOPNIMON": {
+  "SPECIES_HAGURUMON": {
     "name_ko": "톱니몬",
     "image": "images/2_Child/hagurumon.jpg",
     "generation": "성장기"
@@ -251,7 +251,7 @@
     "image": "images/2_Child/lucemon.jpg",
     "generation": "성장기"
   },
-  "SPECIES_BURGERMON": {
+  "SPECIES_BURGAMON": {
     "name_ko": "버거몬",
     "image": "images/2_Child/burgamon.jpg",
     "generation": "성장기"
@@ -264,6 +264,16 @@
   "SPECIES_COMANDRAMON": {
     "name_ko": "코만드라몬",
     "image": "images/2_Child/commandramon.jpg",
+    "generation": "성장기"
+  },
+  "SPECIES_GAOMON": {
+    "name_ko": "가오몬",
+    "image": "images/2_Child/gaomon.jpg",
+    "generation": "성장기"
+  },
+  "SPECIES_LALAMON": {
+    "name_ko": "라라몬",
+    "image": "images/2_Child/lalamon.jpg",
     "generation": "성장기"
   },
   "SPECIES_SHOUTMON": {
