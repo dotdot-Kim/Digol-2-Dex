@@ -1,5 +1,5 @@
 {
-  "SPECIES_KAMMON": {
+  "SPECIES_BOTAMON": {
     "name_ko": "깜몬",
     "image": "images/1_Baby/botamon.jpg",
     "generation": "유아기 I",
@@ -10,7 +10,7 @@
     "image": "images/1_Baby/punimon.jpg",
     "generation": "유아기 I"
   },
-  "SPECIES_POGLMON": {
+  "SPECIES_PABUMON": {
     "name_ko": "뽀글몬",
     "image": "images/1_Baby/bubbmon.jpg",
     "generation": "유아기 I"
@@ -30,7 +30,7 @@
     "image": "images/1_Baby/poyomon.jpg",
     "generation": "유아기 I"
   },
-  "SPECIES_POLPOLMON": {
+  "SPECIES_CHOROMON": {
     "name_ko": "뽈뽈몬",
     "image": "images/1_Baby/choromon.jpg",
     "generation": "유아기 I"
@@ -46,17 +46,17 @@
     "generation": "유년기 II",
     "description": "표면의 솜털이 빠지고 몸이 한층 커진 소형 디지몬."
   },
-  "SPECIES_KOMAMON": {
+  "SPECIES_CHIBIMON": {
     "name_ko": "꼬마몬",
     "image": "images/1_Baby/chibimon.jpg",
     "generation": "유년기 II"
   },
-  "SPECIES_PULMON": {
+  "SPECIES_TSUNOMON": {
     "name_ko": "뿔몬",
     "image": "images/1_Baby/tunomon.jpg",
     "generation": "유년기 II"
   },
-  "SPECIES_YAONGMON": {
+  "SPECIES_NYAROMON": {
     "name_ko": "야옹몬",
     "image": "images/1_Baby/nyaromon.jpg",
     "generation": "유년기 II"
@@ -66,12 +66,12 @@
     "image": "images/1_Baby/mochimon.jpg",
     "generation": "유년기 II"
   },
-  "SPECIES_SEEDMON": {
+  "SPECIES_TANEMON": {
     "name_ko": "시드몬",
     "image": "images/1_Baby/tanemon.jpg",
     "generation": "유년기 II"
   },
-  "SPECIES_DUNGSILMON": {
+  "SPECIES_BUKAMON": {
     "name_ko": "둥실몬",
     "image": "images/1_Baby/pukamon.jpg",
     "generation": "유년기 II"
@@ -86,7 +86,7 @@
     "image": "images/1_Baby/poromon.jpg",
     "generation": "유년기 II"
   },
-  "SPECIES_ONIMON": {
+  "SPECIES_YOKOMON": {
     "name_ko": "어니몬",
     "image": "images/1_Baby/pyocomon.jpg",
     "generation": "유년기 II"
@@ -101,7 +101,7 @@
     "image": "images/1_Baby/cupimon.jpg",
     "generation": "유년기 II"
   },
-  "SPECIES_CAPRIMON": {
+  "SPECIES_KAPURIMON": {
     "name_ko": "카프리몬",
     "image": "images/1_Baby/capromon.jpg",
     "generation": "유년기 II"
@@ -291,7 +291,7 @@
     "image": "images/2_Child/sparrowmon.jpg",
     "generation": "성장기"
   },
-  "SPECIES_IGOSMON": {
+  "SPECIES_GHOSTMON": {
     "name_ko": "아이고스몬",
     "image": "images/2_Child/ghostmon.jpg",
     "generation": "성장기"

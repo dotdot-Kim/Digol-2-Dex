@@ -1,5 +1,5 @@
 {
-  "SPECIES_KAMMON": {
+  "SPECIES_BOTAMON": {
     "personal_data": {
       "base_stats": [50, 50, 50, 50, 50, 50],
       "types": ["TYPE_NORMAL", "TYPE_NORMAL"],
@@ -17,7 +17,7 @@
     },
     "evolutions": [
       { "method": "EVO_LEVEL_ATK_GT_DEF", "condition": 5, "target": "SPECIES_KOROMON" },
-      { "method": "EVO_LEVEL_ATK_LT_DEF", "condition": 5, "target": "SPECIES_KOMAMON" },
+      { "method": "EVO_LEVEL_ATK_LT_DEF", "condition": 5, "target": "SPECIES_CHIBIMON" },
       { "method": "EVO_LEVEL_ATK_EQ_DEF", "condition": 5, "target": "SPECIES_KOROMON" }
     ]
   },
@@ -38,12 +38,12 @@
       "flee_rate": 0
     },
     "evolutions": [
-      { "method": "EVO_LEVEL_ATK_GT_DEF", "condition": 5, "target": "SPECIES_PULMON" },
-      { "method": "EVO_LEVEL_ATK_LT_DEF", "condition": 5, "target": "SPECIES_YAONGMON" },
-      { "method": "EVO_LEVEL_ATK_EQ_DEF", "condition": 5, "target": "SPECIES_PULMON" }
+      { "method": "EVO_LEVEL_ATK_GT_DEF", "condition": 5, "target": "SPECIES_TSUNOMON" },
+      { "method": "EVO_LEVEL_ATK_LT_DEF", "condition": 5, "target": "SPECIES_NYAROMON" },
+      { "method": "EVO_LEVEL_ATK_EQ_DEF", "condition": 5, "target": "SPECIES_TSUNOMON" }
     ]
   },
-  "SPECIES_POGLMON": {
+  "SPECIES_PABUMON": {
     "personal_data": {
       "base_stats": [50, 50, 50, 50, 50, 50],
       "types": ["TYPE_NORMAL", "TYPE_NORMAL"],
@@ -61,7 +61,7 @@
     },
     "evolutions": [
       { "method": "EVO_LEVEL_ATK_GT_DEF", "condition": 5, "target": "SPECIES_MOTIMON" },
-      { "method": "EVO_LEVEL_ATK_LT_DEF", "condition": 5, "target": "SPECIES_SEEDMON" },
+      { "method": "EVO_LEVEL_ATK_LT_DEF", "condition": 5, "target": "SPECIES_TANEMON" },
       { "method": "EVO_LEVEL_ATK_EQ_DEF", "condition": 5, "target": "SPECIES_MOTIMON" }
     ]
   },
@@ -82,9 +82,9 @@
       "flee_rate": 0
     },
     "evolutions": [
-      { "method": "EVO_LEVEL_ATK_GT_DEF", "condition": 5, "target": "SPECIES_DUNGSILMON" },
+      { "method": "EVO_LEVEL_ATK_GT_DEF", "condition": 5, "target": "SPECIES_BUKAMON" },
       { "method": "EVO_LEVEL_ATK_LT_DEF", "condition": 5, "target": "SPECIES_UPAMON" },
-      { "method": "EVO_LEVEL_ATK_EQ_DEF", "condition": 5, "target": "SPECIES_DUNGSILMON" }
+      { "method": "EVO_LEVEL_ATK_EQ_DEF", "condition": 5, "target": "SPECIES_BUKAMON" }
     ]
   },
   "SPECIES_PURURUMON": {
@@ -105,7 +105,7 @@
     },
     "evolutions": [
       { "method": "EVO_LEVEL_ATK_GT_DEF", "condition": 5, "target": "SPECIES_POROMON" },
-      { "method": "EVO_LEVEL_ATK_LT_DEF", "condition": 5, "target": "SPECIES_ONIMON" },
+      { "method": "EVO_LEVEL_ATK_LT_DEF", "condition": 5, "target": "SPECIES_YOKOMON" },
       { "method": "EVO_LEVEL_ATK_EQ_DEF", "condition": 5, "target": "SPECIES_POROMON" }
     ]
   },
@@ -131,7 +131,7 @@
       { "method": "EVO_LEVEL_ATK_EQ_DEF", "condition": 5, "target": "SPECIES_TOKOMON" }
     ]
   },
-  "SPECIES_POLPOLMON": {
+  "SPECIES_CHOROMON": {
     "personal_data": {
       "base_stats": [50, 50, 50, 50, 50, 50],
       "types": ["TYPE_NORMAL", "TYPE_NORMAL"],
@@ -149,8 +149,8 @@
     },
     "evolutions": [
       { "method": "EVO_LEVEL_ATK_GT_DEF", "condition": 5, "target": "SPECIES_PICKMON" },
-      { "method": "EVO_LEVEL_ATK_LT_DEF", "condition": 5, "target": "SPECIES_CAPRIMON" },
-      { "method": "EVO_LEVEL_ATK_EQ_DEF", "condition": 5, "target": "SPECIES_CAPRIMON" }
+      { "method": "EVO_LEVEL_ATK_LT_DEF", "condition": 5, "target": "SPECIES_KAPURIMON" },
+      { "method": "EVO_LEVEL_ATK_EQ_DEF", "condition": 5, "target": "SPECIES_KAPURIMON" }
     ]
   },
   "SPECIES_KURAMON": {
@@ -199,7 +199,7 @@
       { "method": "EVO_HAS_MOVE", "condition": "MOVE_CUT", "target": "SPECIES_ELIZAMON" }
     ]
   },
-  "SPECIES_KOMAMON": {
+  "SPECIES_CHIBIMON": {
     "personal_data": {
       "base_stats": [65, 55, 55, 55, 55, 55],
       "types": ["TYPE_DRAGON", "TYPE_DRAGON"],
@@ -221,7 +221,7 @@
       { "method": "EVO_HAS_MOVE", "condition": "MOVE_BARRAGE", "target": "SPECIES_COMANDRAMON" }
     ]
   },
-  "SPECIES_PULMON": {
+  "SPECIES_TSUNOMON": {
     "personal_data": {
       "base_stats": [60, 60, 55, 55, 55, 55],
       "types": ["TYPE_ICE", "TYPE_ICE"],
@@ -239,10 +239,11 @@
     },
     "evolutions": [
       { "method": "EVO_HAS_MOVE", "condition": "MOVE_POWDER_SNOW", "target": "SPECIES_GABUMON" },
-      { "method": "EVO_HAS_MOVE", "condition": "MOVE_THUNDER_SHOCK", "target": "SPECIES_ELECMON" }
+      { "method": "EVO_HAS_MOVE", "condition": "MOVE_THUNDER_SHOCK", "target": "SPECIES_ELECMON" },
+      { "method": "EVO_HAS_MOVE", "condition": "MOVE_ROCK_SMASH", "target": "SPECIES_GAOMON" }
     ]
   },
-  "SPECIES_YAONGMON": {
+  "SPECIES_NYAROMON": {
     "personal_data": {
       "base_stats": [50, 50, 55, 60, 65, 60],
       "types": ["TYPE_NORMAL", "TYPE_NORMAL"],
@@ -284,7 +285,7 @@
       { "method": "EVO_HAS_MOVE", "condition": "MOVE_STRING_SHOT", "target": "SPECIES_WORMMON" }
     ]
   },
-  "SPECIES_SEEDMON": {
+  "SPECIES_TANEMON": {
     "personal_data": {
       "base_stats": [60, 55, 60, 50, 55, 60],
       "types": ["TYPE_GRASS", "TYPE_GRASS"],
@@ -301,10 +302,11 @@
       "flee_rate": 0
     },
     "evolutions": [
-      { "method": "EVO_HAS_MOVE", "condition": "MOVE_VINE_WHIP", "target": "SPECIES_PALMON" }
+      { "method": "EVO_HAS_MOVE", "condition": "MOVE_VINE_WHIP", "target": "SPECIES_PALMON" },
+      { "method": "EVO_HAS_MOVE", "condition": "MOVE_ABSORB", "target": "SPECIES_LALAMON" }
     ]
   },
-  "SPECIES_DUNGSILMON": {
+  "SPECIES_BUKAMON": {
     "personal_data": {
       "base_stats": [65, 50, 50, 55, 65, 55],
       "types": ["TYPE_WATER", "TYPE_WATER"],
@@ -343,7 +345,7 @@
     },
     "evolutions": [
       { "method": "EVO_HAS_MOVE", "condition": "MOVE_ROLLOUT", "target": "SPECIES_ARMAMON" },
-      { "method": "EVO_HAS_MOVE", "condition": "MOVE_VICE_GRIP", "target": "SPECIES_BURGERMON" },
+      { "method": "EVO_HAS_MOVE", "condition": "MOVE_VICE_GRIP", "target": "SPECIES_BURGAMON" },
       { "method": "EVO_HAS_MOVE", "condition": "MOVE_WATER_GUN", "target": "SPECIES_UKKOMON" }
     ]
   },
@@ -367,7 +369,7 @@
       { "method": "EVO_HAS_MOVE", "condition": "MOVE_PECK", "target": "SPECIES_HAWKMON" }
     ]
   },
-  "SPECIES_ONIMON": {
+  "SPECIES_YOKOMON": {
     "personal_data": {
       "base_stats": [65, 50, 65, 50, 50, 60],
       "types": ["TYPE_PSYCHIC", "TYPE_PSYCHIC"],
@@ -428,7 +430,7 @@
       { "method": "EVO_HAS_MOVE", "condition": "MOVE_DAZZLING_GLEAM", "target": "SPECIES_LUCEMON" }
     ]
   },
-  "SPECIES_CAPRIMON": {
+  "SPECIES_KAPURIMON": {
     "personal_data": {
       "base_stats": [50, 55, 65, 50, 55, 65],
       "types": ["TYPE_STEEL", "TYPE_STEEL"],
@@ -445,8 +447,7 @@
       "flee_rate": 0
     },
     "evolutions": [
-      { "method": "EVO_HAS_MOVE", "condition": "MOVE_VICE_GRIP", "target": "SPECIES_HAGURUMON" },
-      { "method": "EVO_HAS_MOVE", "condition": "MOVE_GUST", "target": "SPECIES_SPARROWMON" }
+      { "method": "EVO_HAS_MOVE", "condition": "MOVE_VICE_GRIP", "target": "SPECIES_HAGURUMON" }
     ]
   },
   "SPECIES_PICKMON": {
@@ -467,6 +468,7 @@
     },
     "evolutions": [
       { "method": "EVO_HAS_MOVE", "condition": "MOVE_CUT", "target": "SPECIES_STARMONS" },
+      { "method": "EVO_HAS_MOVE", "condition": "MOVE_PECK", "target": "SPECIES_SPARROWMON" },
       { "method": "EVO_HAS_MOVE", "condition": "MOVE_ROCK_THROW", "target": "SPECIES_GOTSUMON" }
     ]
   },
@@ -608,7 +610,7 @@
       "base_friendship": 70,
       "exp_growth": "GROWTH_MEDIUM_FAST",
       "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
-      "abilities": ["ABILITY_OVERGROW", "ABILITY_POISON_POINT", "ABILITY_REGENERATOR"],
+      "abilities": ["ABILITY_OWN_TEMPO", "ABILITY_POISON_POINT", "ABILITY_CHLOROPHYLL"],
       "flee_rate": 0
     },
     "evolutions": [
@@ -637,7 +639,7 @@
   },
   "SPECIES_PATAMON": {
     "personal_data": {
-      "base_stats": [64, 60, 55, 75, 88, 65],
+      "base_stats": [64, 60, 60, 70, 88, 65],
       "types": ["TYPE_NORMAL", "TYPE_FLYING"],
       "catch_rate": 140,
       "base_exp": 70,
@@ -648,7 +650,7 @@
       "base_friendship": 70,
       "exp_growth": "GROWTH_MEDIUM_FAST",
       "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
-      "abilities": ["ABILITY_RUN_AWAY", "ABILITY_SERENE_GRACE", "ABILITY_MAGIC_GUARD"],
+      "abilities": ["ABILITY_ANTICIPATION", "ABILITY_WIND_RIDER", "ABILITY_COMPETITIVE"],
       "flee_rate": 0
     },
     "evolutions": [
@@ -668,7 +670,7 @@
       "base_friendship": 140,
       "exp_growth": "GROWTH_MEDIUM_FAST",
       "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
-      "abilities": ["ABILITY_RUN_AWAY", "ABILITY_CUTE_CHARM", "ABILITY_PIXILATE"],
+      "abilities": ["ABILITY_FLUFFY", "ABILITY_TRIAGE", "ABILITY_SERENE_GRACE"],
       "flee_rate": 0
     },
     "evolutions": [
@@ -688,7 +690,7 @@
       "base_friendship": 70,
       "exp_growth": "GROWTH_MEDIUM_FAST",
       "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
-      "abilities": ["ABILITY_INNER_FOCUS", "ABILITY_DEFIANT", "ABILITY_TOUGH_CLAWS"],
+      "abilities": ["ABILITY_HUSTLE", "ABILITY_DEFIANT", "ABILITY_ADAPTABILITY"],
       "flee_rate": 0
     },
     "evolutions": [
@@ -777,7 +779,7 @@
   },
   "SPECIES_CHUUMON": {
     "personal_data": {
-      "base_stats": [60, 60, 45, 90, 80, 50],
+      "base_stats": [60, 60, 55, 80, 65, 60],
       "types": ["TYPE_NORMAL", "TYPE_POISON"],
       "catch_rate": 140,
       "base_exp": 70,
@@ -788,7 +790,7 @@
       "base_friendship": 35,
       "exp_growth": "GROWTH_MEDIUM_FAST",
       "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
-      "abilities": ["ABILITY_RUN_AWAY", "ABILITY_PICKPOCKET", "ABILITY_POISON_TOUCH"],
+      "abilities": ["ABILITY_RUN_AWAY", "ABILITY_PICKPOCKET", "ABILITY_WIMP_OUT"],
       "flee_rate": 0
     },
     "evolutions": [
@@ -860,7 +862,7 @@
   "SPECIES_RENAMON": {
     "personal_data": {
       "base_stats": [65, 65, 45, 75, 85, 55],
-      "types": ["TYPE_NORMAL", "TYPE_PSYCHIC"],
+      "types": ["TYPE_PSYCHIC", "TYPE_FIGHTING"],
       "catch_rate": 140,
       "base_exp": 70,
       "ev_yield": [0, 0, 0, 0, 0, 0],
@@ -870,7 +872,7 @@
       "base_friendship": 70,
       "exp_growth": "GROWTH_MEDIUM_FAST",
       "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
-      "abilities": ["ABILITY_INNER_FOCUS", "ABILITY_LIMBER", "ABILITY_MAGIC_GUARD"],
+      "abilities": ["ABILITY_INNER_FOCUS", "ABILITY_LIMBER", "ABILITY_TECHNICIAN"],
       "flee_rate": 0
     },
     "evolutions": [
@@ -879,7 +881,7 @@
   },
   "SPECIES_TERRIERMON": {
     "personal_data": {
-      "base_stats": [58, 60, 56, 92, 81, 61],
+      "base_stats": [60, 75, 56, 82, 67, 70],
       "types": ["TYPE_NORMAL", "TYPE_NORMAL"],
       "catch_rate": 140,
       "base_exp": 70,
@@ -890,7 +892,7 @@
       "base_friendship": 70,
       "exp_growth": "GROWTH_MEDIUM_FAST",
       "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
-      "abilities": ["ABILITY_RUN_AWAY", "ABILITY_FUR_COAT", "ABILITY_SCRAPPY"],
+      "abilities": ["ABILITY_SCRAPPY", "ABILITY_OWN_TEMPO", "ABILITY_CHILLING_NEIGH"],
       "flee_rate": 0
     },
     "evolutions": [
@@ -899,8 +901,8 @@
   },
   "SPECIES_LOPMON": {
     "personal_data": {
-      "base_stats": [55, 70, 45, 65, 95, 55],
-      "types": ["TYPE_NORMAL", "TYPE_ICE"],
+      "base_stats": [60, 67, 56, 82, 75, 70],
+      "types": ["TYPE_GROUND", "TYPE_ICE"],
       "catch_rate": 140,
       "base_exp": 70,
       "ev_yield": [0, 0, 0, 0, 0, 0],
@@ -910,16 +912,16 @@
       "base_friendship": 70,
       "exp_growth": "GROWTH_MEDIUM_FAST",
       "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
-      "abilities": ["ABILITY_RUN_AWAY", "ABILITY_FUR_COAT", "ABILITY_ADAPTABILITY"],
+      "abilities": ["ABILITY_RATTLED", "ABILITY_INSOMNIA", "ABILITY_GRIM_NEIGH"],
       "flee_rate": 0
     },
     "evolutions": [
-      { "method": "EVO_LEVEL", "condition": 18, "target": "SPECIES_TORIEMON" }
+      { "method": "EVO_LEVEL", "condition": 18, "target": "SPECIES_TURUIEMON" }
     ]
   },
   "SPECIES_ELECMON": {
     "personal_data": {
-      "base_stats": [70, 60, 55, 80, 70, 55],
+      "base_stats": [70, 60, 55, 75, 75, 55],
       "types": ["TYPE_ELECTRIC", "TYPE_ELECTRIC"],
       "catch_rate": 140,
       "base_exp": 70,
@@ -999,7 +1001,7 @@
   },
   "SPECIES_GAZIMON": {
     "personal_data": {
-      "base_stats": [70, 105, 40, 85, 40, 45],
+      "base_stats": [60, 85, 50, 90, 55, 55],
       "types": ["TYPE_DARK", "TYPE_POISON"],
       "catch_rate": 140,
       "base_exp": 70,
@@ -1021,8 +1023,8 @@
     "personal_data": {
       "base_stats": [93, 61, 57, 84, 122, 103],
       "types": ["TYPE_FAIRY", "TYPE_FAIRY"],
-      "catch_rate": 140,
-      "base_exp": 70,
+      "catch_rate": 30,
+      "base_exp": 150,
       "ev_yield": [0, 0, 0, 0, 0, 0],
       "items": ["ITEM_NONE", "ITEM_NONE"],
       "gender_ratio": 255,
@@ -1041,8 +1043,8 @@
     "personal_data": {
       "base_stats": [80, 66, 65, 60, 59, 70],
       "types": ["TYPE_NORMAL", "TYPE_GRASS"],
-      "catch_rate": 255,
-      "base_exp": 50,
+      "catch_rate": 140,
+      "base_exp": 70,
       "ev_yield": [0, 0, 0, 0, 0, 0],
       "items": ["ITEM_NONE", "ITEM_NONE"],
       "gender_ratio": 255,
@@ -1061,8 +1063,8 @@
     "personal_data": {
       "base_stats": [65, 65, 60, 50, 50, 50],
       "types": ["TYPE_ICE", "TYPE_DRAGON"],
-      "catch_rate": 255,
-      "base_exp": 50,
+      "catch_rate": 140,
+      "base_exp": 70,
       "ev_yield": [0, 0, 0, 0, 0, 0],
       "items": ["ITEM_NONE", "ITEM_NONE"],
       "gender_ratio": 255,
@@ -1081,8 +1083,8 @@
     "personal_data": {
       "base_stats": [65, 65, 60, 50, 50, 50],
       "types": ["TYPE_STEEL", "TYPE_DRAGON"],
-      "catch_rate": 255,
-      "base_exp": 50,
+      "catch_rate": 140,
+      "base_exp": 70,
       "ev_yield": [0, 0, 0, 0, 0, 0],
       "items": ["ITEM_NONE", "ITEM_NONE"],
       "gender_ratio": 255,
@@ -1099,7 +1101,7 @@
   },
   "SPECIES_GAOMON": {
     "personal_data": {
-      "base_stats": [75, 95, 50, 75, 60, 45],
+      "base_stats": [69, 86, 55, 75, 60, 55],
       "types": ["TYPE_FIGHTING", "TYPE_FIGHTING"],
       "catch_rate": 140,
       "base_exp": 70,
@@ -1139,7 +1141,7 @@
   },
   "SPECIES_SHOUTMON": {
     "personal_data": {
-      "base_stats": [70, 105, 70, 65, 35, 45],
+      "base_stats": [70, 75, 68, 67, 75, 55],
       "types": ["TYPE_NORMAL", "TYPE_FIRE"],
       "catch_rate": 140,
       "base_exp": 70,
@@ -1150,11 +1152,11 @@
       "base_friendship": 70,
       "exp_growth": "GROWTH_MEDIUM_FAST",
       "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
-      "abilities": ["ABILITY_SOUNDPROOF", "ABILITY_RECKLESS", "ABILITY_PUNK_ROCK"],
+      "abilities": ["ABILITY_SOUNDPROOF", "ABILITY_SHEER_FORCE", "ABILITY_TECHNICIAN"],
       "flee_rate": 0
     },
     "evolutions": [
-      { "method": "EVO_LEVEL", "condition": 18, "target": "SPECIES_SHOUTMON_KING" }
+      { "method": "EVO_LEVEL", "condition": 22, "target": "SPECIES_SHOUTMON_KING" }
     ]
   },
   "SPECIES_STARMONS": {
@@ -1197,7 +1199,7 @@
       { "method": "EVO_LEVEL", "condition": 18, "target": "SPECIES_MAILBIRDRAMON" }
     ]
   },
-  "SPECIES_IGOSMON": {
+  "SPECIES_GHOSTMON": {
     "personal_data": {
       "base_stats": [65, 65, 60, 50, 50, 50],
       "types": ["TYPE_GHOST", "TYPE_GHOST"],
@@ -1214,7 +1216,7 @@
       "flee_rate": 0
     },
     "evolutions": [
-      { "method": "EVO_LEVEL", "condition": 18, "target": "SPECIES_GHOSMON" }
+      { "method": "EVO_LEVEL", "condition": 18, "target": "SPECIES_BAKEMON" }
     ]
   },
   "SPECIES_ELIZAMON": {
