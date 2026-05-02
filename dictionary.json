@@ -247,7 +247,8 @@
   "ABILITY_EARTH_EATER": { "name": "흙먹기", "id": "296" },
   "ABILITY_MINDS_EYE": { "name": "심안", "id": "299" },
 
-  "ABILITY_MAGIC_BOUNCE": {"name": "매직미러", "id": "156"}
+  "ABILITY_MAGIC_BOUNCE": {"name": "매직미러", "id": "156"},
+  "ABILITY_SOUL_HEART": {"name": "소울하트", "id": "220"}
   },
   "items": {
     "ITEM_NONE": "없음",

@@ -291,6 +291,41 @@
     "image": "images/2_Child/sparrowmon.jpg",
     "generation": "성장기"
   },
+  "SPECIES_GAMMAMON": {
+    "name_ko": "감마몬",
+    "image": "images/2_Child/gammamon.jpg",
+    "generation": "성장기"
+  },
+  "SPECIES_ANGORAMON": {
+    "name_ko": "앙고라몬",
+    "image": "images/2_Child/angoramon.jpg",
+    "generation": "성장기"
+  },
+  "SPECIES_JELLYMON": {
+    "name_ko": "젤리몬",
+    "image": "images/2_Child/jellymon.jpg",
+    "generation": "성장기"
+  },
+  "SPECIES_ESPIMON": {
+    "name_ko": "에스피몬",
+    "image": "images/2_Child/espimon.jpg",
+    "generation": "성장기"
+  },
+  "SPECIES_UKKOMON": {
+    "name_ko": "웃코몬",
+    "image": "images/2_Child/ukkomon.jpg",
+    "generation": "성장기"
+  },
+  "SPECIES_PTEROMON": {
+    "name_ko": "프테로몬",
+    "image": "images/2_Child/pteromon.jpg",
+    "generation": "성장기"
+  },
+  "SPECIES_SHOEMON": {
+    "name_ko": "슈몬",
+    "image": "images/2_Child/shoemon.jpg",
+    "generation": "성장기"
+  },
   "SPECIES_GHOSTMON": {
     "name_ko": "아이고스몬",
     "image": "images/2_Child/ghostmon.jpg",
@@ -301,9 +336,219 @@
     "image": "images/2_Child/elizamon.jpg",
     "generation": "성장기"
   },
-  "SPECIES_UKKOMON": {
-    "name_ko": "웃코몬",
-    "image": "images/2_Child/ukkomon.jpg",
+  "SPECIES_SANGOMON": {
+    "name_ko": "산호몬",
+    "image": "images/2_Child/sangomon.jpg",
     "generation": "성장기"
+  },
+  "SPECIES_SYAKOMON": {
+    "name_ko": "샤코몬",
+    "image": "images/2_Child/shakomon.jpg",
+    "generation": "성장기"
+  },
+  "SPECIES_SUNARIZAMON": {
+    "name_ko": "샌드리자몬",
+    "image": "images/2_Child/sunarizamon.jpg",
+    "generation": "성장기"
+  },
+  "SPECIES_FUNBEEMON": {
+    "name_ko": "아기벌몬",
+    "image": "images/2_Child/funbeemon.jpg",
+    "generation": "성장기"
+  },
+  "SPECIES_PENMON": {
+    "name_ko": "펭귄몬",
+    "image": "images/2_Child/penmon.jpg",
+    "generation": "성장기"
+  },
+  "SPECIES_HANIMON": {
+    "name_ko": "하니와몬",
+    "image": "images/2_Child/hanimon.jpg",
+    "generation": "성장기"
+  },
+  "SPECIES_MAQUINAMON": {
+    "name_ko": "마키나몬",
+    "image": "images/2_Child/maquinamon.jpg",
+    "generation": "성장기"
+  },
+  "SPECIES_GREYMON": {
+    "name_ko": "그레이몬",
+    "image": "images/3_Adult/greymon.jpg",
+    "generation": "성숙기"
+  },
+  "SPECIES_GARURUMON": {
+    "name_ko": "가루몬",
+    "image": "images/3_Adult/garurumon.jpg",
+    "generation": "성숙기"
+  },
+  "SPECIES_KABUTERIMON": {
+    "name_ko": "캅테리몬",
+    "image": "images/3_Adult/kabuterimon.jpg",
+    "generation": "성숙기"
+  },
+  "SPECIES_BIRDRAMON": {
+    "name_ko": "버드라몬",
+    "image": "images/3_Adult/birdramon.jpg",
+    "generation": "성숙기"
+  },
+  "SPECIES_TOGEMON": {
+    "name_ko": "니드몬",
+    "image": "images/3_Adult/togemon.jpg",
+    "generation": "성숙기"
+  },
+  "SPECIES_IKKAKUMON": {
+    "name_ko": "원뿔몬",
+    "image": "images/3_Adult/ikkakumon.jpg",
+    "generation": "성숙기"
+  },
+  "SPECIES_ANGEMON": {
+    "name_ko": "엔젤몬",
+    "image": "images/3_Adult/angemon.jpg",
+    "generation": "성숙기"
+  },
+  "SPECIES_GATOMON": {
+    "name_ko": "가트몬",
+    "image": "images/3_Adult/tailmon.jpg",
+    "generation": "성숙기"
+  },
+  "SPECIES_EXVEEMON": {
+    "name_ko": "엑스브이몬",
+    "image": "images/3_Adult/xv-mon.jpg",
+    "generation": "성숙기"
+  },
+  "SPECIES_AQUILAMON": {
+    "name_ko": "아큐라몬",
+    "image": "images/3_Adult/aquilamon.jpg",
+    "generation": "성숙기"
+  },
+  "SPECIES_ANKYLOMON": {
+    "name_ko": "안킬로몬",
+    "image": "images/3_Adult/ankylomon.jpg",
+    "generation": "성숙기"
+  },
+  "SPECIES_STINGMON": {
+    "name_ko": "스팅몬",
+    "image": "images/3_Adult/stingmon.jpg",
+    "generation": "성숙기"
+  },
+  "SPECIES_SEADRAMON": {
+    "name_ko": "시드라몬",
+    "image": "images/3_Adult/seadramon.jpg",
+    "generation": "성숙기"
+  },
+  "SPECIES_NUMEMON": {
+    "name_ko": "워매몬",
+    "image": "images/3_Adult/numemon.jpg",
+    "generation": "성숙기"
+  },
+  "SPECIES_SUKAMON": {
+    "name_ko": "스카몬",
+    "image": "images/3_Adult/scumon.jpg",
+    "generation": "성숙기"
+  },
+  "SPECIES_DEVIMON": {
+    "name_ko": "데블몬",
+    "image": "images/3_Adult/devimon.jpg",
+    "generation": "성숙기"
+  },
+  "SPECIES_FLAMEDRAMON": {
+    "name_ko": "화염드라몬",
+    "image": "images/6_etc/fladramon.jpg",
+    "generation": "아머체"
+  },
+  "SPECIES_LIGHDRAMON": {
+    "name_ko": "번개드라몬",
+    "image": "images/6_etc/lighdramon.jpg",
+    "generation": "아머체"
+  },
+  "SPECIES_HALSEMON": {
+    "name_ko": "호루스몬",
+    "image": "images/6_etc/holsmon.jpg",
+    "generation": "아머체"
+  },
+  "SPECIES_SHURIMON": {
+    "name_ko": "수리몬",
+    "image": "images/6_etc/shurimon.jpg",
+    "generation": "아머체"
+  },
+  "SPECIES_DIGMON": {
+    "name_ko": "디그몬",
+    "image": "images/6_etc/digmon.jpg",
+    "generation": "아머체"
+  },
+  "SPECIES_SUBMARIMON": {
+    "name_ko": "잠수몬",
+    "image": "images/6_etc/sabmarimon.jpg",
+    "generation": "아머체"
+  },
+  "SPECIES_PEGASUSMON": {
+    "name_ko": "페가수스몬",
+    "image": "images/6_etc/pegasmon.jpg",
+    "generation": "아머체"
+  },
+  "SPECIES_NEFERTIMON": {
+    "name_ko": "네페르티몬",
+    "image": "images/6_etc/nefertimon.jpg",
+    "generation": "아머체"
+  },
+  "SPECIES_KURISARIMON": {
+    "name_ko": "크리사리몬",
+    "image": "images/3_Adult/chrysalimon.jpg",
+    "generation": "성숙기"
+  },
+  "SPECIES_GROWLMON": {
+    "name_ko": "그라우몬",
+    "image": "images/3_Adult/growmon.jpg",
+    "generation": "성숙기"
+  },
+  "SPECIES_KYUBIMON": {
+    "name_ko": "구미호몬",
+    "image": "images/3_Adult/kyubimon.jpg",
+    "generation": "성숙기"
+  },
+  "SPECIES_GARGOMON": {
+    "name_ko": "가르고몬",
+    "image": "images/3_Adult/galgomon.jpg",
+    "generation": "성숙기"
+  },
+  "SPECIES_TURUIEMON": {
+    "name_ko": "토리에몬",
+    "image": "images/3_Adult/turuiemon.jpg",
+    "generation": "성숙기"
+  },
+  "SPECIES_WENDIGOMON": {
+    "name_ko": "웬디몬",
+    "image": "images/3_Adult/wendimon.jpg",
+    "generation": "성숙기"
+  },
+  "SPECIES_LEOMON": {
+    "name_ko": "레오몬",
+    "image": "images/3_Adult/leomon.jpg",
+    "generation": "성숙기"
+  },
+  "SPECIES_WIZARDMON": {
+    "name_ko": "위자몬",
+    "image": "images/3_Adult/wizarmon.jpg",
+    "generation": "성숙기"
+  },
+  "SPECIES_ICEMON": {
+    "name_ko": "아이스몬",
+    "image": "images/3_Adult/icemon.jpg",
+    "generation": "성숙기"
+  },
+  "SPECIES_MEKANORIMON": {
+    "name_ko": "메카노몬",
+    "image": "images/3_Adult/mechanorimon.jpg",
+    "generation": "성숙기"
+  },
+  "SPECIES_FANGMON": {
+    "name_ko": "팡그몬",
+    "image": "images/3_Adult/fangmon.jpg",
+    "generation": "성숙기"
+  },
+  "SPECIES_BURGAMON_AD": {
+    "name_ko": "버거몬(성숙기)",
+    "image": "images/3_Adult/burgamon_ad.jpg",
+    "generation": "성숙기"
   }
 }
