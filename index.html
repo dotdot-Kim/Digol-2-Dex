@@ -2,12 +2,17 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>디골-2 위키</title>
   <style>
+    /* 전체 박스 사이즈를 테두리 기준으로 계산하여 레이아웃 꼬임 방지 */
+    * { box-sizing: border-box; }
+
     body {
       background-color: #f4f4f9;
       font-family: 'Malgun Gothic', sans-serif;
       padding: 50px;
+      margin: 0;
     }
 
     /* 🎛️ 검색 툴바 디자인 */
@@ -36,18 +41,26 @@
     .reset-btn { background-color: #e2e8f0; color: #1e293b; border: none; padding: 10px 20px; border-radius: 6px; font-weight: bold; cursor: pointer; margin-left: auto; }
     .reset-btn:hover { background-color: #cbd5e1; }
 
-
-    /* 세대별 그룹 및 한 줄에 5개 고정 디자인 */
+    /* 세대별 그룹 디자인 */
     #dex-container { display: flex; flex-direction: column; gap: 50px; }
     .gen-section { width: 100%; max-width: 1320px; margin: 0 auto; }
     .gen-section-title { font-size: 24px; font-weight: bold; border-bottom: 2px solid #cbd5e1; padding-bottom: 10px; margin-bottom: 20px; }
-    .gen-cards { display: flex; flex-wrap: wrap; gap: 30px; justify-content: flex-start; }
+    
+    /* 💡 3. CSS Grid 적용 (탄력적 레이아웃) */
+    .gen-cards { 
+      display: grid; 
+      /* PC: 최소 180px 넓이로 알아서 여러 줄 배치 */
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); 
+      gap: 30px; 
+    }
 
     /* 카드 디자인 */
-    .card { background: white; width: 200px; padding: 20px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); text-align: center; cursor: pointer; transition: transform 0.2s; }
+    /* width: 200px 제거하고 width: 100% 적용 (Grid가 알아서 너비 조정) */
+    .card { background: white; width: 100%; padding: 20px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); text-align: center; cursor: pointer; transition: transform 0.2s; }
     .card:hover { transform: translateY(-5px); }
     .card h2 { margin-top: 8px; margin-bottom: 1px; font-size: 20px; }
-    .monster-image { width: 100%; max-width: 150px; height: 150px; object-fit: contain; border: 2px solid #ddd; border-radius: 8px; background-color: #fff; }
+    /* 이미지 비율을 1:1로 고정하여 너비가 좁아져도 찌그러지지 않게 */
+    .monster-image { width: 100%; height: auto; max-height: 150px; aspect-ratio: 1 / 1; object-fit: contain; border: 2px solid #ddd; border-radius: 8px; background-color: #fff; }
     
     .badge { display: inline-block; color: white; padding: 4px 10px; border-radius: 6px; font-size: 16px; font-weight: bold; margin-top: 8px; }
     .badge-small { display: inline-block; color: white; padding: 4px 10px; border-radius: 4px; font-size: 12px; font-weight: bold; }
@@ -61,52 +74,26 @@
     .modal-header { display: flex; flex-direction: column; align-items: center; border-bottom: 2px solid #eee; padding-bottom: 20px; margin-bottom: 20px; }
     .modal-header img { width: 150px; height: 150px; object-fit: contain; border: 2px solid #ddd; border-radius: 8px; }
     
-    /* 💡 새롭게 추가된 좌우 화살표 내비게이션 디자인 */
-    .modal-image-wrapper {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 15px; /* 화살표와 이미지 사이 간격 */
-      margin-bottom: 10px;
-    }
-    .nav-arrow {
-      background: none;
-      border: none;
-      font-size: 35px;
-      color: #94a3b8; /* 기본 회색 */
-      cursor: pointer;
-      transition: color 0.2s, transform 0.2s;
-      padding: 0 10px;
-    }
-    .nav-arrow:hover {
-      color: #1e293b; /* 마우스 올리면 테마색(다크 네이비)으로 변경 */
-      transform: scale(1.2); /* 살짝 커지는 애니메이션 */
-    }
+    /* 좌우 화살표 내비게이션 디자인 */
+    .modal-image-wrapper { display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 10px; }
+    .nav-arrow { background: none; border: none; font-size: 35px; color: #94a3b8; cursor: pointer; transition: color 0.2s, transform 0.2s; padding: 0 10px; }
+    .nav-arrow:hover { color: #1e293b; transform: scale(1.2); }
 
     .info-section { background: #f9f9f9; padding: 15px; border-radius: 8px; margin-bottom: 20px; font-size: 15px; line-height: 1.6;}
     .info-section h3 { margin-top: 0; color: #334155; border-bottom: 1px solid #ddd; padding-bottom: 5px; margin-bottom: 10px; }
     
-    /* 💡 밝은 테마로 변경된 종족치 바 그래프 디자인 */
-    .stat-container {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      background: #f9f9f9; /* 배경 밝게 변경 */
-      padding: 15px; /* 패딩 살짝 줄임 */
-      border-radius: 8px;
-    }
+    /* 종족치 바 그래프 디자인 */
+    .stat-container { display: flex; flex-direction: column; gap: 10px; background: #f9f9f9; padding: 15px; border-radius: 8px; }
     .stat-row { display: flex; align-items: center; font-size: 15px; }
     .stat-name { width: 80px; font-weight: bold; color: #64748b; font-size: 13px; }
-    .stat-val { width: 45px; text-align: right; margin-right: 15px; color: #334155; font-weight: bold; } /* 글자색 어둡게 */
-    .stat-bar-bg { flex: 1; height: 14px; background-color: #e2e8f0; border-radius: 8px; overflow: hidden; } /* 바 배경 연하게 */
+    .stat-val { width: 45px; text-align: right; margin-right: 15px; color: #334155; font-weight: bold; } 
+    .stat-bar-bg { flex: 1; height: 14px; background-color: #e2e8f0; border-radius: 8px; overflow: hidden; } 
     .stat-bar-fill { height: 100%; border-radius: 8px; transition: width 0.5s ease-out; }
-    .stat-total { border-top: 1px solid #ddd; margin-top: 5px; padding-top: 15px; font-weight: bold; display: flex; } /* 구분선 연하게 */
+    .stat-total { border-top: 1px solid #ddd; margin-top: 5px; padding-top: 15px; font-weight: bold; display: flex; } 
     
     /* 진화 트리 디자인 */
     .evo-section { margin-bottom: 20px; }
-    .evo-header { 
-      background: #1e293b; color: white;padding: 10px; border-radius: 8px 8px 0 0; text-align: center; font-weight: bold; 
-    }
+    .evo-header { background: #1e293b; color: white;padding: 10px; border-radius: 8px 8px 0 0; text-align: center; font-weight: bold; }
     .evo-table { display: flex; flex-direction: column; border: 1px solid #ddd; border-top: none; border-radius: 0 0 8px 8px; overflow: hidden; }
     .evo-row { display: flex; align-items: center; padding: 10px; border-bottom: 1px solid #eee; cursor: pointer; transition: background 0.2s; }
     .evo-row:last-child { border-bottom: none; }
@@ -118,6 +105,48 @@
     .evo-col-cond { flex: 2; font-size: 13px; color: #64748b; border-left: 1px dashed #ddd; padding-left: 15px; }
     .evo-col-cond ul { margin: 0; padding-left: 20px; list-style-type: disc; }
     .evo-empty { padding: 15px; text-align: center; color: #94a3b8; }
+
+
+    /* =========================================
+       📱 2. CSS 미디어 쿼리 (모바일 기기 전용 스타일)
+       ========================================= */
+    @media (max-width: 768px) {
+      /* 좌우 여백 축소 */
+      body { padding: 15px; }
+      
+      /* 헤더 및 툴바 최적화 */
+      .toolbar-container { padding: 15px; margin-bottom: 20px; }
+      .toolbar-header h1 { font-size: 20px; }
+      .search-toggle-btn { font-size: 14px; padding: 8px 12px; }
+      .filter-row { flex-direction: column; align-items: stretch; gap: 10px; }
+      .reset-btn { margin-left: 0; width: 100%; text-align: center; }
+
+      /* 카드 레이아웃: 무조건 1줄에 3개 나오도록 고정 */
+      .gen-cards { 
+        grid-template-columns: repeat(3, 1fr); 
+        gap: 8px; /* 카드 사이 간격 축소 */
+      }
+      
+      /* 모바일용 카드 내부 여백 및 폰트 다이어트 */
+      .card { padding: 10px; }
+      .card h2 { font-size: 13px; margin-top: 6px; }
+      .badge { font-size: 10px; padding: 2px 4px; margin-top: 4px; margin-left: 1px; margin-right: 1px; }
+      .gen-badge { font-size: 10px; padding: 2px 6px; margin-top: 5px; }
+
+      /* 모달(팝업창) 여백 줄이기 (풀스크린 X) */
+      .modal-content { padding: 20px; }
+      .modal-header img { width: 100px; height: 100px; }
+      .nav-arrow { font-size: 24px; padding: 0 5px; }
+      
+      /* 모달 내 진화 트리 등 세부 폰트 조정 */
+      .evo-col-img { width: 45px; }
+      .evo-col-img img { width: 40px; height: 40px; }
+      .evo-col-name { font-size: 14px; padding-left: 10px; }
+      .evo-col-cond { font-size: 12px; padding-left: 10px; }
+      .evo-col-cond ul { padding-left: 15px; }
+      .stat-name { width: 60px; font-size: 11px; }
+      .stat-val { font-size: 13px; margin-right: 10px; }
+    }
   </style>
 </head>
 <body>
@@ -211,7 +240,7 @@
     let globalDB = {}; 
     let webDB = {};
     let dictDB = {}; 
-    let currentFilteredKeys = []; // 💡 현재 화면에 표시된 몬스터 순서를 저장할 배열 추가
+    let currentFilteredKeys = [];
 
     Promise.all([
       fetch('data.json').then(res => res.json()),
@@ -254,7 +283,7 @@
       const selectedType = document.getElementById('search-type').value;
 
       const groupedResults = {};
-      currentFilteredKeys = []; // 💡 화면을 새로 그릴 때마다 순서 초기화
+      currentFilteredKeys = []; 
 
       for (const key in globalDB) {
         const target = globalDB[key];
@@ -286,12 +315,12 @@
           
           let cardsHTML = "";
           groupedResults[gen].forEach(item => {
-            currentFilteredKeys.push(item.key); // 💡 화면에 그려지는 순서대로 배열에 저장
+            currentFilteredKeys.push(item.key); 
 
             let typeBadgesHTML = "";
             item.typeNames.forEach(name => {
               const color = typeColorDic[name] || "#A8A878";
-              typeBadgesHTML += `<div class="badge" style="background-color: ${color}; margin-right: 2px; margin-left: 2px;">${name}</div>`;
+              typeBadgesHTML += `<div class="badge" style="background-color: ${color};">${name}</div>`;
             });
 
             cardsHTML += `
@@ -338,6 +367,7 @@
       const generationName = (webDB[key] && webDB[key].generation) ? webDB[key].generation : "미분류";
       const genColor = genColorDic[generationName] || "#94a3b8";
 
+      // 💡 여기서 .name을 통해 객체에서 이름만 추출하도록 수정된 코드 적용
       let abilities = data.personal_data.abilities
         .filter(ab => ab !== "ABILITY_NONE")
         .map(ab => (dictDB.abilities && dictDB.abilities[ab]) ? dictDB.abilities[ab].name : ab.replace("ABILITY_", ""))
@@ -347,13 +377,10 @@
       const rawItem = data.personal_data.items[0];
       const itemName = (dictDB.items && dictDB.items[rawItem]) ? dictDB.items[rawItem] : rawItem.replace("ITEM_", "");
 
-      // 💡 [이전/다음 몬스터 화살표 로직]
       let currentIndex = currentFilteredKeys.indexOf(key);
-      let arrowsHTML = `<img src="${webData.image}" alt="${webData.name_ko}">`; // 기본 이미지
+      let arrowsHTML = `<img src="${webData.image}" alt="${webData.name_ko}">`; 
       
-      // 검색된 몬스터가 2마리 이상일 때만 화살표를 표시합니다
       if (currentFilteredKeys.length > 1 && currentIndex !== -1) {
-        // 첫 번째 몬스터에서 이전(<)을 누르면 맨 끝으로 가고, 마지막에서 다음(>)을 누르면 맨 처음으로 오도록 계산
         let prevIndex = currentIndex === 0 ? currentFilteredKeys.length - 1 : currentIndex - 1;
         let nextIndex = currentIndex === currentFilteredKeys.length - 1 ? 0 : currentIndex + 1;
         
@@ -367,7 +394,6 @@
         `;
       }
 
-      // 종족치 바 그래프
       const statLabels = ["HP", "공격 (ATK)", "방어 (DEF)", "특수공격 (SPA)", "특수방어 (SPD)", "스피드 (SPE)"];
       const statValues = [stats[0], stats[1], stats[2], stats[4], stats[5], stats[3]];
       const maxStat = 255; 
