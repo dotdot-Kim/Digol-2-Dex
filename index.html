@@ -62,7 +62,7 @@
     /* 이미지 비율을 1:1로 고정하여 너비가 좁아져도 찌그러지지 않게 */
     .monster-image { width: 100%; height: auto; max-height: 150px; aspect-ratio: 1 / 1; object-fit: contain; border: 2px solid #ddd; border-radius: 8px; background-color: #fff; }
     
-    .badge { display: inline-block; color: white; padding: 4px 10px; border-radius: 6px; font-size: 16px; font-weight: bold; margin-top: 8px; }
+    .badge { display: inline-block; color: white; padding: 4px 10px; border-radius: 6px; font-size: 16px; font-weight: bold; margin-top: 8px; margin-left: 2px; margin-right: 2px;}
     .badge-small { display: inline-block; color: white; padding: 4px 10px; border-radius: 4px; font-size: 12px; font-weight: bold; }
     .gen-badge { display: inline-block; border: 1.5px solid; background-color: #f8fafc; padding: 4px 12px; border-radius: 6px; font-size: 12px; font-weight: bold; margin-top: 8px; }
    
@@ -139,16 +139,17 @@
       .nav-arrow { font-size: 24px; padding: 0 5px; }
 
       /* 모달창 내부 뱃지들만 큼직하게 키우기 */
+      .modal-header h2 { margin: 5px 0; }
       .modal-header .badge {
         font-size: 15px;
         padding: 6px 14px;
-        margin: 0 4px 8px 4px !important;
+        margin: 0 4px 2px 4px;
       }
       .modal-header .gen-badge {
         font-size: 14px;
-        padding: 6px 16px;
+        padding: 5px 14px;
         border-width: 2px;
-        margin-top: 5px;
+        margin-top: 0px;
       }
       .evo-col-type .badge-small {
         font-size: 13px;
@@ -378,7 +379,7 @@
       let headerTypeBadges = "";
       typeNames.forEach(name => {
         const color = typeColorDic[name] || "#A8A878";
-        headerTypeBadges += `<div class="badge" style="background-color: ${color}; margin: 0 2px 5px 2px;">${name}</div>`;
+        headerTypeBadges += `<div class="badge" style="background-color: ${color};">${name}</div>`;
       });
 
       const generationName = (webDB[key] && webDB[key].generation) ? webDB[key].generation : "미분류";
