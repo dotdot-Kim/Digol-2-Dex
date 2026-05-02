@@ -245,7 +245,9 @@
   "ABILITY_TOXIC_DEBRIS": { "name": "독치장", "id": "294" },
   "ABILITY_ARMOR_TAIL": { "name": "테일아머", "id": "295" },
   "ABILITY_EARTH_EATER": { "name": "흙먹기", "id": "296" },
-  "ABILITY_MINDS_EYE": { "name": "심안", "id": "299" }
+  "ABILITY_MINDS_EYE": { "name": "심안", "id": "299" },
+
+  "ABILITY_MAGIC_BOUNCE": {"name": "매직미러", "id": "156"}
   },
   "items": {
     "ITEM_NONE": "없음",
