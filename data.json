@@ -12,7 +12,7 @@
       "base_friendship": 70,
       "exp_growth": "GROWTH_MEDIUM_FAST",
       "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
-      "abilities": ["ABILITY_NATURAL_CURE", "ABILITY_PICKUP", "ABILITY_CHLOROPHYLL"],
+      "abilities": ["ABILITY_NATURAL_CURE", "ABILITY_PICKUP", "ABILITY_REGENERATOR"],
       "flee_rate": 0
     },
     "evolutions": [
@@ -34,7 +34,7 @@
       "base_friendship": 70,
       "exp_growth": "GROWTH_MEDIUM_FAST",
       "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
-      "abilities": ["ABILITY_NATURAL_CURE", "ABILITY_PICKUP", "ABILITY_CHLOROPHYLL"],
+      "abilities": ["ABILITY_NATURAL_CURE", "ABILITY_PICKUP", "ABILITY_REGENERATOR"],
       "flee_rate": 0
     },
     "evolutions": [
@@ -56,7 +56,7 @@
       "base_friendship": 70,
       "exp_growth": "GROWTH_MEDIUM_FAST",
       "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
-      "abilities": ["ABILITY_NATURAL_CURE", "ABILITY_PICKUP", "ABILITY_CHLOROPHYLL"],
+      "abilities": ["ABILITY_NATURAL_CURE", "ABILITY_PICKUP", "ABILITY_REGENERATOR"],
       "flee_rate": 0
     },
     "evolutions": [
@@ -78,7 +78,7 @@
       "base_friendship": 70,
       "exp_growth": "GROWTH_MEDIUM_FAST",
       "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
-      "abilities": ["ABILITY_NATURAL_CURE", "ABILITY_PICKUP", "ABILITY_CHLOROPHYLL"],
+      "abilities": ["ABILITY_NATURAL_CURE", "ABILITY_PICKUP", "ABILITY_REGENERATOR"],
       "flee_rate": 0
     },
     "evolutions": [
@@ -100,7 +100,7 @@
       "base_friendship": 70,
       "exp_growth": "GROWTH_MEDIUM_FAST",
       "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
-      "abilities": ["ABILITY_NATURAL_CURE", "ABILITY_PICKUP", "ABILITY_CHLOROPHYLL"],
+      "abilities": ["ABILITY_NATURAL_CURE", "ABILITY_PICKUP", "ABILITY_REGENERATOR"],
       "flee_rate": 0
     },
     "evolutions": [
@@ -122,7 +122,7 @@
       "base_friendship": 70,
       "exp_growth": "GROWTH_MEDIUM_FAST",
       "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
-      "abilities": ["ABILITY_NATURAL_CURE", "ABILITY_PICKUP", "ABILITY_CHLOROPHYLL"],
+      "abilities": ["ABILITY_NATURAL_CURE", "ABILITY_PICKUP", "ABILITY_REGENERATOR"],
       "flee_rate": 0
     },
     "evolutions": [
@@ -144,7 +144,7 @@
       "base_friendship": 70,
       "exp_growth": "GROWTH_MEDIUM_FAST",
       "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
-      "abilities": ["ABILITY_NATURAL_CURE", "ABILITY_PICKUP", "ABILITY_CHLOROPHYLL"],
+      "abilities": ["ABILITY_NATURAL_CURE", "ABILITY_PICKUP", "ABILITY_REGENERATOR"],
       "flee_rate": 0
     },
     "evolutions": [
@@ -166,7 +166,7 @@
       "base_friendship": 70,
       "exp_growth": "GROWTH_MEDIUM_FAST",
       "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
-      "abilities": ["ABILITY_NATURAL_CURE", "ABILITY_PICKUP", "ABILITY_CHLOROPHYLL"],
+      "abilities": ["ABILITY_NATURAL_CURE", "ABILITY_PICKUP", "ABILITY_REGENERATOR"],
       "flee_rate": 0
     },
     "evolutions": [
@@ -188,7 +188,7 @@
       "base_friendship": 70,
       "exp_growth": "GROWTH_MEDIUM_FAST",
       "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
-      "abilities": ["ABILITY_INTIMIDATE", "ABILITY_NONE", "ABILITY_NONE"],
+      "abilities": ["ABILITY_HUSTLE", "ABILITY_GLUTTONY", "ABILITY_GUTS"],
       "flee_rate": 0
     },
     "evolutions": [
@@ -212,13 +212,14 @@
       "base_friendship": 70,
       "exp_growth": "GROWTH_MEDIUM_FAST",
       "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
-      "abilities": ["ABILITY_INTIMIDATE", "ABILITY_NONE", "ABILITY_NONE"],
+      "abilities": ["ABILITY_HUSTLE", "ABILITY_GLUTTONY", "ABILITY_GUTS"],
       "flee_rate": 0
     },
     "evolutions": [
-      { "method": "EVO_HAS_MOVE", "condition": "MOVE_HEADBUTT", "target": "SPECIES_VEEMON" },
-      { "method": "EVO_HAS_MOVE", "condition": "MOVE_ROCK_SMASH", "target": "SPECIES_BLUCOMON" },
-      { "method": "EVO_HAS_MOVE", "condition": "MOVE_BARRAGE", "target": "SPECIES_COMMANDRAMON" }
+      { "method": "EVO_HAS_MOVE", "condition": "MOVE_ROCK_SMASH", "target": "SPECIES_VEEMON" },
+      { "method": "EVO_HAS_MOVE", "condition": "MOVE_POWDER_SNOW", "target": "SPECIES_BLUCOMON" },
+      { "method": "EVO_HAS_MOVE", "condition": "MOVE_BARRAGE", "target": "SPECIES_COMMANDRAMON" },
+      { "method": "EVO_HAS_MOVE", "condition": "MOVE_FURY_ATTACK", "target": "SPECIES_GAMMAMON" }
     ]
   },
   "SPECIES_TSUNOMON": {
@@ -234,7 +235,7 @@
       "base_friendship": 70,
       "exp_growth": "GROWTH_MEDIUM_FAST",
       "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
-      "abilities": ["ABILITY_INTIMIDATE", "ABILITY_NONE", "ABILITY_NONE"],
+      "abilities": ["ABILITY_INTIMIDATE", "ABILITY_SCRAPPY", "ABILITY_DEFIANT"],
       "flee_rate": 0
     },
     "evolutions": [
@@ -256,12 +257,14 @@
       "base_friendship": 70,
       "exp_growth": "GROWTH_MEDIUM_FAST",
       "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
-      "abilities": ["ABILITY_INTIMIDATE", "ABILITY_NONE", "ABILITY_NONE"],
+      "abilities": ["ABILITY_LIMBER", "ABILITY_INNER_FOCUS", "ABILITY_COMPETITIVE"],
       "flee_rate": 0
     },
     "evolutions": [
       { "method": "EVO_HAS_MOVE", "condition": "MOVE_ECHOED_VOICE", "target": "SPECIES_SALAMON" },
-      { "method": "EVO_HAS_MOVE", "condition": "MOVE_CONFUSION", "target": "SPECIES_RENAMON" }
+      { "method": "EVO_HAS_MOVE", "condition": "MOVE_CONFUSION", "target": "SPECIES_RENAMON" },
+      { "method": "EVO_HAS_MOVE", "condition": "MOVE_STOCKPILE", "target": "SPECIES_ANGORAMON" },
+      { "method": "EVO_HAS_MOVE", "condition": "MOVE_TWINEEDLE", "target": "SPECIES_SHOEMON" }
     ]
   },
   "SPECIES_MOTIMON": {
@@ -277,7 +280,7 @@
       "base_friendship": 70,
       "exp_growth": "GROWTH_MEDIUM_FAST",
       "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
-      "abilities": ["ABILITY_INTIMIDATE", "ABILITY_NONE", "ABILITY_NONE"],
+      "abilities": ["ABILITY_OWN_TEMPO", "ABILITY_SHED_SKIN", "ABILITY_COMPOUND_EYES"],
       "flee_rate": 0
     },
     "evolutions": [
@@ -298,7 +301,7 @@
       "base_friendship": 70,
       "exp_growth": "GROWTH_MEDIUM_FAST",
       "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
-      "abilities": ["ABILITY_INTIMIDATE", "ABILITY_NONE", "ABILITY_NONE"],
+      "abilities": ["ABILITY_OWN_TEMPO", "ABILITY_REGENERATOR", "ABILITY_CHLOROPHYLL"],
       "flee_rate": 0
     },
     "evolutions": [
@@ -319,7 +322,7 @@
       "base_friendship": 70,
       "exp_growth": "GROWTH_MEDIUM_FAST",
       "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
-      "abilities": ["ABILITY_INTIMIDATE", "ABILITY_NONE", "ABILITY_NONE"],
+      "abilities": ["ABILITY_HYDRATION", "ABILITY_UNAWARE", "ABILITY_SWIFT_SWIM"],
       "flee_rate": 0
     },
     "evolutions": [
@@ -340,13 +343,14 @@
       "base_friendship": 70,
       "exp_growth": "GROWTH_MEDIUM_FAST",
       "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
-      "abilities": ["ABILITY_INTIMIDATE", "ABILITY_NONE", "ABILITY_NONE"],
+      "abilities": ["ABILITY_HYDRATION", "ABILITY_UNAWARE", "ABILITY_SAP_SIPPER"],
       "flee_rate": 0
     },
     "evolutions": [
       { "method": "EVO_HAS_MOVE", "condition": "MOVE_ROLLOUT", "target": "SPECIES_ARMAMON" },
       { "method": "EVO_HAS_MOVE", "condition": "MOVE_VICE_GRIP", "target": "SPECIES_BURGAMON" },
-      { "method": "EVO_HAS_MOVE", "condition": "MOVE_WATER_GUN", "target": "SPECIES_UKKOMON" }
+      { "method": "EVO_HAS_MOVE", "condition": "MOVE_WATER_GUN", "target": "SPECIES_UKKOMON" },
+      { "method": "EVO_HAS_MOVE", "condition": "MOVE_THUNDER_SHOCK", "target": "SPECIES_JELLYMON" }
     ]
   },
   "SPECIES_POROMON": {
@@ -362,11 +366,12 @@
       "base_friendship": 70,
       "exp_growth": "GROWTH_MEDIUM_FAST",
       "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
-      "abilities": ["ABILITY_INTIMIDATE", "ABILITY_NONE", "ABILITY_NONE"],
+      "abilities": ["ABILITY_BIG_PECKS", "ABILITY_SUPER_LUCK", "ABILITY_AERILATE"],
       "flee_rate": 0
     },
     "evolutions": [
-      { "method": "EVO_HAS_MOVE", "condition": "MOVE_PECK", "target": "SPECIES_HAWKMON" }
+      { "method": "EVO_HAS_MOVE", "condition": "MOVE_PECK", "target": "SPECIES_HAWKMON" },
+      { "method": "EVO_HAS_MOVE", "condition": "MOVE_GUST", "target": "SPECIES_PTEROMON" }
     ]
   },
   "SPECIES_YOKOMON": {
@@ -382,7 +387,7 @@
       "base_friendship": 70,
       "exp_growth": "GROWTH_MEDIUM_FAST",
       "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
-      "abilities": ["ABILITY_INTIMIDATE", "ABILITY_NONE", "ABILITY_NONE"],
+      "abilities": ["ABILITY_BIG_PECKS", "ABILITY_SIMPLE", "ABILITY_MAGIC_GUARD"],
       "flee_rate": 0
     },
     "evolutions": [
@@ -402,7 +407,7 @@
       "base_friendship": 70,
       "exp_growth": "GROWTH_MEDIUM_FAST",
       "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
-      "abilities": ["ABILITY_INTIMIDATE", "ABILITY_NONE", "ABILITY_NONE"],
+      "abilities": ["ABILITY_INTIMIDATE", "ABILITY_STRONG_JAW", "ABILITY_COMPETITIVE"],
       "flee_rate": 0
     },
     "evolutions": [
@@ -423,7 +428,7 @@
       "base_friendship": 70,
       "exp_growth": "GROWTH_MEDIUM_FAST",
       "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
-      "abilities": ["ABILITY_INTIMIDATE", "ABILITY_NONE", "ABILITY_NONE"],
+      "abilities": ["ABILITY_ANTICIPATION", "ABILITY_FOREWARN", "ABILITY_SERENE_GRACE"],
       "flee_rate": 0
     },
     "evolutions": [
@@ -443,12 +448,13 @@
       "base_friendship": 70,
       "exp_growth": "GROWTH_MEDIUM_FAST",
       "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
-      "abilities": ["ABILITY_INTIMIDATE", "ABILITY_NONE", "ABILITY_NONE"],
+      "abilities": ["ABILITY_CLEAR_BODY", "ABILITY_VOLT_ABSORB", "ABILITY_MOODY"],
       "flee_rate": 0
     },
     "evolutions": [
       { "method": "EVO_HAS_MOVE", "condition": "MOVE_VICE_GRIP", "target": "SPECIES_HAGURUMON" },
-      { "method": "EVO_HAS_MOVE", "condition": "MOVE_PECK", "target": "SPECIES_SPARROWMON" }
+      { "method": "EVO_HAS_MOVE", "condition": "MOVE_PECK", "target": "SPECIES_SPARROWMON" },
+      { "method": "EVO_HAS_MOVE", "condition": "MOVE_CONFUSION", "target": "SPECIES_ESPIMON" }
     ]
   },
   "SPECIES_PICKMON": {
@@ -464,7 +470,7 @@
       "base_friendship": 70,
       "exp_growth": "GROWTH_MEDIUM_FAST",
       "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
-      "abilities": ["ABILITY_INTIMIDATE", "ABILITY_NONE", "ABILITY_NONE"],
+      "abilities": ["ABILITY_INNER_FOCUS", "ABILITY_STURDY", "ABILITY_SOLID_ROCK"],
       "flee_rate": 0
     },
     "evolutions": [
@@ -485,7 +491,7 @@
       "base_friendship": 70,
       "exp_growth": "GROWTH_MEDIUM_FAST",
       "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
-      "abilities": ["ABILITY_INTIMIDATE", "ABILITY_NONE", "ABILITY_NONE"],
+      "abilities": ["ABILITY_PRANKSTER", "ABILITY_UNNERVE", "ABILITY_TOUGH_CLAWS"],
       "flee_rate": 0
     },
     "evolutions": [
@@ -508,7 +514,7 @@
       "base_friendship": 70,
       "exp_growth": "GROWTH_MEDIUM_FAST",
       "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
-      "abilities": ["ABILITY_INTIMIDATE", "ABILITY_NONE", "ABILITY_NONE"],
+      "abilities": ["ABILITY_PRANKSTER", "ABILITY_PICKPOCKET", "ABILITY_TOUGH_CLAWS"],
       "flee_rate": 0
     },
     "evolutions": [
@@ -872,7 +878,7 @@
       "base_friendship": 70,
       "exp_growth": "GROWTH_MEDIUM_FAST",
       "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
-      "abilities": ["ABILITY_INNER_FOCUS", "ABILITY_LIMBER", "ABILITY_TECHNICIAN"],
+      "abilities": ["ABILITY_LIMBER", "ABILITY_INNER_FOCUS", "ABILITY_TECHNICIAN"],
       "flee_rate": 0
     },
     "evolutions": [
@@ -1201,8 +1207,8 @@
   },
   "SPECIES_GAMMAMON": {
     "personal_data": {
-      "base_stats": [65, 65, 65, 65, 65, 65],
-      "types": ["TYPE_NORMAL", "TYPE_NORMAL"],
+      "base_stats": [65, 75, 75, 57, 73, 65],
+      "types": ["TYPE_NORMAL", "TYPE_DRAGON"],
       "catch_rate": 140,
       "base_exp": 70,
       "ev_yield": [0, 0, 0, 0, 0, 0],
@@ -1212,7 +1218,7 @@
       "base_friendship": 70,
       "exp_growth": "GROWTH_MEDIUM_FAST",
       "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
-      "abilities": ["ABILITY_NONE", "ABILITY_NONE", "ABILITY_NONE"],
+      "abilities": ["ABILITY_SYNCHRONIZE", "ABILITY_ROUGH_SKIN", "ABILITY_DOWNLOAD"],
       "flee_rate": 0
     },
     "evolutions": [
@@ -1221,7 +1227,7 @@
   },
   "SPECIES_ANGORAMON": {
     "personal_data": {
-      "base_stats": [65, 65, 65, 65, 65, 65],
+      "base_stats": [100, 72, 66, 46, 55, 66],
       "types": ["TYPE_NORMAL", "TYPE_NORMAL"],
       "catch_rate": 140,
       "base_exp": 70,
@@ -1232,7 +1238,7 @@
       "base_friendship": 70,
       "exp_growth": "GROWTH_MEDIUM_FAST",
       "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
-      "abilities": ["ABILITY_NONE", "ABILITY_NONE", "ABILITY_NONE"],
+      "abilities": ["ABILITY_ANTICIPATION", "ABILITY_GLUTTONY", "ABILITY_FLUFFY"],
       "flee_rate": 0
     },
     "evolutions": [
@@ -1241,7 +1247,7 @@
   },
   "SPECIES_JELLYMON": {
     "personal_data": {
-      "base_stats": [65, 65, 65, 65, 65, 65],
+      "base_stats": [60, 82, 60, 82, 62, 64],
       "types": ["TYPE_WATER", "TYPE_ELECTRIC"],
       "catch_rate": 140,
       "base_exp": 70,
@@ -1252,7 +1258,7 @@
       "base_friendship": 70,
       "exp_growth": "GROWTH_MEDIUM_FAST",
       "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
-      "abilities": ["ABILITY_NONE", "ABILITY_NONE", "ABILITY_NONE"],
+      "abilities": ["ABILITY_LIQUID_OOZE", "ABILITY_DAZZLING", "ABILITY_WATER_BUBBLE"],
       "flee_rate": 0
     },
     "evolutions": [
@@ -1261,7 +1267,7 @@
   },
   "SPECIES_ESPIMON": {
     "personal_data": {
-      "base_stats": [65, 65, 65, 65, 65, 65],
+      "base_stats": [63, 58, 62, 75, 75, 67],
       "types": ["TYPE_PSYCHIC", "TYPE_FLYING"],
       "catch_rate": 140,
       "base_exp": 70,
@@ -1272,7 +1278,7 @@
       "base_friendship": 70,
       "exp_growth": "GROWTH_MEDIUM_FAST",
       "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
-      "abilities": ["ABILITY_NONE", "ABILITY_NONE", "ABILITY_NONE"],
+      "abilities": ["ABILITY_FRISK", "ABILITY_TRACE", "ABILITY_PROTEAN"],
       "flee_rate": 0
     },
     "evolutions": [
@@ -1292,7 +1298,7 @@
       "base_friendship": 70,
       "exp_growth": "GROWTH_MEDIUM_FAST",
       "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
-      "abilities": ["ABILITY_UNAWARE", "ABILITY_SYNCHRONIZE", "ABILITY_MAGIC_GUARD"],
+      "abilities": ["ABILITY_SYNCHRONIZE", "ABILITY_UNAWARE", "ABILITY_MAGIC_GUARD"],
       "flee_rate": 0
     },
     "evolutions": [

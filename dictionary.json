@@ -288,6 +288,9 @@
     "MOVE_FAKE_OUT": "속이기",
     "MOVE_ASTONISH": "놀래키기",
     "MOVE_SMOG": "스모그",
-    "MOVE_LICK": "핥기"
+    "MOVE_LICK": "핥기",
+    "MOVE_FURY_ATTACK": "마구찌르기",
+    "MOVE_STOCKPILE": "비축하기",
+    "MOVE_TWINEEDLE": "더블니들"
   }
 }
