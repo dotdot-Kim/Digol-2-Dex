@@ -285,7 +285,8 @@
     },
     "evolutions": [
       { "method": "EVO_HAS_MOVE", "condition": "MOVE_THUNDER_SHOCK", "target": "SPECIES_TENTOMON" },
-      { "method": "EVO_HAS_MOVE", "condition": "MOVE_STRING_SHOT", "target": "SPECIES_WORMMON" }
+      { "method": "EVO_HAS_MOVE", "condition": "MOVE_STRING_SHOT", "target": "SPECIES_WORMMON" },
+      { "method": "EVO_HAS_MOVE", "condition": "MOVE_TWINEEDLE", "target": "SPECIES_FUNBEEMON" }
     ]
   },
   "SPECIES_TANEMON": {
@@ -327,7 +328,8 @@
     },
     "evolutions": [
       { "method": "EVO_HAS_MOVE", "condition": "MOVE_WATER_GUN", "target": "SPECIES_GOMAMON" },
-      { "method": "EVO_HAS_MOVE", "condition": "MOVE_THUNDER_SHOCK", "target": "SPECIES_BETAMON" }
+      { "method": "EVO_HAS_MOVE", "condition": "MOVE_THUNDER_SHOCK", "target": "SPECIES_BETAMON" },
+      { "method": "EVO_HAS_MOVE", "condition": "MOVE_CONFUSION", "target": "SPECIES_UKKOMON" }
     ]
   },
   "SPECIES_UPAMON": {
@@ -349,7 +351,7 @@
     "evolutions": [
       { "method": "EVO_HAS_MOVE", "condition": "MOVE_ROLLOUT", "target": "SPECIES_ARMAMON" },
       { "method": "EVO_HAS_MOVE", "condition": "MOVE_VICE_GRIP", "target": "SPECIES_BURGAMON" },
-      { "method": "EVO_HAS_MOVE", "condition": "MOVE_WATER_GUN", "target": "SPECIES_UKKOMON" },
+      { "method": "EVO_HAS_MOVE", "condition": "MOVE_WATER_GUN", "target": "SPECIES_SYAKOMON" },
       { "method": "EVO_HAS_MOVE", "condition": "MOVE_THUNDER_SHOCK", "target": "SPECIES_JELLYMON" }
     ]
   },
@@ -391,7 +393,8 @@
       "flee_rate": 0
     },
     "evolutions": [
-      { "method": "EVO_HAS_MOVE", "condition": "MOVE_GUST", "target": "SPECIES_BIYOMON" }
+      { "method": "EVO_HAS_MOVE", "condition": "MOVE_GUST", "target": "SPECIES_BIYOMON" },
+      { "method": "EVO_HAS_MOVE", "condition": "MOVE_PECK", "target": "SPECIES_PENMON" }
     ]
   },
   "SPECIES_TOKOMON": {
@@ -454,7 +457,8 @@
     "evolutions": [
       { "method": "EVO_HAS_MOVE", "condition": "MOVE_VICE_GRIP", "target": "SPECIES_HAGURUMON" },
       { "method": "EVO_HAS_MOVE", "condition": "MOVE_PECK", "target": "SPECIES_SPARROWMON" },
-      { "method": "EVO_HAS_MOVE", "condition": "MOVE_CONFUSION", "target": "SPECIES_ESPIMON" }
+      { "method": "EVO_HAS_MOVE", "condition": "MOVE_CONFUSION", "target": "SPECIES_ESPIMON" },
+      { "method": "EVO_HAS_MOVE", "condition": "MOVE_STOCKPILE", "target": "SPECIES_MAQUINAMON" }
     ]
   },
   "SPECIES_PICKMON": {
@@ -475,7 +479,9 @@
     },
     "evolutions": [
       { "method": "EVO_HAS_MOVE", "condition": "MOVE_CUT", "target": "SPECIES_STARMONS" },
-      { "method": "EVO_HAS_MOVE", "condition": "MOVE_ROCK_THROW", "target": "SPECIES_GOTSUMON" }
+      { "method": "EVO_HAS_MOVE", "condition": "MOVE_ROCK_THROW", "target": "SPECIES_GOTSUMON" },
+      { "method": "EVO_HAS_MOVE", "condition": "MOVE_SAND_ATTACK", "target": "SPECIES_SUNARIZAMON" },
+      { "method": "EVO_HAS_MOVE", "condition": "MOVE_CONFUSION", "target": "SPECIES_HANIMON" }
     ]
   },
   "SPECIES_TSUMEMON": {
@@ -660,7 +666,8 @@
       "flee_rate": 0
     },
     "evolutions": [
-      { "method": "EVO_LEVEL", "condition": 18, "target": "SPECIES_ANGEMON" }
+      { "method": "EVO_LEVEL", "condition": 18, "target": "SPECIES_ANGEMON" },
+      { "method": "EVO_STONE", "condition": "ITEM_DAWN_STONE", "target": "SPECIES_PEGASUSMON" }
     ]
   },
   "SPECIES_SALAMON": {
@@ -676,11 +683,12 @@
       "base_friendship": 140,
       "exp_growth": "GROWTH_MEDIUM_FAST",
       "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
-      "abilities": ["ABILITY_FLUFFY", "ABILITY_TRIAGE", "ABILITY_SERENE_GRACE"],
+      "abilities": ["ABILITY_TRACE", "ABILITY_TRIAGE", "ABILITY_SERENE_GRACE"],
       "flee_rate": 0
     },
     "evolutions": [
-      { "method": "EVO_LEVEL", "condition": 18, "target": "SPECIES_GATOMON" }
+      { "method": "EVO_LEVEL", "condition": 18, "target": "SPECIES_GATOMON" },
+      { "method": "EVO_STONE", "condition": "ITEM_SHINY_STONE", "target": "SPECIES_NEFERTIMON" }
     ]
   },
   "SPECIES_VEEMON": {
@@ -700,7 +708,9 @@
       "flee_rate": 0
     },
     "evolutions": [
-      { "method": "EVO_LEVEL", "condition": 18, "target": "SPECIES_EXVEEMON" }
+      { "method": "EVO_LEVEL", "condition": 18, "target": "SPECIES_EXVEEMON" },
+      { "method": "EVO_STONE", "condition": "ITEM_FIRE_STONE", "target": "SPECIES_FLAMEDRAMON" },
+      { "method": "EVO_STONE", "condition": "ITEM_THUNDER_STONE", "target": "SPECIES_LIGHDRAMON" }
     ]
   },
   "SPECIES_HAWKMON": {
@@ -720,7 +730,9 @@
       "flee_rate": 0
     },
     "evolutions": [
-      { "method": "EVO_LEVEL", "condition": 18, "target": "SPECIES_AQUILAMON" }
+      { "method": "EVO_LEVEL", "condition": 18, "target": "SPECIES_AQUILAMON" },
+      { "method": "EVO_STONE", "condition": "ITEM_SUN_STONE", "target": "SPECIES_HALSEMON" },
+      { "method": "EVO_STONE", "condition": "ITEM_LEAF_STONE", "target": "SPECIES_SHURIMON" }
     ]
   },
   "SPECIES_ARMAMON": {
@@ -740,7 +752,9 @@
       "flee_rate": 0
     },
     "evolutions": [
-      { "method": "EVO_LEVEL", "condition": 18, "target": "SPECIES_ANKYLOMON" }
+      { "method": "EVO_LEVEL", "condition": 18, "target": "SPECIES_ANKYLOMON" },
+      { "method": "EVO_STONE", "condition": "ITEM_MOON_STONE", "target": "SPECIES_DIGMON" },
+      { "method": "EVO_STONE", "condition": "ITEM_WATER_STONE", "target": "SPECIES_SUBMARIMON" }
     ]
   },
   "SPECIES_WORMMON": {
@@ -1222,7 +1236,8 @@
       "flee_rate": 0
     },
     "evolutions": [
-      { "method": "EVO_LEVEL", "condition": 1, "target": "SPECIES_NONE" }
+      { "method": "EVO_LEVEL_NINJASK", "condition": 18, "target": "SPECIES_BETELGAMMAMON" },
+      { "method": "EVO_LEVEL_SHEDINJA", "condition": 18, "target": "SPECIES_GULUSGAMMAMON" }
     ]
   },
   "SPECIES_ANGORAMON": {
@@ -1242,7 +1257,7 @@
       "flee_rate": 0
     },
     "evolutions": [
-      { "method": "EVO_LEVEL", "condition": 1, "target": "SPECIES_NONE" }
+      { "method": "EVO_LEVEL", "condition": 18, "target": "SPECIES_SYMBAREANGORAMON" }
     ]
   },
   "SPECIES_JELLYMON": {
@@ -1262,7 +1277,7 @@
       "flee_rate": 0
     },
     "evolutions": [
-      { "method": "EVO_LEVEL", "condition": 1, "target": "SPECIES_NONE" }
+      { "method": "EVO_LEVEL", "condition": 18, "target": "SPECIES_TESLAJELLYMON" }
     ]
   },
   "SPECIES_ESPIMON": {
@@ -1282,7 +1297,7 @@
       "flee_rate": 0
     },
     "evolutions": [
-      { "method": "EVO_LEVEL", "condition": 1, "target": "SPECIES_NONE" }
+      { "method": "EVO_LEVEL", "condition": 18, "target": "SPECIES_HOVERESPIMON" }
     ]
   },
   "SPECIES_UKKOMON": {
@@ -1307,8 +1322,8 @@
   },
   "SPECIES_PTEROMON": {
     "personal_data": {
-      "base_stats": [65, 65, 65, 65, 65, 65],
-      "types": ["TYPE_NORMAL", "TYPE_NORMAL"],
+      "base_stats": [60, 75, 60, 80, 75, 60],
+      "types": ["TYPE_FLYING", "TYPE_FLYING"],
       "catch_rate": 140,
       "base_exp": 70,
       "ev_yield": [0, 0, 0, 0, 0, 0],
@@ -1318,17 +1333,17 @@
       "base_friendship": 70,
       "exp_growth": "GROWTH_MEDIUM_FAST",
       "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
-      "abilities": ["ABILITY_NONE", "ABILITY_NONE", "ABILITY_NONE"],
+      "abilities": ["ABILITY_ANTICIPATION", "ABILITY_WIND_RIDER", "ABILITY_SHARPNESS"],
       "flee_rate": 0
     },
     "evolutions": [
-      { "method": "EVO_LEVEL", "condition": 1, "target": "SPECIES_NONE" }
+      { "method": "EVO_LEVEL", "condition": 18, "target": "SPECIES_GALEMON" }
     ]
   },
   "SPECIES_SHOEMON": {
     "personal_data": {
-      "base_stats": [65, 65, 65, 65, 65, 65],
-      "types": ["TYPE_NORMAL", "TYPE_NORMAL"],
+      "base_stats": [65, 75, 65, 70, 60, 65],
+      "types": ["TYPE_FAIRY", "TYPE_FAIRY"],
       "catch_rate": 140,
       "base_exp": 70,
       "ev_yield": [0, 0, 0, 0, 0, 0],
@@ -1338,11 +1353,11 @@
       "base_friendship": 70,
       "exp_growth": "GROWTH_MEDIUM_FAST",
       "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
-      "abilities": ["ABILITY_NONE", "ABILITY_NONE", "ABILITY_NONE"],
+      "abilities": ["ABILITY_FRISK", "ABILITY_WIMP_OUT", "ABILITY_PIXILATE"],
       "flee_rate": 0
     },
     "evolutions": [
-      { "method": "EVO_LEVEL", "condition": 1, "target": "SPECIES_NONE" }
+      { "method": "EVO_LEVEL", "condition": 18, "target": "SPECIES_SHOESHOEMON" }
     ]
   },
   "SPECIES_GHOSTMON": {
@@ -1388,7 +1403,7 @@
   "SPECIES_SANGOMON": {
     "personal_data": {
       "base_stats": [65, 65, 65, 65, 65, 65],
-      "types": ["TYPE_NORMAL", "TYPE_NORMAL"],
+      "types": ["TYPE_WATER", "TYPE_ROCK"],
       "catch_rate": 140,
       "base_exp": 70,
       "ev_yield": [0, 0, 0, 0, 0, 0],
@@ -1407,8 +1422,8 @@
   },
   "SPECIES_SYAKOMON": {
     "personal_data": {
-      "base_stats": [65, 65, 65, 65, 65, 65],
-      "types": ["TYPE_NORMAL", "TYPE_NORMAL"],
+      "base_stats": [60, 50, 105, 30, 70, 80],
+      "types": ["TYPE_WATER", "TYPE_ROCK"],
       "catch_rate": 140,
       "base_exp": 70,
       "ev_yield": [0, 0, 0, 0, 0, 0],
@@ -1418,17 +1433,17 @@
       "base_friendship": 70,
       "exp_growth": "GROWTH_MEDIUM_FAST",
       "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
-      "abilities": ["ABILITY_NONE", "ABILITY_NONE", "ABILITY_NONE"],
+      "abilities": ["ABILITY_SHELL_ARMOR", "ABILITY_LIQUID_OOZE", "ABILITY_FILTER"],
       "flee_rate": 0
     },
     "evolutions": [
-      { "method": "EVO_LEVEL", "condition": 1, "target": "SPECIES_NONE" }
+      { "method": "EVO_LEVEL", "condition": 18, "target": "SPECIES_SHELLMON" }
     ]
   },
   "SPECIES_SUNARIZAMON": {
     "personal_data": {
-      "base_stats": [65, 65, 65, 65, 65, 65],
-      "types": ["TYPE_NORMAL", "TYPE_NORMAL"],
+      "base_stats": [72, 78, 73, 67, 55, 55],
+      "types": ["TYPE_GROUND", "TYPE_GROUND"],
       "catch_rate": 140,
       "base_exp": 70,
       "ev_yield": [0, 0, 0, 0, 0, 0],
@@ -1438,17 +1453,17 @@
       "base_friendship": 70,
       "exp_growth": "GROWTH_MEDIUM_FAST",
       "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
-      "abilities": ["ABILITY_NONE", "ABILITY_NONE", "ABILITY_NONE"],
+      "abilities": ["ABILITY_SAND_VEIL", "ABILITY_SHED_SKIN", "ABILITY_SAND_SPIT"],
       "flee_rate": 0
     },
     "evolutions": [
-      { "method": "EVO_LEVEL", "condition": 1, "target": "SPECIES_NONE" }
+      { "method": "EVO_LEVEL", "condition": 18, "target": "SPECIES_LANDRAMON" }
     ]
   },
   "SPECIES_FUNBEEMON": {
     "personal_data": {
-      "base_stats": [65, 65, 65, 65, 65, 65],
-      "types": ["TYPE_NORMAL", "TYPE_NORMAL"],
+      "base_stats": [60, 70, 60, 78, 75, 62],
+      "types": ["TYPE_BUG", "TYPE_FLYING"],
       "catch_rate": 140,
       "base_exp": 70,
       "ev_yield": [0, 0, 0, 0, 0, 0],
@@ -1458,7 +1473,7 @@
       "base_friendship": 70,
       "exp_growth": "GROWTH_MEDIUM_FAST",
       "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
-      "abilities": ["ABILITY_NONE", "ABILITY_NONE", "ABILITY_NONE"],
+      "abilities": ["ABILITY_HONEY_GATHER", "ABILITY_PICKUP", "ABILITY_SKILL_LINK"],
       "flee_rate": 0
     },
     "evolutions": [
@@ -1467,8 +1482,8 @@
   },
   "SPECIES_PENMON": {
     "personal_data": {
-      "base_stats": [65, 65, 65, 65, 65, 65],
-      "types": ["TYPE_NORMAL", "TYPE_NORMAL"],
+      "base_stats": [80, 68, 68, 65, 55, 64],
+      "types": ["TYPE_ICE", "TYPE_WATER"],
       "catch_rate": 140,
       "base_exp": 70,
       "ev_yield": [0, 0, 0, 0, 0, 0],
@@ -1478,17 +1493,18 @@
       "base_friendship": 70,
       "exp_growth": "GROWTH_MEDIUM_FAST",
       "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
-      "abilities": ["ABILITY_NONE", "ABILITY_NONE", "ABILITY_NONE"],
+      "abilities": ["ABILITY_SLUSH_RUSH", "ABILITY_SIMPLE", "ABILITY_SWIFT_SWIM"],
       "flee_rate": 0
     },
     "evolutions": [
-      { "method": "EVO_LEVEL", "condition": 1, "target": "SPECIES_NONE" }
+      { "method": "EVO_LEVEL", "condition": 18, "target": "SPECIES_FRIGIMON" },
+      { "method": "EVO_LEVEL", "condition": 18, "target": "SPECIES_DOLPHMON" }
     ]
   },
   "SPECIES_HANIMON": {
     "personal_data": {
-      "base_stats": [65, 65, 65, 65, 65, 65],
-      "types": ["TYPE_NORMAL", "TYPE_NORMAL"],
+      "base_stats": [75, 67, 60, 58, 67, 73],
+      "types": ["TYPE_GROUND", "TYPE_PSYCHIC"],
       "catch_rate": 140,
       "base_exp": 70,
       "ev_yield": [0, 0, 0, 0, 0, 0],
@@ -1498,7 +1514,7 @@
       "base_friendship": 70,
       "exp_growth": "GROWTH_MEDIUM_FAST",
       "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
-      "abilities": ["ABILITY_NONE", "ABILITY_NONE", "ABILITY_NONE"],
+      "abilities": ["ABILITY_WEAK_ARMOR", "ABILITY_AFTERMATH", "ABILITY_PURIFYING_SALT"],
       "flee_rate": 0
     },
     "evolutions": [
@@ -1508,7 +1524,7 @@
   "SPECIES_MAQUINAMON": {
     "personal_data": {
       "base_stats": [65, 65, 65, 65, 65, 65],
-      "types": ["TYPE_NORMAL", "TYPE_NORMAL"],
+      "types": ["TYPE_NORMAL", "TYPE_STEEL"],
       "catch_rate": 140,
       "base_exp": 70,
       "ev_yield": [0, 0, 0, 0, 0, 0],
@@ -1518,7 +1534,7 @@
       "base_friendship": 70,
       "exp_growth": "GROWTH_MEDIUM_FAST",
       "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
-      "abilities": ["ABILITY_NONE", "ABILITY_NONE", "ABILITY_NONE"],
+      "abilities": ["ABILITY_OBLIVIOUS", "ABILITY_FRISK", "ABILITY_MINDS_EYE"],
       "flee_rate": 0
     },
     "evolutions": [
@@ -2185,7 +2201,7 @@
       { "method": "EVO_LEVEL", "condition": 0, "target": "SPECIES_NONE" }
     ]
   },
-  "SPECIES_MEKANORIMON": {
+  "SPECIES_GUARDROMON": {
     "personal_data": {
       "base_stats": [80, 80, 80, 80, 80, 80],
       "types": ["TYPE_STEEL", "TYPE_STEEL"],
