@@ -536,9 +536,9 @@
     "image": "images/3_Adult/icemon.jpg",
     "generation": "성숙기"
   },
-  "SPECIES_MEKANORIMON": {
-    "name_ko": "메카노몬",
-    "image": "images/3_Adult/mechanorimon.jpg",
+  "SPECIES_GUARDROMON": {
+    "name_ko": "가드로몬",
+    "image": "images/3_Adult/guardromon.jpg",
     "generation": "성숙기"
   },
   "SPECIES_FANGMON": {
