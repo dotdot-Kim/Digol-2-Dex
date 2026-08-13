@@ -258,17 +258,21 @@
     let globalDB = {}; 
     let webDB = {};
     let dictDB = {}; 
+    let hiddenDB = []; // 숨김 데이터를 저장할 변수
     let currentFilteredKeys = [];
 
     Promise.all([
       fetch('data.json').then(res => res.json()),
       fetch('web_data.json').then(res => res.json()),
-      fetch('dictionary.json').then(res => res.json())
+      fetch('dictionary.json').then(res => res.json()),
+      // hidden.json 불러오기 추가 (파일이 없거나 오류가 나면 빈 배열 반환)
+      fetch('hidden.json').then(res => res.json()).catch(() => []) 
     ])
-    .then(([engineData, webData, dictionary]) => {
+    .then(([engineData, webData, dictionary, hiddenData]) => {
       globalDB = engineData; 
       webDB = webData;
       dictDB = dictionary; 
+      hiddenDB = hiddenData; // 불러온 숨김 데이터 할당
       applyFilters(); 
     })
     .catch(error => {
@@ -304,6 +308,10 @@
       currentFilteredKeys = []; 
 
       for (const key in globalDB) {
+
+        // hidden.json 리스트에 있는 Key값이면 건너뛰기
+        if (hiddenDB.includes(key)) continue;
+
         const target = globalDB[key];
         const webTarget = webDB[key] || {};
 
@@ -462,6 +470,10 @@
       let preEvoHTML = "";
       let hasPreEvo = false;
       for (const pKey in globalDB) {
+
+        // 숨겨진 디지몬이면 진화 전 목록에서 제외
+        if (hiddenDB.includes(pKey)) continue;
+
         const pData = globalDB[pKey];
         const pWebData = webDB[pKey] || {}; 
 
@@ -496,6 +508,10 @@
       let groupedEvos = {};
       if (data.evolutions && data.evolutions.length > 0) {
         data.evolutions.forEach(evo => {
+
+          // 진화할 대상이 숨김 목록에 있으면 그룹화 대상에서 제외
+          if (hiddenDB.includes(evo.target)) return;
+
           if (!groupedEvos[evo.target]) groupedEvos[evo.target] = [];
           groupedEvos[evo.target].push(evo);
         });
