@@ -3045,7 +3045,7 @@
   "SPECIES_RAPIDMON": {
     "personal_data": {
       "base_stats": [92, 92, 92, 92, 92, 92],
-      "types": ["TYPE_NORMAL", "TYPE_STEEL"],
+      "types": ["TYPE_FLYING", "TYPE_STEEL"],
       "catch_rate": 15,
       "base_exp": 180,
       "ev_yield": [0, 0, 0, 0, 0, 0],
@@ -3065,7 +3065,7 @@
   "SPECIES_ICELEOMON": {
     "personal_data": {
       "base_stats": [92, 92, 92, 92, 92, 92],
-      "types": ["TYPE_FIGHTING", "TYPE_ICE"],
+      "types": ["TYPE_ICE", "TYPE_FIGHTING"],
       "catch_rate": 15,
       "base_exp": 180,
       "ev_yield": [0, 0, 0, 0, 0, 0],
@@ -3301,5 +3301,1103 @@
     "evolutions": [
       { "method": "EVO_LEVEL", "condition": 0, "target": "SPECIES_NONE" }
     ]
+  },
+  "SPECIES_WARGREYMON": {
+    "personal_data": {
+      "base_stats": [104, 104, 104, 104, 104, 104],
+      "types": ["TYPE_FIRE", "TYPE_FIGHTING"],
+      "catch_rate": 3,
+      "base_exp": 220,
+      "ev_yield": [0, 0, 0, 0, 0, 0],
+      "items": ["ITEM_NONE", "ITEM_NONE"],
+      "gender_ratio": 255,
+      "hatch_cycles": 1,
+      "base_friendship": 70,
+      "exp_growth": "GROWTH_MEDIUM_FAST",
+      "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
+      "abilities": ["ABILITY_NONE", "ABILITY_NONE", "ABILITY_NONE"],
+      "flee_rate": 0
+    },
+    "evolutions": []
+  },
+  "SPECIES_METALGARURUMON": {
+    "personal_data": {
+      "base_stats": [104, 104, 104, 104, 104, 104],
+      "types": ["TYPE_ICE", "TYPE_STEEL"],
+      "catch_rate": 3,
+      "base_exp": 220,
+      "ev_yield": [0, 0, 0, 0, 0, 0],
+      "items": ["ITEM_NONE", "ITEM_NONE"],
+      "gender_ratio": 255,
+      "hatch_cycles": 1,
+      "base_friendship": 70,
+      "exp_growth": "GROWTH_MEDIUM_FAST",
+      "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
+      "abilities": ["ABILITY_NONE", "ABILITY_NONE", "ABILITY_NONE"],
+      "flee_rate": 0
+    },
+    "evolutions": []
+  },
+  "SPECIES_HERCULESKABUTERIMON": {
+    "personal_data": {
+      "base_stats": [104, 104, 104, 104, 104, 104],
+      "types": ["TYPE_BUG", "TYPE_ELECTRIC"],
+      "catch_rate": 3,
+      "base_exp": 220,
+      "ev_yield": [0, 0, 0, 0, 0, 0],
+      "items": ["ITEM_NONE", "ITEM_NONE"],
+      "gender_ratio": 255,
+      "hatch_cycles": 1,
+      "base_friendship": 70,
+      "exp_growth": "GROWTH_MEDIUM_FAST",
+      "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
+      "abilities": ["ABILITY_NONE", "ABILITY_NONE", "ABILITY_NONE"],
+      "flee_rate": 0
+    },
+    "evolutions": []
+  },
+  "SPECIES_PHOENIXMON": {
+    "personal_data": {
+      "base_stats": [104, 104, 104, 104, 104, 104],
+      "types": ["TYPE_FLYING", "TYPE_FIRE"],
+      "catch_rate": 3,
+      "base_exp": 220,
+      "ev_yield": [0, 0, 0, 0, 0, 0],
+      "items": ["ITEM_NONE", "ITEM_NONE"],
+      "gender_ratio": 255,
+      "hatch_cycles": 1,
+      "base_friendship": 70,
+      "exp_growth": "GROWTH_MEDIUM_FAST",
+      "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
+      "abilities": ["ABILITY_NONE", "ABILITY_NONE", "ABILITY_NONE"],
+      "flee_rate": 0
+    },
+    "evolutions": []
+  },
+  "SPECIES_VIKEMON": {
+    "personal_data": {
+      "base_stats": [104, 104, 104, 104, 104, 104],
+      "types": ["TYPE_WATER", "TYPE_STEEL"],
+      "catch_rate": 3,
+      "base_exp": 220,
+      "ev_yield": [0, 0, 0, 0, 0, 0],
+      "items": ["ITEM_NONE", "ITEM_NONE"],
+      "gender_ratio": 255,
+      "hatch_cycles": 1,
+      "base_friendship": 70,
+      "exp_growth": "GROWTH_MEDIUM_FAST",
+      "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
+      "abilities": ["ABILITY_NONE", "ABILITY_NONE", "ABILITY_NONE"],
+      "flee_rate": 0
+    },
+    "evolutions": []
+  },
+  "SPECIES_SERAPHIMON": {
+    "personal_data": {
+      "base_stats": [104, 104, 104, 104, 104, 104],
+      "types": ["TYPE_FIGHTING", "TYPE_FIGHTING"],
+      "catch_rate": 3,
+      "base_exp": 220,
+      "ev_yield": [0, 0, 0, 0, 0, 0],
+      "items": ["ITEM_NONE", "ITEM_NONE"],
+      "gender_ratio": 255,
+      "hatch_cycles": 1,
+      "base_friendship": 70,
+      "exp_growth": "GROWTH_MEDIUM_FAST",
+      "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
+      "abilities": ["ABILITY_NONE", "ABILITY_NONE", "ABILITY_NONE"],
+      "flee_rate": 0
+    },
+    "evolutions": []
+  },
+  "SPECIES_OPHANIMON": {
+    "personal_data": {
+      "base_stats": [104, 104, 104, 104, 104, 104],
+      "types": ["TYPE_FAIRY", "TYPE_FAIRY"],
+      "catch_rate": 3,
+      "base_exp": 220,
+      "ev_yield": [0, 0, 0, 0, 0, 0],
+      "items": ["ITEM_NONE", "ITEM_NONE"],
+      "gender_ratio": 255,
+      "hatch_cycles": 1,
+      "base_friendship": 70,
+      "exp_growth": "GROWTH_MEDIUM_FAST",
+      "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
+      "abilities": ["ABILITY_NONE", "ABILITY_NONE", "ABILITY_NONE"],
+      "flee_rate": 0
+    },
+    "evolutions": []
+  },
+  "SPECIES_MAGNADRAMON": {
+    "personal_data": {
+      "base_stats": [104, 104, 104, 104, 104, 104],
+      "types": ["TYPE_FAIRY", "TYPE_DRAGON"],
+      "catch_rate": 3,
+      "base_exp": 220,
+      "ev_yield": [0, 0, 0, 0, 0, 0],
+      "items": ["ITEM_NONE", "ITEM_NONE"],
+      "gender_ratio": 255,
+      "hatch_cycles": 1,
+      "base_friendship": 70,
+      "exp_growth": "GROWTH_MEDIUM_FAST",
+      "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
+      "abilities": ["ABILITY_NONE", "ABILITY_NONE", "ABILITY_NONE"],
+      "flee_rate": 0
+    },
+    "evolutions": []
+  },
+  "SPECIES_IMPERIALDRAMON-DM": {
+    "personal_data": {
+      "base_stats": [104, 104, 104, 104, 104, 104],
+      "types": ["TYPE_DRAGON", "TYPE_DRAGON"],
+      "catch_rate": 3,
+      "base_exp": 220,
+      "ev_yield": [0, 0, 0, 0, 0, 0],
+      "items": ["ITEM_NONE", "ITEM_NONE"],
+      "gender_ratio": 255,
+      "hatch_cycles": 1,
+      "base_friendship": 70,
+      "exp_growth": "GROWTH_MEDIUM_FAST",
+      "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
+      "abilities": ["ABILITY_NONE", "ABILITY_NONE", "ABILITY_NONE"],
+      "flee_rate": 0
+    },
+    "evolutions": []
+  },
+  "SPECIES_IMPERIALDRAMON-FM": {
+    "personal_data": {
+      "base_stats": [104, 104, 104, 104, 104, 104],
+      "types": ["TYPE_DRAGON", "TYPE_FIGHTING"],
+      "catch_rate": 3,
+      "base_exp": 220,
+      "ev_yield": [0, 0, 0, 0, 0, 0],
+      "items": ["ITEM_NONE", "ITEM_NONE"],
+      "gender_ratio": 255,
+      "hatch_cycles": 1,
+      "base_friendship": 70,
+      "exp_growth": "GROWTH_MEDIUM_FAST",
+      "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
+      "abilities": ["ABILITY_NONE", "ABILITY_NONE", "ABILITY_NONE"],
+      "flee_rate": 0
+    },
+    "evolutions": []
+  },
+  "SPECIES_MAGNAMON": {
+    "personal_data": {
+      "base_stats": [104, 104, 104, 104, 104, 104],
+      "types": ["TYPE_DRAGON", "TYPE_STEEL"],
+      "catch_rate": 3,
+      "base_exp": 220,
+      "ev_yield": [0, 0, 0, 0, 0, 0],
+      "items": ["ITEM_NONE", "ITEM_NONE"],
+      "gender_ratio": 255,
+      "hatch_cycles": 1,
+      "base_friendship": 70,
+      "exp_growth": "GROWTH_MEDIUM_FAST",
+      "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
+      "abilities": ["ABILITY_NONE", "ABILITY_NONE", "ABILITY_NONE"],
+      "flee_rate": 0
+    },
+    "evolutions": []
+  },
+  "SPECIES_VALKYTIMON": {
+    "personal_data": {
+      "base_stats": [104, 104, 104, 104, 104, 104],
+      "types": ["TYPE_FLYING", "TYPE_FIGHTING"],
+      "catch_rate": 3,
+      "base_exp": 220,
+      "ev_yield": [0, 0, 0, 0, 0, 0],
+      "items": ["ITEM_NONE", "ITEM_NONE"],
+      "gender_ratio": 255,
+      "hatch_cycles": 1,
+      "base_friendship": 70,
+      "exp_growth": "GROWTH_MEDIUM_FAST",
+      "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
+      "abilities": ["ABILITY_NONE", "ABILITY_NONE", "ABILITY_NONE"],
+      "flee_rate": 0
+    },
+    "evolutions": []
+  },
+  "SPECIES_SLASHANGEMON": {
+    "personal_data": {
+      "base_stats": [104, 104, 104, 104, 104, 104],
+      "types": ["TYPE_FIGHTING", "TYPE_STEEL"],
+      "catch_rate": 3,
+      "base_exp": 220,
+      "ev_yield": [0, 0, 0, 0, 0, 0],
+      "items": ["ITEM_NONE", "ITEM_NONE"],
+      "gender_ratio": 255,
+      "hatch_cycles": 1,
+      "base_friendship": 70,
+      "exp_growth": "GROWTH_MEDIUM_FAST",
+      "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
+      "abilities": ["ABILITY_NONE", "ABILITY_NONE", "ABILITY_NONE"],
+      "flee_rate": 0
+    },
+    "evolutions": []
+  },
+  "SPECIES_LILITHMON": {
+    "personal_data": {
+      "base_stats": [104, 104, 104, 104, 104, 104],
+      "types": ["TYPE_DARK", "TYPE_POISON"],
+      "catch_rate": 3,
+      "base_exp": 220,
+      "ev_yield": [0, 0, 0, 0, 0, 0],
+      "items": ["ITEM_NONE", "ITEM_NONE"],
+      "gender_ratio": 255,
+      "hatch_cycles": 1,
+      "base_friendship": 70,
+      "exp_growth": "GROWTH_MEDIUM_FAST",
+      "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
+      "abilities": ["ABILITY_NONE", "ABILITY_NONE", "ABILITY_NONE"],
+      "flee_rate": 0
+    },
+    "evolutions": []
+  },
+  "SPECIES_MASTEMON": {
+    "personal_data": {
+      "base_stats": [104, 104, 104, 104, 104, 104],
+      "types": ["TYPE_FAIRY", "TYPE_DARK"],
+      "catch_rate": 3,
+      "base_exp": 220,
+      "ev_yield": [0, 0, 0, 0, 0, 0],
+      "items": ["ITEM_NONE", "ITEM_NONE"],
+      "gender_ratio": 255,
+      "hatch_cycles": 1,
+      "base_friendship": 70,
+      "exp_growth": "GROWTH_MEDIUM_FAST",
+      "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
+      "abilities": ["ABILITY_NONE", "ABILITY_NONE", "ABILITY_NONE"],
+      "flee_rate": 0
+    },
+    "evolutions": []
+  },
+  "SPECIES_METALSEADRAMON": {
+    "personal_data": {
+      "base_stats": [104, 104, 104, 104, 104, 104],
+      "types": ["TYPE_WATER", "TYPE_DRAGON"],
+      "catch_rate": 3,
+      "base_exp": 220,
+      "ev_yield": [0, 0, 0, 0, 0, 0],
+      "items": ["ITEM_NONE", "ITEM_NONE"],
+      "gender_ratio": 255,
+      "hatch_cycles": 1,
+      "base_friendship": 70,
+      "exp_growth": "GROWTH_MEDIUM_FAST",
+      "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
+      "abilities": ["ABILITY_NONE", "ABILITY_NONE", "ABILITY_NONE"],
+      "flee_rate": 0
+    },
+    "evolutions": []
+  },
+  "SPECIES_PUPPETMON": {
+    "personal_data": {
+      "base_stats": [104, 104, 104, 104, 104, 104],
+      "types": ["TYPE_GRASS", "TYPE_STEEL"],
+      "catch_rate": 3,
+      "base_exp": 220,
+      "ev_yield": [0, 0, 0, 0, 0, 0],
+      "items": ["ITEM_NONE", "ITEM_NONE"],
+      "gender_ratio": 255,
+      "hatch_cycles": 1,
+      "base_friendship": 70,
+      "exp_growth": "GROWTH_MEDIUM_FAST",
+      "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
+      "abilities": ["ABILITY_NONE", "ABILITY_NONE", "ABILITY_NONE"],
+      "flee_rate": 0
+    },
+    "evolutions": []
+  },
+  "SPECIES_MACHINEDRAMON": {
+    "personal_data": {
+      "base_stats": [104, 104, 104, 104, 104, 104],
+      "types": ["TYPE_STEEL", "TYPE_STEEL"],
+      "catch_rate": 3,
+      "base_exp": 220,
+      "ev_yield": [0, 0, 0, 0, 0, 0],
+      "items": ["ITEM_NONE", "ITEM_NONE"],
+      "gender_ratio": 255,
+      "hatch_cycles": 1,
+      "base_friendship": 70,
+      "exp_growth": "GROWTH_MEDIUM_FAST",
+      "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
+      "abilities": ["ABILITY_NONE", "ABILITY_NONE", "ABILITY_NONE"],
+      "flee_rate": 0
+    },
+    "evolutions": []
+  },
+  "SPECIES_PIEDMON": {
+    "personal_data": {
+      "base_stats": [104, 104, 104, 104, 104, 104],
+      "types": ["TYPE_DARK", "TYPE_DARK"],
+      "catch_rate": 3,
+      "base_exp": 220,
+      "ev_yield": [0, 0, 0, 0, 0, 0],
+      "items": ["ITEM_NONE", "ITEM_NONE"],
+      "gender_ratio": 255,
+      "hatch_cycles": 1,
+      "base_friendship": 70,
+      "exp_growth": "GROWTH_MEDIUM_FAST",
+      "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
+      "abilities": ["ABILITY_NONE", "ABILITY_NONE", "ABILITY_NONE"],
+      "flee_rate": 0
+    },
+    "evolutions": []
+  },
+  "SPECIES_SHINMONZAEMON": {
+    "personal_data": {
+      "base_stats": [104, 104, 104, 104, 104, 104],
+      "types": ["TYPE_FAIRY", "TYPE_GHOST"],
+      "catch_rate": 3,
+      "base_exp": 220,
+      "ev_yield": [0, 0, 0, 0, 0, 0],
+      "items": ["ITEM_NONE", "ITEM_NONE"],
+      "gender_ratio": 255,
+      "hatch_cycles": 1,
+      "base_friendship": 70,
+      "exp_growth": "GROWTH_MEDIUM_FAST",
+      "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
+      "abilities": ["ABILITY_NONE", "ABILITY_NONE", "ABILITY_NONE"],
+      "flee_rate": 0
+    },
+    "evolutions": []
+  },
+  "SPECIES_METALETEMON": {
+    "personal_data": {
+      "base_stats": [104, 104, 104, 104, 104, 104],
+      "types": ["TYPE_POISON", "TYPE_STEEL"],
+      "catch_rate": 3,
+      "base_exp": 220,
+      "ev_yield": [0, 0, 0, 0, 0, 0],
+      "items": ["ITEM_NONE", "ITEM_NONE"],
+      "gender_ratio": 255,
+      "hatch_cycles": 1,
+      "base_friendship": 70,
+      "exp_growth": "GROWTH_MEDIUM_FAST",
+      "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
+      "abilities": ["ABILITY_NONE", "ABILITY_NONE", "ABILITY_NONE"],
+      "flee_rate": 0
+    },
+    "evolutions": []
+  },
+  "SPECIES_VENOMMYOTISMON": {
+    "personal_data": {
+      "base_stats": [104, 104, 104, 104, 104, 104],
+      "types": ["TYPE_GHOST", "TYPE_POISON"],
+      "catch_rate": 3,
+      "base_exp": 220,
+      "ev_yield": [0, 0, 0, 0, 0, 0],
+      "items": ["ITEM_NONE", "ITEM_NONE"],
+      "gender_ratio": 255,
+      "hatch_cycles": 1,
+      "base_friendship": 70,
+      "exp_growth": "GROWTH_MEDIUM_FAST",
+      "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
+      "abilities": ["ABILITY_NONE", "ABILITY_NONE", "ABILITY_NONE"],
+      "flee_rate": 0
+    },
+    "evolutions": []
+  },
+  "SPECIES_DONEDEVIMON": {
+    "personal_data": {
+      "base_stats": [104, 104, 104, 104, 104, 104],
+      "types": ["TYPE_DARK", "TYPE_DARK"],
+      "catch_rate": 3,
+      "base_exp": 220,
+      "ev_yield": [0, 0, 0, 0, 0, 0],
+      "items": ["ITEM_NONE", "ITEM_NONE"],
+      "gender_ratio": 255,
+      "hatch_cycles": 1,
+      "base_friendship": 70,
+      "exp_growth": "GROWTH_MEDIUM_FAST",
+      "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
+      "abilities": ["ABILITY_NONE", "ABILITY_NONE", "ABILITY_NONE"],
+      "flee_rate": 0
+    },
+    "evolutions": []
+  },
+  "SPECIES_DIABOROMON": {
+    "personal_data": {
+      "base_stats": [104, 104, 104, 104, 104, 104],
+      "types": ["TYPE_DARK", "TYPE_POISON"],
+      "catch_rate": 3,
+      "base_exp": 220,
+      "ev_yield": [0, 0, 0, 0, 0, 0],
+      "items": ["ITEM_NONE", "ITEM_NONE"],
+      "gender_ratio": 255,
+      "hatch_cycles": 1,
+      "base_friendship": 70,
+      "exp_growth": "GROWTH_MEDIUM_FAST",
+      "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
+      "abilities": ["ABILITY_NONE", "ABILITY_NONE", "ABILITY_NONE"],
+      "flee_rate": 0
+    },
+    "evolutions": []
+  },
+  "SPECIES_GALLANTMON": {
+    "personal_data": {
+      "base_stats": [104, 104, 104, 104, 104, 104],
+      "types": ["TYPE_FIRE", "TYPE_FAIRY"],
+      "catch_rate": 3,
+      "base_exp": 220,
+      "ev_yield": [0, 0, 0, 0, 0, 0],
+      "items": ["ITEM_NONE", "ITEM_NONE"],
+      "gender_ratio": 255,
+      "hatch_cycles": 1,
+      "base_friendship": 70,
+      "exp_growth": "GROWTH_MEDIUM_FAST",
+      "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
+      "abilities": ["ABILITY_NONE", "ABILITY_NONE", "ABILITY_NONE"],
+      "flee_rate": 0
+    },
+    "evolutions": []
+  },
+  "SPECIES_SAKUYAMON": {
+    "personal_data": {
+      "base_stats": [104, 104, 104, 104, 104, 104],
+      "types": ["TYPE_PSYCHIC", "TYPE_FIGHTING"],
+      "catch_rate": 3,
+      "base_exp": 220,
+      "ev_yield": [0, 0, 0, 0, 0, 0],
+      "items": ["ITEM_NONE", "ITEM_NONE"],
+      "gender_ratio": 255,
+      "hatch_cycles": 1,
+      "base_friendship": 70,
+      "exp_growth": "GROWTH_MEDIUM_FAST",
+      "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
+      "abilities": ["ABILITY_NONE", "ABILITY_NONE", "ABILITY_NONE"],
+      "flee_rate": 0
+    },
+    "evolutions": []
+  },
+  "SPECIES_SAKUYAMON-MM": {
+    "personal_data": {
+      "base_stats": [104, 104, 104, 104, 104, 104],
+      "types": ["TYPE_PSYCHIC", "TYPE_FAIRY"],
+      "catch_rate": 3,
+      "base_exp": 220,
+      "ev_yield": [0, 0, 0, 0, 0, 0],
+      "items": ["ITEM_NONE", "ITEM_NONE"],
+      "gender_ratio": 255,
+      "hatch_cycles": 1,
+      "base_friendship": 70,
+      "exp_growth": "GROWTH_MEDIUM_FAST",
+      "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
+      "abilities": ["ABILITY_NONE", "ABILITY_NONE", "ABILITY_NONE"],
+      "flee_rate": 0
+    },
+    "evolutions": []
+  },
+  "SPECIES_MEGAGARGOMON": {
+    "personal_data": {
+      "base_stats": [104, 104, 104, 104, 104, 104],
+      "types": ["TYPE_FLYING", "TYPE_STEEL"],
+      "catch_rate": 3,
+      "base_exp": 220,
+      "ev_yield": [0, 0, 0, 0, 0, 0],
+      "items": ["ITEM_NONE", "ITEM_NONE"],
+      "gender_ratio": 255,
+      "hatch_cycles": 1,
+      "base_friendship": 70,
+      "exp_growth": "GROWTH_MEDIUM_FAST",
+      "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
+      "abilities": ["ABILITY_NONE", "ABILITY_NONE", "ABILITY_NONE"],
+      "flee_rate": 0
+    },
+    "evolutions": []
+  },
+  "SPECIES_RAPIDMON-A": {
+    "personal_data": {
+      "base_stats": [104, 104, 104, 104, 104, 104],
+      "types": ["TYPE_FAIRY", "TYPE_STEEL"],
+      "catch_rate": 3,
+      "base_exp": 220,
+      "ev_yield": [0, 0, 0, 0, 0, 0],
+      "items": ["ITEM_NONE", "ITEM_NONE"],
+      "gender_ratio": 255,
+      "hatch_cycles": 1,
+      "base_friendship": 70,
+      "exp_growth": "GROWTH_MEDIUM_FAST",
+      "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
+      "abilities": ["ABILITY_NONE", "ABILITY_NONE", "ABILITY_NONE"],
+      "flee_rate": 0
+    },
+    "evolutions": []
+  },
+  "SPECIES_CHERUBIMON": {
+    "personal_data": {
+      "base_stats": [104, 104, 104, 104, 104, 104],
+      "types": ["TYPE_NORMAL", "TYPE_FAIRY"],
+      "catch_rate": 3,
+      "base_exp": 220,
+      "ev_yield": [0, 0, 0, 0, 0, 0],
+      "items": ["ITEM_NONE", "ITEM_NONE"],
+      "gender_ratio": 255,
+      "hatch_cycles": 1,
+      "base_friendship": 70,
+      "exp_growth": "GROWTH_MEDIUM_FAST",
+      "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
+      "abilities": ["ABILITY_NONE", "ABILITY_NONE", "ABILITY_NONE"],
+      "flee_rate": 0
+    },
+    "evolutions": []
+  },
+  "SPECIES_CHERUBIMON-D": {
+    "personal_data": {
+      "base_stats": [104, 104, 104, 104, 104, 104],
+      "types": ["TYPE_NORMAL", "TYPE_DARK"],
+      "catch_rate": 3,
+      "base_exp": 220,
+      "ev_yield": [0, 0, 0, 0, 0, 0],
+      "items": ["ITEM_NONE", "ITEM_NONE"],
+      "gender_ratio": 255,
+      "hatch_cycles": 1,
+      "base_friendship": 70,
+      "exp_growth": "GROWTH_MEDIUM_FAST",
+      "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
+      "abilities": ["ABILITY_NONE", "ABILITY_NONE", "ABILITY_NONE"],
+      "flee_rate": 0
+    },
+    "evolutions": []
+  },
+  "SPECIES_SABERLEOMON": {
+    "personal_data": {
+      "base_stats": [104, 104, 104, 104, 104, 104],
+      "types": ["TYPE_GROUND", "TYPE_ELECTRIC"],
+      "catch_rate": 3,
+      "base_exp": 220,
+      "ev_yield": [0, 0, 0, 0, 0, 0],
+      "items": ["ITEM_NONE", "ITEM_NONE"],
+      "gender_ratio": 255,
+      "hatch_cycles": 1,
+      "base_friendship": 70,
+      "exp_growth": "GROWTH_MEDIUM_FAST",
+      "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
+      "abilities": ["ABILITY_NONE", "ABILITY_NONE", "ABILITY_NONE"],
+      "flee_rate": 0
+    },
+    "evolutions": []
+  },
+  "SPECIES_BEELZEMON": {
+    "personal_data": {
+      "base_stats": [104, 104, 104, 104, 104, 104],
+      "types": ["TYPE_DARK", "TYPE_DARK"],
+      "catch_rate": 3,
+      "base_exp": 220,
+      "ev_yield": [0, 0, 0, 0, 0, 0],
+      "items": ["ITEM_NONE", "ITEM_NONE"],
+      "gender_ratio": 255,
+      "hatch_cycles": 1,
+      "base_friendship": 70,
+      "exp_growth": "GROWTH_MEDIUM_FAST",
+      "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
+      "abilities": ["ABILITY_NONE", "ABILITY_NONE", "ABILITY_NONE"],
+      "flee_rate": 0
+    },
+    "evolutions": []
+  },
+  "SPECIES_BLASTMON": {
+    "personal_data": {
+      "base_stats": [104, 104, 104, 104, 104, 104],
+      "types": ["TYPE_ROCK", "TYPE_ROCK"],
+      "catch_rate": 3,
+      "base_exp": 220,
+      "ev_yield": [0, 0, 0, 0, 0, 0],
+      "items": ["ITEM_NONE", "ITEM_NONE"],
+      "gender_ratio": 255,
+      "hatch_cycles": 1,
+      "base_friendship": 70,
+      "exp_growth": "GROWTH_MEDIUM_FAST",
+      "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
+      "abilities": ["ABILITY_NONE", "ABILITY_NONE", "ABILITY_NONE"],
+      "flee_rate": 0
+    },
+    "evolutions": []
+  },
+  "SPECIES_HEXEBLAUMON": {
+    "personal_data": {
+      "base_stats": [104, 104, 104, 104, 104, 104],
+      "types": ["TYPE_ICE", "TYPE_ICE"],
+      "catch_rate": 3,
+      "base_exp": 220,
+      "ev_yield": [0, 0, 0, 0, 0, 0],
+      "items": ["ITEM_NONE", "ITEM_NONE"],
+      "gender_ratio": 255,
+      "hatch_cycles": 1,
+      "base_friendship": 70,
+      "exp_growth": "GROWTH_MEDIUM_FAST",
+      "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
+      "abilities": ["ABILITY_NONE", "ABILITY_NONE", "ABILITY_NONE"],
+      "flee_rate": 0
+    },
+    "evolutions": []
+  },
+  "SPECIES_SHINEGREYMON": {
+    "personal_data": {
+      "base_stats": [104, 104, 104, 104, 104, 104],
+      "types": ["TYPE_FIRE", "TYPE_STEEL"],
+      "catch_rate": 3,
+      "base_exp": 220,
+      "ev_yield": [0, 0, 0, 0, 0, 0],
+      "items": ["ITEM_NONE", "ITEM_NONE"],
+      "gender_ratio": 255,
+      "hatch_cycles": 1,
+      "base_friendship": 70,
+      "exp_growth": "GROWTH_MEDIUM_FAST",
+      "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
+      "abilities": ["ABILITY_NONE", "ABILITY_NONE", "ABILITY_NONE"],
+      "flee_rate": 0
+    },
+    "evolutions": []
+  },
+  "SPECIES_MIRAGEGAOGAMON": {
+    "personal_data": {
+      "base_stats": [104, 104, 104, 104, 104, 104],
+      "types": ["TYPE_FIGHTING", "TYPE_FIGHTING"],
+      "catch_rate": 3,
+      "base_exp": 220,
+      "ev_yield": [0, 0, 0, 0, 0, 0],
+      "items": ["ITEM_NONE", "ITEM_NONE"],
+      "gender_ratio": 255,
+      "hatch_cycles": 1,
+      "base_friendship": 70,
+      "exp_growth": "GROWTH_MEDIUM_FAST",
+      "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
+      "abilities": ["ABILITY_NONE", "ABILITY_NONE", "ABILITY_NONE"],
+      "flee_rate": 0
+    },
+    "evolutions": []
+  },
+  "SPECIES_SHOUTMON-X7": {
+    "personal_data": {
+      "base_stats": [104, 104, 104, 104, 104, 104],
+      "types": ["TYPE_FIRE", "TYPE_DRAGON"],
+      "catch_rate": 3,
+      "base_exp": 220,
+      "ev_yield": [0, 0, 0, 0, 0, 0],
+      "items": ["ITEM_NONE", "ITEM_NONE"],
+      "gender_ratio": 255,
+      "hatch_cycles": 1,
+      "base_friendship": 70,
+      "exp_growth": "GROWTH_MEDIUM_FAST",
+      "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
+      "abilities": ["ABILITY_NONE", "ABILITY_NONE", "ABILITY_NONE"],
+      "flee_rate": 0
+    },
+    "evolutions": []
+  },
+  "SPECIES_ZEIGGREYMON": {
+    "personal_data": {
+      "base_stats": [104, 104, 104, 104, 104, 104],
+      "types": ["TYPE_DRAGON", "TYPE_STEEL"],
+      "catch_rate": 3,
+      "base_exp": 220,
+      "ev_yield": [0, 0, 0, 0, 0, 0],
+      "items": ["ITEM_NONE", "ITEM_NONE"],
+      "gender_ratio": 255,
+      "hatch_cycles": 1,
+      "base_friendship": 70,
+      "exp_growth": "GROWTH_MEDIUM_FAST",
+      "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
+      "abilities": ["ABILITY_NONE", "ABILITY_NONE", "ABILITY_NONE"],
+      "flee_rate": 0
+    },
+    "evolutions": []
+  },
+  "SPECIES_MILLENNIUMMON": {
+    "personal_data": {
+      "base_stats": [104, 104, 104, 104, 104, 104],
+      "types": ["TYPE_GHOST", "TYPE_STEEL"],
+      "catch_rate": 3,
+      "base_exp": 220,
+      "ev_yield": [0, 0, 0, 0, 0, 0],
+      "items": ["ITEM_NONE", "ITEM_NONE"],
+      "gender_ratio": 255,
+      "hatch_cycles": 1,
+      "base_friendship": 70,
+      "exp_growth": "GROWTH_MEDIUM_FAST",
+      "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
+      "abilities": ["ABILITY_NONE", "ABILITY_NONE", "ABILITY_NONE"],
+      "flee_rate": 0
+    },
+    "evolutions": []
+  },
+  "SPECIES_DINOMON": {
+    "personal_data": {
+      "base_stats": [104, 104, 104, 104, 104, 104],
+      "types": ["TYPE_FIRE", "TYPE_FIRE"],
+      "catch_rate": 3,
+      "base_exp": 220,
+      "ev_yield": [0, 0, 0, 0, 0, 0],
+      "items": ["ITEM_NONE", "ITEM_NONE"],
+      "gender_ratio": 255,
+      "hatch_cycles": 1,
+      "base_friendship": 70,
+      "exp_growth": "GROWTH_MEDIUM_FAST",
+      "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
+      "abilities": ["ABILITY_NONE", "ABILITY_NONE", "ABILITY_NONE"],
+      "flee_rate": 0
+    },
+    "evolutions": []
+  },
+  "SPECIES_INVISIMON": {
+    "personal_data": {
+      "base_stats": [104, 104, 104, 104, 104, 104],
+      "types": ["TYPE_PSYCHIC", "TYPE_FLYING"],
+      "catch_rate": 3,
+      "base_exp": 220,
+      "ev_yield": [0, 0, 0, 0, 0, 0],
+      "items": ["ITEM_NONE", "ITEM_NONE"],
+      "gender_ratio": 255,
+      "hatch_cycles": 1,
+      "base_friendship": 70,
+      "exp_growth": "GROWTH_MEDIUM_FAST",
+      "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
+      "abilities": ["ABILITY_NONE", "ABILITY_NONE", "ABILITY_NONE"],
+      "flee_rate": 0
+    },
+    "evolutions": []
+  },
+  "SPECIES_BIGUKKOMON": {
+    "personal_data": {
+      "base_stats": [104, 104, 104, 104, 104, 104],
+      "types": ["TYPE_WATER", "TYPE_PSYCHIC"],
+      "catch_rate": 3,
+      "base_exp": 220,
+      "ev_yield": [0, 0, 0, 0, 0, 0],
+      "items": ["ITEM_NONE", "ITEM_NONE"],
+      "gender_ratio": 255,
+      "hatch_cycles": 1,
+      "base_friendship": 70,
+      "exp_growth": "GROWTH_MEDIUM_FAST",
+      "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
+      "abilities": ["ABILITY_NONE", "ABILITY_NONE", "ABILITY_NONE"],
+      "flee_rate": 0
+    },
+    "evolutions": []
+  },
+  "SPECIES_CENDRILLMON": {
+    "personal_data": {
+      "base_stats": [104, 104, 104, 104, 104, 104],
+      "types": ["TYPE_FAIRY", "TYPE_FAIRY"],
+      "catch_rate": 3,
+      "base_exp": 220,
+      "ev_yield": [0, 0, 0, 0, 0, 0],
+      "items": ["ITEM_NONE", "ITEM_NONE"],
+      "gender_ratio": 255,
+      "hatch_cycles": 1,
+      "base_friendship": 70,
+      "exp_growth": "GROWTH_MEDIUM_FAST",
+      "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
+      "abilities": ["ABILITY_NONE", "ABILITY_NONE", "ABILITY_NONE"],
+      "flee_rate": 0
+    },
+    "evolutions": []
+  },
+  "SPECIES_NECROMON": {
+    "personal_data": {
+      "base_stats": [104, 104, 104, 104, 104, 104],
+      "types": ["TYPE_GHOST", "TYPE_GHOST"],
+      "catch_rate": 3,
+      "base_exp": 220,
+      "ev_yield": [0, 0, 0, 0, 0, 0],
+      "items": ["ITEM_NONE", "ITEM_NONE"],
+      "gender_ratio": 255,
+      "hatch_cycles": 1,
+      "base_friendship": 70,
+      "exp_growth": "GROWTH_MEDIUM_FAST",
+      "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
+      "abilities": ["ABILITY_NONE", "ABILITY_NONE", "ABILITY_NONE"],
+      "flee_rate": 0
+    },
+    "evolutions": []
+  },
+  "SPECIES_MEDUSAMON": {
+    "personal_data": {
+      "base_stats": [104, 104, 104, 104, 104, 104],
+      "types": ["TYPE_PSYCHIC", "TYPE_POISON"],
+      "catch_rate": 3,
+      "base_exp": 220,
+      "ev_yield": [0, 0, 0, 0, 0, 0],
+      "items": ["ITEM_NONE", "ITEM_NONE"],
+      "gender_ratio": 255,
+      "hatch_cycles": 1,
+      "base_friendship": 70,
+      "exp_growth": "GROWTH_MEDIUM_FAST",
+      "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
+      "abilities": ["ABILITY_NONE", "ABILITY_NONE", "ABILITY_NONE"],
+      "flee_rate": 0
+    },
+    "evolutions": []
+  },
+  "SPECIES_PYRAMIDIMON": {
+    "personal_data": {
+      "base_stats": [104, 104, 104, 104, 104, 104],
+      "types": ["TYPE_GROUND", "TYPE_GROUND"],
+      "catch_rate": 3,
+      "base_exp": 220,
+      "ev_yield": [0, 0, 0, 0, 0, 0],
+      "items": ["ITEM_NONE", "ITEM_NONE"],
+      "gender_ratio": 255,
+      "hatch_cycles": 1,
+      "base_friendship": 70,
+      "exp_growth": "GROWTH_MEDIUM_FAST",
+      "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
+      "abilities": ["ABILITY_NONE", "ABILITY_NONE", "ABILITY_NONE"],
+      "flee_rate": 0
+    },
+    "evolutions": []
+  },
+  "SPECIES_KINGWHAMON": {
+    "personal_data": {
+      "base_stats": [104, 104, 104, 104, 104, 104],
+      "types": ["TYPE_WATER", "TYPE_WATER"],
+      "catch_rate": 3,
+      "base_exp": 220,
+      "ev_yield": [0, 0, 0, 0, 0, 0],
+      "items": ["ITEM_NONE", "ITEM_NONE"],
+      "gender_ratio": 255,
+      "hatch_cycles": 1,
+      "base_friendship": 70,
+      "exp_growth": "GROWTH_MEDIUM_FAST",
+      "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
+      "abilities": ["ABILITY_NONE", "ABILITY_NONE", "ABILITY_NONE"],
+      "flee_rate": 0
+    },
+    "evolutions": []
+  },
+  "SPECIES_BLITZGREYMON": {
+    "personal_data": {
+      "base_stats": [104, 104, 104, 104, 104, 104],
+      "types": ["TYPE_STEEL", "TYPE_ELECTRIC"],
+      "catch_rate": 3,
+      "base_exp": 220,
+      "ev_yield": [0, 0, 0, 0, 0, 0],
+      "items": ["ITEM_NONE", "ITEM_NONE"],
+      "gender_ratio": 255,
+      "hatch_cycles": 1,
+      "base_friendship": 70,
+      "exp_growth": "GROWTH_MEDIUM_FAST",
+      "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
+      "abilities": ["ABILITY_NONE", "ABILITY_NONE", "ABILITY_NONE"],
+      "flee_rate": 0
+    },
+    "evolutions": []
+  },
+  "SPECIES_CRESGARURUMON": {
+    "personal_data": {
+      "base_stats": [104, 104, 104, 104, 104, 104],
+      "types": ["TYPE_FIGHTING", "TYPE_ICE"],
+      "catch_rate": 3,
+      "base_exp": 220,
+      "ev_yield": [0, 0, 0, 0, 0, 0],
+      "items": ["ITEM_NONE", "ITEM_NONE"],
+      "gender_ratio": 255,
+      "hatch_cycles": 1,
+      "base_friendship": 70,
+      "exp_growth": "GROWTH_MEDIUM_FAST",
+      "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
+      "abilities": ["ABILITY_NONE", "ABILITY_NONE", "ABILITY_NONE"],
+      "flee_rate": 0
+    },
+    "evolutions": []
+  },
+  "SPECIES_VENUSMON": {
+    "personal_data": {
+      "base_stats": [104, 104, 104, 104, 104, 104],
+      "types": ["TYPE_FAIRY", "TYPE_WATER"],
+      "catch_rate": 3,
+      "base_exp": 220,
+      "ev_yield": [0, 0, 0, 0, 0, 0],
+      "items": ["ITEM_NONE", "ITEM_NONE"],
+      "gender_ratio": 255,
+      "hatch_cycles": 1,
+      "base_friendship": 70,
+      "exp_growth": "GROWTH_MEDIUM_FAST",
+      "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
+      "abilities": ["ABILITY_NONE", "ABILITY_NONE", "ABILITY_NONE"],
+      "flee_rate": 0
+    },
+    "evolutions": []
+  },
+  "SPECIES_BANCHOLEOMON": {
+    "personal_data": {
+      "base_stats": [104, 104, 104, 104, 104, 104],
+      "types": ["TYPE_GROUND", "TYPE_FIGHTING"],
+      "catch_rate": 3,
+      "base_exp": 220,
+      "ev_yield": [0, 0, 0, 0, 0, 0],
+      "items": ["ITEM_NONE", "ITEM_NONE"],
+      "gender_ratio": 255,
+      "hatch_cycles": 1,
+      "base_friendship": 70,
+      "exp_growth": "GROWTH_MEDIUM_FAST",
+      "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
+      "abilities": ["ABILITY_NONE", "ABILITY_NONE", "ABILITY_NONE"],
+      "flee_rate": 0
+    },
+    "evolutions": []
+  },
+  "SPECIES_BANCHOLILLYMON": {
+    "personal_data": {
+      "base_stats": [104, 104, 104, 104, 104, 104],
+      "types": ["TYPE_GRASS", "TYPE_FIGHTING"],
+      "catch_rate": 3,
+      "base_exp": 220,
+      "ev_yield": [0, 0, 0, 0, 0, 0],
+      "items": ["ITEM_NONE", "ITEM_NONE"],
+      "gender_ratio": 255,
+      "hatch_cycles": 1,
+      "base_friendship": 70,
+      "exp_growth": "GROWTH_MEDIUM_FAST",
+      "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
+      "abilities": ["ABILITY_NONE", "ABILITY_NONE", "ABILITY_NONE"],
+      "flee_rate": 0
+    },
+    "evolutions": []
+  },
+  "SPECIES_BANCHOSTINGMON": {
+    "personal_data": {
+      "base_stats": [104, 104, 104, 104, 104, 104],
+      "types": ["TYPE_BUG", "TYPE_DARK"],
+      "catch_rate": 3,
+      "base_exp": 220,
+      "ev_yield": [0, 0, 0, 0, 0, 0],
+      "items": ["ITEM_NONE", "ITEM_NONE"],
+      "gender_ratio": 255,
+      "hatch_cycles": 1,
+      "base_friendship": 70,
+      "exp_growth": "GROWTH_MEDIUM_FAST",
+      "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
+      "abilities": ["ABILITY_NONE", "ABILITY_NONE", "ABILITY_NONE"],
+      "flee_rate": 0
+    },
+    "evolutions": []
+  },
+  "SPECIES_OMNIMON": {
+    "personal_data": {
+      "base_stats": [114, 114, 114, 114, 114, 114],
+      "types": ["TYPE_FIRE", "TYPE_ICE"],
+      "catch_rate": 3,
+      "base_exp": 255,
+      "ev_yield": [0, 0, 0, 0, 0, 0],
+      "items": ["ITEM_NONE", "ITEM_NONE"],
+      "gender_ratio": 255,
+      "hatch_cycles": 1,
+      "base_friendship": 70,
+      "exp_growth": "GROWTH_MEDIUM_FAST",
+      "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
+      "abilities": ["ABILITY_NONE", "ABILITY_NONE", "ABILITY_NONE"],
+      "flee_rate": 0
+    },
+    "evolutions": []
+  },
+  "SPECIES_OMNIMON-Z": {
+    "personal_data": {
+      "base_stats": [114, 114, 114, 114, 114, 114],
+      "types": ["TYPE_DARK", "TYPE_DARK"],
+      "catch_rate": 3,
+      "base_exp": 255,
+      "ev_yield": [0, 0, 0, 0, 0, 0],
+      "items": ["ITEM_NONE", "ITEM_NONE"],
+      "gender_ratio": 255,
+      "hatch_cycles": 1,
+      "base_friendship": 70,
+      "exp_growth": "GROWTH_MEDIUM_FAST",
+      "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
+      "abilities": ["ABILITY_NONE", "ABILITY_NONE", "ABILITY_NONE"],
+      "flee_rate": 0
+    },
+    "evolutions": []
+  },
+  "SPECIES_OMNIMON-S": {
+    "personal_data": {
+      "base_stats": [114, 114, 114, 114, 114, 114],
+      "types": ["TYPE_FIGHTING", "TYPE_STEEL"],
+      "catch_rate": 3,
+      "base_exp": 255,
+      "ev_yield": [0, 0, 0, 0, 0, 0],
+      "items": ["ITEM_NONE", "ITEM_NONE"],
+      "gender_ratio": 255,
+      "hatch_cycles": 1,
+      "base_friendship": 70,
+      "exp_growth": "GROWTH_MEDIUM_FAST",
+      "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
+      "abilities": ["ABILITY_NONE", "ABILITY_NONE", "ABILITY_NONE"],
+      "flee_rate": 0
+    },
+    "evolutions": []
+  },
+  "SPECIES_IMPERIALDRAMON-PM": {
+    "personal_data": {
+      "base_stats": [114, 114, 114, 114, 114, 114],
+      "types": ["TYPE_DRAGON", "TYPE_FAIRY"],
+      "catch_rate": 3,
+      "base_exp": 255,
+      "ev_yield": [0, 0, 0, 0, 0, 0],
+      "items": ["ITEM_NONE", "ITEM_NONE"],
+      "gender_ratio": 255,
+      "hatch_cycles": 1,
+      "base_friendship": 70,
+      "exp_growth": "GROWTH_MEDIUM_FAST",
+      "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
+      "abilities": ["ABILITY_NONE", "ABILITY_NONE", "ABILITY_NONE"],
+      "flee_rate": 0
+    },
+    "evolutions": []
+  },
+  "SPECIES_FANGLONGMON": {
+    "personal_data": {
+      "base_stats": [104, 104, 104, 104, 104, 104],
+      "types": ["TYPE_DRAGON", "TYPE_DRAGON"],
+      "catch_rate": 3,
+      "base_exp": 220,
+      "ev_yield": [0, 0, 0, 0, 0, 0],
+      "items": ["ITEM_NONE", "ITEM_NONE"],
+      "gender_ratio": 255,
+      "hatch_cycles": 1,
+      "base_friendship": 70,
+      "exp_growth": "GROWTH_MEDIUM_FAST",
+      "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
+      "abilities": ["ABILITY_NONE", "ABILITY_NONE", "ABILITY_NONE"],
+      "flee_rate": 0
+    },
+    "evolutions": []
+  },
+  "SPECIES_ROSEMON-BM": {
+    "personal_data": {
+      "base_stats": [114, 114, 114, 114, 114, 114],
+      "types": ["TYPE_GRASS", "TYPE_POISON"],
+      "catch_rate": 3,
+      "base_exp": 255,
+      "ev_yield": [0, 0, 0, 0, 0, 0],
+      "items": ["ITEM_NONE", "ITEM_NONE"],
+      "gender_ratio": 255,
+      "hatch_cycles": 1,
+      "base_friendship": 70,
+      "exp_growth": "GROWTH_MEDIUM_FAST",
+      "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
+      "abilities": ["ABILITY_NONE", "ABILITY_NONE", "ABILITY_NONE"],
+      "flee_rate": 0
+    },
+    "evolutions": []
+  },
+  "SPECIES_ZEEDMILLENNIUMMON": {
+    "personal_data": {
+      "base_stats": [114, 114, 114, 114, 114, 114],
+      "types": ["TYPE_GHOST", "TYPE_STEEL"],
+      "catch_rate": 3,
+      "base_exp": 255,
+      "ev_yield": [0, 0, 0, 0, 0, 0],
+      "items": ["ITEM_NONE", "ITEM_NONE"],
+      "gender_ratio": 255,
+      "hatch_cycles": 1,
+      "base_friendship": 70,
+      "exp_growth": "GROWTH_MEDIUM_FAST",
+      "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
+      "abilities": ["ABILITY_NONE", "ABILITY_NONE", "ABILITY_NONE"],
+      "flee_rate": 0
+    },
+    "evolutions": []
   }
 }

@@ -810,5 +810,310 @@
     "name_ko": "와루다몬",
     "image": "images/4_Perfect/warudamon.jpg",
     "generation": "완전체"
+  },
+  "SPECIES_WARGREYMON": {
+    "name_ko": "워그레이몬",
+    "image": "images/5_Ultimate/wargreymon.jpg",
+    "generation": "궁극체"
+  },
+  "SPECIES_METALGARURUMON": {
+    "name_ko": "메탈가루몬",
+    "image": "images/5_Ultimate/metalgarurumon.jpg",
+    "generation": "궁극체"
+  },
+  "SPECIES_HERCULESKABUTERIMON": {
+    "name_ko": "헤라클레스캅테리몬",
+    "image": "images/5_Ultimate/heraklekabuterimon.jpg",
+    "generation": "궁극체"
+  },
+  "SPECIES_PHOENIXMON": {
+    "name_ko": "페닉스몬",
+    "image": "images/5_Ultimate/hououmon.jpg",
+    "generation": "궁극체"
+  },
+  "SPECIES_VIKEMON": {
+    "name_ko": "바이킹몬",
+    "image": "images/5_Ultimate/vikemon.jpg",
+    "generation": "궁극체"
+  },
+  "SPECIES_SERAPHIMON": {
+    "name_ko": "세라피몬",
+    "image": "images/5_Ultimate/seraphimon.jpg",
+    "generation": "궁극체"
+  },
+  "SPECIES_OPHANIMON": {
+    "name_ko": "오파니몬",
+    "image": "images/5_Ultimate/ofanimon.jpg",
+    "generation": "궁극체"
+  },
+  "SPECIES_MAGNADRAMON": {
+    "name_ko": "홀리드라몬",
+    "image": "images/5_Ultimate/holydramon.jpg",
+    "generation": "궁극체"
+  },
+  "SPECIES_IMPERIALDRAMON-DM": {
+    "name_ko": "황제드라몬: 드래곤 모드",
+    "image": "images/5_Ultimate/imperialdramondragonmode.jpg",
+    "generation": "궁극체"
+  },
+  "SPECIES_IMPERIALDRAMON-FM": {
+    "name_ko": "황제드라몬: 파이터 모드",
+    "image": "images/5_Ultimate/imperialdramonfightermode.jpg",
+    "generation": "궁극체"
+  },
+  "SPECIES_MAGNAMON": {
+    "name_ko": "매그너몬",
+    "image": "images/6_etc/magnamon.jpg",
+    "generation": "아머체"
+  },
+  "SPECIES_VALKYTIMON": {
+    "name_ko": "발키리몬",
+    "image": "images/5_Ultimate/valkyrimon.jpg",
+    "generation": "궁극체"
+  },
+  "SPECIES_SLASHANGEMON": {
+    "name_ko": "슬래쉬엔젤몬",
+    "image": "images/5_Ultimate/slashangemon.jpg",
+    "generation": "궁극체"
+  },
+  "SPECIES_LILITHMON": {
+    "name_ko": "리리스몬",
+    "image": "images/5_Ultimate/lilithmon.jpg",
+    "generation": "궁극체"
+  },
+  "SPECIES_MASTEMON": {
+    "name_ko": "마스테몬",
+    "image": "images/5_Ultimate/mastemon.jpg",
+    "generation": "궁극체"
+  },
+  "SPECIES_METALSEADRAMON": {
+    "name_ko": "메탈시드라몬",
+    "image": "images/5_Ultimate/metalseadramon.jpg",
+    "generation": "궁극체"
+  },
+  "SPECIES_PUPPETMON": {
+    "name_ko": "피노키몬",
+    "image": "images/5_Ultimate/pinochimon.jpg",
+    "generation": "궁극체"
+  },
+  "SPECIES_MACHINEDRAMON": {
+    "name_ko": "파워드라몬",
+    "image": "images/5_Ultimate/mugendramon.jpg",
+    "generation": "궁극체"
+  },
+  "SPECIES_PIEDMON": {
+    "name_ko": "피에몬",
+    "image": "images/5_Ultimate/piemon.jpg",
+    "generation": "궁극체"
+  },
+  "SPECIES_SHINMONZAEMON": {
+    "name_ko": "신퍼펫몬",
+    "image": "images/5_Ultimate/shinmonzaemon.jpg",
+    "generation": "궁극체"
+  },
+  "SPECIES_METALETEMON": {
+    "name_ko": "메탈에테몬",
+    "image": "images/5_Ultimate/metaletemon.jpg",
+    "generation": "궁극체"
+  },
+  "SPECIES_VENOMMYOTISMON": {
+    "name_ko": "베놈묘티스몬",
+    "image": "images/5_Ultimate/venomvamdemon.jpg",
+    "generation": "궁극체"
+  },
+  "SPECIES_DONEDEVIMON": {
+    "name_ko": "단데블몬",
+    "image": "images/5_Ultimate/donedevimon.jpg",
+    "generation": "궁극체"
+  },
+  "SPECIES_DIABOROMON": {
+    "name_ko": "디아블로몬",
+    "image": "images/5_Ultimate/diablomon.jpg",
+    "generation": "궁극체"
+  },
+  "SPECIES_GALLANTMON": {
+    "name_ko": "듀크몬",
+    "image": "images/5_Ultimate/dukemon.jpg",
+    "generation": "궁극체"
+  },
+  "SPECIES_SAKUYAMON": {
+    "name_ko": "샤크라몬",
+    "image": "images/5_Ultimate/sakuyamon.jpg",
+    "generation": "궁극체"
+  },
+  "SPECIES_SAKUYAMON-MM": {
+    "name_ko": "샤크라몬: 무녀 모드",
+    "image": "images/5_Ultimate/sakuyamon_mikomode.jpg",
+    "generation": "궁극체"
+  },
+  "SPECIES_MEGAGARGOMON": {
+    "name_ko": "세인트가르고몬",
+    "image": "images/5_Ultimate/saintgalgomon.jpg",
+    "generation": "궁극체"
+  },
+  "SPECIES_RAPIDMON-A": {
+    "name_ko": "래피드몬 (아머체)",
+    "image": "images/6_etc/rapidmon_gold.jpg",
+    "generation": "아머체"
+  },
+  "SPECIES_CHERUBIMON": {
+    "name_ko": "케루비몬 (선)",
+    "image": "images/5_Ultimate/cherubimon.jpg",
+    "generation": "궁극체"
+  },
+  "SPECIES_CHERUBIMON-D": {
+    "name_ko": "케루비몬 (악)",
+    "image": "images/5_Ultimate/cherubimon-vice.jpg",
+    "generation": "궁극체"
+  },
+  "SPECIES_SABERLEOMON": {
+    "name_ko": "샤벨레오몬",
+    "image": "images/5_Ultimate/saberleomon.jpg",
+    "generation": "궁극체"
+  },
+  "SPECIES_BEELZEMON": {
+    "name_ko": "베르제브몬",
+    "image": "images/5_Ultimate/beelzebumon.jpg",
+    "generation": "궁극체"
+  },
+  "SPECIES_BLASTMON": {
+    "name_ko": "블래스트몬",
+    "image": "images/5_Ultimate/blastmon.jpg",
+    "generation": "궁극체"
+  },
+  "SPECIES_HEXEBLAUMON": {
+    "name_ko": "헥세블라우몬",
+    "image": "images/5_Ultimate/hexeblaumon.jpg",
+    "generation": "궁극체"
+  },
+  "SPECIES_SHINEGREYMON": {
+    "name_ko": "샤인그레이몬",
+    "image": "images/5_Ultimate/shinegreymon.jpg",
+    "generation": "궁극체"
+  },
+  "SPECIES_MIRAGEGAOGAMON": {
+    "name_ko": "미라쥬가오가몬",
+    "image": "images/5_Ultimate/miragegaogamon.jpg",
+    "generation": "궁극체"
+  },
+  "SPECIES_SHOUTMON-X7": {
+    "name_ko": "샤우트몬X7",
+    "image": "images/5_Ultimate/shoutmonx7.jpg",
+    "generation": "궁극체"
+  },
+  "SPECIES_ZEIGGREYMON": {
+    "name_ko": "지크그레이몬",
+    "image": "images/5_Ultimate/zekegreymon.jpg",
+    "generation": "궁극체"
+  },
+  "SPECIES_MILLENNIUMMON": {
+    "name_ko": "밀레니엄몬",
+    "image": "images/5_Ultimate/millenniumon.jpg",
+    "generation": "궁극체"
+  },
+  "SPECIES_DINOMON": {
+    "name_ko": "다이너몬",
+    "image": "images/5_Ultimate/dinomon.jpg",
+    "generation": "궁극체"
+  },
+  "SPECIES_INVISIMON": {
+    "name_ko": "인비지몬",
+    "image": "images/5_Ultimate/invisimon.jpg",
+    "generation": "궁극체"
+  },
+  "SPECIES_BIGUKKOMON": {
+    "name_ko": "빅웃코몬",
+    "image": "images/5_Ultimate/bigukkomon.jpg",
+    "generation": "궁극체"
+  },
+  "SPECIES_CENDRILLMON": {
+    "name_ko": "상드리몬",
+    "image": "images/5_Ultimate/cendrillmon.jpg",
+    "generation": "궁극체"
+  },
+  "SPECIES_NECROMON": {
+    "name_ko": "네크로몬",
+    "image": "images/5_Ultimate/necromon.jpg",
+    "generation": "궁극체"
+  },
+  "SPECIES_MEDUSAMON": {
+    "name_ko": "메두사몬",
+    "image": "images/5_Ultimate/medusamon.jpg",
+    "generation": "궁극체"
+  },
+  "SPECIES_PYRAMIDIMON": {
+    "name_ko": "피라미디몬",
+    "image": "images/5_Ultimate/pyramidimon.jpg",
+    "generation": "궁극체"
+  },
+  "SPECIES_KINGWHAMON": {
+    "name_ko": "킹고래몬",
+    "image": "images/5_Ultimate/kingwhamon.jpg",
+    "generation": "궁극체"
+  },
+  "SPECIES_BLITZGREYMON": {
+    "name_ko": "블리츠그레이몬",
+    "image": "images/5_Ultimate/blitzgreymon.jpg",
+    "generation": "궁극체"
+  },
+  "SPECIES_CRESGARURUMON": {
+    "name_ko": "크레스가루몬",
+    "image": "images/5_Ultimate/cresgarurumon.jpg",
+    "generation": "궁극체"
+  },
+  "SPECIES_VENUSMON": {
+    "name_ko": "베누스몬",
+    "image": "images/5_Ultimate/venusmon.jpg",
+    "generation": "궁극체"
+  },
+  "SPECIES_BANCHOLEOMON": {
+    "name_ko": "반쵸레오몬",
+    "image": "images/5_Ultimate/bancholeomon.jpg",
+    "generation": "궁극체"
+  },
+  "SPECIES_BANCHOLILLYMON": {
+    "name_ko": "반쵸릴리몬",
+    "image": "images/5_Ultimate/bancholilimon.jpg",
+    "generation": "궁극체"
+  },
+  "SPECIES_BANCHOSTINGMON": {
+    "name_ko": "반쵸스팅몬",
+    "image": "images/5_Ultimate/banchostingmon.jpg",
+    "generation": "궁극체"
+  },
+  "SPECIES_OMNIMON": {
+    "name_ko": "오메가몬",
+    "image": "images/6_etc/omegamon.jpg",
+    "generation": "궁극체"
+  },
+  "SPECIES_OMNIMON-Z": {
+    "name_ko": "오메가몬 즈왈트",
+    "image": "images/6_etc/omegamon_zwart.jpg",
+    "generation": "궁극체"
+  },
+  "SPECIES_OMNIMON-S": {
+    "name_ko": "오메가몬 alter-S",
+    "image": "images/6_etc/omegamon-alter-s.jpg",
+    "generation": "궁극체"
+  },
+  "SPECIES_IMPERIALDRAMON-PM": {
+    "name_ko": "황제드라몬: 팔라딘 모드",
+    "image": "images/6_etc/imperialdramonpaladinmode.jpg",
+    "generation": "궁극체"
+  },
+  "SPECIES_FANGLONGMON": {
+    "name_ko": "황룡몬",
+    "image": "images/5_Ultimate/huanglongmon.jpg",
+    "generation": "궁극체"
+  },
+  "SPECIES_ROSEMON-BM": {
+    "name_ko": "로제몬: 버스트 모드",
+    "image": "images/6_etc/rosemonburstmode.jpg",
+    "generation": "궁극체"
+  },
+  "SPECIES_ZEEDMILLENNIUMMON": {
+    "name_ko": "지드밀레니엄몬",
+    "image": "images/6_etc/zeedmillenniumon.jpg",
+    "generation": "궁극체"
   }
 }
