@@ -725,6 +725,11 @@
     "image": "images/4_Perfect/megaseadramon.jpg",
     "generation": "완전체"
   },
+  "SPECIES_CHERRYMON": {
+    "name_ko": "쥬레이몬",
+    "image": "images/4_Perfect/jyureimon.jpg",
+    "generation": "완전체"
+  },
   "SPECIES_MONZAEMON": {
     "name_ko": "퍼펫몬",
     "image": "images/4_Perfect/monzaemon.jpg",
