@@ -286,14 +286,14 @@
     "image": "images/2_Child/shoutmon.jpg",
     "generation": "성장기"
   },
-  "SPECIES_STARMONS": {
-    "name_ko": "스타몬즈",
-    "image": "images/2_Child/starmons.jpg",
-    "generation": "성장기"
-  },
   "SPECIES_SPARROWMON": {
     "name_ko": "스패로우몬",
     "image": "images/2_Child/sparrowmon.jpg",
+    "generation": "성장기"
+  },
+  "SPECIES_STARMONS": {
+    "name_ko": "스타몬즈",
+    "image": "images/2_Child/starmons.jpg",
     "generation": "성장기"
   },
   "SPECIES_GAMMAMON": {
@@ -551,6 +551,11 @@
     "image": "images/3_Adult/fangmon.jpg",
     "generation": "성숙기"
   },
+  "SPECIES_OGREMON": {
+    "name_ko": "우가몬",
+    "image": "images/3_Adult/orgemon.jpg",
+    "generation": "성숙기"
+  },
   "SPECIES_BURGAMON_AD": {
     "name_ko": "버거몬(성숙기)",
     "image": "images/3_Adult/burgamon_ad.jpg",
@@ -564,6 +569,11 @@
   "SPECIES_GEOGREYMON": {
     "name_ko": "지오그레이몬",
     "image": "images/3_Adult/geogreymon.jpg",
+    "generation": "성숙기"
+  },
+  "SPECIES_SUNFLOWMON": {
+    "name_ko": "해바라기몬",
+    "image": "images/3_Adult/sunflowmon.jpg",
     "generation": "성숙기"
   },
   "SPECIES_SHOUTMON-X2": {
@@ -604,6 +614,10 @@
   "SPECIES_TYRANNOMON": {
     "name_ko": "티라노몬",
     "image": "images/3_Adult/tyranomon.jpg",
+    "generation": "성숙기"
+  },"SPECIES_STARMON": {
+    "name_ko": "스타몬",
+    "image": "images/3_Adult/starmon.jpg",
     "generation": "성숙기"
   },
   "SPECIES_BETELGAMMAMON": {
@@ -771,6 +785,11 @@
     "image": "images/4_Perfect/digitamamon.jpg",
     "generation": "완전체"
   },
+  "SPECIES_LUCEMON-CM": {
+    "name_ko": "루체몬: 폴다운 모드",
+    "image": "images/4_Perfect/rucemonfalldownmode.jpg",
+    "generation": "완전체"
+  },
   "SPECIES_CHO-HAKKAIMON": {
     "name_ko": "초핫카이몬",
     "image": "images/4_Perfect/chohakkaimon.jpg",
@@ -804,6 +823,16 @@
   "SPECIES_WHAMON": {
     "name_ko": "고래몬",
     "image": "images/4_Perfect/whamon.jpg",
+    "generation": "완전체"
+  },
+  "SPECIES_TRICERAMON": {
+    "name_ko": "트리케라몬",
+    "image": "images/4_Perfect/triceramon.jpg",
+    "generation": "완전체"
+  },
+  "SPECIES_SUPERSTARMON": {
+    "name_ko": "슈퍼스타몬",
+    "image": "images/4_Perfect/superstarmon.jpg",
     "generation": "완전체"
   },
   "SPECIES_WARUDAMON": {
@@ -1051,6 +1080,11 @@
     "image": "images/5_Ultimate/kingwhamon.jpg",
     "generation": "궁극체"
   },
+  "SPECIES_BEELSTARMON": {
+    "name_ko": "베르스타몬",
+    "image": "images/5_Ultimate/beelstarmon.jpg",
+    "generation": "궁극체"
+  },
   "SPECIES_BLITZGREYMON": {
     "name_ko": "블리츠그레이몬",
     "image": "images/5_Ultimate/blitzgreymon.jpg",
@@ -1109,6 +1143,11 @@
   "SPECIES_ROSEMON-BM": {
     "name_ko": "로제몬: 버스트 모드",
     "image": "images/6_etc/rosemonburstmode.jpg",
+    "generation": "궁극체"
+  },
+  "SPECIES_LUCEMON-SM": {
+    "name_ko": "루체몬: 사탄 모드",
+    "image": "images/6_etc/lucemonsatanmode.jpg",
     "generation": "궁극체"
   },
   "SPECIES_ZEEDMILLENNIUMMON": {
