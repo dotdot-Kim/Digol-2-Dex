@@ -427,7 +427,7 @@
     "generation": "성숙기"
   },
   "SPECIES_ANKYLOMON": {
-    "name_ko": "안킬로몬",
+    "name_ko": "황금아르마몬",
     "image": "images/3_Adult/ankylomon.jpg",
     "generation": "성숙기"
   },
@@ -546,9 +546,9 @@
     "image": "images/3_Adult/guardromon.jpg",
     "generation": "성숙기"
   },
-  "SPECIES_FANGMON": {
-    "name_ko": "팡그몬",
-    "image": "images/3_Adult/fangmon.jpg",
+  "SPECIES_SANGLOUPMON": {
+    "name_ko": "상굴몬",
+    "image": "images/3_Adult/sangloupmon.jpg",
     "generation": "성숙기"
   },
   "SPECIES_OGREMON": {
@@ -561,7 +561,7 @@
     "image": "images/3_Adult/burgamon_ad.jpg",
     "generation": "성숙기"
   },
-  "SPECIES_HI-COMMANDRAMON": {
+  "SPECIES_HI_COMMANDRAMON": {
     "name_ko": "하이코만드라몬",
     "image": "images/3_Adult/hi-commandramon.jpg",
     "generation": "성숙기"
@@ -576,17 +576,17 @@
     "image": "images/3_Adult/sunflowmon.jpg",
     "generation": "성숙기"
   },
-  "SPECIES_SHOUTMON-X2": {
+  "SPECIES_SHOUTMON_X2": {
     "name_ko": "샤우트몬X2",
     "image": "images/3_Adult/shoutmonx2.jpg",
     "generation": "성숙기"
   },
-  "SPECIES_SHOUTMON-X3": {
+  "SPECIES_SHOUTMON_X3": {
     "name_ko": "샤우트몬X3",
     "image": "images/3_Adult/shoutmonx3.jpg",
     "generation": "성숙기"
   },
-  "SPECIES_SHOUTMON-X4": {
+  "SPECIES_SHOUTMON_X4": {
     "name_ko": "샤우트몬X4",
     "image": "images/3_Adult/shoutmonx4.jpg",
     "generation": "성숙기"
@@ -606,7 +606,7 @@
     "image": "images/3_Adult/mailbirdramon.jpg",
     "generation": "성숙기"
   },
-  "SPECIES_GREYMON-C": {
+  "SPECIES_GREYMON_C": {
     "name_ko": "그레이몬(C)",
     "image": "images/3_Adult/greymon_c.jpg",
     "generation": "성숙기"
@@ -650,12 +650,17 @@
     "image": "images/3_Adult/soulmon.jpg",
     "generation": "성숙기"
   },
+  "SPECIES_FRIGIMON": {
+    "name_ko": "프리지몬",
+    "image": "images/3_Adult/yukidarumon.jpg",
+    "generation": "성숙기"
+  },
   "SPECIES_METALGREYMON": {
     "name_ko": "메탈그레이몬",
     "image": "images/4_Perfect/metalgreymon.jpg",
     "generation": "완전체"
   },
-  "SPECIES_METALGREYMON-B": {
+  "SPECIES_METALGREYMON_B": {
     "name_ko": "메탈그레이몬(청)",
     "image": "images/4_Perfect/metalgreymon-b.jpg",
     "generation": "완전체"
@@ -790,12 +795,12 @@
     "image": "images/4_Perfect/digitamamon.jpg",
     "generation": "완전체"
   },
-  "SPECIES_LUCEMON-CM": {
+  "SPECIES_LUCEMON_CM": {
     "name_ko": "루체몬: 폴다운 모드",
     "image": "images/4_Perfect/rucemonfalldownmode.jpg",
     "generation": "완전체"
   },
-  "SPECIES_CHO-HAKKAIMON": {
+  "SPECIES_CHO_HAKKAIMON": {
     "name_ko": "초핫카이몬",
     "image": "images/4_Perfect/chohakkaimon.jpg",
     "generation": "완전체"
@@ -805,12 +810,12 @@
     "image": "images/4_Perfect/omegashoutmon.jpg",
     "generation": "완전체"
   },
-  "SPECIES_SHOUTMON-X5": {
+  "SPECIES_SHOUTMON_X5": {
     "name_ko": "샤우드몬X5",
     "image": "images/4_Perfect/shoutmonx5.jpg",
     "generation": "완전체"
   },
-  "SPECIES_METALGREYMON-C": {
+  "SPECIES_METALGREYMON_C": {
     "name_ko": "메탈그레이몬(C)",
     "image": "images/4_Perfect/metalgreymon-c.jpg",
     "generation": "완전체"
@@ -865,6 +870,11 @@
     "image": "images/5_Ultimate/hououmon.jpg",
     "generation": "궁극체"
   },
+  "SPECIES_ROSEMON": {
+    "name_ko": "로제몬",
+    "image": "images/5_Ultimate/rosemon.jpg",
+    "generation": "궁극체"
+  },
   "SPECIES_VIKEMON": {
     "name_ko": "바이킹몬",
     "image": "images/5_Ultimate/vikemon.jpg",
@@ -885,12 +895,12 @@
     "image": "images/5_Ultimate/holydramon.jpg",
     "generation": "궁극체"
   },
-  "SPECIES_IMPERIALDRAMON-DM": {
+  "SPECIES_IMPERIALDRAMON_DM": {
     "name_ko": "황제드라몬: 드래곤 모드",
     "image": "images/5_Ultimate/imperialdramondragonmode.jpg",
     "generation": "궁극체"
   },
-  "SPECIES_IMPERIALDRAMON-FM": {
+  "SPECIES_IMPERIALDRAMON_FM": {
     "name_ko": "황제드라몬: 파이터 모드",
     "image": "images/5_Ultimate/imperialdramonfightermode.jpg",
     "generation": "궁극체"
@@ -975,7 +985,7 @@
     "image": "images/5_Ultimate/sakuyamon.jpg",
     "generation": "궁극체"
   },
-  "SPECIES_SAKUYAMON-MM": {
+  "SPECIES_SAKUYAMON_MM": {
     "name_ko": "샤크라몬: 무녀 모드",
     "image": "images/5_Ultimate/sakuyamon_mikomode.jpg",
     "generation": "궁극체"
@@ -985,7 +995,7 @@
     "image": "images/5_Ultimate/saintgalgomon.jpg",
     "generation": "궁극체"
   },
-  "SPECIES_RAPIDMON-A": {
+  "SPECIES_RAPIDMON_A": {
     "name_ko": "래피드몬 (아머체)",
     "image": "images/6_etc/rapidmon_gold.jpg",
     "generation": "아머체"
@@ -995,7 +1005,7 @@
     "image": "images/5_Ultimate/cherubimon.jpg",
     "generation": "궁극체"
   },
-  "SPECIES_CHERUBIMON-D": {
+  "SPECIES_CHERUBIMON_D": {
     "name_ko": "케루비몬 (악)",
     "image": "images/5_Ultimate/cherubimon-vice.jpg",
     "generation": "궁극체"
@@ -1030,7 +1040,7 @@
     "image": "images/5_Ultimate/miragegaogamon.jpg",
     "generation": "궁극체"
   },
-  "SPECIES_SHOUTMON-X7": {
+  "SPECIES_SHOUTMON_X7": {
     "name_ko": "샤우트몬X7",
     "image": "images/5_Ultimate/shoutmonx7.jpg",
     "generation": "궁극체"
@@ -1125,17 +1135,17 @@
     "image": "images/6_etc/omegamon.jpg",
     "generation": "궁극체"
   },
-  "SPECIES_OMNIMON-Z": {
+  "SPECIES_OMNIMON_Z": {
     "name_ko": "오메가몬 즈왈트",
     "image": "images/6_etc/omegamon_zwart.jpg",
     "generation": "궁극체"
   },
-  "SPECIES_OMNIMON-S": {
+  "SPECIES_OMNIMON_S": {
     "name_ko": "오메가몬 alter-S",
     "image": "images/6_etc/omegamon-alter-s.jpg",
     "generation": "궁극체"
   },
-  "SPECIES_IMPERIALDRAMON-PM": {
+  "SPECIES_IMPERIALDRAMON_PM": {
     "name_ko": "황제드라몬: 팔라딘 모드",
     "image": "images/6_etc/imperialdramonpaladinmode.jpg",
     "generation": "궁극체"
@@ -1145,12 +1155,12 @@
     "image": "images/5_Ultimate/huanglongmon.jpg",
     "generation": "궁극체"
   },
-  "SPECIES_ROSEMON-BM": {
+  "SPECIES_ROSEMON_BM": {
     "name_ko": "로제몬: 버스트 모드",
     "image": "images/6_etc/rosemonburstmode.jpg",
     "generation": "궁극체"
   },
-  "SPECIES_LUCEMON-SM": {
+  "SPECIES_LUCEMON_SM": {
     "name_ko": "루체몬: 사탄 모드",
     "image": "images/6_etc/lucemonsatanmode.jpg",
     "generation": "궁극체"

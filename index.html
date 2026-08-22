@@ -448,22 +448,43 @@
         </div>
       `;
 
-      function getEvoText(evo) {
-        const method = evo.method;
-        const cond = evo.condition;
-        let template = (dictDB.evo_methods && dictDB.evo_methods[method]) 
-                       ? dictDB.evo_methods[method] 
-                       : `${method} (${cond})`;
+      function getParticle(word, type) {
+        const last = String(word).trim().slice(-1);
+        const code = last.charCodeAt(0);
+        const hasBatchim = code >= 0xAC00 && code <= 0xD7A3
+          ? (code - 0xAC00) % 28 !== 0
+          : false;
 
-        template = template.replace("{cond}", cond);
-        if (template.includes("{move}")) {
-          const moveName = (dictDB.moves && dictDB.moves[cond]) ? dictDB.moves[cond] : String(cond).replace("MOVE_", "");
-          template = template.replace("{move}", moveName);
+        if (type === "을를") return hasBatchim ? "을" : "를";
+        if (type === "이가") return hasBatchim ? "이" : "가";
+        return "";
+      }
+
+      function getEvoText(evo) {
+        const cond = evo.condition;
+
+        let template = dictDB.evo_methods?.[evo.method]
+          || `${evo.method} (${cond})`;
+
+        let condText = cond;
+
+        if (typeof cond === "string") {
+          if (cond.startsWith("SPECIES_"))
+            condText = webDB[cond]?.name_ko || cond.replace("SPECIES_", "");
+
+          else if (cond.startsWith("MOVE_"))
+            condText = dictDB.moves?.[cond] || cond.replace("MOVE_", "");
+
+          else if (cond.startsWith("ITEM_"))
+            condText = dictDB.items?.[cond] || cond.replace("ITEM_", "");
         }
-        if (template.includes("{item}")) {
-          const itemName = (dictDB.items && dictDB.items[cond]) ? dictDB.items[cond] : String(cond).replace("ITEM_", "");
-          template = template.replace("{item}", itemName);
-        }
+
+        template = template.replace("{cond}", condText);
+        template = template.replace("{move}", condText);
+        template = template.replace("{item}", condText);
+        template = template.replace("{을를}", getParticle(condText, "을를"));
+        template = template.replace("{이가}", getParticle(condText, "이가"));
+
         return template;
       }
 
