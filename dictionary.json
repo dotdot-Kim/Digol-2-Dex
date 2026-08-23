@@ -270,6 +270,7 @@
     "ITEM_DUBIOUS_DISC": "괴상한패치",
     "ITEM_METAL_COAT": "금속코트", 
     "ITEM_KINGS_ROCK ": "왕의징표석",
+    "ITEM_DRAGON_SCALE": "용의비늘",
     "ITEM_LUCK_INCENSE": "행운의향로",
     "ITEM_DIGICORE": "디지코어"
   },
@@ -346,6 +347,27 @@
     "MOVE_HEAT_CRASH": "히트스탬프",
     "MOVE_FLAM_CHARGE": "니트로차지",
     "MOVE_SHADOW_PUNCH": "섀도펀치",
-    "MOVE_ICY_WIND": "얼어붙은바람"
+    "MOVE_ICY_WIND": "얼어붙은바람",
+    "MOVE_SPARK": "스파크",
+    "MOVE_IRON_HEAD": "아이언헤드",
+    "MOVE_SKY_UPPERCUT": "스카이어퍼",
+    "MOVE_AURA_SPHERE": "파동탄",
+    "MOVE_SEED_BOMB": "씨폭탄",
+    "MOVE_WATER_SPOUT": "해수스파우팅",
+    "MOVE_ALLURING_VOICE": "매혹의보이스",
+    "MOVE_THROAT_CHOP": "지옥찌르기",
+    "MOVE_DRAGON_HAMMER": "드래곤해머",
+    "MOVE_THUNDERBOLT": "10만볼트",
+    "MOVE_FLASH_CANNON": "러스터캐논",
+    "MOVE_DRAINING_KISS": "드레인키스",
+    "MOVE_HYPER_VOICE": "하이퍼보이스",
+    "MOVE_NIGHT_DAZE": "나이트버스트",
+    "MOVE_SKULL_BASH": "로켓박치기",
+    "MOVE_FIRE_BLAST": "불대문자",
+    "MOVE_ICE_PUNCH": "냉동펀치",
+    "MOVE_ZEN_HEADBUTT": "사념의박치기",
+    "MOVE_RISING_VOLTAGE": "라이징볼트",
+    "MOVE_DRAGON_CLAW": "드래곤클로",
+    "MOVE_HIGH_HORSEPOWER": "10만마력"
   }
 }

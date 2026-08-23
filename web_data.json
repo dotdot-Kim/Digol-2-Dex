@@ -441,6 +441,11 @@
     "image": "images/3_Adult/seadramon.jpg",
     "generation": "성숙기"
   },
+  "SPECIES_GUARDROMON": {
+    "name_ko": "가드로몬",
+    "image": "images/3_Adult/guardromon.jpg",
+    "generation": "성숙기"
+  },
   "SPECIES_NUMEMON": {
     "name_ko": "워매몬",
     "image": "images/3_Adult/numemon.jpg",
@@ -541,9 +546,9 @@
     "image": "images/3_Adult/icemon.jpg",
     "generation": "성숙기"
   },
-  "SPECIES_GUARDROMON": {
-    "name_ko": "가드로몬",
-    "image": "images/3_Adult/guardromon.jpg",
+  "SPECIES_THUNDERMON": {
+    "name_ko": "번개콩알몬",
+    "image": "images/3_Adult/thunderballmon.jpg",
     "generation": "성숙기"
   },
   "SPECIES_SANGLOUPMON": {
@@ -735,6 +740,11 @@
     "image": "images/4_Perfect/jyureimon.jpg",
     "generation": "완전체"
   },
+  "SPECIES_METALMAMEMON": {
+    "name_ko": "메탈콩알몬",
+    "image": "images/4_Perfect/metalmamemon.jpg",
+    "generation": "완전체"
+  },
   "SPECIES_MONZAEMON": {
     "name_ko": "퍼펫몬",
     "image": "images/4_Perfect/monzaemon.jpg",
@@ -845,9 +855,19 @@
     "image": "images/4_Perfect/superstarmon.jpg",
     "generation": "완전체"
   },
+  "SPECIES_PARROTMON": {
+    "name_ko": "패롯몬",
+    "image": "images/4_Perfect/parrotmon.jpg",
+    "generation": "완전체"
+  },
   "SPECIES_WARUDAMON": {
     "name_ko": "와루다몬",
     "image": "images/4_Perfect/warudamon.jpg",
+    "generation": "완전체"
+  },
+  "SPECIES_MAMMOTHMON": {
+    "name_ko": "맘몬",
+    "image": "images/4_Perfect/mammon.jpg",
     "generation": "완전체"
   },
   "SPECIES_WARGREYMON": {
@@ -1098,6 +1118,11 @@
   "SPECIES_BEELSTARMON": {
     "name_ko": "베르스타몬",
     "image": "images/5_Ultimate/beelstarmon.jpg",
+    "generation": "궁극체"
+  },
+  "SPECIES_SKULLMAMMOTHMON": {
+    "name_ko": "스컬맘몬",
+    "image": "images/5_Ultimate/skullmammon.jpg",
     "generation": "궁극체"
   },
   "SPECIES_BLITZGREYMON": {

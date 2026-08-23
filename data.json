@@ -959,7 +959,6 @@
       "flee_rate": 0
     },
     "evolutions": [
-      { "method": "EVO_HAS_MOVE", "condition": "MOVE_FORCE_PALM", "target": "SPECIES_LEOMON" },
       { "method": "EVO_HAS_MOVE", "condition": "MOVE_ACCELEROCK", "target": "SPECIES_DORULUMON" },
       { "method": "EVO_HAS_MOVE", "condition": "MOVE_ICE_FANG", "target": "SPECIES_GARURUMON" }
     ]
@@ -982,6 +981,7 @@
     },
     "evolutions": [
       { "method": "EVO_HAS_MOVE", "condition": "MOVE_FORCE_PALM", "target": "SPECIES_LEOMON" },
+      { "method": "EVO_HAS_MOVE", "condition": "MOVE_SPARK", "target": "SPECIES_THUNDERMON" },
       { "method": "EVO_HAS_MOVE", "condition": "MOVE_INCINERATE", "target": "SPECIES_TYRANNOMON" }
     ]
   },
@@ -1047,6 +1047,7 @@
     },
     "evolutions": [
       { "method": "EVO_HAS_MOVE", "condition": "MOVE_MAGNET_BOMB", "target": "SPECIES_GUARDROMON" },
+      { "method": "EVO_HAS_MOVE", "condition": "MOVE_SPARK", "target": "SPECIES_THUNDERMON" },
       { "method": "EVO_HAS_MOVE", "condition": "MOVE_HORN_ATTACK", "target": "SPECIES_BALLISTAMON" }
     ]
   },
@@ -1299,8 +1300,8 @@
       "flee_rate": 0
     },
     "evolutions": [
-      { "method": "EVO_LEVEL_NINJASK", "condition": 18, "target": "SPECIES_BETELGAMMAMON" },
-      { "method": "EVO_LEVEL_SHEDINJA", "condition": 18, "target": "SPECIES_GULUSGAMMAMON" }
+      { "method": "EVO_LEVEL_NINJASK", "condition": 20, "target": "SPECIES_BETELGAMMAMON" },
+      { "method": "EVO_LEVEL_SHEDINJA", "condition": 20, "target": "SPECIES_GULUSGAMMAMON" }
     ]
   },
   "SPECIES_ANGORAMON": {
@@ -1341,7 +1342,8 @@
       "flee_rate": 0
     },
     "evolutions": [
-      { "method": "EVO_HAS_MOVE", "condition": "MOVE_SHOCK_WAVE", "target": "SPECIES_TESLAJELLYMON" }
+      { "method": "EVO_HAS_MOVE", "condition": "MOVE_SHOCK_WAVE", "target": "SPECIES_TESLAJELLYMON" },
+      { "method": "EVO_HAS_MOVE", "condition": "MOVE_SPARK", "target": "SPECIES_THUNDERMON" }
     ]
   },
   "SPECIES_ESPIMON": {
@@ -1628,7 +1630,10 @@
       "flee_rate": 0
     },
     "evolutions": [
-      { "method": "EVO_LEVEL", "condition": 0, "target": "SPECIES_NONE" }
+      { "method": "EVO_HAS_MOVE", "condition": "MOVE_IRON_HEAD", "target": "SPECIES_METALGREYMON" },
+      { "method": "EVO_STONE", "condition": "ITEM_METAL_COAT", "target": "SPECIES_METALGREYMON_B" },
+      { "method": "EVO_STONE", "condition": "ITEM_DUSK_STONE", "target": "SPECIES_SKULLGREYMON" },
+      { "method": "EVO_STONE", "condition": "ITEM_DUBIOUS_DISC", "target": "SPECIES_KIMERAMON" }
     ]
   },
   "SPECIES_GARURUMON": {
@@ -1648,7 +1653,9 @@
       "flee_rate": 0
     },
     "evolutions": [
-      { "method": "EVO_LEVEL", "condition": 0, "target": "SPECIES_NONE" }
+      { "method": "EVO_HAS_MOVE", "condition": "MOVE_JUMP_KICK", "target": "SPECIES_WEREGARURUMON" },
+      { "method": "EVO_STONE", "condition": "ITEM_METAL_COAT", "target": "SPECIES_METALMAMEMON" },
+      { "method": "EVO_STONE", "condition": "ITEM_DUBIOUS_DISC", "target": "SPECIES_KIMERAMON" }
     ]
   },
   "SPECIES_KABUTERIMON": {
@@ -1668,7 +1675,8 @@
       "flee_rate": 0
     },
     "evolutions": [
-      { "method": "EVO_LEVEL", "condition": 0, "target": "SPECIES_NONE" }
+      { "method": "EVO_HAS_MOVE", "condition": "MOVE_SMART_STRIKE", "target": "SPECIES_MEGAKABUTERIMON" },
+      { "method": "EVO_STONE", "condition": "ITEM_DUBIOUS_DISC", "target": "SPECIES_KIMERAMON" }
     ]
   },
   "SPECIES_BIRDRAMON": {
@@ -1688,7 +1696,8 @@
       "flee_rate": 0
     },
     "evolutions": [
-      { "method": "EVO_LEVEL", "condition": 0, "target": "SPECIES_NONE" }
+      { "method": "EVO_HAS_MOVE", "condition": "MOVE_SKY_UPPERCUT", "target": "SPECIES_GARUDAMON" },
+      { "method": "EVO_STONE", "condition": "MOVE_CHATTER", "target": "SPECIES_PARROTMON" }
     ]
   },
   "SPECIES_TOGEMON": {
@@ -1708,7 +1717,8 @@
       "flee_rate": 0
     },
     "evolutions": [
-      { "method": "EVO_LEVEL", "condition": 0, "target": "SPECIES_NONE" }
+      { "method": "EVO_HAS_MOVE", "condition": "MOVE_AURA_SPHERE", "target": "SPECIES_LILLYMON" },
+      { "method": "EVO_HAS_MOVE", "condition": "MOVE_SEED_BOMB", "target": "SPECIES_CHERRYMON" }
     ]
   },
   "SPECIES_IKKAKUMON": {
@@ -1728,7 +1738,8 @@
       "flee_rate": 0
     },
     "evolutions": [
-      { "method": "EVO_LEVEL", "condition": 0, "target": "SPECIES_NONE" }
+      { "method": "EVO_HAS_MOVE", "condition": "MOVE_SMART_STRIKE", "target": "SPECIES_ZUDOMON" },
+      { "method": "EVO_HAS_MOVE", "condition": "MOVE_WATER_SPOUT", "target": "SPECIES_WHAMON" }
     ]
   },
   "SPECIES_ANGEMON": {
@@ -1748,7 +1759,9 @@
       "flee_rate": 0
     },
     "evolutions": [
-      { "method": "EVO_LEVEL", "condition": 0, "target": "SPECIES_NONE" }
+      { "method": "EVO_OTHER_PARTY_MON", "condition": "SPECIES_ANKYLOMON", "target": "SPECIES_SHAKKOUMON" },
+      { "method": "EVO_HAS_MOVE", "condition": "MOVE_SACRED_SWORD", "target": "SPECIES_MAGNAANGEMON" },
+      { "method": "EVO_STONE", "condition": "ITEM_DUBIOUS_DISC", "target": "SPECIES_KIMERAMON" }
     ]
   },
   "SPECIES_GATOMON": {
@@ -1768,7 +1781,9 @@
       "flee_rate": 0
     },
     "evolutions": [
-      { "method": "EVO_LEVEL", "condition": 0, "target": "SPECIES_NONE" }
+      { "method": "EVO_OTHER_PARTY_MON", "condition": "SPECIES_AQUILAMON", "target": "SPECIES_SILPHYMON" },
+      { "method": "EVO_HAS_MOVE", "condition": "MOVE_ALLURING_VOICE", "target": "SPECIES_ANGEWOMON" },
+      { "method": "EVO_HAS_MOVE", "condition": "MOVE_THROAT_CHOP", "target": "SPECIES_LADYDEVIMON" }
     ]
   },
   "SPECIES_EXVEEMON": {
@@ -1788,7 +1803,10 @@
       "flee_rate": 0
     },
     "evolutions": [
-      { "method": "EVO_LEVEL", "condition": 0, "target": "SPECIES_NONE" }
+      { "method": "EVO_OTHER_PARTY_MON", "condition": "SPECIES_STINGMON", "target": "SPECIES_PAILDRAMON" },
+      { "method": "EVO_STONE", "condition": "ITEM_FIRE_STONE", "target": "SPECIES_FLAMEDRAMON" },
+      { "method": "EVO_STONE", "condition": "ITEM_THUNDER_STONE", "target": "SPECIES_LIGHDRAMON" },
+      { "method": "EVO_STONE", "condition": "ITEM_LUCK_INCENSE", "target": "SPECIES_MAGNAMON" }
     ]
   },
   "SPECIES_AQUILAMON": {
@@ -1808,7 +1826,8 @@
       "flee_rate": 0
     },
     "evolutions": [
-      { "method": "EVO_LEVEL", "condition": 0, "target": "SPECIES_NONE" }
+      { "method": "EVO_OTHER_PARTY_MON", "condition": "SPECIES_GATOMON", "target": "SPECIES_SILPHYMON" },
+      { "method": "EVO_HAS_MOVE", "condition": "MOVE_SKY_UPPERCUT", "target": "SPECIES_GARUDAMON" }
     ]
   },
   "SPECIES_ANKYLOMON": {
@@ -1828,7 +1847,8 @@
       "flee_rate": 0
     },
     "evolutions": [
-      { "method": "EVO_LEVEL", "condition": 0, "target": "SPECIES_NONE" }
+      { "method": "EVO_OTHER_PARTY_MON", "condition": "SPECIES_ANGEMON", "target": "SPECIES_SHAKKOUMON" },
+      { "method": "EVO_HAS_MOVE", "condition": "MOVE_DRAGON_HAMMER", "target": "SPECIES_TRICERAMON" }
     ]
   },
   "SPECIES_STINGMON": {
@@ -1848,7 +1868,7 @@
       "flee_rate": 0
     },
     "evolutions": [
-      { "method": "EVO_LEVEL", "condition": 0, "target": "SPECIES_NONE" }
+      { "method": "EVO_OTHER_PARTY_MON", "condition": "SPECIES_STINGMON", "target": "SPECIES_PAILDRAMON" }
     ]
   },
   "SPECIES_SEADRAMON": {
@@ -1868,7 +1888,27 @@
       "flee_rate": 0
     },
     "evolutions": [
-      { "method": "EVO_LEVEL", "condition": 0, "target": "SPECIES_NONE" }
+      { "method": "EVO_HAS_MOVE", "condition": "MOVE_THUNDERBOLT", "target": "SPECIES_MEGASEADRAMON" }
+    ]
+  },
+  "SPECIES_GUARDROMON": {
+    "personal_data": {
+      "base_stats": [80, 80, 80, 80, 80, 80],
+      "types": ["TYPE_STEEL", "TYPE_STEEL"],
+      "catch_rate": 45,
+      "base_exp": 120,
+      "ev_yield": [0, 0, 0, 0, 0, 0],
+      "items": ["ITEM_NONE", "ITEM_NONE"],
+      "gender_ratio": 255,
+      "hatch_cycles": 1,
+      "base_friendship": 70,
+      "exp_growth": "GROWTH_MEDIUM_FAST",
+      "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
+      "abilities": ["ABILITY_NONE", "ABILITY_NONE", "ABILITY_NONE"],
+      "flee_rate": 0
+    },
+    "evolutions": [
+      { "method": "EVO_HAS_MOVE", "condition": "MOVE_FLASH_CANNON", "target": "SPECIES_METALMAMEMON" }
     ]
   },
   "SPECIES_NUMEMON": {
@@ -1888,7 +1928,7 @@
       "flee_rate": 0
     },
     "evolutions": [
-      { "method": "EVO_LEVEL", "condition": 0, "target": "SPECIES_NONE" }
+      { "method": "EVO_HAS_MOVE", "condition": "MOVE_DRAINING_KISS", "target": "SPECIES_MONZAEMON" }
     ]
   },
   "SPECIES_SUKAMON": {
@@ -1908,7 +1948,7 @@
       "flee_rate": 0
     },
     "evolutions": [
-      { "method": "EVO_LEVEL", "condition": 0, "target": "SPECIES_NONE" }
+      { "method": "EVO_HAS_MOVE", "condition": "MOVE_HYPER_VOICE", "target": "SPECIES_ETEMON" }
     ]
   },
   "SPECIES_DEVIMON": {
@@ -1928,7 +1968,9 @@
       "flee_rate": 0
     },
     "evolutions": [
-      { "method": "EVO_LEVEL", "condition": 0, "target": "SPECIES_NONE" }
+      { "method": "EVO_HAS_MOVE", "condition": "MOVE_NIGHT_DAZE", "target": "SPECIES_MYOTISMON" },
+      { "method": "EVO_STONE", "condition": "ITEM_UP_GRADE", "target": "SPECIES_NEODEVIMON" },
+      { "method": "EVO_STONE", "condition": "ITEM_DUBIOUS_DISC", "target": "SPECIES_KIMERAMON" }
     ]
   },
   "SPECIES_FLAMEDRAMON": {
@@ -1948,7 +1990,7 @@
       "flee_rate": 0
     },
     "evolutions": [
-      { "method": "EVO_LEVEL", "condition": 0, "target": "SPECIES_NONE" }
+      { "method": "EVO_STONE", "condition": "ITEM_LUCK_INCENSE", "target": "SPECIES_MAGNAMON" }
     ]
   },
   "SPECIES_LIGHDRAMON": {
@@ -1968,7 +2010,7 @@
       "flee_rate": 0
     },
     "evolutions": [
-      { "method": "EVO_LEVEL", "condition": 0, "target": "SPECIES_NONE" }
+      { "method": "EVO_STONE", "condition": "ITEM_LUCK_INCENSE", "target": "SPECIES_MAGNAMON" }
     ]
   },
   "SPECIES_HALSEMON": {
@@ -1988,7 +2030,7 @@
       "flee_rate": 0
     },
     "evolutions": [
-      { "method": "EVO_LEVEL", "condition": 0, "target": "SPECIES_NONE" }
+      { "method": "EVO_STONE", "condition": "ITEM_LUCK_INCENSE", "target": "SPECIES_VALKYTIMON" }
     ]
   },
   "SPECIES_SHURIMON": {
@@ -2008,7 +2050,7 @@
       "flee_rate": 0
     },
     "evolutions": [
-      { "method": "EVO_LEVEL", "condition": 0, "target": "SPECIES_NONE" }
+      { "method": "EVO_STONE", "condition": "ITEM_LUCK_INCENSE", "target": "SPECIES_VALKYTIMON" }
     ]
   },
   "SPECIES_DIGMON": {
@@ -2028,7 +2070,7 @@
       "flee_rate": 0
     },
     "evolutions": [
-      { "method": "EVO_LEVEL", "condition": 0, "target": "SPECIES_NONE" }
+      { "method": "EVO_STONE", "condition": "ITEM_LUCK_INCENSE", "target": "SPECIES_SLASHANGEMON" }
     ]
   },
   "SPECIES_SUBMARIMON": {
@@ -2048,7 +2090,7 @@
       "flee_rate": 0
     },
     "evolutions": [
-      { "method": "EVO_LEVEL", "condition": 0, "target": "SPECIES_NONE" }
+      { "method": "EVO_STONE", "condition": "ITEM_LUCK_INCENSE", "target": "SPECIES_SLASHANGEMON" }
     ]
   },
   "SPECIES_PEGASUSMON": {
@@ -2068,7 +2110,7 @@
       "flee_rate": 0
     },
     "evolutions": [
-      { "method": "EVO_LEVEL", "condition": 0, "target": "SPECIES_NONE" }
+      { "method": "EVO_STONE", "condition": "ITEM_LUCK_INCENSE", "target": "SPECIES_SERAPHIMON" }
     ]
   },
   "SPECIES_NEFERTIMON": {
@@ -2088,7 +2130,7 @@
       "flee_rate": 0
     },
     "evolutions": [
-      { "method": "EVO_LEVEL", "condition": 0, "target": "SPECIES_NONE" }
+      { "method": "EVO_STONE", "condition": "ITEM_LUCK_INCENSE", "target": "SPECIES_OPHANIMON" }
     ]
   },
   "SPECIES_KURISARIMON": {
@@ -2108,7 +2150,7 @@
       "flee_rate": 0
     },
     "evolutions": [
-      { "method": "EVO_LEVEL", "condition": 0, "target": "SPECIES_NONE" }
+      { "method": "EVO_HAS_MOVE", "condition": "MOVE_SKULL_BASH", "target": "SPECIES_INFERMON" }
     ]
   },
   "SPECIES_GROWLMON": {
@@ -2128,7 +2170,7 @@
       "flee_rate": 0
     },
     "evolutions": [
-      { "method": "EVO_LEVEL", "condition": 0, "target": "SPECIES_NONE" }
+      { "method": "EVO_HAS_MOVE", "condition": "MOVE_IRON_HEAD", "target": "SPECIES_WARGROWLMON" }
     ]
   },
   "SPECIES_KYUBIMON": {
@@ -2148,7 +2190,7 @@
       "flee_rate": 0
     },
     "evolutions": [
-      { "method": "EVO_LEVEL", "condition": 0, "target": "SPECIES_NONE" }
+      { "method": "EVO_HAS_MOVE", "condition": "MOVE_FIRE_BLAST", "target": "SPECIES_TAOMON" }
     ]
   },
   "SPECIES_GARGOMON": {
@@ -2168,7 +2210,8 @@
       "flee_rate": 0
     },
     "evolutions": [
-      { "method": "EVO_LEVEL", "condition": 0, "target": "SPECIES_NONE" }
+      { "method": "EVO_LEVEL", "condition": 0, "target": "SPECIES_NONE" },
+      { "method": "EVO_STONE", "condition": "ITEM_LUCK_INCENSE", "target": "SPECIES_MAGNAMON" }
     ]
   },
   "SPECIES_TURUIEMON": {
@@ -2228,7 +2271,7 @@
       "flee_rate": 0
     },
     "evolutions": [
-      { "method": "EVO_LEVEL", "condition": 0, "target": "SPECIES_NONE" }
+      { "method": "EVO_HAS_MOVE", "condition": "MOVE_ICE_PUNCH", "target": "SPECIES_ICELEOMON" }
     ]
   },
   "SPECIES_WIZARDMON": {
@@ -2248,7 +2291,7 @@
       "flee_rate": 0
     },
     "evolutions": [
-      { "method": "EVO_LEVEL", "condition": 0, "target": "SPECIES_NONE" }
+      { "method": "EVO_HAS_MOVE", "condition": "MOVE_NIGHT_DAZE", "target": "SPECIES_MYOTISMON" }
     ]
   },
   "SPECIES_ICEMON": {
@@ -2268,13 +2311,13 @@
       "flee_rate": 0
     },
     "evolutions": [
-      { "method": "EVO_LEVEL", "condition": 0, "target": "SPECIES_NONE" }
+      { "method": "EVO_HAS_MOVE", "condition": "MOVE_ZEN_HEADBUTT", "target": "SPECIES_METEORMON" }
     ]
   },
-  "SPECIES_GUARDROMON": {
+  "SPECIES_THUNDERMON": {
     "personal_data": {
       "base_stats": [80, 80, 80, 80, 80, 80],
-      "types": ["TYPE_STEEL", "TYPE_STEEL"],
+      "types": ["TYPE_ELECTRIC", "TYPE_ELECTRIC"],
       "catch_rate": 45,
       "base_exp": 120,
       "ev_yield": [0, 0, 0, 0, 0, 0],
@@ -2288,7 +2331,7 @@
       "flee_rate": 0
     },
     "evolutions": [
-      { "method": "EVO_LEVEL", "condition": 0, "target": "SPECIES_NONE" }
+      { "method": "EVO_HAS_MOVE", "condition": "MOVE_FLASH_CANNON", "target": "SPECIES_METALMAMEMON" }
     ]
   },
   "SPECIES_SANGLOUPMON": {
@@ -2308,7 +2351,7 @@
       "flee_rate": 0
     },
     "evolutions": [
-      { "method": "EVO_LEVEL", "condition": 0, "target": "SPECIES_NONE" }
+      { "method": "EVO_HAS_MOVE", "condition": "MOVE_NIGHT_DAZE", "target": "SPECIES_MYOTISMON" }
     ]
   },
   "SPECIES_OGREMON": {
@@ -2328,7 +2371,7 @@
       "flee_rate": 0
     },
     "evolutions": [
-      { "method": "EVO_LEVEL", "condition": 0, "target": "SPECIES_NONE" }
+      { "method": "EVO_HAS_MOVE", "condition": "MOVE_EGG_BOMB", "target": "SPECIES_DIGITAMAMON" }
     ]
   },
   "SPECIES_BURGAMON_AD": {
@@ -2348,7 +2391,7 @@
       "flee_rate": 0
     },
     "evolutions": [
-      { "method": "EVO_LEVEL", "condition": 0, "target": "SPECIES_NONE" }
+      { "method": "EVO_HAS_MOVE", "condition": "MOVE_IRON_HEAD", "target": "SPECIES_CHO_HAKKAIMON" }
     ]
   },
   "SPECIES_HI_COMMANDRAMON": {
@@ -2368,7 +2411,7 @@
       "flee_rate": 0
     },
     "evolutions": [
-      { "method": "EVO_LEVEL", "condition": 0, "target": "SPECIES_NONE" }
+      { "method": "EVO_HAS_MOVE", "condition": "MOVE_IRON_HEAD", "target": "SPECIES_METALGREYMON_B" }
     ]
   },
   "SPECIES_GEOGREYMON": {
@@ -2388,7 +2431,7 @@
       "flee_rate": 0
     },
     "evolutions": [
-      { "method": "EVO_LEVEL", "condition": 0, "target": "SPECIES_NONE" }
+      { "method": "EVO_HAS_MOVE", "condition": "MOVE_IRON_HEAD", "target": "SPECIES_METALGREYMON" }
     ]
   },
   "SPECIES_SUNFLOWMON": {
@@ -2408,7 +2451,8 @@
       "flee_rate": 0
     },
     "evolutions": [
-      { "method": "EVO_LEVEL", "condition": 0, "target": "SPECIES_NONE" }
+      { "method": "EVO_HAS_MOVE", "condition": "MOVE_AURA_SPHERE", "target": "SPECIES_LILLYMON" },
+      { "method": "EVO_HAS_MOVE", "condition": "MOVE_SEED_BOMB", "target": "SPECIES_CHERRYMON" }
     ]
   },
   "SPECIES_SHOUTMON_X2": {
@@ -2488,7 +2532,7 @@
       "flee_rate": 0
     },
     "evolutions": [
-      { "method": "EVO_LEVEL", "condition": 0, "target": "SPECIES_NONE" }
+      { "method": "EVO_HAS_MOVE", "condition": "MOVE_RISING_VOLTAGE", "target": "SPECIES_MEGAKABUTERIMON" }
     ]
   },
   "SPECIES_DORULUMON": {
@@ -2508,7 +2552,9 @@
       "flee_rate": 0
     },
     "evolutions": [
-      { "method": "EVO_LEVEL", "condition": 0, "target": "SPECIES_NONE" }
+      { "method": "EVO_HAS_MOVE", "condition": "MOVE_HIGH_HORSEPOWER", "target": "SPECIES_MAMMOTHMON" },
+      { "method": "EVO_HAS_MOVE", "condition": "MOVE_JUMP_KICK", "target": "SPECIES_WEREGARURUMON" },
+      { "method": "EVO_STONE", "condition": "ITEM_DRAGON_SCALE", "target": "SPECIES_TRICERAMON" }
     ]
   },
   "SPECIES_MAILBIRDRAMON": {
@@ -2528,7 +2574,7 @@
       "flee_rate": 0
     },
     "evolutions": [
-      { "method": "EVO_LEVEL", "condition": 0, "target": "SPECIES_NONE" }
+      { "method": "EVO_OTHER_PARTY_MON", "condition": "SPECIES_GREYMON_C", "target": "SPECIES_METALGREYMON_C" }
     ]
   },
   "SPECIES_GREYMON_C": {
@@ -2548,7 +2594,8 @@
       "flee_rate": 0
     },
     "evolutions": [
-      { "method": "EVO_LEVEL", "condition": 0, "target": "SPECIES_NONE" }
+      { "method": "EVO_OTHER_PARTY_MON", "condition": "SPECIES_MAILBIRDRAMON", "target": "SPECIES_METALGREYMON_C" },
+      { "method": "EVO_HAS_MOVE", "condition": "MOVE_IRON_HEAD", "target": "SPECIES_METALGREYMON_B" }
     ]
   },
   "SPECIES_TYRANNOMON": {
@@ -2568,7 +2615,8 @@
       "flee_rate": 0
     },
     "evolutions": [
-      { "method": "EVO_LEVEL", "condition": 0, "target": "SPECIES_NONE" }
+      { "method": "EVO_HAS_MOVE", "condition": "MOVE_DRAGON_CLAW", "target": "SPECIES_MASTERTYRANNOMON" },
+      { "method": "EVO_HAS_MOVE", "condition": "MOVE_HIGH_HORSEPOWER", "target": "SPECIES_TRICERAMON" }
     ]
   },
   "SPECIES_STARMON": {
@@ -2588,7 +2636,7 @@
       "flee_rate": 0
     },
     "evolutions": [
-      { "method": "EVO_LEVEL", "condition": 0, "target": "SPECIES_NONE" }
+      { "method": "EVO_HAS_MOVE", "condition": "MOVE_DAZZLING_GLEAM", "target": "SPECIES_SUPERSTARMON" }
     ]
   },
   "SPECIES_BETELGAMMAMON": {
@@ -2774,7 +2822,7 @@
   "SPECIES_SKULLGREYMON": {
     "personal_data": {
       "base_stats": [92, 92, 92, 92, 92, 92],
-      "types": ["TYPE_GHOST", "TYPE_DRAGON"],
+      "types": ["TYPE_GROUND", "TYPE_GHOST"],
       "catch_rate": 15,
       "base_exp": 180,
       "ev_yield": [0, 0, 0, 0, 0, 0],
@@ -2828,7 +2876,7 @@
       "flee_rate": 0
     },
     "evolutions": [
-      { "method": "EVO_LEVEL", "condition": 0, "target": "SPECIES_NONE" }
+      { "method": "EVO_HAS_MOVE", "condition": "MOVE_RISING_VOLTAGE", "target": "SPECIES_MEGAKABUTERIMON" }
     ]
   },
   "SPECIES_GARUDAMON": {
@@ -3035,6 +3083,26 @@
     "personal_data": {
       "base_stats": [92, 92, 92, 92, 92, 92],
       "types": ["TYPE_GRASS", "TYPE_GHOST"],
+      "catch_rate": 15,
+      "base_exp": 180,
+      "ev_yield": [0, 0, 0, 0, 0, 0],
+      "items": ["ITEM_NONE", "ITEM_NONE"],
+      "gender_ratio": 255,
+      "hatch_cycles": 1,
+      "base_friendship": 70,
+      "exp_growth": "GROWTH_MEDIUM_FAST",
+      "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
+      "abilities": ["ABILITY_NONE", "ABILITY_NONE", "ABILITY_NONE"],
+      "flee_rate": 0
+    },
+    "evolutions": [
+      { "method": "EVO_LEVEL", "condition": 0, "target": "SPECIES_NONE" }
+    ]
+  },
+  "SPECIES_METALMAMEMON": {
+    "personal_data": {
+      "base_stats": [92, 92, 92, 92, 92, 92],
+      "types": ["TYPE_ELECTRIC", "TYPE_STEEL"],
       "catch_rate": 15,
       "base_exp": 180,
       "ev_yield": [0, 0, 0, 0, 0, 0],
@@ -3491,10 +3559,50 @@
       { "method": "EVO_LEVEL", "condition": 0, "target": "SPECIES_NONE" }
     ]
   },
+  "SPECIES_PARROTMON": {
+    "personal_data": {
+      "base_stats": [92, 92, 92, 92, 92, 92],
+      "types": ["TYPE_FLYING", "TYPE_ELECTRIC"],
+      "catch_rate": 15,
+      "base_exp": 180,
+      "ev_yield": [0, 0, 0, 0, 0, 0],
+      "items": ["ITEM_NONE", "ITEM_NONE"],
+      "gender_ratio": 255,
+      "hatch_cycles": 1,
+      "base_friendship": 70,
+      "exp_growth": "GROWTH_MEDIUM_FAST",
+      "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
+      "abilities": ["ABILITY_NONE", "ABILITY_NONE", "ABILITY_NONE"],
+      "flee_rate": 0
+    },
+    "evolutions": [
+      { "method": "EVO_LEVEL", "condition": 0, "target": "SPECIES_NONE" }
+    ]
+  },
   "SPECIES_WARUDAMON": {
     "personal_data": {
       "base_stats": [92, 92, 92, 92, 92, 92],
       "types": ["TYPE_DARK", "TYPE_PSYCHIC"],
+      "catch_rate": 15,
+      "base_exp": 180,
+      "ev_yield": [0, 0, 0, 0, 0, 0],
+      "items": ["ITEM_NONE", "ITEM_NONE"],
+      "gender_ratio": 255,
+      "hatch_cycles": 1,
+      "base_friendship": 70,
+      "exp_growth": "GROWTH_MEDIUM_FAST",
+      "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
+      "abilities": ["ABILITY_NONE", "ABILITY_NONE", "ABILITY_NONE"],
+      "flee_rate": 0
+    },
+    "evolutions": [
+      { "method": "EVO_LEVEL", "condition": 0, "target": "SPECIES_NONE" }
+    ]
+  },
+  "SPECIES_MAMMOTHMON": {
+    "personal_data": {
+      "base_stats": [92, 92, 92, 92, 92, 92],
+      "types": ["TYPE_GROUND", "TYPE_ICE"],
       "catch_rate": 15,
       "base_exp": 180,
       "ev_yield": [0, 0, 0, 0, 0, 0],
@@ -4397,6 +4505,24 @@
     "personal_data": {
       "base_stats": [104, 104, 104, 104, 104, 104],
       "types": ["TYPE_GHOST", "TYPE_ROCK"],
+      "catch_rate": 3,
+      "base_exp": 220,
+      "ev_yield": [0, 0, 0, 0, 0, 0],
+      "items": ["ITEM_NONE", "ITEM_NONE"],
+      "gender_ratio": 255,
+      "hatch_cycles": 1,
+      "base_friendship": 70,
+      "exp_growth": "GROWTH_MEDIUM_FAST",
+      "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
+      "abilities": ["ABILITY_NONE", "ABILITY_NONE", "ABILITY_NONE"],
+      "flee_rate": 0
+    },
+    "evolutions": []
+  },
+  "SPECIES_SKULLMAMMOTHMON": {
+    "personal_data": {
+      "base_stats": [104, 104, 104, 104, 104, 104],
+      "types": ["TYPE_GROUND", "TYPE_ICE"],
       "catch_rate": 3,
       "base_exp": 220,
       "ev_yield": [0, 0, 0, 0, 0, 0],
