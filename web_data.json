@@ -860,6 +860,11 @@
     "image": "images/4_Perfect/parrotmon.jpg",
     "generation": "완전체"
   },
+  "SPECIES_PHANTOMON": {
+    "name_ko": "팬텀몬",
+    "image": "images/4_Perfect/fantomon.jpg",
+    "generation": "완전체"
+  },
   "SPECIES_WARUDAMON": {
     "name_ko": "와루다몬",
     "image": "images/4_Perfect/warudamon.jpg",
@@ -1088,6 +1093,11 @@
   "SPECIES_BIGUKKOMON": {
     "name_ko": "빅웃코몬",
     "image": "images/5_Ultimate/bigukkomon.jpg",
+    "generation": "궁극체"
+  },
+  "SPECIES_ZEPHAGAMON": {
+    "name_ko": "제퍼가몬",
+    "image": "images/5_Ultimate/zephagamon.jpg",
     "generation": "궁극체"
   },
   "SPECIES_CENDRILLMON": {

@@ -350,13 +350,17 @@
     "MOVE_ICY_WIND": "얼어붙은바람",
     "MOVE_SPARK": "스파크",
     "MOVE_IRON_HEAD": "아이언헤드",
+    "MOVE_JUMP_KICK": "점프킥",
     "MOVE_SKY_UPPERCUT": "스카이어퍼",
     "MOVE_AURA_SPHERE": "파동탄",
     "MOVE_SEED_BOMB": "씨폭탄",
     "MOVE_WATER_SPOUT": "해수스파우팅",
+    "MOVE_SMART_STRIKE": "스마트혼",
+    "MOVE_SACRED_SWORD": "성스러운칼",
     "MOVE_ALLURING_VOICE": "매혹의보이스",
     "MOVE_THROAT_CHOP": "지옥찌르기",
     "MOVE_DRAGON_HAMMER": "드래곤해머",
+    "MOVE_CHATTER": "수다",
     "MOVE_THUNDERBOLT": "10만볼트",
     "MOVE_FLASH_CANNON": "러스터캐논",
     "MOVE_DRAINING_KISS": "드레인키스",
@@ -368,6 +372,10 @@
     "MOVE_ZEN_HEADBUTT": "사념의박치기",
     "MOVE_RISING_VOLTAGE": "라이징볼트",
     "MOVE_DRAGON_CLAW": "드래곤클로",
-    "MOVE_HIGH_HORSEPOWER": "10만마력"
+    "MOVE_SHADOW_CLAW": "섀도클로",
+    "MOVE_HIGH_HORSEPOWER": "10만마력",
+    "MOVE_EERIE_SPELL": "섬뜩한주문",
+    "MOVE_SUPERPOWER": "엄청난힘",
+    "MOVE_EGG_BOMB": "알폭탄"
   }
 }
