@@ -376,6 +376,23 @@
     "MOVE_HIGH_HORSEPOWER": "10만마력",
     "MOVE_EERIE_SPELL": "섬뜩한주문",
     "MOVE_SUPERPOWER": "엄청난힘",
-    "MOVE_EGG_BOMB": "알폭탄"
+    "MOVE_EGG_BOMB": "알폭탄",
+    "MOVE_NIGHT_SLASH": "깜짝베기",
+    "MOVE_ZAP_CANNON": "전자포",
+    "MOVE_STEEL_BEAM": "철제광선",
+    "MOVE_HEADLONG_RUSH": "들이받기",
+    "MOVE_ICE_BURN": "콜드플레어",
+    "MOVE_MOUNTAIN_GALE": "빙산바람",
+    "MOVE_TACHYON_CUTTER": "타키온커터",
+    "MOVE_AEROBLAST": "에어로블라스트",
+    "MOVE_SACRED_FIRE": "성스러운불꽃",
+    "MOVE_SPRINGTIDE_STORM": "봄의폭풍",
+    "MOVE_JUDGMENT": "심판의뭉치",
+    "MOVE_DRAGON_ENERGY": "드래곤에너지",
+    "MOVE_BEHEMOTH_BLADE": "거수참",
+    "MOVE_MALIGNANT_CHAIN": "악독사슬",
+    "MOVE_WOOD_HAMMER": "우드해머",
+    "MOVE_MAKE_IT_RAIN": "골드러시",
+    "MOVE_RAGING_FURY": "대격분"
   }
 }

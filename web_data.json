@@ -790,6 +790,11 @@
     "image": "images/4_Perfect/panjyamon.jpg",
     "generation": "완전체"
   },
+  "SPECIES_LOADERLEOMON": {
+    "name_ko": "로더레오몬",
+    "image": "images/4_Perfect/loaderleomon.jpg",
+    "generation": "완전체"
+  },
   "SPECIES_LOUDMON": {
     "name_ko": "라우드몬",
     "image": "images/4_Perfect/loudmon.jpg",
@@ -1163,6 +1168,16 @@
   "SPECIES_BANCHOSTINGMON": {
     "name_ko": "반쵸스팅몬",
     "image": "images/5_Ultimate/banchostingmon.jpg",
+    "generation": "궁극체"
+  },
+  "SPECIES_BLACKWARGREYMON": {
+    "name_ko": "블랙워그레이몬",
+    "image": "images/5_Ultimate/blackwargreymon.jpg",
+    "generation": "궁극체"
+  },
+  "SPECIES_METALGARURUMON_B": {
+    "name_ko": "메탈가루몬 (흑)",
+    "image": "images/5_Ultimate/metalgarurumon_black.jpg",
     "generation": "궁극체"
   },
   "SPECIES_OMNIMON": {
