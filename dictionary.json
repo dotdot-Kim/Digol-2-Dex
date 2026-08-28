@@ -272,7 +272,8 @@
     "ITEM_KINGS_ROCK ": "왕의징표석",
     "ITEM_DRAGON_SCALE": "용의비늘",
     "ITEM_LUCK_INCENSE": "행운의향로",
-    "ITEM_DIGICORE": "디지코어"
+    "ITEM_DIGICORE": "디지코어",
+    "ITEM_MODE_SELCETOR": "모드셀렉터"
   },
   "evo_methods": {
     "EVO_LEVEL": "레벨 {cond}",
@@ -393,6 +394,12 @@
     "MOVE_MALIGNANT_CHAIN": "악독사슬",
     "MOVE_WOOD_HAMMER": "우드해머",
     "MOVE_MAKE_IT_RAIN": "골드러시",
-    "MOVE_RAGING_FURY": "대격분"
+    "MOVE_RAGING_FURY": "대격분",
+    "MOVE_THOUSAND_ARROWS": "사우전드애로",
+    "MOVE_DIAMOND_STORM": "다이아스톰",
+    "MOVE_LIGHT_OF_RUIN": "파멸의빛",
+    "MOVE_SANDSEAR_STORM": "열사의폭풍",
+    "MOVE_ROAR_OF_TIME": "시간의포효",
+    "MOVE_MIST_BALL": "미스트볼"
   }
 }

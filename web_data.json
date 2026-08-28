@@ -256,6 +256,11 @@
     "image": "images/2_Child/lucemon.jpg",
     "generation": "성장기"
   },
+  "SPECIES_LUXMON": {
+    "name_ko": "럭스몬",
+    "image": "images/2_Child/luxmon.jpg",
+    "generation": "성장기"
+  },
   "SPECIES_BURGAMON": {
     "name_ko": "버거몬",
     "image": "images/2_Child/burgamon.jpg",
@@ -783,6 +788,11 @@
   "SPECIES_RAPIDMON": {
     "name_ko": "래피드몬",
     "image": "images/4_Perfect/rapidmon.jpg",
+    "generation": "완전체"
+  },
+  "SPECIES_ANTYLAMON": {
+    "name_ko": "안티라몬",
+    "image": "images/4_Perfect/andiramon.jpg",
     "generation": "완전체"
   },
   "SPECIES_ICELEOMON": {
