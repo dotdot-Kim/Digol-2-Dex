@@ -271,9 +271,11 @@
     "ITEM_METAL_COAT": "금속코트", 
     "ITEM_KINGS_ROCK ": "왕의징표석",
     "ITEM_DRAGON_SCALE": "용의비늘",
-    "ITEM_LUCK_INCENSE": "행운의향로",
-    "ITEM_DIGICORE": "디지코어",
-    "ITEM_MODE_SELCETOR": "모드셀렉터"
+    "ITEM_MODE_SELCETOR": "모드셀렉터",
+    "ITEM_RESET_DISK": "초기화디스크",
+    "ITEM_BRILLIANT_STONE": "찬란한돌",
+    "ITEM_OMEGA_BLADE": "오메가블레이드",
+    "ITEM_DIGICORE": "디지코어"
   },
   "evo_methods": {
     "EVO_LEVEL": "레벨 {cond}",
@@ -387,6 +389,7 @@
     "MOVE_TACHYON_CUTTER": "타키온커터",
     "MOVE_AEROBLAST": "에어로블라스트",
     "MOVE_SACRED_FIRE": "성스러운불꽃",
+    "MOVE_POWER_WHIP": "파워휩",
     "MOVE_SPRINGTIDE_STORM": "봄의폭풍",
     "MOVE_JUDGMENT": "심판의뭉치",
     "MOVE_DRAGON_ENERGY": "드래곤에너지",
@@ -400,6 +403,9 @@
     "MOVE_LIGHT_OF_RUIN": "파멸의빛",
     "MOVE_SANDSEAR_STORM": "열사의폭풍",
     "MOVE_ROAR_OF_TIME": "시간의포효",
-    "MOVE_MIST_BALL": "미스트볼"
+    "MOVE_MIST_BALL": "미스트볼",
+    "MOVE_RUINATION": "카타스트로피",
+    "MOVE_ASTRAL_BARRAGE": "아스트랄비트",
+    "MOVE_BLOOD_MOON": "블러드문"
   }
 }
