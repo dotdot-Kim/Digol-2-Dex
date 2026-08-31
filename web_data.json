@@ -885,6 +885,11 @@
     "image": "images/4_Perfect/warudamon.jpg",
     "generation": "완전체"
   },
+  "SPECIES_POLARBEARMON": {
+    "name_ko": "폴라베어몬",
+    "image": "images/4_Perfect/polarbearmon.jpg",
+    "generation": "완전체"
+  },
   "SPECIES_MAMMOTHMON": {
     "name_ko": "맘몬",
     "image": "images/4_Perfect/mammon.jpg",
