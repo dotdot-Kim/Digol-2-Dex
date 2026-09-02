@@ -258,8 +258,10 @@
   "ABILITY_FIRE_MANE": { "name": "불꽃의갈기", "id": "316" },
   "ABILITY_SPICY_SPRAY": { "name": "하바네로분출", "id": "318" },
 
+  "ABILITY_CONTRARY": {"name": "심술꾸러기", "id": "126"},
   "ABILITY_MAGIC_BOUNCE": {"name": "매직미러", "id": "156"},
   "ABILITY_INTREPID_SWORD": {"name": "불요의검", "id": "234"},
+  "ABILITY_DAUNTLESS_SHIELD": {"name": "불굴의방패", "id": "235"},
   "ABILITY_PUNK_ROCK": {"name": "펑크록", "id": "244"}
   },
   "items": {
