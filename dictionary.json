@@ -164,6 +164,7 @@
   "ABILITY_FLOWER_VEIL": { "name": "플라워베일", "id": "166" },
   "ABILITY_PROTEAN": { "name": "변환자재", "id": "168" },
   "ABILITY_FUR_COAT": { "name": "퍼코트", "id": "169" },
+  "ABILITY_MAGICIAN": { "name": "매지션", "id": "170" },
   "ABILITY_BULLETPROOF": { "name": "방탄", "id": "171" },
   "ABILITY_COMPETITIVE": { "name": "승기", "id": "172" },
   "ABILITY_STRONG_JAW": { "name": "옹골찬턱", "id": "173" },
