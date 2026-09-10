@@ -415,7 +415,8 @@
     },
     "evolutions": [
       { "method": "EVO_HAS_MOVE", "condition": "MOVE_GUST", "target": "SPECIES_PATAMON" },
-      { "method": "EVO_HAS_MOVE", "condition": "MOVE_TWISTER", "target": "SPECIES_TERRIERMON" }
+      { "method": "EVO_HAS_MOVE", "condition": "MOVE_TWISTER", "target": "SPECIES_TERRIERMON" },
+      { "method": "EVO_HAS_MOVE", "condition": "MOVE_DAZZLING_GLEAM", "target": "SPECIES_LUCEMON" }
     ]
   },
   "SPECIES_CUPIMON": {
@@ -992,7 +993,7 @@
   "SPECIES_IMPMON": {
     "personal_data": {
       "base_stats": [60, 67, 55, 81, 91, 54],
-      "types": ["TYPE_DARK", "TYPE_DARK"],
+      "types": ["TYPE_DARK", "TYPE_PSYCHIC"],
       "catch_rate": 140,
       "base_exp": 70,
       "ev_yield": [0, 0, 0, 0, 0, 0],
@@ -2017,6 +2018,7 @@
     "evolutions": [
       { "method": "EVO_HAS_MOVE", "condition": "MOVE_NIGHT_DAZE", "target": "SPECIES_MYOTISMON" },
       { "method": "EVO_STONE", "condition": "ITEM_UP_GRADE", "target": "SPECIES_NEODEVIMON" },
+      { "method": "EVO_HAS_MOVE", "condition": "MOVE_SLASH", "target": "SPECIES_PHANTOMON" },
       { "method": "EVO_STONE", "condition": "ITEM_DUBIOUS_DISC", "target": "SPECIES_KIMERAMON" }
     ]
   },
@@ -2323,7 +2325,7 @@
     "evolutions": [
       { "method": "EVO_HAS_MOVE", "condition": "MOVE_ICE_PUNCH", "target": "SPECIES_ICELEOMON" },
       { "method": "EVO_STONE", "condition": "ITEM_METAL_COAT", "target": "SPECIES_LOADERLEOMON" },
-      { "method": "EVO_HAS_MOVE", "condition": "MOVE_JUMP_KICK", "target": "SPECIES_ANTYLAMON" }
+      { "method": "EVO_HAS_MOVE", "condition": "MOVE_JUMP_KICK", "target": "SPECIES_WEREGARURUMON" }
     ]
   },
   "SPECIES_WIZARDMON": {
@@ -2694,7 +2696,7 @@
       "base_friendship": 70,
       "exp_growth": "GROWTH_MEDIUM_FAST",
       "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
-      "abilities": ["ABILITY_VICTORY_STAR", "ABILITY_STURDY", "ABILITY_MAGIC_GUARD"],
+      "abilities": ["ABILITY_VICTORY_STAR", "ABILITY_STURDY", "ABILITY_IRON_FIST"],
       "flee_rate": 0
     },
     "evolutions": [
@@ -2736,7 +2738,7 @@
       "base_friendship": 70,
       "exp_growth": "GROWTH_MEDIUM_FAST",
       "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
-      "abilities": ["ABILITY_SYNCHRONIZE", "ABILITY_CURSED_BODY", "ABILITY_BEAST_BOOST"],
+      "abilities": ["ABILITY_SYNCHRONIZE", "ABILITY_ROUGH_SKIN", "ABILITY_BEAST_BOOST"],
       "flee_rate": 0
     },
     "evolutions": [
@@ -2888,7 +2890,7 @@
       "base_friendship": 70,
       "exp_growth": "GROWTH_MEDIUM_FAST",
       "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
-      "abilities": ["ABILITY_DOWNLOAD", "ABILITY_FLARE_BOOST", "ABILITY_GUTS"],
+      "abilities": ["ABILITY_FLARE_BOOST", "ABILITY_DOWNLOAD", "ABILITY_GUTS"],
       "flee_rate": 0
     },
     "evolutions": [
@@ -2910,7 +2912,7 @@
       "base_friendship": 70,
       "exp_growth": "GROWTH_MEDIUM_FAST",
       "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
-      "abilities": ["ABILITY_INTIMIDATE", "ABILITY_CURSED_BODY", "ABILITY_GUTS"],
+      "abilities": ["ABILITY_CURSED_BODY", "ABILITY_INTIMIDATE", "ABILITY_GUTS"],
       "flee_rate": 0
     },
     "evolutions": [
@@ -3216,7 +3218,7 @@
       "base_friendship": 70,
       "exp_growth": "GROWTH_MEDIUM_FAST",
       "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
-      "abilities": ["ABILITY_CLEAR_BODY", "ABILITY_MEGA_LAUNCHER", "ABILITY_TRANSISTOR"],
+      "abilities": ["ABILITY_MEGA_LAUNCHER", "ABILITY_STURDY", "ABILITY_TRANSISTOR"],
       "flee_rate": 0
     },
     "evolutions": [
@@ -3258,7 +3260,7 @@
       "base_friendship": 70,
       "exp_growth": "GROWTH_MEDIUM_FAST",
       "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
-      "abilities": ["ABILITY_TINTED_LENS", "ABILITY_PUNK_ROCK", "ABILITY_GORILLA_TACTICS"],
+      "abilities": ["ABILITY_PUNK_ROCK", "ABILITY_TINTED_LENS", "ABILITY_GORILLA_TACTICS"],
       "flee_rate": 0
     },
     "evolutions": [
@@ -3366,7 +3368,7 @@
       "base_friendship": 70,
       "exp_growth": "GROWTH_MEDIUM_FAST",
       "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
-      "abilities": ["ABILITY_PURIFYING_SALT", "ABILITY_MAGIC_BOUNCE", "ABILITY_PSYCHIC_SURGE"],
+      "abilities": ["ABILITY_PURIFYING_SALT", "ABILITY_MAGIC_BOUNCE", "ABILITY_NEUROFORCE"],
       "flee_rate": 0
     },
     "evolutions": [
@@ -3408,7 +3410,7 @@
       "base_friendship": 70,
       "exp_growth": "GROWTH_MEDIUM_FAST",
       "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
-      "abilities": ["ABILITY_MOODY", "ABILITY_REGENERATOR", "ABILITY_GRIM_NEIGH"],
+      "abilities": ["ABILITY_PASTEL_VEIL", "ABILITY_REGENERATOR", "ABILITY_GRIM_NEIGH"],
       "flee_rate": 0
     },
     "evolutions": [
@@ -3664,7 +3666,7 @@
       "base_friendship": 70,
       "exp_growth": "GROWTH_MEDIUM_FAST",
       "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
-      "abilities": ["ABILITY_BEAST_BOOST", "ABILITY_MOODY", "ABILITY_PROTEAN"],
+      "abilities": ["ABILITY_FIRE_MANE", "ABILITY_BEAST_BOOST", "ABILITY_PROTEAN"],
       "flee_rate": 0
     },
     "evolutions": [
@@ -3749,7 +3751,7 @@
       "base_friendship": 70,
       "exp_growth": "GROWTH_MEDIUM_FAST",
       "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
-      "abilities": ["ABILITY_VICTORY_STAR", "ABILITY_STURDY", "ABILITY_MAGIC_GUARD"],
+      "abilities": ["ABILITY_VICTORY_STAR", "ABILITY_STURDY", "ABILITY_IRON_FIST"],
       "flee_rate": 0
     },
     "evolutions": [
@@ -3878,7 +3880,7 @@
       "base_friendship": 70,
       "exp_growth": "GROWTH_MEDIUM_FAST",
       "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
-      "abilities": ["ABILITY_DAUNTLESS_SHIELD", "ABILITY_TOUGH_CLAWS", "ABILITY_SHEER_FORCE"],
+      "abilities": ["ABILITY_TOUGH_CLAWS", "ABILITY_DAUNTLESS_SHIELD", "ABILITY_SHEER_FORCE"],
       "flee_rate": 0
     },
     "evolutions": [
@@ -3898,7 +3900,7 @@
       "base_friendship": 70,
       "exp_growth": "GROWTH_MEDIUM_FAST",
       "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
-      "abilities": ["ABILITY_INTIMIDATE", "ABILITY_SNIPER", "ABILITY_SPEED_BOOST"],
+      "abilities": ["ABILITY_INTIMIDATE", "ABILITY_SNIPER", "ABILITY_FUR_COAT"],
       "flee_rate": 0
     },
     "evolutions": [
@@ -4055,7 +4057,7 @@
   },
   "SPECIES_IMPERIALDRAMON_DM": {
     "personal_data": {
-      "base_stats": [115, 105, 100, 100, 115, 100],
+      "base_stats": [100, 105, 100, 115, 115, 100],
       "types": ["TYPE_DRAGON", "TYPE_DRAGON"],
       "catch_rate": 3,
       "base_exp": 220,
@@ -4161,7 +4163,7 @@
       "base_friendship": 70,
       "exp_growth": "GROWTH_MEDIUM_FAST",
       "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
-      "abilities": ["ABILITY_CORROSION", "ABILITY_MERCILESS", "ABILITY_DARK_AURA"],
+      "abilities": ["ABILITY_CORROSION", "ABILITY_DARK_AURA", "ABILITY_BERSERK"],
       "flee_rate": 0
     },
     "evolutions": []
@@ -4233,7 +4235,7 @@
       "base_friendship": 70,
       "exp_growth": "GROWTH_MEDIUM_FAST",
       "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
-      "abilities": ["ABILITY_DOWNLOAD", "ABILITY_MEGA_LAUNCHER", "ABILITY_HADRON_ENGINE"],
+      "abilities": ["ABILITY_MEGA_LAUNCHER", "ABILITY_DOWNLOAD", "ABILITY_HADRON_ENGINE"],
       "flee_rate": 0
     },
     "evolutions": [
@@ -4253,14 +4255,14 @@
       "base_friendship": 70,
       "exp_growth": "GROWTH_MEDIUM_FAST",
       "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
-      "abilities": ["ABILITY_MOXIE", "ABILITY_MAGIC_BOUNCE", "ABILITY_SHADOW_TAG"],
+      "abilities": ["ABILITY_MAGIC_BOUNCE", "ABILITY_BAD_DREAMS", "ABILITY_SHADOW_TAG"],
       "flee_rate": 0
     },
     "evolutions": []
   },
   "SPECIES_SHINMONZAEMON": {
     "personal_data": {
-      "base_stats": [125, 120, 115, 80, 97, 103],
+      "base_stats": [120, 110, 95, 70, 110, 115],
       "types": ["TYPE_FAIRY", "TYPE_GHOST"],
       "catch_rate": 3,
       "base_exp": 220,
@@ -4271,14 +4273,14 @@
       "base_friendship": 70,
       "exp_growth": "GROWTH_MEDIUM_FAST",
       "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
-      "abilities": ["ABILITY_CUTE_CHARM", "ABILITY_FLUFFY", "ABILITY_HUGE_POWER"],
+      "abilities": ["ABILITY_MUMMY", "ABILITY_FLUFFY", "ABILITY_INNARDS_OUT"],
       "flee_rate": 0
     },
     "evolutions": []
   },
   "SPECIES_METALETEMON": {
     "personal_data": {
-      "base_stats": [95, 115, 100, 105, 110, 95],
+      "base_stats": [90, 115, 120, 90, 115, 95],
       "types": ["TYPE_POISON", "TYPE_STEEL"],
       "catch_rate": 3,
       "base_exp": 220,
@@ -4289,14 +4291,14 @@
       "base_friendship": 70,
       "exp_growth": "GROWTH_MEDIUM_FAST",
       "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
-      "abilities": ["ABILITY_SOUNDPROOF", "ABILITY_IRON_FIST", "ABILITY_FULL_METAL_BODY"],
+      "abilities": ["ABILITY_PUNK_ROCK", "ABILITY_STURDY", "ABILITY_GORILLA_TACTICS"],
       "flee_rate": 0
     },
     "evolutions": []
   },
   "SPECIES_VENOMMYOTISMON": {
     "personal_data": {
-      "base_stats": [103, 100, 100, 100, 120, 102],
+      "base_stats": [95, 120, 95, 100, 117, 102],
       "types": ["TYPE_GHOST", "TYPE_POISON"],
       "catch_rate": 3,
       "base_exp": 220,
@@ -4307,14 +4309,14 @@
       "base_friendship": 70,
       "exp_growth": "GROWTH_MEDIUM_FAST",
       "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
-      "abilities": ["ABILITY_POISON_TOUCH", "ABILITY_BERSERK", "ABILITY_DARK_AURA"],
+      "abilities": ["ABILITY_INTIMIDATE", "ABILITY_MOXIE", "ABILITY_GORILLA_TACTICS"],
       "flee_rate": 0
     },
     "evolutions": []
   },
   "SPECIES_DONEDEVIMON": {
     "personal_data": {
-      "base_stats": [103, 135, 95, 110, 110, 87],
+      "base_stats": [99, 130, 88, 109, 110, 92],
       "types": ["TYPE_DARK", "TYPE_DARK"],
       "catch_rate": 3,
       "base_exp": 220,
@@ -4325,14 +4327,14 @@
       "base_friendship": 70,
       "exp_growth": "GROWTH_MEDIUM_FAST",
       "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
-      "abilities": ["ABILITY_PRESSURE", "ABILITY_BERSERK", "ABILITY_DARK_AURA"],
+      "abilities": ["ABILITY_TINTED_LENS", "ABILITY_IRON_FIST", "ABILITY_TOXIC_BOOST"],
       "flee_rate": 0
     },
     "evolutions": []
   },
   "SPECIES_DIABOROMON": {
     "personal_data": {
-      "base_stats": [95, 130, 95, 110, 105, 95],
+      "base_stats": [94, 144, 94, 114, 104, 94],
       "types": ["TYPE_POISON", "TYPE_BUG"],
       "catch_rate": 3,
       "base_exp": 220,
@@ -4343,14 +4345,14 @@
       "base_friendship": 70,
       "exp_growth": "GROWTH_MEDIUM_FAST",
       "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
-      "abilities": ["ABILITY_DOWNLOAD", "ABILITY_INFILTRATOR", "ABILITY_BEAST_BOOST"],
+      "abilities": ["ABILITY_MERCILESS", "ABILITY_BEAST_BOOST", "ABILITY_DOWNLOAD"],
       "flee_rate": 0
     },
     "evolutions": []
   },
   "SPECIES_GALLANTMON": {
     "personal_data": {
-      "base_stats": [100, 130, 100, 95, 110, 95],
+      "base_stats": [100, 125, 100, 95, 130, 100],
       "types": ["TYPE_FIRE", "TYPE_FAIRY"],
       "catch_rate": 3,
       "base_exp": 220,
@@ -4361,14 +4363,14 @@
       "base_friendship": 70,
       "exp_growth": "GROWTH_MEDIUM_FAST",
       "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
-      "abilities": ["ABILITY_JUSTIFIED", "ABILITY_STEADFAST", "ABILITY_INTREPID_SWORD"],
+      "abilities": ["ABILITY_STEELY_SPIRIT", "ABILITY_DAUNTLESS_SHIELD", "ABILITY_SHEER_FORCE"],
       "flee_rate": 0
     },
     "evolutions": []
   },
   "SPECIES_SAKUYAMON": {
     "personal_data": {
-      "base_stats": [90, 100, 85, 115, 135, 105],
+      "base_stats": [90, 90, 85, 125, 135, 100],
       "types": ["TYPE_PSYCHIC", "TYPE_FIGHTING"],
       "catch_rate": 3,
       "base_exp": 220,
@@ -4379,7 +4381,7 @@
       "base_friendship": 70,
       "exp_growth": "GROWTH_MEDIUM_FAST",
       "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
-      "abilities": ["ABILITY_MAGIC_GUARD", "ABILITY_MAGIC_BOUNCE", "ABILITY_PSYCHIC_SURGE"],
+      "abilities": ["ABILITY_PURIFYING_SALT", "ABILITY_MAGIC_BOUNCE", "ABILITY_NEUROFORCE"],
       "flee_rate": 0
     },
     "evolutions": [
@@ -4388,8 +4390,8 @@
   },
   "SPECIES_SAKUYAMON_MM": {
     "personal_data": {
-      "base_stats": [100, 90, 90, 110, 135, 115],
-      "types": ["TYPE_PSYCHIC", "TYPE_FAIRY"],
+      "base_stats": [90, 80, 90, 107, 145, 115],
+      "types": ["TYPE_PSYCHIC", "TYPE_PSYCHIC"], 
       "catch_rate": 3,
       "base_exp": 220,
       "ev_yield": [0, 0, 0, 0, 0, 0],
@@ -4399,7 +4401,7 @@
       "base_friendship": 70,
       "exp_growth": "GROWTH_MEDIUM_FAST",
       "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
-      "abilities": ["ABILITY_HEALER", "ABILITY_MAGIC_BOUNCE", "ABILITY_TRIAGE"],
+      "abilities": ["ABILITY_PURIFYING_SALT", "ABILITY_MAGIC_BOUNCE", "ABILITY_PSYCHIC_SURGE"],
       "flee_rate": 0
     },
     "evolutions": [
@@ -4408,7 +4410,7 @@
   },
   "SPECIES_MEGAGARGOMON": {
     "personal_data": {
-      "base_stats": [105, 95, 95, 105, 115, 105],
+      "base_stats": [105, 115, 115, 85, 115, 105],
       "types": ["TYPE_NORMAL", "TYPE_STEEL"],
       "catch_rate": 3,
       "base_exp": 220,
@@ -4419,14 +4421,14 @@
       "base_friendship": 70,
       "exp_growth": "GROWTH_MEDIUM_FAST",
       "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
-      "abilities": ["ABILITY_BULLETPROOF", "ABILITY_MEGA_LAUNCHER", "ABILITY_FULL_METAL_BODY"],
+      "abilities": ["ABILITY_BULLETPROOF", "ABILITY_SCRAPPY", "ABILITY_CHILLING_NEIGH"],
       "flee_rate": 0
     },
     "evolutions": []
   },
   "SPECIES_RAPIDMON_A": {
     "personal_data": {
-      "base_stats": [85, 100, 85, 120, 120, 110],
+      "base_stats": [90, 120, 95, 100, 120, 105],
       "types": ["TYPE_NORMAL", "TYPE_FAIRY"],
       "catch_rate": 3,
       "base_exp": 220,
@@ -4437,14 +4439,14 @@
       "base_friendship": 70,
       "exp_growth": "GROWTH_MEDIUM_FAST",
       "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
-      "abilities": ["ABILITY_SPEED_BOOST", "ABILITY_MEGA_LAUNCHER", "ABILITY_PRISM_ARMOR"],
+      "abilities": ["ABILITY_PRISM_ARMOR", "ABILITY_ADAPTABILITY", "ABILITY_SPEED_BOOST"],
       "flee_rate": 0
     },
     "evolutions": []
   },
   "SPECIES_CHERUBIMON": {
     "personal_data": {
-      "base_stats": [110, 100, 100, 115, 105, 100],
+      "base_stats": [110, 95, 100, 115, 120, 100],
       "types": ["TYPE_GROUND", "TYPE_FAIRY"],
       "catch_rate": 3,
       "base_exp": 220,
@@ -4455,7 +4457,7 @@
       "base_friendship": 70,
       "exp_growth": "GROWTH_MEDIUM_FAST",
       "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
-      "abilities": ["ABILITY_HEALER", "ABILITY_REGENERATOR", "ABILITY_FAIRY_AURA"],
+      "abilities": ["ABILITY_PASTEL_VEIL", "ABILITY_REGENERATOR", "ABILITY_SOUL_HEART"],
       "flee_rate": 0
     },
     "evolutions": []
@@ -4480,7 +4482,7 @@
   },
   "SPECIES_SABERLEOMON": {
     "personal_data": {
-      "base_stats": [120, 115, 95, 105, 95, 90],
+      "base_stats": [110, 125, 90, 118, 90, 90],
       "types": ["TYPE_GROUND", "TYPE_ELECTRIC"],
       "catch_rate": 3,
       "base_exp": 220,
@@ -4491,15 +4493,15 @@
       "base_friendship": 70,
       "exp_growth": "GROWTH_MEDIUM_FAST",
       "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
-      "abilities": ["ABILITY_INTIMIDATE", "ABILITY_TOUGH_CLAWS", "ABILITY_MOXIE"],
+      "abilities": ["ABILITY_RECKLESS", "ABILITY_SAND_RUSH", "ABILITY_GALVANIZE"],
       "flee_rate": 0
     },
     "evolutions": []
   },
   "SPECIES_BEELZEMON": {
     "personal_data": {
-      "base_stats": [90, 115, 85, 110, 120, 100],
-      "types": ["TYPE_DARK", "TYPE_DARK"],
+      "base_stats": [90, 125, 85, 120, 110, 100],
+      "types": ["TYPE_DARK", "TYPE_GHOST"],
       "catch_rate": 3,
       "base_exp": 220,
       "ev_yield": [0, 0, 0, 0, 0, 0],
@@ -4509,14 +4511,14 @@
       "base_friendship": 70,
       "exp_growth": "GROWTH_MEDIUM_FAST",
       "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
-      "abilities": ["ABILITY_INFILTRATOR", "ABILITY_MEGA_LAUNCHER", "ABILITY_DARK_AURA"],
+      "abilities": ["ABILITY_TECHNICIAN", "ABILITY_SUPER_LUCK", "ABILITY_PARENTAL_BOND"],
       "flee_rate": 0
     },
     "evolutions": []
   },
   "SPECIES_BLASTMON": {
     "personal_data": {
-      "base_stats": [105, 105, 125, 70, 105, 110],
+      "base_stats": [105, 115, 130, 70, 90, 110],
       "types": ["TYPE_ROCK", "TYPE_ROCK"],
       "catch_rate": 3,
       "base_exp": 220,
@@ -4527,14 +4529,14 @@
       "base_friendship": 70,
       "exp_growth": "GROWTH_MEDIUM_FAST",
       "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
-      "abilities": ["ABILITY_CLEAR_BODY", "ABILITY_SOLID_ROCK", "ABILITY_PRISM_ARMOR"],
+      "abilities": ["ABILITY_STURDY", "ABILITY_ROCK_HEAD", "ABILITY_PRISM_ARMOR"],
       "flee_rate": 0
     },
     "evolutions": []
   },
   "SPECIES_HEXEBLAUMON": {
     "personal_data": {
-      "base_stats": [105, 110, 105, 115, 105, 100],
+      "base_stats": [95, 119, 95, 111, 120, 95],
       "types": ["TYPE_ICE", "TYPE_ICE"],
       "catch_rate": 3,
       "base_exp": 220,
@@ -4545,14 +4547,14 @@
       "base_friendship": 70,
       "exp_growth": "GROWTH_MEDIUM_FAST",
       "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
-      "abilities": ["ABILITY_ICE_BODY", "ABILITY_SHARPNESS", "ABILITY_ICE_SCALES"],
+      "abilities": ["ABILITY_SLUSH_RUSH", "ABILITY_ICE_SCALES", "ABILITY_REFRIGERATE"],
       "flee_rate": 0
     },
     "evolutions": []
   },
   "SPECIES_SHINEGREYMON": {
     "personal_data": {
-      "base_stats": [98, 120, 100, 105, 110, 87],
+      "base_stats": [90, 125, 93, 105, 130, 92],
       "types": ["TYPE_FIRE", "TYPE_STEEL"],
       "catch_rate": 3,
       "base_exp": 220,
@@ -4563,14 +4565,14 @@
       "base_friendship": 70,
       "exp_growth": "GROWTH_MEDIUM_FAST",
       "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
-      "abilities": ["ABILITY_BLAZE", "ABILITY_SOLAR_POWER", "ABILITY_ORICHALCUM_PULSE"],
+      "abilities": ["ABILITY_SOLAR_POWER", "ABILITY_LEVITATE", "ABILITY_MEGA_SOL"],
       "flee_rate": 0
     },
     "evolutions": []
   },
   "SPECIES_MIRAGEGAOGAMON": {
     "personal_data": {
-      "base_stats": [90, 120, 85, 125, 125, 95],
+      "base_stats": [90, 120, 85, 130, 115, 95],
       "types": ["TYPE_FIGHTING", "TYPE_FIGHTING"],
       "catch_rate": 3,
       "base_exp": 220,
@@ -4581,14 +4583,14 @@
       "base_friendship": 70,
       "exp_growth": "GROWTH_MEDIUM_FAST",
       "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
-      "abilities": ["ABILITY_INFILTRATOR", "ABILITY_TOUGH_CLAWS", "ABILITY_SPEED_BOOST"],
+      "abilities": ["ABILITY_INTIMIDATE", "ABILITY_MINDS_EYE", "ABILITY_SPEED_BOOST"],
       "flee_rate": 0
     },
     "evolutions": []
   },
   "SPECIES_SHOUTMON_X7": {
     "personal_data": {
-      "base_stats": [100, 110, 100, 105, 110, 95],
+      "base_stats": [100, 115, 110, 105, 115, 100],
       "types": ["TYPE_FIRE", "TYPE_DRAGON"],
       "catch_rate": 3,
       "base_exp": 220,
@@ -4599,14 +4601,14 @@
       "base_friendship": 70,
       "exp_growth": "GROWTH_MEDIUM_FAST",
       "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
-      "abilities": ["ABILITY_VICTORY_STAR", "ABILITY_STEELY_SPIRIT", "ABILITY_SOUL_HEART"],
+      "abilities": ["ABILITY_QUARK_DRIVE", "ABILITY_PUNK_ROCK", "ABILITY_EELEVATE"],
       "flee_rate": 0
     },
     "evolutions": []
   },
   "SPECIES_ZEIGGREYMON": {
     "personal_data": {
-      "base_stats": [95, 115, 110, 100, 110, 90],
+      "base_stats": [95, 115, 110, 100, 115, 90],
       "types": ["TYPE_DRAGON", "TYPE_STEEL"],
       "catch_rate": 3,
       "base_exp": 220,
@@ -4624,7 +4626,7 @@
   },
   "SPECIES_MILLENNIUMMON": {
     "personal_data": {
-      "base_stats": [105, 120, 110, 95, 115, 95],
+      "base_stats": [100, 125, 115, 100, 125, 100],
       "types": ["TYPE_GHOST", "TYPE_STEEL"],
       "catch_rate": 3,
       "base_exp": 220,
@@ -4635,7 +4637,7 @@
       "base_friendship": 70,
       "exp_growth": "GROWTH_MEDIUM_FAST",
       "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
-      "abilities": ["ABILITY_PRESSURE", "ABILITY_DOWNLOAD", "ABILITY_SHADOW_SHIELD"],
+      "abilities": ["ABILITY_MEGA_LAUNCHER", "ABILITY_BEAST_BOOST", "ABILITY_PROTEAN"],
       "flee_rate": 0
     },
     "evolutions": [
@@ -4644,7 +4646,7 @@
   },
   "SPECIES_DINOMON": {
     "personal_data": {
-      "base_stats": [105, 130, 100, 90, 110, 85],
+      "base_stats": [105, 120, 100, 90, 120, 85],
       "types": ["TYPE_FIRE", "TYPE_FIRE"],
       "catch_rate": 3,
       "base_exp": 220,
@@ -4655,14 +4657,14 @@
       "base_friendship": 70,
       "exp_growth": "GROWTH_MEDIUM_FAST",
       "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
-      "abilities": ["ABILITY_INTIMIDATE", "ABILITY_SHEER_FORCE", "ABILITY_FIRE_MANE"],
+      "abilities": ["ABILITY_EARTH_EATER", "ABILITY_FIRE_MANE", "ABILITY_ORICHALCUM_PULSE"],
       "flee_rate": 0
     },
     "evolutions": []
   },
   "SPECIES_INVISIMON": {
     "personal_data": {
-      "base_stats": [90, 105, 100, 120, 120, 90],
+      "base_stats": [90, 120, 99, 109, 120, 93],
       "types": ["TYPE_PSYCHIC", "TYPE_FLYING"],
       "catch_rate": 3,
       "base_exp": 220,
@@ -4673,7 +4675,7 @@
       "base_friendship": 70,
       "exp_growth": "GROWTH_MEDIUM_FAST",
       "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
-      "abilities": ["ABILITY_INFILTRATOR", "ABILITY_LEVITATE", "ABILITY_MAGIC_GUARD"],
+      "abilities": ["ABILITY_BULLETPROOF", "ABILITY_MAGIC_BOUNCE", "ABILITY_PROTEAN"],
       "flee_rate": 0
     },
     "evolutions": []
@@ -4691,14 +4693,14 @@
       "base_friendship": 70,
       "exp_growth": "GROWTH_MEDIUM_FAST",
       "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
-      "abilities": ["ABILITY_UNAWARE", "ABILITY_REGENERATOR", "ABILITY_PSYCHIC_SURGE"],
+      "abilities": ["ABILITY_SYNCHRONIZE", "ABILITY_UNAWARE", "ABILITY_MAGIC_GUARD"],
       "flee_rate": 0
     },
     "evolutions": []
   },
   "SPECIES_ZEPHAGAMON": {
     "personal_data": {
-      "base_stats": [90, 110, 90, 125, 115, 90],
+      "base_stats": [90, 117, 90, 125, 120, 90],
       "types": ["TYPE_FLYING", "TYPE_FLYING"],
       "catch_rate": 3,
       "base_exp": 220,
@@ -4709,14 +4711,14 @@
       "base_friendship": 70,
       "exp_growth": "GROWTH_MEDIUM_FAST",
       "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
-      "abilities": ["ABILITY_WIND_RIDER", "ABILITY_SHARPNESS", "ABILITY_DELTA_STREAM"],
+      "abilities": ["ABILITY_SHARPNESS", "ABILITY_DELTA_STREAM", "ABILITY_GALE_WINGS"],
       "flee_rate": 0
     },
     "evolutions": []
   },
   "SPECIES_CENDRILLMON": {
     "personal_data": {
-      "base_stats": [105, 100, 88, 100, 130, 117],
+      "base_stats": [98, 122, 88, 107, 110, 105],
       "types": ["TYPE_FAIRY", "TYPE_FAIRY"],
       "catch_rate": 3,
       "base_exp": 220,
@@ -4727,14 +4729,14 @@
       "base_friendship": 70,
       "exp_growth": "GROWTH_MEDIUM_FAST",
       "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
-      "abilities": ["ABILITY_DAZZLING", "ABILITY_QUEENLY_MAJESTY", "ABILITY_PIXILATE"],
+      "abilities": ["ABILITY_DAZZLING", "ABILITY_NO_GUARD", "ABILITY_PARENTAL_BOND"],
       "flee_rate": 0
     },
     "evolutions": []
   },
   "SPECIES_NECROMON": {
     "personal_data": {
-      "base_stats": [113, 100, 105, 100, 120, 102],
+      "base_stats": [100, 90, 92, 98, 134, 114],
       "types": ["TYPE_GHOST", "TYPE_GHOST"],
       "catch_rate": 3,
       "base_exp": 220,
@@ -4745,14 +4747,14 @@
       "base_friendship": 70,
       "exp_growth": "GROWTH_MEDIUM_FAST",
       "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
-      "abilities": ["ABILITY_CURSED_BODY", "ABILITY_SHADOW_TAG", "ABILITY_GRIM_NEIGH"],
+      "abilities": ["ABILITY_CURSED_BODY", "ABILITY_SOUL_HEART", "ABILITY_SHADOW_TAG"],
       "flee_rate": 0
     },
     "evolutions": []
   },
   "SPECIES_MEDUSAMON": {
     "personal_data": {
-      "base_stats": [90, 100, 80, 115, 130, 105],
+      "base_stats": [94, 100, 90, 113, 130, 105],
       "types": ["TYPE_PSYCHIC", "TYPE_POISON"],
       "catch_rate": 3,
       "base_exp": 220,
@@ -4763,14 +4765,14 @@
       "base_friendship": 70,
       "exp_growth": "GROWTH_MEDIUM_FAST",
       "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
-      "abilities": ["ABILITY_CORROSION", "ABILITY_COMPETITIVE", "ABILITY_NEUROFORCE"],
+      "abilities": ["ABILITY_CORROSION", "ABILITY_CONTRARY", "ABILITY_TOXIC_DEBRIS"],
       "flee_rate": 0
     },
     "evolutions": []
   },
   "SPECIES_PYRAMIDIMON": {
     "personal_data": {
-      "base_stats": [120, 105, 120, 70, 95, 110],
+      "base_stats": [110, 100, 110, 72, 117, 120],
       "types": ["TYPE_GROUND", "TYPE_GROUND"],
       "catch_rate": 3,
       "base_exp": 220,
@@ -4781,14 +4783,14 @@
       "base_friendship": 70,
       "exp_growth": "GROWTH_MEDIUM_FAST",
       "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
-      "abilities": ["ABILITY_SAND_STREAM", "ABILITY_SOLID_ROCK", "ABILITY_EARTH_EATER"],
+      "abilities": ["ABILITY_SAND_FORCE", "ABILITY_POWER_SPOT", "ABILITY_SAND_STREAM"],
       "flee_rate": 0
     },
     "evolutions": []
   },
   "SPECIES_KINGWHAMON": {
     "personal_data": {
-      "base_stats": [130, 90, 90, 85, 120, 105],
+      "base_stats": [130, 95, 95, 85, 110, 105],
       "types": ["TYPE_WATER", "TYPE_WATER"],
       "catch_rate": 3,
       "base_exp": 220,
@@ -4799,14 +4801,14 @@
       "base_friendship": 70,
       "exp_growth": "GROWTH_MEDIUM_FAST",
       "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
-      "abilities": ["ABILITY_WATER_ABSORB", "ABILITY_DRIZZLE", "ABILITY_PRIMORDIAL_SEA"],
+      "abilities": ["ABILITY_SOLID_ROCK", "ABILITY_HARVEST", "ABILITY_DRIZZLE"],
       "flee_rate": 0
     },
     "evolutions": []
   },
   "SPECIES_BEELSTARMON": {
     "personal_data": {
-      "base_stats": [90, 110, 95, 120, 115, 90],
+      "base_stats": [90, 125, 90, 122, 105, 100],
       "types": ["TYPE_GHOST", "TYPE_ROCK"],
       "catch_rate": 3,
       "base_exp": 220,
@@ -4817,14 +4819,14 @@
       "base_friendship": 70,
       "exp_growth": "GROWTH_MEDIUM_FAST",
       "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
-      "abilities": ["ABILITY_SNIPER", "ABILITY_MEGA_LAUNCHER", "ABILITY_SUPER_LUCK"],
+      "abilities": ["ABILITY_TECHNICIAN", "ABILITY_STURDY", "ABILITY_PARENTAL_BOND"],
       "flee_rate": 0
     },
     "evolutions": []
   },
   "SPECIES_SKULLMAMMOTHMON": {
     "personal_data": {
-      "base_stats": [117, 145, 111, 84, 92, 91],
+      "base_stats": [107, 144, 111, 79, 92, 91],
       "types": ["TYPE_GROUND", "TYPE_ICE"],
       "catch_rate": 3,
       "base_exp": 220,
@@ -4835,14 +4837,14 @@
       "base_friendship": 70,
       "exp_growth": "GROWTH_MEDIUM_FAST",
       "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
-      "abilities": ["ABILITY_SNOW_WARNING", "ABILITY_THICK_FAT", "ABILITY_SHADOW_SHIELD"],
+      "abilities": ["ABILITY_CURSED_BODY", "ABILITY_SNOW_WARNING", "ABILITY_STAMINA"],
       "flee_rate": 0
     },
     "evolutions": []
   },
   "SPECIES_BLITZGREYMON": {
     "personal_data": {
-      "base_stats": [95, 120, 105, 100, 120, 100],
+      "base_stats": [95, 115, 105, 95, 130, 95],
       "types": ["TYPE_STEEL", "TYPE_ELECTRIC"],
       "catch_rate": 3,
       "base_exp": 220,
@@ -4853,7 +4855,7 @@
       "base_friendship": 70,
       "exp_growth": "GROWTH_MEDIUM_FAST",
       "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
-      "abilities": ["ABILITY_TRANSISTOR", "ABILITY_FULL_METAL_BODY", "ABILITY_HADRON_ENGINE"],
+      "abilities": ["ABILITY_FLARE_BOOST", "ABILITY_DOWNLOAD", "ABILITY_TRANSISTOR"],
       "flee_rate": 0
     },
     "evolutions": [
@@ -4862,7 +4864,7 @@
   },
   "SPECIES_CRESGARURUMON": {
     "personal_data": {
-      "base_stats": [100, 125, 90, 115, 95, 95],
+      "base_stats": [90, 130, 90, 115, 105, 105],
       "types": ["TYPE_FIGHTING", "TYPE_ICE"],
       "catch_rate": 3,
       "base_exp": 220,
@@ -4873,7 +4875,7 @@
       "base_friendship": 70,
       "exp_growth": "GROWTH_MEDIUM_FAST",
       "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
-      "abilities": ["ABILITY_SHARPNESS", "ABILITY_SLUSH_RUSH", "ABILITY_CHILLING_NEIGH"],
+      "abilities": ["ABILITY_INTIMIDATE", "ABILITY_SUPER_LUCK", "ABILITY_MOXIE"],
       "flee_rate": 0
     },
     "evolutions": [
@@ -4882,7 +4884,7 @@
   },
   "SPECIES_VENUSMON": {
     "personal_data": {
-      "base_stats": [105, 97, 88, 100, 130, 120],
+      "base_stats": [105, 90, 95, 85, 120, 130],
       "types": ["TYPE_FAIRY", "TYPE_WATER"],
       "catch_rate": 3,
       "base_exp": 220,
@@ -4893,14 +4895,14 @@
       "base_friendship": 70,
       "exp_growth": "GROWTH_MEDIUM_FAST",
       "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
-      "abilities": ["ABILITY_HEALER", "ABILITY_SERENE_GRACE", "ABILITY_FAIRY_AURA"],
+      "abilities": ["ABILITY_TRIAGE", "ABILITY_HEALER", "ABILITY_MISTY_SURGE"],
       "flee_rate": 0
     },
     "evolutions": []
   },
   "SPECIES_BANCHOLEOMON": {
     "personal_data": {
-      "base_stats": [105, 125, 95, 110, 90, 95],
+      "base_stats": [110, 125, 110, 95, 90, 95],
       "types": ["TYPE_GROUND", "TYPE_FIGHTING"],
       "catch_rate": 3,
       "base_exp": 220,
@@ -4911,14 +4913,14 @@
       "base_friendship": 70,
       "exp_growth": "GROWTH_MEDIUM_FAST",
       "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
-      "abilities": ["ABILITY_GUTS", "ABILITY_MOXIE", "ABILITY_DEFIANT"],
+      "abilities": ["ABILITY_GUTS", "ABILITY_MINDS_EYE", "ABILITY_MOXIE"],
       "flee_rate": 0
     },
     "evolutions": []
   },
   "SPECIES_BANCHOLILLYMON": {
     "personal_data": {
-      "base_stats": [95, 105, 80, 115, 125, 100],
+      "base_stats": [95, 125, 81, 118, 106, 100],
       "types": ["TYPE_GRASS", "TYPE_FIGHTING"],
       "catch_rate": 3,
       "base_exp": 220,
@@ -4929,14 +4931,14 @@
       "base_friendship": 70,
       "exp_growth": "GROWTH_MEDIUM_FAST",
       "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
-      "abilities": ["ABILITY_REGENERATOR", "ABILITY_FLOWER_VEIL", "ABILITY_GRASSY_SURGE"],
+      "abilities": ["ABILITY_GUTS", "ABILITY_MINDS_EYE", "ABILITY_MOXIE"],
       "flee_rate": 0
     },
     "evolutions": []
   },
   "SPECIES_BANCHOSTINGMON": {
     "personal_data": {
-      "base_stats": [93, 130, 109, 104, 104, 100],
+      "base_stats": [93, 132, 82, 132, 104, 82],
       "types": ["TYPE_BUG", "TYPE_DARK"],
       "catch_rate": 3,
       "base_exp": 220,
@@ -4947,14 +4949,14 @@
       "base_friendship": 70,
       "exp_growth": "GROWTH_MEDIUM_FAST",
       "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
-      "abilities": ["ABILITY_TINTED_LENS", "ABILITY_TOUGH_CLAWS", "ABILITY_ADAPTABILITY"],
+      "abilities": ["ABILITY_GUTS", "ABILITY_MOXIE", "ABILITY_TINTED_LENS"],
       "flee_rate": 0
     },
     "evolutions": []
   },
   "SPECIES_BLACKWARGREYMON": {
     "personal_data": {
-      "base_stats": [95, 144, 111, 90, 115, 85],
+      "base_stats": [100, 130, 110, 95, 115, 85],
       "types": ["TYPE_FIRE", "TYPE_DARK"],
       "catch_rate": 3,
       "base_exp": 220,
@@ -4965,7 +4967,7 @@
       "base_friendship": 70,
       "exp_growth": "GROWTH_MEDIUM_FAST",
       "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
-      "abilities": ["ABILITY_BERSERK", "ABILITY_TOUGH_CLAWS", "ABILITY_DARK_AURA"],
+      "abilities": ["ABILITY_TOUGH_CLAWS", "ABILITY_DAUNTLESS_SHIELD", "ABILITY_SHEER_FORCE"],
       "flee_rate": 0
     },
     "evolutions": [
@@ -4974,7 +4976,7 @@
   },
    "SPECIES_METALGARURUMON_B": {
     "personal_data": {
-      "base_stats": [90, 125, 85, 120, 105, 95],
+      "base_stats": [90, 115, 85, 125, 130, 90],
       "types": ["TYPE_ICE", "TYPE_DARK"],
       "catch_rate": 3,
       "base_exp": 220,
@@ -4985,7 +4987,7 @@
       "base_friendship": 70,
       "exp_growth": "GROWTH_MEDIUM_FAST",
       "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
-      "abilities": ["ABILITY_INFILTRATOR", "ABILITY_MEGA_LAUNCHER", "ABILITY_DARK_AURA"],
+      "abilities": ["ABILITY_INTIMIDATE", "ABILITY_SNIPER", "ABILITY_FUR_COAT"],
       "flee_rate": 0
     },
     "evolutions": [
@@ -4994,7 +4996,7 @@
   },
   "SPECIES_OMNIMON": {
     "personal_data": {
-      "base_stats": [110, 135, 110, 120, 115, 100],
+      "base_stats": [100, 130, 115, 125, 130, 100],
       "types": ["TYPE_FIRE", "TYPE_ICE"],
       "catch_rate": 3,
       "base_exp": 255,
@@ -5005,7 +5007,7 @@
       "base_friendship": 70,
       "exp_growth": "GROWTH_MEDIUM_FAST",
       "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
-      "abilities": ["ABILITY_PRESSURE", "ABILITY_VICTORY_STAR", "ABILITY_AS_ONE"],
+      "abilities": ["ABILITY_FULLY_ARMED", "ABILITY_DAUNTLESS_SHIELD", "ABILITY_AS_ONE"],
       "flee_rate": 0
     },
     "evolutions": [
@@ -5015,7 +5017,7 @@
   },
   "SPECIES_OMNIMON_Z": {
     "personal_data": {
-      "base_stats": [100, 145, 115, 120, 115, 95],
+      "base_stats": [100, 140, 110, 105, 140, 105],
       "types": ["TYPE_DARK", "TYPE_DARK"],
       "catch_rate": 3,
       "base_exp": 255,
@@ -5026,7 +5028,7 @@
       "base_friendship": 70,
       "exp_growth": "GROWTH_MEDIUM_FAST",
       "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
-      "abilities": ["ABILITY_DARK_AURA", "ABILITY_PRESSURE", "ABILITY_SHADOW_SHIELD"],
+      "abilities": ["ABILITY_FULLY_ARMED", "ABILITY_DAUNTLESS_SHIELD", "ABILITY_AS_ONE"],
       "flee_rate": 0
     },
     "evolutions": [
@@ -5036,7 +5038,7 @@
   },
   "SPECIES_OMNIMON_S": {
     "personal_data": {
-      "base_stats": [105, 135, 115, 115, 120, 100],
+      "base_stats": [100, 135, 105, 115, 135, 110],
       "types": ["TYPE_FIGHTING", "TYPE_STEEL"],
       "catch_rate": 3,
       "base_exp": 255,
@@ -5047,7 +5049,7 @@
       "base_friendship": 70,
       "exp_growth": "GROWTH_MEDIUM_FAST",
       "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
-      "abilities": ["ABILITY_FULL_METAL_BODY", "ABILITY_SHARPNESS", "ABILITY_AS_ONE"],
+      "abilities": ["ABILITY_INTIMIDATE", "ABILITY_DOWNLOAD", "ABILITY_AS_ONE"],
       "flee_rate": 0
     },
     "evolutions": [
@@ -5057,7 +5059,7 @@
   },
   "SPECIES_IMPERIALDRAMON_PM": {
     "personal_data": {
-      "base_stats": [115, 130, 110, 115, 120, 100],
+      "base_stats": [115, 145, 115, 115, 130, 100],
       "types": ["TYPE_DRAGON", "TYPE_FAIRY"],
       "catch_rate": 3,
       "base_exp": 255,
@@ -5068,14 +5070,14 @@
       "base_friendship": 70,
       "exp_growth": "GROWTH_MEDIUM_FAST",
       "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
-      "abilities": ["ABILITY_MULTISCALE", "ABILITY_JUSTIFIED", "ABILITY_PRISM_ARMOR"],
+      "abilities": ["ABILITY_INTREPID_SWORD", "ABILITY_ADAPTABILITY", "ABILITY_EELEVATE"],
       "flee_rate": 0
     },
     "evolutions": []
   },
   "SPECIES_FANGLONGMON": {
     "personal_data": {
-      "base_stats": [110, 105, 105, 100, 115, 105],
+      "base_stats": [120, 120, 110, 100, 120, 110],
       "types": ["TYPE_DRAGON", "TYPE_DRAGON"],
       "catch_rate": 3,
       "base_exp": 220,
@@ -5086,14 +5088,14 @@
       "base_friendship": 70,
       "exp_growth": "GROWTH_MEDIUM_FAST",
       "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
-      "abilities": ["ABILITY_PRESSURE", "ABILITY_MULTISCALE", "ABILITY_PRISM_ARMOR"],
+      "abilities": ["ABILITY_GOOD_AS_GOLD", "ABILITY_MULTISCALE", "ABILITY_PRESSURE"],
       "flee_rate": 0
     },
     "evolutions": []
   },
   "SPECIES_LUCEMON_SM": {
     "personal_data": {
-      "base_stats": [110, 110, 90, 110, 160, 110],
+      "base_stats": [126, 166, 96, 96, 166, 116],
       "types": ["TYPE_DARK", "TYPE_DARK"],
       "catch_rate": 3,
       "base_exp": 255,
@@ -5104,14 +5106,14 @@
       "base_friendship": 70,
       "exp_growth": "GROWTH_MEDIUM_FAST",
       "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
-      "abilities": ["ABILITY_DARK_AURA", "ABILITY_SHADOW_SHIELD", "ABILITY_NEUROFORCE"],
+      "abilities": ["ABILITY_DRAGONS_MAW", "ABILITY_SHADOW_SHIELD", "ABILITY_PRESSURE"],
       "flee_rate": 0
     },
     "evolutions": []
   },
   "SPECIES_ZEEDMILLENNIUMMON": {
     "personal_data": {
-      "base_stats": [120, 120, 110, 95, 135, 110],
+      "base_stats": [140, 140, 140, 40, 140, 140],
       "types": ["TYPE_GHOST", "TYPE_STEEL"],
       "catch_rate": 3,
       "base_exp": 255,
@@ -5122,7 +5124,7 @@
       "base_friendship": 70,
       "exp_growth": "GROWTH_MEDIUM_FAST",
       "egg_groups": ["EGG_GROUP_UNDISCOVERED", "EGG_GROUP_UNDISCOVERED"],
-      "abilities": ["ABILITY_PRESSURE", "ABILITY_SHADOW_TAG", "ABILITY_PRISM_ARMOR"],
+      "abilities": ["ABILITY_PRESSURE", "ABILITY_SHADOW_TAG", "ABILITY_PROTEAN"],
       "flee_rate": 0
     },
     "evolutions": []
