@@ -1,6 +1,6 @@
 # 04. 트레이너 · 야생 · 아이템 · 필드 콘텐츠
 
-> 기준: `BluRosie/hg-engine` `main` @ `1febb90b856745f8648c8a4fa059e7499a3cca3f`
+> 기준: `BluRosie/hg-engine` `main` @ `027977cca9c93d5c7346081af837ec33706303f8`
 
 ---
 
@@ -982,3 +982,44 @@ src/pokemon.c
 - icon
 
 까지 확인합니다.
+
+---
+
+# 43. 필드 스크립트의 최신 원본과 빌드 경로
+
+2026-10-01 기준 기존 `armips/scr_seq/`의 엔진 관리 스크립트 2개가 다음으로 이동했습니다.
+
+```text
+data/scr_seq/scr_seq_00003_commonscript.s
+data/scr_seq/scr_seq_00953_trainerscript.s
+```
+
+매크로도 `armips/include/scriptmacros.s`, `flags.s`, `vars.s`, `soundeffects.s`에서 `asm/include/*.inc`로 이동했고, maps/trainers/events 등 관련 `.inc`가 추가됐습니다. 현재 스크립트는 `gcc -x assembler-with-cpp` → linker → objcopy로 빌드합니다. **Armips 기반 옛 스크립트를 경로만 바꿔 넣으면 된다고 가정하지 마십시오.**
+
+| 편집 대상 | 현재 원본 | 적용 조건 |
+|---|---|---|
+| 엔진 관리 common/trainer | 위 5자리 번호 `.s` 2개 | 항상 빌드 |
+| 일반 맵 스크립트 | 덤프 후 `data/scr_seq/*.s` | `BUILD_DUMPED_SCR_SEQ` 활성 |
+| 좌표·오브젝트 등 이벤트 데이터 | 덤프 후 `data/eventdata/zone_event/*.json` | `BUILD_DUMPED_EVENTDATA` 활성 |
+| 이벤트 JSON → ASM 템플릿 | `data/eventdata/zone_event.json.txt` | jsonproc 사용 |
+| 맵 스크립트와 이벤트 연결 label | 덤프 후 `data/scr_seq/include/event_*.inc` | 이벤트 빌드 시 필요 |
+| 엔진 관리 텍스트 | `data/text/*.txt` | 항상 빌드 |
+| 추가/덤프 텍스트 | `data/text/custom/*.txt` | 존재하면 빌드; 별도 토글 없음 |
+
+기준 트리에는 모든 맵 덤프 파일이 들어 있는 것이 아닙니다. config 주석의 “덤프 제공” 설명만 믿지 말고 실제 폴더를 확인합니다. 엔진 파일 2개와 이벤트 템플릿은 추적되며 일반 맵/이벤트/커스텀 텍스트는 덤프 명령으로 얻습니다.
+
+빌드는 원 ROM NARC를 추출한 다음 **빌드한 멤버만** 교체합니다. 따라서 토글이 꺼져 있고 엔진 관리 대상도 아닌 일반 필드 스크립트/이벤트는 입력 `rom.nds`의 DSPRE 편집 결과를 유지하도록 설계돼 있습니다. 단, 엔진 관리 common/trainer와 엔진 텍스트는 언제나 재생성되므로 DSPRE에서 바꿨다고 항상 보존되는 것은 아닙니다.
+
+## 덤프 시 덮어쓰기 범위
+
+`tools/source/dumptools/dump_event_scripts.py`는 `--scripts-only`, `--text-only`, `--map`을 제공합니다. 기본적으로 엔진 관리 스크립트·텍스트와 생성형 텍스트를 제외합니다. `--include-engine-managed`, `--include-generated-text`는 그 제외를 해제하므로 실제 원본을 덮는 범위를 이해한 뒤 사용합니다.
+
+텍스트의 원본 암호화 key는 `data/text/keys.csv`에 기록되고 msgenc의 `-k`로 전달됩니다. 기존 종족/기술/트레이너 이름은 여전히 각 C generator가 정본입니다. 같은 bank를 `data/text/`와 `data/text/custom/` 양쪽에 중복 배치하지 마십시오.
+
+`make dump_scripts`의 현재 ds-rom/ndstool 분기 불일치와 우회 예시는 [01장 16절](./01_SETUP_BUILD_CONFIG.md)을 참고하십시오.
+
+# 44. 아이템·동행 포켓몬 관련 영향
+
+`ItemData`, `data/itemdata/itemdata.c`, `src/item.c`의 머신 기술 배열은 이번 비교에서 변경되지 않았습니다. 새 TM/Tutor 체계로 교체된 업데이트는 아닙니다. 반면 배틀에서는 Magic Room, Fling 실패 시 도구 처리, Choice lock, 메가스톤 제거/교환 시 폼 판정이 바뀌었습니다. 커스텀 아이템 효과는 실제 item 필드를 읽는 것과 `GetBattleMonItem()`로 유효한 도구를 읽는 것의 차이를 확인합니다.
+
+최신 10월 1일 마지막 커밋은 다른 폼의 동행 포켓몬을 둔 세이브 로딩 문제를 수정합니다. `src/save.c`의 `FieldSystem_RestoreMapObjectsFromSave()`가 저장된 동행 오브젝트를 비활성화한 뒤 정상 동행 생성 경로를 다시 타게 합니다. 새 세이브 레이아웃 전환이라고 단정하지 않고, **폼 동행 상태에서 저장 → 종료 → 다시 로드**를 별도 smoke test로 넣습니다.

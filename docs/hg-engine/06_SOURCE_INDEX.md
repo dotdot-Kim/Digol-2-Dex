@@ -1,8 +1,8 @@
 # 06. 소스 인덱스 · 기준 커밋 · 검증 출처
 
-> **hg-engine 기준 커밋:** `1febb90b856745f8648c8a4fa059e7499a3cca3f`
+> **hg-engine 기준 커밋:** `027977cca9c93d5c7346081af837ec33706303f8`
 >
-> **기준 날짜:** 2026-09-03 upstream main / 매뉴얼 작성 2026-09-09
+> **기준 날짜:** 2026-10-01 upstream main / 매뉴얼 갱신 2026-10-04 (최초 작성 2026-09-09)
 >
 > 이 파일은 앞으로 hg-engine upstream을 업데이트할 때 **어떤 파일부터 diff해야 하는지** 알려주는 유지보수용 인덱스입니다.
 
@@ -17,7 +17,7 @@ https://github.com/BluRosie/hg-engine
 고정 기준:
 
 ```text
-https://github.com/BluRosie/hg-engine/tree/1febb90b856745f8648c8a4fa059e7499a3cca3f
+https://github.com/BluRosie/hg-engine/tree/027977cca9c93d5c7346081af837ec33706303f8
 ```
 
 이 매뉴얼은 live `main`의 설명이 아니라 위 커밋의 실제 코드 상태를 기준으로 작성되었습니다.
@@ -131,9 +131,9 @@ C config와 동기화가 필요한 항목을 비교.
 
 Digol-2 신규 species ID 충돌 여부의 핵심.
 
-## `asm/include/species.inc`
+## ASM에서 종족 상수 사용
 
-C species header와 번호 동기화.
+`asm/include/species.inc`는 이전/현재 트리에 없습니다(기존 가이드 오류 정정). 현 `gcc -x assembler-with-cpp` 경로는 `include/constants/species.h`를 `#include`합니다. 필드 common script의 실제 include와 Makefile의 `AS`를 확인합니다.
 
 ## `include/species_data.h`
 
@@ -261,8 +261,8 @@ upstream이 새로운 세대/ZA/Champions 데이터를 추가하면 이 영역�
 현재 기준 마지막:
 
 ```c
-ABILITY_SPICY_SPRAY 318
-NUM_ABILITIES = 319
+ABILITY_AURA_GUARD 319
+NUM_ABILITIES = 320
 ```
 
 upstream 업데이트 때 Digol custom ID와 충돌 여부를 가장 먼저 확인합니다.
@@ -608,7 +608,7 @@ git diff OLD..NEW -- Makefile narcs.mk overlays.mk
 ```bash
 git diff OLD..NEW -- \
   include/config.h armips/include/config.s \
-  include/constants/species.h asm/include/species.inc \
+  include/constants/species.h \
   include/constants/ability.h include/constants/moves.h include/constants/item.h \
   include/species_data.h include/move_data.h include/trainer_data.h include/item.h
 ```
@@ -649,7 +649,7 @@ git diff OLD..NEW -- \
 | `base_exp` | `data/BaseExperienceTable.c` |
 | `evolutions` | `data/Evolutions.c` |
 | 향후 learnsets | `data/learnsets/learnsets.json` |
-| species constants | C + ASM constants 동시 생성 |
+| species constants | `include/constants/species.h`; 전처리 ASM이 공용 header 참조 |
 | ability dictionary IDs | 최신 `include/constants/ability.h`에서 재생성 |
 | move dictionary IDs | 최신 `include/constants/moves.h`에서 재생성 |
 | item dictionary IDs | 최신 `include/constants/item.h`에서 재생성 |
@@ -700,32 +700,51 @@ find include/constants/generated build base -maxdepth 2 -type f | head
 
 ```text
 README
-https://github.com/BluRosie/hg-engine/blob/1febb90b856745f8648c8a4fa059e7499a3cca3f/README.md
+https://github.com/BluRosie/hg-engine/blob/027977cca9c93d5c7346081af837ec33706303f8/README.md
 
 Makefile
-https://github.com/BluRosie/hg-engine/blob/1febb90b856745f8648c8a4fa059e7499a3cca3f/Makefile
+https://github.com/BluRosie/hg-engine/blob/027977cca9c93d5c7346081af837ec33706303f8/Makefile
 
 narcs.mk
-https://github.com/BluRosie/hg-engine/blob/1febb90b856745f8648c8a4fa059e7499a3cca3f/narcs.mk
+https://github.com/BluRosie/hg-engine/blob/027977cca9c93d5c7346081af837ec33706303f8/narcs.mk
 
 config.h
-https://github.com/BluRosie/hg-engine/blob/1febb90b856745f8648c8a4fa059e7499a3cca3f/include/config.h
+https://github.com/BluRosie/hg-engine/blob/027977cca9c93d5c7346081af837ec33706303f8/include/config.h
 
 Species struct
-https://github.com/BluRosie/hg-engine/blob/1febb90b856745f8648c8a4fa059e7499a3cca3f/include/species_data.h
+https://github.com/BluRosie/hg-engine/blob/027977cca9c93d5c7346081af837ec33706303f8/include/species_data.h
 
 Move struct
-https://github.com/BluRosie/hg-engine/blob/1febb90b856745f8648c8a4fa059e7499a3cca3f/include/move_data.h
+https://github.com/BluRosie/hg-engine/blob/027977cca9c93d5c7346081af837ec33706303f8/include/move_data.h
 
 Trainer struct
-https://github.com/BluRosie/hg-engine/blob/1febb90b856745f8648c8a4fa059e7499a3cca3f/include/trainer_data.h
+https://github.com/BluRosie/hg-engine/blob/027977cca9c93d5c7346081af837ec33706303f8/include/trainer_data.h
 
 Item struct
-https://github.com/BluRosie/hg-engine/blob/1febb90b856745f8648c8a4fa059e7499a3cca3f/include/item.h
+https://github.com/BluRosie/hg-engine/blob/027977cca9c93d5c7346081af837ec33706303f8/include/item.h
 
 Ability constants
-https://github.com/BluRosie/hg-engine/blob/1febb90b856745f8648c8a4fa059e7499a3cca3f/include/constants/ability.h
+https://github.com/BluRosie/hg-engine/blob/027977cca9c93d5c7346081af837ec33706303f8/include/constants/ability.h
 
 Repository documentation
-https://github.com/BluRosie/hg-engine/tree/1febb90b856745f8648c8a4fa059e7499a3cca3f/documentation/wiki
+https://github.com/BluRosie/hg-engine/tree/027977cca9c93d5c7346081af837ec33706303f8/documentation/wiki
 ```
+
+---
+
+# 29. 이번 업데이트에서 추가로 추적할 경로
+
+| 영역 | 기준 소스 |
+|---|---|
+| ds-rom 전환 | `Makefile`, `requirements.txt`, `scripts/dsrom_bridge.py`, `.github/workflows/build.yml` |
+| 덤프 분기/출력 | `dump.mk`, `tools/source/dumptools/dump_event_scripts.py`, `tools/source/dumptools/dumprom.sh` |
+| 필드 스크립트 | `data/scr_seq/`, `asm/include/scriptmacros.inc`, `narcs.mk` |
+| 이벤트 JSON | `data/eventdata/zone_event.json.txt`, `tools/source/jsonproc/` |
+| 텍스트 key | `data/text/keys.csv`, `narcs.mk` |
+| 최종 피해 반감 | `src/battle/battle_calc_damage.c` |
+| 메가 시작 폼 | `src/battle/mega.c`, `include/mega.h`, `include/battle.h` |
+| 폼 조회/그래픽 | `src/pokemon.c`, `data/PokeFormDataTbl.c`, `data/FormToSpeciesMapping.c` |
+| 폼 동행 세이브 로드 | `src/save.c`, `include/save.h`, `include/map_events_internal.h`, `hooks` |
+| 배틀 확장 ID | `include/constants/move_effects.h`, `include/constants/battle_script_constants.h`, `asm/include/battle_commands.inc` |
+
+이전 SHA `1febb90b856745f8648c8a4fa059e7499a3cca3f`부터 현재 SHA까지의 변경/변경 없음/확인 한계는 [07장](./07_UPDATE_2026-10-01.md)에 기록합니다. 현 문서의 원본·상수·경로를 Git tree와 대조했고, 변경된 핵심 파일의 이전/현재 내용을 비교했습니다. 수정되지 않은 전체 기능을 새로 플레이 검증했다는 뜻은 아닙니다.

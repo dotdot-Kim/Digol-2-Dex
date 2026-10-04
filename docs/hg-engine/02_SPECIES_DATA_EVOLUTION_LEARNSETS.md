@@ -1,6 +1,6 @@
 # 02. 종족 · 진화 · 학습기 · 도감 · 그래픽
 
-> 기준: `BluRosie/hg-engine` `main` @ `1febb90b856745f8648c8a4fa059e7499a3cca3f`
+> 기준: `BluRosie/hg-engine` `main` @ `027977cca9c93d5c7346081af837ec33706303f8`
 >
 > 이 장은 Digol-2의 디지몬 데이터를 최신 hg-engine에 연결할 때 가장 직접적인 기준이 되는 문서입니다. 현재 converter를 고치는 작업은 별도 단계에서 진행합니다.
 
@@ -342,51 +342,24 @@ typedef struct SpeciesTextData {
 
 # 6. 신규 종족 ID 추가
 
-공식 신규 Pokémon 문서가 현재도 요구하는 핵심은 C와 ASM 양쪽 species 상수를 맞추는 것입니다.
-
-## C
-
-```text
-include/constants/species.h
-```
-
-예:
+현 기준의 종족 상수 원본은 `include/constants/species.h`입니다.
 
 ```c
 #define SPECIES_AGUMON (MAX_CANONICAL_MON_NUM + 1)
 #define SPECIES_GABUMON (MAX_CANONICAL_MON_NUM + 2)
-...
+// ...프로젝트가 할당한 전체 추가 종 수에 맞게 설정
 #define NUM_OF_FAKEMONS N
 ```
 
-## ASM
+**기존 가이드 정정:** `asm/include/species.inc`는 이전/현재 기준 트리에 모두 없습니다. 별도 `.inc` 파일을 만들거나 C/ASM 종족 번호를 수동 이중 관리하라는 기존 설명은 잘못됐습니다.
 
-```text
-asm/include/species.inc
+현재 Makefile의 ASM 컴파일러는 `gcc -x assembler-with-cpp`이며, 예를 들어 `data/scr_seq/scr_seq_00003_commonscript.s`는 다음처럼 C header를 직접 포함합니다.
+
+```c
+#include "constants/species.h"
 ```
 
-동일 번호:
-
-```asm
-.equ SPECIES_AGUMON, (MAX_CANONICAL_MON_NUM + 1)
-.equ SPECIES_GABUMON, (MAX_CANONICAL_MON_NUM + 2)
-...
-.equ NUM_OF_FAKEMONS, N
-```
-
-### 절대 원칙
-
-C/ASM 번호가 1개라도 어긋나면:
-
-- 데이터 참조
-- 그래픽
-- trainer
-- scripts
-- form
-
-등이 서로 다른 종을 가리킬 수 있습니다.
-
-향후 Digol-2 converter/상수 생성기를 만들 때 species 상수 C/ASM 동시 생성 기능을 넣는 것이 좋습니다.
+종족 ID를 변경할 때는 해당 header를 쓰는 데이터·스크립트·그래픽을 함께 재빌드하십시오. Armips에서 직접 쓰는 별도 상수가 있다면 그 실제 사용처를 따로 조사하되, 존재하지 않는 `species.inc`를 편집 대상으로 삼지 않습니다.
 
 ---
 
@@ -781,7 +754,7 @@ python3 scripts/build_learnsets.py \
 ## 필수/준필수 체크리스트
 
 - [ ] `include/constants/species.h`
-- [ ] `asm/include/species.inc`
+- [ ] 종족 header를 참조하는 ASM/그래픽/데이터 재빌드
 - [ ] `data/Species.c`
 - [ ] `data/BaseExperienceTable.c`
 - [ ] `data/HiddenAbilityTable.c`
@@ -1085,7 +1058,7 @@ make -j8
 
 # 29. 신규 디지몬 1종 추가의 권장 순서
 
-1. species C/ASM 상수 추가
+1. `include/constants/species.h`에 species 상수 추가
 2. `Species.c` 데이터 추가
 3. `BaseExperienceTable.c`
 4. `HiddenAbilityTable.c`
@@ -1099,3 +1072,38 @@ make -j8
 12. 정식 graphics/cry/overworld 완성
 
 이 순서로 하면 “데이터 문제”와 “그래픽 문제”를 분리해 디버깅하기 쉽습니다.
+
+---
+
+# 30. 2026-10-01 폼 통합과 메가진화 변경
+
+## 기존 폼 59개를 일반 internal species 테이블로 통합
+
+`SPECIES_LEGACY_FORMS_START`부터 `SPECIES_PICHU_SPIKY_EAR`까지 59개 상수가 추가됐습니다. 데오키스, 안농, 도롱충이/도롱마담, 아르세우스, 쉐이미, 로토무, 기라티나, 삐쭈의 기존 폼을 포함합니다. **새로운 기본 종족 59종을 추가했다는 뜻이 아닙니다.**
+
+기존 일부 `SPECIES_*_OVERWORLD_*` 상수와 원작 폼 슬롯 특례를 대신하여 다음 체인을 사용합니다.
+
+`runtime species/form → PokeFormDataTbl → internal species → Species/graphics/icon/follower tables`
+
+`src/pokemon.c`의 `PokeOtherFormMonsNoGet()`이 원작 폼별 하드코딩 분기를 제거하고 `CODE_ADDON_FORM_DATA`를 공통으로 읽습니다. `GetMonSpriteCharAndPlttNarcIdsEx()`와 `GetMonPicHeightBySpeciesGenderForm()`도 이 매핑을 이용합니다. 실제 변경은 `FormToSpeciesMapping.c`, `PokeFormDataTbl.c`, `SpeciesToOWFormFemale.c`, `FollowerProperties.c`, 그래픽 폴더까지 연결됩니다.
+
+Digol-2 커스텀 폼을 이전 `MAX_SPECIES_CANONICAL_FORM_NUM + n`에 넣었다면 번호가 이동합니다. 상수명 기반 데이터와 그래픽을 함께 재생성해야 하며, 수치 ID를 저장한 외부 파일은 별도로 대조합니다. 이 변경만으로 모든 기존 세이브가 깨진다고 단정하지 않습니다.
+
+## 메가 테이블은 시작 폼을 명시
+
+`src/battle/mega.c`의 `MegaStruct`/`MegaStructMove`는 기존 `.form` 대신 다음을 사용합니다.
+
+```c
+.targetForm = 1,  // 변신 후 폼, 4 bit
+.baseForm = 0,    // 변신 전 폼, 4 bit
+```
+
+`CheckMegaData(mon, item, form)`, `GrabMegaTargetForm(mon, item, form)`에 현재 폼 인자가 추가됐습니다. 디지몬 모드 체인지에 재사용할 때 이전 예제의 2인자 호출이나 `.form` 초기화는 그대로 옮길 수 없습니다. 메가 테이블의 4-bit 폼 범위와 일반 `MON_WITH_FORM` 인코딩을 혼동하지 마십시오.
+
+추격 중 메가 처리, 싱글/더블에서의 메가 사용 제한, 비기본 폼의 메가 여부도 수정됐습니다. 메가 지가르데 테이블 항목은 현재 주석 처리/TODO이고, 일부 복귀 처리에도 TODO가 있어 모든 폼 조합이 완성됐다고 보장하지 않습니다.
+
+## 학습기는 같은 형식으로 데이터가 변경
+
+`learnsets.json`의 `LevelMoves`, `MachineMoves`, `EggMoves`, `TutorMoves` 구조와 `scripts/build_learnsets.py`는 유지됩니다. 파싱 비교 결과 키 7개 추가·1개 삭제, 기존 키 24개 내용 변경입니다. 세대별 `base/*.json`에도 폼 이름 정리가 있습니다. 자세한 목록은 [07장](./07_UPDATE_2026-10-01.md)을 참조하십시오.
+
+`SpeciesDataEntry`, 진화 9슬롯, 진화 판정 파일 자체는 이번 구간에서 변경되지 않았습니다. 이전 converter를 최신 C 출력으로 옮겨야 한다는 기존 과제는 그대로 남으며, 이 문서 갱신에서는 converter/디지몬 JSON을 변경하지 않습니다.

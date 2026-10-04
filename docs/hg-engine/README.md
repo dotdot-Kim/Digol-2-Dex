@@ -2,9 +2,9 @@
 
 > **목적:** Digol-2 개발 중 `BluRosie/hg-engine`을 설치·빌드하고, 데이터/콘텐츠/배틀 시스템을 수정·확장할 때 지속적으로 참고하는 내부 개발 문서입니다.
 >
-> **조사 기준 버전:** `BluRosie/hg-engine` `main` @ `1febb90b856745f8648c8a4fa059e7499a3cca3f` (2026-09-03)
+> **조사 기준 버전:** `BluRosie/hg-engine` `main` @ `027977cca9c93d5c7346081af837ec33706303f8` (2026-10-01)
 >
-> **작성 기준일:** 2026-09-09
+> **최종 갱신일:** 2026-10-04 (최초 작성 2026-09-09)
 
 ---
 
@@ -34,8 +34,8 @@ hg-engine은 빠르게 변경되는 프로젝트이며, 일부 공식 Wiki 문�
 | 기본 경험치 | `data/BaseExperienceTable.c` | custom table |
 | 특성 동작 플래그 | `data/AbilityFlags.c` | `GetAbilityFlags()` 계열 |
 | 아이템 파라미터 | `data/itemdata/itemdata.c` | `data/itemdata/itemdata.mk` |
-| 종족 상수 | `include/constants/species.h` + `asm/include/species.inc` | C/ASM 양쪽 동기화 |
-| 특성 상수 | `include/constants/ability.h` | 현재 실제 정의 0~318, 확장 기반은 16-bit |
+| 종족 상수 | `include/constants/species.h` | C 및 전처리 ASM에서 공용 header 사용 |
+| 특성 상수 | `include/constants/ability.h` | 현재 실제 정의 0~319, 확장 기반은 16-bit |
 | 기술 상수 | `include/constants/moves.h` | 기술 원본과 번호 동기화 |
 | 배틀 스크립트 | `data/battle_scripts/{moves,effects,subscripts}` | 배틀 스크립트 빌드 |
 | 배틀 C 로직 | `src/battle/*`, `src/individual/*` | hooks/overlay로 원작 루틴 대체·확장 |
@@ -114,6 +114,16 @@ hg-engine은 빠르게 변경되는 프로젝트이며, 일부 공식 Wiki 문�
 - 공식 문서와 실제 구현의 관계
 - 레거시 문서/미해명 항목
 - 다음 업데이트 때 diff해야 할 핵심 파일 목록
+
+---
+
+## [07. 2026-10-01 업데이트 비교 · 마이그레이션 주의점](./07_UPDATE_2026-10-01.md)
+
+- 9월 3일 기준 → 10월 1일 기준 230개 커밋 비교
+- ds-rom/Rust/PyYAML, 필드 스크립트/이벤트/텍스트 빌드
+- 59개 기존 폼의 데이터 통합, 메가진화 API 변경
+- 황금몸 구현, Aura Guard, 기술·특성 수정, 확장 ID 충돌
+- 유지되는 데이터 형식과 확인된 upstream 주의점
 
 ---
 
@@ -238,10 +248,11 @@ C 원본을 HGSS가 기대하는 NARC·메시지·그래픽 형식으로 변환�
 # 5. 핵심 upstream 링크
 
 - hg-engine: https://github.com/BluRosie/hg-engine
-- 이 문서의 고정 기준: https://github.com/BluRosie/hg-engine/tree/1febb90b856745f8648c8a4fa059e7499a3cca3f
-- 기준 README: https://github.com/BluRosie/hg-engine/blob/1febb90b856745f8648c8a4fa059e7499a3cca3f/README.md
-- 기준 Makefile: https://github.com/BluRosie/hg-engine/blob/1febb90b856745f8648c8a4fa059e7499a3cca3f/Makefile
-- 기준 CONFIG: https://github.com/BluRosie/hg-engine/blob/1febb90b856745f8648c8a4fa059e7499a3cca3f/include/config.h
-- 저장소 포함 Wiki: https://github.com/BluRosie/hg-engine/tree/1febb90b856745f8648c8a4fa059e7499a3cca3f/documentation/wiki
+- 이 문서의 고정 기준: https://github.com/BluRosie/hg-engine/tree/027977cca9c93d5c7346081af837ec33706303f8
+- 기준 README: https://github.com/BluRosie/hg-engine/blob/027977cca9c93d5c7346081af837ec33706303f8/README.md
+- 기준 Makefile: https://github.com/BluRosie/hg-engine/blob/027977cca9c93d5c7346081af837ec33706303f8/Makefile
+- 기준 CONFIG: https://github.com/BluRosie/hg-engine/blob/027977cca9c93d5c7346081af837ec33706303f8/include/config.h
+- 저장소 포함 Wiki: https://github.com/BluRosie/hg-engine/tree/027977cca9c93d5c7346081af837ec33706303f8/documentation/wiki
 
 전체 출처는 `06_SOURCE_INDEX.md`를 참고하십시오.
+

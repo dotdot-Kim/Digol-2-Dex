@@ -1,6 +1,6 @@
 # 05. 테스트 · 디버깅 · 문제 해결 · 유지보수
 
-> 기준: `BluRosie/hg-engine` `main` @ `1febb90b856745f8648c8a4fa059e7499a3cca3f`
+> 기준: `BluRosie/hg-engine` `main` @ `027977cca9c93d5c7346081af837ec33706303f8`
 
 ---
 
@@ -590,7 +590,7 @@ rg "GetBattlerAbility" src include
 
 # 28. 신규 종 crash 디버깅 순서
 
-1. species C/ASM ID 일치
+1. `include/constants/species.h`의 species ID와 모든 데이터/그래픽 참조 일치
 2. `MAX_*`/count 값
 3. `Species.c` 엔트리 존재
 4. 그래픽 슬롯 존재
@@ -765,3 +765,37 @@ ROM 종류:
 - [ ] 문서의 기준 commit 갱신
 
 을 만족하도록 합니다.
+
+---
+
+# 37. 2026-10-01 업데이트 후 우선 점검
+
+이번 구간에 배틀 테스트 C 파일 62개가 추가되고 8개가 수정됐습니다. runner/generator 스크립트 자체는 그대로지만 `src/test_battle.c`의 초기 PP가 고정 40에서 `GetMoveMaxPP(move, 0)`로 바뀌고 `MOVE_NONE`은 PP 0으로 설정됩니다. 기존 커스텀 테스트가 40 PP를 전제로 했다면 기대값을 수정해야 합니다.
+
+| 영향 | 먼저 볼 기존 테스트 (`data/battle_tests/` 아래) |
+|---|---|
+| 황금몸/아군 지원 | `abilities/good_as_gold/block_targeted_status.c`, `moves/milk_drink/good_as_gold.c` |
+| 접촉 피해 반감 | `abilities/aura_guard/contact_moves.c`, `abilities/aura_guard/mold_breaker.c` |
+| 도구 비활성/Choice lock | `moves/magic_room/` |
+| HP 지불 반동 | `moves/steel_beam/` |
+| 회복 대기/PP | `moves/healing_wish/`, `moves/lunar_dance/trigger_on_pp.c` |
+| 다중타격 | `moves/double_kick/one_pp.c`, `moves/bullet_seed/substitute.c` |
+| 메가/추격/시작 폼 | `species/mega/`, `species/floette/mega.c`, `species/slowbro/mega.c`, `moves/pursuit/doubles_pursuit_queue_mega_after_pursuit.c` |
+| 위협 반응 | `abilities/intimidate/` |
+| 일격기/옹골참 | `moves/sheer_cold/failures.c`, `abilities/sturdy/focus_sash.c` |
+
+테스트 파일이 추가됐다는 사실과 직접 실행해서 통과를 확인했다는 것은 다릅니다. 이번 문서 갱신은 소스/테스트 내용을 검토했고 upstream 최신 커밋의 `build` CI 성공을 확인했지만, 별도 US 원본 ROM으로 로컬 빌드·에뮬레이터 검증은 수행하지 않았습니다.
+
+## 빌드 환경의 새 오류
+
+- `cargo: command not found`: Rust/Cargo 설치 및 PATH 확인.
+- `No module named yaml`: 기존 venv에 PyYAML 설치 또는 `make clean_tools` 후 재생성.
+- `base_dsrom/config.yaml` 누락 등 도구 전환 문제: `make clean` 후 선택 도구로 일관되게 빌드.
+- dump 실행에서 `tools/ndstool` 없음: `dump.mk`의 `ROM_TOOL` 비교 불일치 확인. [01장](./01_SETUP_BUILD_CONFIG.md) 우회 절차 참조.
+- Docker에서 새 기본 빌드 실패: 현재 Dockerfile의 Cargo 미설치 확인.
+- 이벤트 JSON 편집이 반영되지 않음: `BUILD_DUMPED_EVENTDATA`와 `event_*.inc` 존재 확인.
+- 필드 `.s` 편집이 반영되지 않음: 엔진 관리 스크립트인지/일반 덤프인지와 `BUILD_DUMPED_SCR_SEQ` 확인.
+
+## 정적 확인만으로 단정하면 안 되는 것
+
+상수·테스트·설명문이 있어도 모든 기능이 구현됐다고 결론내리지 않습니다. 예를 들어 이전 황금몸은 실제 블록이 주석 처리돼 있었고, 현 메가 지가르데 테이블은 주석 처리입니다. Obstruct 테스트의 파일명 `lower_attack.c`와 선두 주석은 오래된 표현이지만 실제 기대 메시지는 Defense 감소입니다. 검증할 때 실제 조건과 기대값을 읽습니다.

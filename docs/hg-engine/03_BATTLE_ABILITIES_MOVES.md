@@ -1,6 +1,6 @@
 # 03. 특성 · 기술 · 배틀 시스템 확장
 
-> 기준: `BluRosie/hg-engine` `main` @ `1febb90b856745f8648c8a4fa059e7499a3cca3f`
+> 기준: `BluRosie/hg-engine` `main` @ `027977cca9c93d5c7346081af837ec33706303f8`
 
 ---
 
@@ -69,8 +69,8 @@ include/constants/ability.h
 현재 기준 커밋은:
 
 ```c
-#define ABILITY_SPICY_SPRAY 318
-#define NUM_ABILITIES ABILITY_SPICY_SPRAY + 1
+#define ABILITY_AURA_GUARD 319
+#define NUM_ABILITIES ABILITY_AURA_GUARD + 1  // 320
 ```
 
 까지 정의되어 있습니다.
@@ -303,17 +303,20 @@ Toxic Debris
 
 # 12. 상태기 무효화 / 황금몸 계열
 
-`Good as Gold`는 현재 hg-engine ability constant에 존재합니다.
+**이번 비교 구간에서 황금몸의 실제 처리 코드가 활성화됐습니다.** 이전 `ability.c`에서는 블록이 주석 처리돼 있었으므로, 상수가 존재한다는 이유만으로 이미 구현됐다고 보는 것은 잘못입니다.
 
-따라서 Digol-2에서 “황금몸 같은 특성”을 만들고 싶다면 새 로직을 처음부터 만들기보다:
+현재 `src/battle/ability.c`의 `MoveCheckDamageNegatingAbilities()`에서:
 
-```bash
-rg "ABILITY_GOOD_AS_GOLD"
-```
+- 공격자와 대상이 다름
+- `MoldBreakerAbilityCheck(..., ABILITY_GOOD_AS_GOLD)` 통과
+- 상대 진영/필드 대상 비트가 없는 기술
+- `SPLIT_STATUS`
 
-로 현재 구현 위치를 찾고 조건만 변경하는 것이 정석입니다.
+을 검사하고 `BATTLE_SUBSCRIPT_DOESNT_AFFECT_ABILITY`를 호출합니다. 자신 대상 변화기와 필드/진영 전체 효과를 무조건 모두 막는 구현이 아닙니다. 아군이 직접 대상으로 삼는 변화기도 해당 경로를 확인해야 합니다.
 
-상태기 판정은 damage calculation보다 훨씬 앞쪽/명중·효과 적용 경로에 들어가기 때문에, `CalcBaseDamage.c`에 넣으면 안 됩니다.
+참고 테스트는 `abilities/good_as_gold/block_targeted_status.c`, `moves/milk_drink/good_as_gold.c`입니다(`data/battle_tests/` 기준).
+
+디골에서 황금몸 변형 특성을 만들 때는 이 현재 구현을 출발점으로 쓰고, 상태기 예외·Mold Breaker·아군 지원을 별도로 검증합니다. `CalcBaseDamage.c`에만 넣는 방식은 적합하지 않습니다.
 
 ---
 
@@ -414,7 +417,7 @@ Digol-2에서 신규 특성 수십 개를 추가하는 것은 구조적으로 �
 
 1. `include/constants/ability.h`
    ```c
-   #define ABILITY_DIGITAL_OVERDRIVE 319
+   #define ABILITY_DIGITAL_OVERDRIVE (ABILITY_AURA_GUARD + 1)  // 이 기준에서는 320
    #define NUM_ABILITIES ABILITY_DIGITAL_OVERDRIVE + 1
    ```
 2. `data/text/720.txt`
@@ -428,6 +431,9 @@ Digol-2에서 신규 특성 수십 개를 추가하는 것은 구조적으로 �
 10. `make clean_code && make`
 
 ### 번호 정책
+
+**319는 이제 `ABILITY_AURA_GUARD`가 사용합니다.** 이전 매뉴얼의 319 예제를 이미 적용했다면 충돌을 해결해야 합니다. 예시 320도 이후 upstream에서 예약이 보장되는 번호는 아니므로 매 업데이트 때 확인하십시오.
+
 
 Digol-2 전용 특성은 공식 hg-engine 마지막 ability 뒤에 연속 영역으로 관리하는 것이 좋습니다.
 
@@ -904,3 +910,37 @@ Digol-2처럼 원작 Pressure 등을 강화할 경우:
 - [ ] 실게임 검증
 
 이 체크리스트를 Digol-2 신규 커스텀 효과의 공통 완료 조건으로 사용할 것을 권장합니다.
+
+---
+
+# 37. 2026-10-01 확장 번호와 배틀 API
+
+| 영역 | 현재 upstream 마지막 | 신규 커스텀 시작 예시 |
+|---|---:|---|
+| 특성 | Aura Guard 319 (`NUM_ABILITIES` 320) | `ABILITY_AURA_GUARD + 1` |
+| 기술 효과 | Steel Beam 408 | `MAX_BASE_MOVE_EFFECT_NUM + 1` = 409 |
+| 서브스크립트 | Prevent Intimidate 522 | `MAX_BASE_SUBSCRIPT_NUM + 1` = 523 |
+| 확장 배틀 명령 | 298 = `0x12A` | `BASE_ENGINE_BTL_SCR_CMDS_MAX + 1` = 299 |
+
+배틀 명령은 C dispatch와 `asm/include/battle_commands.inc`를 함께 맞춥니다. 이전 C의 최대값 0x11D는 당시 실제 마지막 명령 0x125보다 작았으며 이번에 0x12A로 바로잡혔습니다. 옛 숫자에 단순 +1하지 마십시오.
+
+새 명령 294~298은 `TryHealingWish`, `ActivateHealingWish`, `IsFieldCondition2On`, `SetFieldCondition2`, `GoToIfMoveConditionFlagSet`입니다. 마지막 명령은 현재 Steel Beam/Mind Blown 플래그만 처리하고 분기 시 플래그를 지웁니다. 이름만 보고 임의 조건을 읽는 범용 함수라고 가정하면 안 됩니다.
+
+## 새 효과/수정에서 재사용할 위치
+
+- **Aura Guard:** `src/battle/battle_calc_damage.c`에서 실제 접촉 판정 후 최종 피해 ×0.5. `AbilityFlags.c`상 Mold Breaker와 Neutralizing Gas 대상. 단순 물리 피해 반감이 아닙니다.
+- **Magic Room:** effect 407, `BattleStruct.field_condition2`/`magicRoomCounter`, 아이템 조회와 턴 종료 해제까지 연결. `GetBattleMonItem()`가 활성 중 0을 반환합니다. 실제 소지 도구가 영구 삭제되는 뜻은 아닙니다.
+- **Steel Beam/Mind Blown:** effect 408과 subscript 521을 공유하고 최대 HP 절반(홀수는 올림)을 지불. Magic Guard, 명중 실패/Protect, 다중 대상에서 1회 처리 등은 BeforeMove → PostMove → MoveEnd의 플래그 lifecycle을 따라갑니다.
+- **Healing Wish/Lunar Dance:** `HealingWishQueue` 및 두 배틀 명령으로 회복 대기를 관리. 건강한 교체 대상에서 보류되고 HP/상태/PP 조건에 따라 소비되도록 바뀌었습니다.
+- **위협:** `IntimidateCheckHelper()` 제거. 대상 특성별 차단과 Guard Dog/Rattled 반응은 `subscript_0186_INTIMIDATE.s` 및 새 522번 subscript를 함께 봅니다.
+
+## 이전 커스텀 코드 이식 시 반드시 점검
+
+- `ServerDoTypeCalcMod()` 삭제. 행동 전 타입 면역은 `BattleController_CheckTypeImmunity()`와 `GetTypeEffectiveness()`를 확인합니다.
+- `MoveConditionsFlags.glaiveRush` → `wideOpen`.
+- `CheckMegaData`, `GrabMegaTargetForm`, `CanItemBeRemovedFromSpecies`에 현재 폼 인자 추가.
+- `CanTrickHeldItemManual`에 공격자/방어자 폼 인자 2개 추가.
+- `BattleStruct`에 Healing Wish queue 및 추가 필드 상태가 붙었으므로 구조체 크기/offset에 의존하는 커스텀 ASM은 재검토.
+- 연속기 PP, Substitute hit flag, Ice Scales 중복 적용, Fairy Aura 타입 판정, Analytic 행동 순서 판정이 수정됨. 과거 함수를 통째로 복사해 덮으면 이 수정이 사라질 수 있습니다.
+
+아이즈 오브 고르곤의 **1턴 행동불가**는 HP 지불 반동인 Steel Beam과 다른 효과입니다. 최신 효과/명령 번호를 쓰되 기존 `MOVE_EFFECT_RECHARGE_AFTER` 및 동결 효과 경로를 결합하는 별도 구현·검증이 필요합니다. 이번 업데이트가 해당 전용기를 자동으로 구현해 주지는 않습니다.

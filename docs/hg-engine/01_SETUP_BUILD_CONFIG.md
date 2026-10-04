@@ -1,6 +1,6 @@
 # 01. 설치 · 빌드 · 업데이트 · CONFIG
 
-> 기준: `BluRosie/hg-engine` `main` @ `1febb90b856745f8648c8a4fa059e7499a3cca3f`
+> 기준: `BluRosie/hg-engine` `main` @ `027977cca9c93d5c7346081af837ec33706303f8`
 
 ---
 
@@ -20,7 +20,8 @@ hg-engine은 **영문(US) Pokémon HeartGold**를 대상으로 하는 엔진 오
 
 ```text
 rom.nds   -> 입력
-base/     -> 원본 ROM에서 추출된 파일
+base/     -> 엔진이 사용하는 평탄화된 추출 파일
+base_dsrom/ -> ds-rom의 config.yaml/원본 구조
 build/    -> 중간 산출물
 test.nds  -> 최종 결과
 ```
@@ -78,14 +79,21 @@ sudo apt-get install \
   python3 \
   python3-pip \
   python3-venv \
-  cmake \
-  automake \
-  autoconf \
   gcc-arm-none-eabi \
   pkg-config
 ```
 
-현재 Makefile은 Python venv 사용 가능 여부를 검사하고, 가능하면 `.venv`를 생성해 Python 의존성을 넣습니다.
+2026-10-01 기준 기본 ROM 도구는 `ds-rom`이며 Rust/Cargo가 추가로 필요합니다. 공식 README의 rustup 설치 방법:
+
+```bash
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+. "$HOME/.cargo/env"
+cargo --version
+```
+
+`curl`이 없다면 패키지 관리자로 먼저 설치합니다. MSYS2 공식 설치 목록에는 `mingw-w64-x86_64-rust`가 추가됐습니다. `cmake/automake/autoconf`는 기본 ds-rom 경로의 README 목록에서 빠졌지만, 아래의 ndstool 덤프 우회 경로에서는 autotools가 다시 필요할 수 있습니다.
+
+현재 Makefile은 Python venv 사용 가능 여부를 검사하고, 가능하면 `.venv`를 생성합니다. ds-rom bridge는 `PyYAML`을 사용합니다. 기존 `.venv`가 남아 있으면 새 패키지 설치 규칙이 재실행되지 않을 수 있으므로 `make clean_tools` 후 재빌드하거나, 해당 환경에서 `python -m pip install PyYAML`을 실행합니다.
 
 ---
 
@@ -179,7 +187,7 @@ test.nds
 6. `make move_narc`
 7. `armips/global.s` 적용
 8. a028 등의 custom NARC 재생성
-9. `ndstool`로 `test.nds` 재조립
+9. 기본 `ds-rom` + `scripts/dsrom_bridge.py`로 `test.nds` 재조립
 
 핵심 도구:
 
@@ -193,7 +201,12 @@ test.nds
 | `tools/msgenc` | 메시지 인코딩 |
 | `tools/nitrogfx` | 그래픽 변환 |
 | `tools/armips` | 바이너리 패치/ASM 적용 |
-| `tools/ndstool` | ROM 추출/재조립 |
+| `tools/dsrom` | 기본 ROM 추출/재조립; Rust/Cargo로 빌드 |
+| `scripts/dsrom_bridge.py` | ds-rom 구조 ↔ 기존 `base/` 구조 연결; PyYAML 사용 |
+| `tools/jsonproc` | 이벤트 JSON을 ASM으로 변환 |
+| `tools/ndstool` | 선택 가능한 기존 경로; `ROM_TOOL=tools/ndstool` |
+
+`Makefile`의 기본값은 `ROM_TOOL ?= $(DSROM)`이고 `DSROM := tools/dsrom`입니다. ds-rom 도구 자체는 `3bfef542191764df2afa39254bbf18f68c621d22`로 고정해 빌드합니다. 도구를 바꿀 때는 추출물이 섞이지 않도록 `make clean` 후 빌드합니다.
 
 ---
 
@@ -208,7 +221,7 @@ make clean
 삭제:
 
 - `build/`
-- `base/`
+- `base/`, `base_dsrom/`
 - generated 디렉터리 등
 
 가장 강한 일반 초기화입니다.
@@ -245,7 +258,9 @@ make clean_tools
 
 # 8. Docker
 
-최초:
+**[CAUTION: 2026-10-01 소스 점검]** `Dockerfile`은 이번 비교 기간에 변경되지 않았고 Rust/Cargo 설치가 없습니다. 따라서 아래 기존 Docker 절차만으로 새 기본 ds-rom 빌드가 준비된다고 보장할 수 없습니다. 이미지에 Rust/Cargo 및 필요한 Python 의존성을 설치하거나, 기존 ndstool 빌드 경로를 명시해야 합니다. 이 문서 갱신에서는 Docker 실행을 검증하지 않았습니다.
+
+기존 명령:
 
 ```bash
 docker build . -t hg-engine
@@ -584,9 +599,39 @@ upstream merge와 Digol-2 변경을 한 커밋에 섞지 않는 것이 중요합
 예:
 
 ```text
-chore: merge hg-engine upstream 1febb90
+chore: merge hg-engine upstream 027977c
 feat: migrate Digol species data to Species.c
 feat: add Digimon ability constants
 ```
 
 이렇게 분리해야 나중에 hg-engine 변화와 Digol-2 변화의 원인을 추적하기 쉽습니다.
+
+---
+
+# 16. 필드 소스 빌드 토글과 덤프 명령
+
+새 토글은 `include/config.h`에 있으며 둘 다 기본 주석 처리입니다.
+
+```c
+// #define BUILD_DUMPED_EVENTDATA
+// #define BUILD_DUMPED_SCR_SEQ
+```
+
+- `BUILD_DUMPED_EVENTDATA`: `data/eventdata/zone_event/*.json`을 빌드하여 `a/0/3/2`의 해당 멤버를 교체.
+- `BUILD_DUMPED_SCR_SEQ`: 덤프한 일반 필드 `.s`를 빌드하여 `a/0/1/2`의 해당 멤버를 교체.
+- 엔진 관리 common/trainer 스크립트는 토글과 무관하게 빌드.
+- `data/text/custom/*.txt`에는 별도 토글이 없으며 존재하면 텍스트 빌드 입력에 포함.
+
+Makefile은 정확히 값 없는 `#define NAME` 행을 찾습니다. `#define NAME 1`로 바꾸면 이 Make 검사에서는 활성으로 인식되지 않습니다.
+
+새 명령은 `make dump_scripts DUMP_ROM=...`입니다. 다만 현재 `dump.mk`는 `ROM_TOOL`을 문자열 `dsrom`과 비교하는 반면 기본 Makefile 값은 `tools/dsrom`이므로, **기본값의 dump 경로가 legacy ndstool 쪽으로 들어가는 불일치**가 있습니다. 정상 빌드 경로와는 별개의 소스상 문제입니다.
+
+기존 ndstool을 명시적으로 준비하는 우회 예시(WSL/apt):
+
+```bash
+sudo apt-get install automake autoconf
+make tools/ndstool
+make dump_scripts DUMP_ROM=/path/to/rom.nds ROM_TOOL=tools/ndstool
+```
+
+덤프는 `data/` 파일을 쓰는 명령입니다. 별도 작업 브랜치에서 실행한 뒤 diff를 확인합니다. `.s`, 이벤트 JSON, 텍스트의 편집 범위와 엔진 관리 파일 예외는 [04장](./04_WORLD_TRAINERS_ITEMS.md), 비교 근거는 [07장](./07_UPDATE_2026-10-01.md)을 참고합니다. 위 우회 예시는 정적 소스 분석에 따른 것으로 이번 작업에서 ROM으로 실행하지 않았습니다.
