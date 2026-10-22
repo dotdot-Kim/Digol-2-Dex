@@ -1,6 +1,6 @@
 # 03. 특성 · 기술 · 배틀 시스템 확장
 
-> 기준: `BluRosie/hg-engine` `main` @ `027977cca9c93d5c7346081af837ec33706303f8`
+> 기준: `BluRosie/hg-engine` `main` @ `f4fca05a63dc7c694b72c89f178fb3030ba6f5ad`
 
 ---
 
@@ -944,3 +944,17 @@ Digol-2처럼 원작 Pressure 등을 강화할 경우:
 - 연속기 PP, Substitute hit flag, Ice Scales 중복 적용, Fairy Aura 타입 판정, Analytic 행동 순서 판정이 수정됨. 과거 함수를 통째로 복사해 덮으면 이 수정이 사라질 수 있습니다.
 
 아이즈 오브 고르곤의 **1턴 행동불가**는 HP 지불 반동인 Steel Beam과 다른 효과입니다. 최신 효과/명령 번호를 쓰되 기존 `MOVE_EFFECT_RECHARGE_AFTER` 및 동결 효과 경로를 결합하는 별도 구현·검증이 필요합니다. 이번 업데이트가 해당 전용기를 자동으로 구현해 주지는 않습니다.
+
+
+
+# 38. 2026-10-18 배틀 API 갱신
+
+37절 표는 10월 1일 당시 기록입니다. 현재 서브스크립트 마지막은 `BATTLE_SUBSCRIPT_RECEIVER` 523이며 커스텀 시작 예시는 524입니다. 배틀 명령 마지막은 `0x12C`(300, `TryActivateEmergencyExit`)이며 커스텀 시작 예시는 301입니다. `0x12B`(299)는 `TryActivateReceiver`입니다. 기술 효과 408 및 특성 319 상한은 이전 기준과 같습니다. **현재 디골에는 자체 커스텀 ID가 있으므로 이 예시 번호를 빈 번호로 간주하지 않습니다.**
+
+- `BATTLE_SUBSCRIPT_HANDLE_WIMP_OUT` → `BATTLE_SUBSCRIPT_HANDLE_WIMP_OUT_EMERGENCY_EXIT` (498 유지).
+- `BattleStruct.waza_no_last` → `lastSuccessfulMove`; 새 `recoilDamage`, `ejectPackActivated` 필드 추가.
+- `MoveConditionsFlags`에 `ejectPackFlag`, `firstTurnOut` 추가. Fake Out의 첫 턴 판정은 교체를 반영하는 `BattlerFirstTurnOut()` 경로 확인.
+- `ADD_STATUS_*` 중복 정의 제거. 사용 코드는 `SIDE_EFFECT_TYPE_*`와 실제 판정값을 대조. `SIDE_EFFECT_TYPE_CONTACT_PROTECTED` = `0xA` 추가.
+- Receiver/Power of Alchemy, Emergency Exit/Wimp Out, Eject Pack/Button은 여러 단계와 서브스크립트를 함께 변경. 관련 함수 하나만 복사하지 않습니다.
+
+`include/battle.h`, `src/battle/battle_script_commands.c`, `asm/include/battle_commands.inc`, `hooks` 및 관련 subscripts를 한 단위로 비교합니다. 세부 내용은 [08장](./08_UPDATE_2026-10-18.md).

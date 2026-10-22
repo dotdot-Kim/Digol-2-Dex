@@ -1,6 +1,6 @@
 # 01. 설치 · 빌드 · 업데이트 · CONFIG
 
-> 기준: `BluRosie/hg-engine` `main` @ `027977cca9c93d5c7346081af837ec33706303f8`
+> 기준: `BluRosie/hg-engine` `main` @ `f4fca05a63dc7c694b72c89f178fb3030ba6f5ad`
 
 ---
 
@@ -624,9 +624,13 @@ feat: add Digimon ability constants
 
 Makefile은 정확히 값 없는 `#define NAME` 행을 찾습니다. `#define NAME 1`로 바꾸면 이 Make 검사에서는 활성으로 인식되지 않습니다.
 
-새 명령은 `make dump_scripts DUMP_ROM=...`입니다. 다만 현재 `dump.mk`는 `ROM_TOOL`을 문자열 `dsrom`과 비교하는 반면 기본 Makefile 값은 `tools/dsrom`이므로, **기본값의 dump 경로가 legacy ndstool 쪽으로 들어가는 불일치**가 있습니다. 정상 빌드 경로와는 별개의 소스상 문제입니다.
+새 명령은 `make dump_scripts DUMP_ROM=...`입니다. 최신 upstream은 `dump.mk`의 비교를 `ifeq ($(ROM_TOOL),$(DSROM))`으로 수정하여 기본 ds-rom 덤프 경로가 선택됩니다.
 
-기존 ndstool을 명시적으로 준비하는 우회 예시(WSL/apt):
+```bash
+make dump_scripts DUMP_ROM=/path/to/rom.nds
+```
+
+**현재 디골 `c75d6f7`은 아직 `ifeq ($(ROM_TOOL),dsrom)`입니다.** 기본값 `tools/dsrom`과 일치하지 않으므로, 해당 fork에서 덤프가 필요하면 기존 ndstool을 준비하고 명시하는 방법을 사용합니다.
 
 ```bash
 sudo apt-get install automake autoconf
@@ -634,4 +638,14 @@ make tools/ndstool
 make dump_scripts DUMP_ROM=/path/to/rom.nds ROM_TOOL=tools/ndstool
 ```
 
-덤프는 `data/` 파일을 쓰는 명령입니다. 별도 작업 브랜치에서 실행한 뒤 diff를 확인합니다. `.s`, 이벤트 JSON, 텍스트의 편집 범위와 엔진 관리 파일 예외는 [04장](./04_WORLD_TRAINERS_ITEMS.md), 비교 근거는 [07장](./07_UPDATE_2026-10-01.md)을 참고합니다. 위 우회 예시는 정적 소스 분석에 따른 것으로 이번 작업에서 ROM으로 실행하지 않았습니다.
+덤프는 `data/` 파일을 쓰는 명령입니다. 별도 작업 브랜치에서 실행한 뒤 diff를 확인합니다. 위 절차는 소스 분석에 따른 것이며 이번 작업에서 ROM으로 실행하지 않았습니다. 상세 버전 차이는 [08장](./08_UPDATE_2026-10-18.md)을 참고합니다.
+
+# 17. 현재 디골 프로젝트 빌드 연결
+
+`digol/config.mk`는 엔진 mk보다 먼저, `digol/digol.mk`는 `narcs.mk`·`overlays.mk`·`dump.mk` 뒤에 포함합니다. `DIGOL_PRE_INSERT`, `DIGOL_MOVE_NARC`, `DIGOL_POST_ARMIPS`, `DIGOL_PRE_PACK` 훅과 `overlays.mk`의 `DIGOL_$1_OBJS` 연결을 보존합니다.
+
+```bash
+make -j4 DIGOL_LANG=ko DIGOL_KO_SMOKE=0
+```
+
+현재 `DIGOL_PARTICLES` 기본값은 1이며 한국어 빌드는 1을 요구합니다. 폴더 구조 변경 직후에는 한 번 `make clean`을 실행합니다. 빌드 마지막의 `digol/scripts/check_build.py`와 라디오 검사를 제거하지 않습니다.

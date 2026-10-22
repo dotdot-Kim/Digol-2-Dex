@@ -1,8 +1,8 @@
 # 06. 소스 인덱스 · 기준 커밋 · 검증 출처
 
-> **hg-engine 기준 커밋:** `027977cca9c93d5c7346081af837ec33706303f8`
+> **hg-engine 기준 커밋:** `f4fca05a63dc7c694b72c89f178fb3030ba6f5ad`
 >
-> **기준 날짜:** 2026-10-01 upstream main / 매뉴얼 갱신 2026-10-04 (최초 작성 2026-09-09)
+> **기준 날짜:** 2026-10-18 한국시간 upstream main / 매뉴얼 갱신 2026-10-22 (최초 작성 2026-09-09)
 >
 > 이 파일은 앞으로 hg-engine upstream을 업데이트할 때 **어떤 파일부터 diff해야 하는지** 알려주는 유지보수용 인덱스입니다.
 
@@ -17,7 +17,7 @@ https://github.com/BluRosie/hg-engine
 고정 기준:
 
 ```text
-https://github.com/BluRosie/hg-engine/tree/027977cca9c93d5c7346081af837ec33706303f8
+https://github.com/BluRosie/hg-engine/tree/f4fca05a63dc7c694b72c89f178fb3030ba6f5ad
 ```
 
 이 매뉴얼은 live `main`의 설명이 아니라 위 커밋의 실제 코드 상태를 기준으로 작성되었습니다.
@@ -443,6 +443,7 @@ src/individual/PartyMenu_HandleUseItemOnMon.c
 ## machine
 
 ```text
+data/MachineMoves.c
 scripts/update_machine_moves.py
 ```
 
@@ -700,34 +701,34 @@ find include/constants/generated build base -maxdepth 2 -type f | head
 
 ```text
 README
-https://github.com/BluRosie/hg-engine/blob/027977cca9c93d5c7346081af837ec33706303f8/README.md
+https://github.com/BluRosie/hg-engine/blob/f4fca05a63dc7c694b72c89f178fb3030ba6f5ad/README.md
 
 Makefile
-https://github.com/BluRosie/hg-engine/blob/027977cca9c93d5c7346081af837ec33706303f8/Makefile
+https://github.com/BluRosie/hg-engine/blob/f4fca05a63dc7c694b72c89f178fb3030ba6f5ad/Makefile
 
 narcs.mk
-https://github.com/BluRosie/hg-engine/blob/027977cca9c93d5c7346081af837ec33706303f8/narcs.mk
+https://github.com/BluRosie/hg-engine/blob/f4fca05a63dc7c694b72c89f178fb3030ba6f5ad/narcs.mk
 
 config.h
-https://github.com/BluRosie/hg-engine/blob/027977cca9c93d5c7346081af837ec33706303f8/include/config.h
+https://github.com/BluRosie/hg-engine/blob/f4fca05a63dc7c694b72c89f178fb3030ba6f5ad/include/config.h
 
 Species struct
-https://github.com/BluRosie/hg-engine/blob/027977cca9c93d5c7346081af837ec33706303f8/include/species_data.h
+https://github.com/BluRosie/hg-engine/blob/f4fca05a63dc7c694b72c89f178fb3030ba6f5ad/include/species_data.h
 
 Move struct
-https://github.com/BluRosie/hg-engine/blob/027977cca9c93d5c7346081af837ec33706303f8/include/move_data.h
+https://github.com/BluRosie/hg-engine/blob/f4fca05a63dc7c694b72c89f178fb3030ba6f5ad/include/move_data.h
 
 Trainer struct
-https://github.com/BluRosie/hg-engine/blob/027977cca9c93d5c7346081af837ec33706303f8/include/trainer_data.h
+https://github.com/BluRosie/hg-engine/blob/f4fca05a63dc7c694b72c89f178fb3030ba6f5ad/include/trainer_data.h
 
 Item struct
-https://github.com/BluRosie/hg-engine/blob/027977cca9c93d5c7346081af837ec33706303f8/include/item.h
+https://github.com/BluRosie/hg-engine/blob/f4fca05a63dc7c694b72c89f178fb3030ba6f5ad/include/item.h
 
 Ability constants
-https://github.com/BluRosie/hg-engine/blob/027977cca9c93d5c7346081af837ec33706303f8/include/constants/ability.h
+https://github.com/BluRosie/hg-engine/blob/f4fca05a63dc7c694b72c89f178fb3030ba6f5ad/include/constants/ability.h
 
 Repository documentation
-https://github.com/BluRosie/hg-engine/tree/027977cca9c93d5c7346081af837ec33706303f8/documentation/wiki
+https://github.com/BluRosie/hg-engine/tree/f4fca05a63dc7c694b72c89f178fb3030ba6f5ad/documentation/wiki
 ```
 
 ---
@@ -747,4 +748,23 @@ https://github.com/BluRosie/hg-engine/tree/027977cca9c93d5c7346081af837ec3370630
 | 폼 동행 세이브 로드 | `src/save.c`, `include/save.h`, `include/map_events_internal.h`, `hooks` |
 | 배틀 확장 ID | `include/constants/move_effects.h`, `include/constants/battle_script_constants.h`, `asm/include/battle_commands.inc` |
 
-이전 SHA `1febb90b856745f8648c8a4fa059e7499a3cca3f`부터 현재 SHA까지의 변경/변경 없음/확인 한계는 [07장](./07_UPDATE_2026-10-01.md)에 기록합니다. 현 문서의 원본·상수·경로를 Git tree와 대조했고, 변경된 핵심 파일의 이전/현재 내용을 비교했습니다. 수정되지 않은 전체 기능을 새로 플레이 검증했다는 뜻은 아닙니다.
+이전 SHA `1febb90b856745f8648c8a4fa059e7499a3cca3f`부터 10월 1일 SHA `027977c`까지의 변경/변경 없음/확인 한계는 [07장](./07_UPDATE_2026-10-01.md)에 기록합니다. 현 문서의 원본·상수·경로를 Git tree와 대조했고, 변경된 핵심 파일의 이전/현재 내용을 비교했습니다. 수정되지 않은 전체 기능을 새로 플레이 검증했다는 뜻은 아닙니다.
+
+
+
+# 30. 2026-10-18 및 현재 디골 출처
+
+10월 1일 → 10월 18일 비교와 현재 디골 기준은 [08장](./08_UPDATE_2026-10-18.md)에 기록합니다.
+
+| 대상 | 경로 |
+|---|---|
+| TM 원본 이동 | `data/MachineMoves.c`, `src/item.c`, `scripts/update_machine_moves.py` |
+| 교체·배틀 상태 | `include/battle.h`, `src/individual/ServerDoPostMoveEffects.c`, `src/individual/ServerFieldConditionCheck.c`, `src/battle/battle_script_commands.c` |
+| 배틀 ID | `include/constants/battle_script_constants.h`, `asm/include/battle_commands.inc` |
+| 도감 검색 | `armips/asm/pokedex.s`, `tools/source/pokedexdatagen/pokedex_data_gen.c`, `narcs.mk` |
+| 포켓워커 그래픽 | `src/field/pokewalker.c`, `tools/source/dumptools/pw_conv_sprites.py` |
+| 현재 디골 빌드 | `digol/config.mk`, `digol/digol.mk`, 최상위 `Makefile` |
+| 현재 디골 상태 | `digol/README.md`, `digol/docs/CHANGELOG.md`, `digol/scripts/check_build.py` |
+| 현재 지방사운드 | `digol/regional_radio/music.json`, `digol/src/field/digol_regional_radio.c` |
+
+디골 기준 고정 링크: https://github.com/dotdot-Kim/digol-2-game/tree/c75d6f7719f638d7f34b7a6eaa15b2f0049b51e5

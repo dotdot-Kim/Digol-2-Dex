@@ -1,6 +1,6 @@
 # 05. 테스트 · 디버깅 · 문제 해결 · 유지보수
 
-> 기준: `BluRosie/hg-engine` `main` @ `027977cca9c93d5c7346081af837ec33706303f8`
+> 기준: `BluRosie/hg-engine` `main` @ `f4fca05a63dc7c694b72c89f178fb3030ba6f5ad`
 
 ---
 
@@ -791,7 +791,7 @@ ROM 종류:
 - `cargo: command not found`: Rust/Cargo 설치 및 PATH 확인.
 - `No module named yaml`: 기존 venv에 PyYAML 설치 또는 `make clean_tools` 후 재생성.
 - `base_dsrom/config.yaml` 누락 등 도구 전환 문제: `make clean` 후 선택 도구로 일관되게 빌드.
-- dump 실행에서 `tools/ndstool` 없음: `dump.mk`의 `ROM_TOOL` 비교 불일치 확인. [01장](./01_SETUP_BUILD_CONFIG.md) 우회 절차 참조.
+- dump 실행에서 `tools/ndstool` 없음: 최신 upstream은 분기 오류를 수정했습니다. 현재 디골에는 이전 분기가 남아 있으므로 [01장](./01_SETUP_BUILD_CONFIG.md)의 버전별 절차를 확인합니다.
 - Docker에서 새 기본 빌드 실패: 현재 Dockerfile의 Cargo 미설치 확인.
 - 이벤트 JSON 편집이 반영되지 않음: `BUILD_DUMPED_EVENTDATA`와 `event_*.inc` 존재 확인.
 - 필드 `.s` 편집이 반영되지 않음: 엔진 관리 스크립트인지/일반 덤프인지와 `BUILD_DUMPED_SCR_SEQ` 확인.
@@ -799,3 +799,13 @@ ROM 종류:
 ## 정적 확인만으로 단정하면 안 되는 것
 
 상수·테스트·설명문이 있어도 모든 기능이 구현됐다고 결론내리지 않습니다. 예를 들어 이전 황금몸은 실제 블록이 주석 처리돼 있었고, 현 메가 지가르데 테이블은 주석 처리입니다. Obstruct 테스트의 파일명 `lower_attack.c`와 선두 주석은 오래된 표현이지만 실제 기대 메시지는 Defense 감소입니다. 검증할 때 실제 조건과 기대값을 읽습니다.
+
+
+
+# 현재 디골 안정화 상태 (2026-10-22 확인)
+
+사용자가 프리징·BGM 해결을 확인했습니다. `c75d6f7`의 `digol/docs/CHANGELOG.md`에는 10월 20일 원인 수정과 DeSmuME 검증이 기록되어 있습니다. 미해결 문제로 계속 취급하지 않습니다.
+
+현재 빌드의 `digol/scripts/check_build.py veneers`는 Thumb→ARM veneer 발생을 검사하고, `layout`은 오버레이 129/130/131 메모리 범위를 검사합니다. 전투 코드·필드 코드는 각각 `digol/src/battle/`, `digol/src/field/`에 배치합니다. 상주 영역에 큰 표나 화면 전용 코드를 추가하기 전에 현재 빌드의 남은 용량을 확인합니다. 10월 20일 기록의 129 잔여 2,281 B는 그 빌드의 수치이며 이후 빌드 보장값이 아닙니다.
+
+이번 가이드 작업에서는 해당 게임을 새로 빌드하거나 플레이하지 않았습니다. 저장소의 검증 기록과 사용자의 해결 확인을 근거로 상태를 정리했습니다. upstream 업데이트 시에는 이 안정화 변경과 `digol/` 빌드 훅이 유지되는지 비교합니다.

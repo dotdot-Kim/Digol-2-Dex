@@ -1,6 +1,6 @@
 # 04. 트레이너 · 야생 · 아이템 · 필드 콘텐츠
 
-> 기준: `BluRosie/hg-engine` `main` @ `027977cca9c93d5c7346081af837ec33706303f8`
+> 기준: `BluRosie/hg-engine` `main` @ `f4fca05a63dc7c694b72c89f178fb3030ba6f5ad`
 
 ---
 
@@ -697,11 +697,11 @@ scripts/update_machine_moves.py
 
 ```text
 data/Moves.c
-src/item.c의 sMachineMoves[]
+data/MachineMoves.c의 sMachineMoves[] (최신 upstream)
 include/constants/item.h
 ```
 
-를 사용합니다.
+를 사용합니다. 현재 디골 `c75d6f7`은 아직 `src/item.c`에 표가 있으므로 해당 fork에서 편집할 때는 그 경로를 사용합니다.
 
 TM 99 초과 표시와 관련 config:
 
@@ -1016,10 +1016,18 @@ data/scr_seq/scr_seq_00953_trainerscript.s
 
 텍스트의 원본 암호화 key는 `data/text/keys.csv`에 기록되고 msgenc의 `-k`로 전달됩니다. 기존 종족/기술/트레이너 이름은 여전히 각 C generator가 정본입니다. 같은 bank를 `data/text/`와 `data/text/custom/` 양쪽에 중복 배치하지 마십시오.
 
-`make dump_scripts`의 현재 ds-rom/ndstool 분기 불일치와 우회 예시는 [01장 16절](./01_SETUP_BUILD_CONFIG.md)을 참고하십시오.
+최신 upstream의 덤프 분기 오류는 수정됐습니다. 현재 디골에 남아 있는 이전 분기와 우회 예시는 [01장 16절](./01_SETUP_BUILD_CONFIG.md)을 참고하십시오.
 
 # 44. 아이템·동행 포켓몬 관련 영향
 
 `ItemData`, `data/itemdata/itemdata.c`, `src/item.c`의 머신 기술 배열은 이번 비교에서 변경되지 않았습니다. 새 TM/Tutor 체계로 교체된 업데이트는 아닙니다. 반면 배틀에서는 Magic Room, Fling 실패 시 도구 처리, Choice lock, 메가스톤 제거/교환 시 폼 판정이 바뀌었습니다. 커스텀 아이템 효과는 실제 item 필드를 읽는 것과 `GetBattleMonItem()`로 유효한 도구를 읽는 것의 차이를 확인합니다.
 
 최신 10월 1일 마지막 커밋은 다른 폼의 동행 포켓몬을 둔 세이브 로딩 문제를 수정합니다. `src/save.c`의 `FieldSystem_RestoreMapObjectsFromSave()`가 저장된 동행 오브젝트를 비활성화한 뒤 정상 동행 생성 경로를 다시 타게 합니다. 새 세이브 레이아웃 전환이라고 단정하지 않고, **폼 동행 상태에서 저장 → 종료 → 다시 로드**를 별도 smoke test로 넣습니다.
+
+
+
+# 2026-10-18 트레이너·현재 디골 음악
+
+upstream의 `PlayTrainerVictoryBGM()` 인자가 `struct TrainerData *`에서 `struct Trainer *`로 수정됐습니다 (`src/battle/other_battle_calculators.c`). 신오 관장 클래스 129~136과 난천 클래스·그래픽·상금 관련 변경도 있습니다. 커스텀 클래스 번호는 `include/constants/trainerclass.h`와 대조합니다.
+
+현재 디골 지방사운드는 `digol/regional_radio/music.json`과 `digol/src/field/digol_regional_radio.c`의 `sRegionalSeq`를 함께 수정합니다. 라디오 힙은 원본 `0x2EE0`을 유지하고 라디오 원본 9곡을 지방마다 중복 없이 사용합니다. BGM·새 게임·세이브 로딩 문제는 해결됐으며, 원인과 검증 기록은 현재 게임 저장소의 `digol/docs/CHANGELOG.md`에 있습니다.

@@ -2,9 +2,9 @@
 
 > **목적:** Digol-2 개발 중 `BluRosie/hg-engine`을 설치·빌드하고, 데이터/콘텐츠/배틀 시스템을 수정·확장할 때 지속적으로 참고하는 내부 개발 문서입니다.
 >
-> **조사 기준 버전:** `BluRosie/hg-engine` `main` @ `027977cca9c93d5c7346081af837ec33706303f8` (2026-10-01)
+> **조사 기준 버전:** `BluRosie/hg-engine` `main` @ `f4fca05a63dc7c694b72c89f178fb3030ba6f5ad` (2026-10-18 한국시간)
 >
-> **최종 갱신일:** 2026-10-04 (최초 작성 2026-09-09)
+> **최종 갱신일:** 2026-10-22 (최초 작성 2026-09-09)
 
 ---
 
@@ -29,6 +29,7 @@ hg-engine은 빠르게 변경되는 프로젝트이며, 일부 공식 Wiki 문�
 | 진화 | `data/Evolutions.c` | `narcs.mk` |
 | 야생 조우 | `data/Encounters.c` | `narcs.mk` |
 | 트레이너/파티/트레이너 텍스트 | `data/Trainers.c` | `tools/trainerdatagen`, `narcs.mk` |
+| TM/HM/TR 번호별 기술 | `data/MachineMoves.c` (`sMachineMoves[]`) | `src/item.c`, `scripts/update_machine_moves.py` |
 | 레벨업/알/머신/튜터 학습기 | `data/learnsets/learnsets.json` | `scripts/build_learnsets.py` 및 빌드 규칙 |
 | 히든 특성 | `data/HiddenAbilityTable.c` | custom table / a028 계열 |
 | 기본 경험치 | `data/BaseExperienceTable.c` | custom table |
@@ -42,7 +43,7 @@ hg-engine은 빠르게 변경되는 프로젝트이며, 일부 공식 Wiki 문�
 | 포켓몬 그래픽 | `data/graphics/sprites/*` | `pokegra.mk`, nitrogfx 등 |
 | 팔로워/오버월드 | `data/FollowerProperties.c`, `src/field/overworld_table.c` 등 | overworld NARC/매핑 |
 
-> **Digol-2 주의:** 현재 프로젝트의 `data-hge 형식 컨버터.py`, `data.json`의 일부 진화 상수명 등은 구버전 hg-engine을 기준으로 작성되었습니다. **이번 문서 작성 단계에서는 이를 수정하지 않습니다.** 향후 별도 마이그레이션 단계에서 이 매뉴얼을 기준으로 converter의 출력 구조를 최신 C 데이터 체계에 맞춥니다.
+> **현재 디골 기준:** `dotdot-Kim/digol-2-game`의 `digol/main` @ `c75d6f7719f638d7f34b7a6eaa15b2f0049b51e5` (2026-10-22 한국시간)을 별도로 확인했습니다. 디골 전용 빌드는 `digol/config.mk`·`digol/digol.mk`, 코드·한글화는 `digol/`에 통합되어 있습니다. 현재 디골의 TM 표는 여전히 `src/item.c`입니다. upstream 경로를 그대로 적용하지 말고 [08장](./08_UPDATE_2026-10-18.md)의 구분을 따르십시오. 프리징·BGM 문제는 사용자 확인 및 저장소 안정화 기록상 해결된 상태입니다.
 
 ---
 
@@ -124,6 +125,14 @@ hg-engine은 빠르게 변경되는 프로젝트이며, 일부 공식 Wiki 문�
 - 59개 기존 폼의 데이터 통합, 메가진화 API 변경
 - 황금몸 구현, Aura Guard, 기술·특성 수정, 확장 ID 충돌
 - 유지되는 데이터 형식과 확인된 upstream 주의점
+
+---
+
+## [08. 2026-10-18 upstream 비교 · 현재 디골 기준](./08_UPDATE_2026-10-18.md)
+
+- 10월 1일 → 10월 18일 upstream 109개 커밋
+- TM 원본 이동, 교체 처리·배틀 API·도감·그래픽 변경
+- 최신 디골의 `digol/` 구조, 해결된 안정화 이력, upstream과 다른 경로
 
 ---
 
@@ -225,7 +234,7 @@ C 원본을 HGSS가 기대하는 NARC·메시지·그래픽 형식으로 변환�
 
 # 3. Digol-2에서 권장하는 운용 원칙
 
-1. **Digol-2의 JSON은 장기적으로 Source of Truth로 유지할 수 있습니다.** 다만 converter 출력 대상은 최신 hg-engine의 C 데이터 구조로 재설계해야 합니다.
+1. 현재 디골의 원본 사본은 `digol/source/`, 변환·설치 도구는 `digol/tools/`, 엔진 연결 데이터는 `data/digol/*.inc`에 있습니다. 오래된 첨부 converter보다 현재 저장소의 변환·설치 흐름을 먼저 확인합니다.
 2. hg-engine 자체를 수정할 때는 가능하면 **기존 비슷한 효과를 검색하여 같은 처리 단계에 구현**합니다.
 3. 새 특성/기술은 구현 직후 `data/battle_tests`에 테스트를 추가합니다.
 4. upstream hg-engine 업데이트 전에는 기준 커밋을 기록하고, 업데이트 후 이 문서의 `06_SOURCE_INDEX.md`에 나열된 핵심 파일을 diff합니다.
@@ -248,11 +257,12 @@ C 원본을 HGSS가 기대하는 NARC·메시지·그래픽 형식으로 변환�
 # 5. 핵심 upstream 링크
 
 - hg-engine: https://github.com/BluRosie/hg-engine
-- 이 문서의 고정 기준: https://github.com/BluRosie/hg-engine/tree/027977cca9c93d5c7346081af837ec33706303f8
-- 기준 README: https://github.com/BluRosie/hg-engine/blob/027977cca9c93d5c7346081af837ec33706303f8/README.md
-- 기준 Makefile: https://github.com/BluRosie/hg-engine/blob/027977cca9c93d5c7346081af837ec33706303f8/Makefile
-- 기준 CONFIG: https://github.com/BluRosie/hg-engine/blob/027977cca9c93d5c7346081af837ec33706303f8/include/config.h
-- 저장소 포함 Wiki: https://github.com/BluRosie/hg-engine/tree/027977cca9c93d5c7346081af837ec33706303f8/documentation/wiki
+- 이 문서의 고정 기준: https://github.com/BluRosie/hg-engine/tree/f4fca05a63dc7c694b72c89f178fb3030ba6f5ad
+- 기준 README: https://github.com/BluRosie/hg-engine/blob/f4fca05a63dc7c694b72c89f178fb3030ba6f5ad/README.md
+- 기준 Makefile: https://github.com/BluRosie/hg-engine/blob/f4fca05a63dc7c694b72c89f178fb3030ba6f5ad/Makefile
+- 기준 CONFIG: https://github.com/BluRosie/hg-engine/blob/f4fca05a63dc7c694b72c89f178fb3030ba6f5ad/include/config.h
+- 저장소 포함 Wiki: https://github.com/BluRosie/hg-engine/tree/f4fca05a63dc7c694b72c89f178fb3030ba6f5ad/documentation/wiki
 
 전체 출처는 `06_SOURCE_INDEX.md`를 참고하십시오.
+
 

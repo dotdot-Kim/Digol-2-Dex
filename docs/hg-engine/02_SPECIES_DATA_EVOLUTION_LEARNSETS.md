@@ -1,6 +1,6 @@
 # 02. 종족 · 진화 · 학습기 · 도감 · 그래픽
 
-> 기준: `BluRosie/hg-engine` `main` @ `027977cca9c93d5c7346081af837ec33706303f8`
+> 기준: `BluRosie/hg-engine` `main` @ `f4fca05a63dc7c694b72c89f178fb3030ba6f5ad`
 >
 > 이 장은 Digol-2의 디지몬 데이터를 최신 hg-engine에 연결할 때 가장 직접적인 기준이 되는 문서입니다. 현재 converter를 고치는 작업은 별도 단계에서 진행합니다.
 
@@ -1107,3 +1107,11 @@ Digol-2 커스텀 폼을 이전 `MAX_SPECIES_CANONICAL_FORM_NUM + n`에 넣었�
 `learnsets.json`의 `LevelMoves`, `MachineMoves`, `EggMoves`, `TutorMoves` 구조와 `scripts/build_learnsets.py`는 유지됩니다. 파싱 비교 결과 키 7개 추가·1개 삭제, 기존 키 24개 내용 변경입니다. 세대별 `base/*.json`에도 폼 이름 정리가 있습니다. 자세한 목록은 [07장](./07_UPDATE_2026-10-01.md)을 참조하십시오.
 
 `SpeciesDataEntry`, 진화 9슬롯, 진화 판정 파일 자체는 이번 구간에서 변경되지 않았습니다. 이전 converter를 최신 C 출력으로 옮겨야 한다는 기존 과제는 그대로 남으며, 이 문서 갱신에서는 converter/디지몬 JSON을 변경하지 않습니다.
+
+
+
+# 2026-10-18 추가 점검
+
+학습 가능 여부는 계속 `data/learnsets/learnsets.json`에서 관리합니다. TM/HM/TR 번호가 가리키는 기술 목록은 최신 upstream에서 `data/MachineMoves.c`로 이동했지만, 현재 디골은 `src/item.c`의 `sMachineMoves[]`를 사용합니다. 두 종류의 표를 구분합니다.
+
+도감 검색은 `armips/asm/pokedex.s`의 키·몸무게 메시지 lazy 로딩, 전체 표시 목록 초기화, 호출자 레지스터 보존과 예약 종족 ID 제외 처리가 수정됐습니다. 도감 generator의 `RegionalDex.c` 의존성도 보완됐습니다. 포켓워커 폼·성별 스프라이트 변환과 매핑이 바뀌었으므로 커스텀 그래픽 이식 시 해당 리소스와 `src/field/pokewalker.c`를 함께 비교합니다. [08장](./08_UPDATE_2026-10-18.md) 참조.
