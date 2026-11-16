@@ -4,6 +4,25 @@ const menu = document.querySelector('#menu');
 const nav = document.querySelector('#nav');
 const filtersByPage = Object.fromEntries(['dex','pokemon'].map(page => [page,{query:'', stage:'', type:'', scroll:0}]));
 const dictionary = wiki.dictionary;
+// Editor overrides and the 11/16 test ROM are newer than the base wiki snapshot.
+Object.assign(game.learnsets,learnsetRefresh.sets);
+Object.assign(game.moves,learnsetRefresh.moves);
+Object.assign(game.items,itemRefresh.items);
+Object.assign(game,{
+  machines:learnsetRefresh.machines,
+  tutors:learnsetRefresh.tutors,
+  places:wildRefresh.places,
+  habitats:wildRefresh.habitats
+});
+if (learnsetRefresh.moveKeys) game.moveKeys = learnsetRefresh.moveKeys;
+Object.assign(encounterChances,wildRefresh.chances);
+for (const id of Object.keys(encounterChances)) {
+  if (!Object.hasOwn(wildRefresh.chances,id)) delete encounterChances[id];
+}
+Object.assign(itemAcquisition,acquisitionRefresh);
+for (const [id,items] of Object.entries(itemRefresh.held)) {
+  game.all[id].personal_data.items = items;
+}
 for (const [id,{entry,base,personal_data}] of Object.entries(pokemonFormData.extra)) {
   pokemonData[id] = entry;
   game.all[id] = {personal_data,evolutions:[]};
@@ -459,7 +478,7 @@ function encounterLabels(methods) {
       ? times.filter(time => matched.has(time)).join('/') + ' ' : '';
     const rate = typeof chance === 'number'
       ? (Number.isInteger(chance) ? chance : '약 ' + Math.round(chance)) + '%'
-      : '· ' + chance;
+      : '(' + chance + ')';
     return esc(prefix + method + ' ' + rate);
   });
 }
@@ -589,14 +608,14 @@ for (const [speciesId,data] of Object.entries(game.all)) {
   }
 }
 const itemNames = {ITEM_EXP_SHARE:'학습장치', ITEM_DIGOL_DNA_SPLICERS:'유전자쐐기', ITEM_DIGOL_ZYGARDE_CUBE:'지가르데큐브'};
-const itemName = id => itemAcquisition.machineNames[id] || itemNames[id] || label('items',id);
+const itemName = id => itemAcquisition.machineNames[id] || itemRefresh.names[id] || itemNames[id] || label('items',id);
 const itemLink = id => selectedItems.has(id) || hasItemRoute(id)
   ? '<a href="' + href('items',id) + '">' + esc(itemName(id)) + '</a>' : esc(itemName(id));
 const itemRoutes = id => itemAcquisition.obtained[id] || [];
 const plannedItemRoutes = id => itemAcquisition.planned[id] || [];
 const hasVerifiedItemRoute = id => itemRoutes(id).length > 0 || wildItemSources.has(id);
 const hasItemRoute = id => hasVerifiedItemRoute(id) || plannedItemRoutes(id).length > 0;
-const itemScope = '<p class="game-source">확정 배포표의 획득처와 11/07 테스트 ROM·게임 소스에서 확인한 경로를 표시합니다. 야생 지닌 도구는 특성 보정 전 확률입니다.</p>';
+const itemScope = '<p class="game-source">확정 배포표의 획득처와 11/16 테스트 ROM·최신 게임 소스에서 확인한 경로를 표시합니다. 야생 지닌 도구는 특성 보정 전 확률입니다.</p>';
 function itemRouteText(route) {
   const [method,place,condition,price,extra] = route;
   let text = method + ' · ' + place;
@@ -813,7 +832,7 @@ function catalogSpeciesGroups(learners) {
 
 function moveDetails(id) {
   const learners = moveLearners.get(id) || [];
-  const description = (moveCatalogData.descriptions[id] || '기술 설명이 없습니다.').replace(/\s+/g,' ');
+  const description = (learnsetRefresh.moves[id]?.description || moveCatalogData.descriptions[id] || '기술 설명이 없습니다.').replace(/\s+/g,' ');
   const tutorLocations = game.tutors?.[id] || [];
   const hasZTutor = zTutorMoves.has(id);
   const machine = machinesByMove.get(id);
