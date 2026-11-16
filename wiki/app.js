@@ -598,11 +598,13 @@ function wildHeldItems(slots = []) {
 }
 const selectedItems = new Set(itemAcquisition.selected);
 const excludedItems = new Set(itemAcquisition.excluded);
+const removedItems = new Set(itemAcquisition.removed);
 const wildItemSources = new Map();
 for (const [speciesId,data] of Object.entries(game.all)) {
   if (hiddenCards.has(speciesId) || !Object.keys(encounterChances[speciesId] || {}).length) continue;
   if (!digimonIds.has(speciesId) && !pokemonData[speciesId]) continue;
   for (const [item,chance] of wildHeldItems(data.personal_data.items)) {
+    if (removedItems.has(item)) continue;
     if (!wildItemSources.has(item)) wildItemSources.set(item,[]);
     wildItemSources.get(item).push([speciesId,chance]);
   }
@@ -632,7 +634,8 @@ function itemRouteText(route) {
   return esc(text);
 }
 function itemRouteList(routes) {
-  return '<ul class="item-routes">' + routes.map(route => '<li>' + itemRouteText(route) + '</li>').join('') + '</ul>';
+  const labels = [...new Set(routes.map(itemRouteText))];
+  return '<ul class="item-routes">' + labels.map(label => '<li>' + label + '</li>').join('') + '</ul>';
 }
 function itemAudit() {
   const missingRoutes = [...selectedItems].filter(id => !hasItemRoute(id));
@@ -642,7 +645,7 @@ function itemAudit() {
   const unlistedWithRoutes = withRoutes.filter(id => !selectedItems.has(id) && !excludedItems.has(id));
   const disclosure = (title,items,empty) => '<details class="detail-disclosure"><summary><span>' + title
     + ' · ' + items.length + '개</span></summary>' + (items.length ? '<ul class="item-routes">'
-      + items.sort((a,b) => itemName(a).localeCompare(itemName(b),'ko')).map(id => '<li>' + itemLink(id) + '</li>').join('') + '</ul>'
+      + items.sort(compareItemOrder).map(id => '<li>' + itemLink(id) + '</li>').join('') + '</ul>'
       : '<p>' + empty + '</p>') + '</details>';
   main.innerHTML = back('items') + '<h1>배포와 획득처 대조</h1>' + itemScope
     + disclosure('배포 목록에 있고 획득처 미확인',missingRoutes,'해당 도구가 없습니다.')
@@ -695,19 +698,39 @@ function itemUsages(id,category) {
   return uses.length ? uses : ['other'];
 }
 const itemFilters = {query:'',category:'',usage:''};
-const catalogItems = [...selectedItems].filter(id => game.items[id]).map(id => {
+// Use the first item in a family as its position, then order the members by ID.
+const itemFamilyRules = [
+  [/^(?:ITEM_.*_PLATE)$/, 'ITEM_FLAME_PLATE'],
+  [/^ITEM_DIGICORE_/, 'ITEM_DIGICORE_MG'],
+  [/^ITEM_.*_FOSSIL$|^ITEM_FOSSILIZED_|^ITEM_OLD_AMBER$/, 'ITEM_ROOT_FOSSIL'],
+  [/^ITEM_.*_FEATHER$/, 'ITEM_HEALTH_FEATHER'],
+  [/^ITEM_.*_MINT$/, 'ITEM_LONELY_MINT'],
+  [/^ITEM_.*_DRIVE$/, 'ITEM_BURN_DRIVE'],
+  [/^ITEM_.*_NECTAR$/, 'ITEM_RED_NECTAR'],
+  [/^ITEM_.*_MASK$/, 'ITEM_TEAL_MASK'],
+  [/^ITEM_MEGA_STONE_[XYZ]$/, 'ITEM_MEGA_STONE_X']
+];
+const itemId = id => itemDetailText.ids[id] ?? Infinity;
+const itemFamilyOrder = id => {
+  const family = itemFamilyRules.find(([pattern]) => pattern.test(id));
+  return itemId(family?.[1] ?? id);
+};
+function compareItemOrder(a,b) {
+  return itemFamilyOrder(a) - itemFamilyOrder(b) || itemId(a) - itemId(b) || a.localeCompare(b);
+}
+const catalogItems = [...selectedItems].filter(id => game.items[id]).sort(compareItemOrder).map(id => {
   const category = itemCategory(id);
   return {id,name:itemName(id),category,uses:itemUsages(id,category)};
 });
 function itemDetails(id) {
   const entry = game.items[id];
-  const facts = [['기본 가격',entry.price],['포켓',itemCategories[itemCategory(id)] || '미확인'],
-    ['지닌 도구 효과',label('effects',entry.effect || '—')],['효과 수치',entry.effectValue]];
+  const facts = [['기본 가격',entry.price],['포켓',itemCategories[itemCategory(id)] || '미확인']];
+  const description = itemDetailText.descriptions[id];
   const known = itemRoutes(id);
   const planned = plannedItemRoutes(id);
   const wild = wildItemSources.get(id) || [];
   return '<div class="panel catalog-facts">' + facts.map(([key,value]) => '<div><strong>' + key + '</strong><br>' + esc(value ?? '—') + '</div>').join('') + '</div>'
-    + (entry.description ? '<p>' + esc(entry.description) + '</p>' : '')
+    + (description ? '<p class="item-description">' + esc(description) + '</p>' : '')
     + (planned.length ? '<h2>확정 배포표의 획득처</h2>' + itemRouteList(planned) : '')
     + (hasVerifiedItemRoute(id) ? '<h2>테스트 ROM·소스에서 확인한 획득처</h2>' : '')
     + (known.length ? itemRouteList(known) : '')
@@ -718,6 +741,7 @@ function itemDetails(id) {
 
 function itemCatalog(openId) {
   if (openId === 'audit') return itemAudit();
+  if (removedItems.has(openId)) return missing('items');
   if (openId && !selectedItems.has(openId)) {
     if (!game.items[openId] || !hasItemRoute(openId)) return missing('items');
     const status = excludedItems.has(openId) ? '배포 제외 품목' : '배포 목록에 없는 품목';

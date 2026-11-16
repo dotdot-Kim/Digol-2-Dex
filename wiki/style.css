@@ -418,6 +418,7 @@ form.pokemon-search { background:var(--pokemon-dex-theme); }
 .catalog-line:hover,.catalog-line:focus-within { background:#edf7ef; }
 .item-table .catalog-line:is(:hover,:focus-within) { background:#f7f0fc; }
 .item-table thead th:first-child { width:44%; }
+.item-description { white-space:normal; overflow-wrap:anywhere; }
 .item-table .catalog-open { overflow-wrap:anywhere; white-space:normal; }
 .item-group + .item-group { margin-top:40px; }
 .item-group { --pocket-color:#62676e; }
