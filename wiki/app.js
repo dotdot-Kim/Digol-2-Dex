@@ -141,6 +141,10 @@ function pokemonBadge(group) {
 }
 // Form changes share the evolution navigation while retaining their own section title.
 const formChanges = new Map();
+for (const [base,target,text] of speciesRefresh.formChanges || []) {
+  if (!formChanges.has(base)) formChanges.set(base,[]);
+  formChanges.get(base).push({method:'EVO_TEXT',condition:text,target});
+}
 for (const [base,target,items] of pokemonFormData.changes) {
   const source = game.all[base];
   source.evolutions = source.evolutions.filter(evo => evo.target !== target);
@@ -315,6 +319,7 @@ function dex(openId, page) {
   update();
 }
 function condition(evo, source) {
+  if (evo.method === 'EVO_TEXT') return esc(evo.condition);
   if (Array.isArray(evo.condition)) return evo.condition.map(item => condition({...evo,condition:item},source)).join(' / ');
   const value = evo.condition;
   const prefix = String(value).split('_',1)[0];
