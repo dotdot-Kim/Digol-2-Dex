@@ -12,6 +12,7 @@ Object.assign(game.items,itemRefresh.items);
 Object.assign(dictionary.abilities,speciesRefresh.text.abilities);
 Object.assign(abilityEntries,speciesRefresh.text.abilityEntries);
 for (const [id,name] of Object.entries(speciesRefresh.text.items)) dictionary.items[id] ??= name;
+Object.assign(itemDetailText.descriptions,speciesRefresh.text.itemNotes);
 for (const [id,description] of Object.entries(speciesRefresh.text.moves)) {
   if (game.moves[id]) game.moves[id].description = description;
   if (learnsetRefresh.moves[id]) learnsetRefresh.moves[id].description = description;
