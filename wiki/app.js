@@ -8,6 +8,15 @@ const dictionary = wiki.dictionary;
 Object.assign(game.learnsets,learnsetRefresh.sets);
 Object.assign(game.moves,learnsetRefresh.moves);
 Object.assign(game.items,itemRefresh.items);
+// 11/18: in-game text fixes (ability names/descriptions, move descriptions).
+Object.assign(dictionary.abilities,speciesRefresh.text.abilities);
+Object.assign(abilityEntries,speciesRefresh.text.abilityEntries);
+for (const [id,name] of Object.entries(speciesRefresh.text.items)) dictionary.items[id] ??= name;
+for (const [id,description] of Object.entries(speciesRefresh.text.moves)) {
+  if (game.moves[id]) game.moves[id].description = description;
+  if (learnsetRefresh.moves[id]) learnsetRefresh.moves[id].description = description;
+  moveCatalogData.descriptions[id] = description;
+}
 Object.assign(game,{
   machines:learnsetRefresh.machines,
   tutors:learnsetRefresh.tutors,
@@ -136,6 +145,18 @@ for (const [base,target,items] of pokemonFormData.changes) {
   source.evolutions = source.evolutions.filter(evo => evo.target !== target);
   if (!formChanges.has(base)) formChanges.set(base,[]);
   formChanges.get(base).push({method:'EVO_STONE',condition:items,target});
+}
+// Engine evolutions into another form of the same species (e.g. 파트너 피카츄) are shown as form changes.
+for (const [id,data] of Object.entries(game.all)) {
+  const number = pokemonData[id]?.[2];
+  if (number == null || digimonIds.has(id)) continue;
+  data.evolutions = data.evolutions.filter(evo => {
+    const target = pokemonData[evo.target];
+    if (!target || target[2] !== number || target[0] === 'other') return true;
+    if (!formChanges.has(id)) formChanges.set(id,[]);
+    if (!formChanges.get(id).some(edge => edge.target === evo.target)) formChanges.get(id).push(evo);
+    return false;
+  });
 }
 const incoming = new Map();
 const incomingForms = new Map();
