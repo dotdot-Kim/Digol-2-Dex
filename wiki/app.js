@@ -31,6 +31,17 @@ for (const [id,{entry,base,personal_data}] of Object.entries(pokemonFormData.ext
 for (const [id,evolutions] of Object.entries(pokemonFormData.overrides)) {
   game.all[id].evolutions = evolutions;
 }
+// 11/18: species data from the latest working tree (stats, types, abilities, wild items, evolutions).
+for (const [id,{entry,base,personal_data}] of Object.entries(speciesRefresh.extra)) {
+  pokemonData[id] = entry;
+  game.all[id] = {personal_data,evolutions:[]};
+  if (!game.learnsets[id] && base && game.learnsets[base]) game.learnsets[id] = game.learnsets[base];
+}
+for (const [id,{evolutions,...fields}] of Object.entries(speciesRefresh.species)) {
+  if (!game.all[id]) continue;
+  Object.assign(game.all[id].personal_data,fields);
+  if (evolutions) game.all[id].evolutions = evolutions;
+}
 pokemonData.SPECIES_MEGA_TYPHLOSION = ['other','스컬블레이몬',157];
 Object.assign(wiki.species,game.all);
 const digimonIds = new Set(game.digimonIds);
@@ -617,7 +628,7 @@ const itemRoutes = id => itemAcquisition.obtained[id] || [];
 const plannedItemRoutes = id => itemAcquisition.planned[id] || [];
 const hasVerifiedItemRoute = id => itemRoutes(id).length > 0 || wildItemSources.has(id);
 const hasItemRoute = id => hasVerifiedItemRoute(id) || plannedItemRoutes(id).length > 0;
-const itemScope = '<p class="game-source">확정 배포표의 획득처와 11/16 테스트 ROM·최신 게임 소스에서 확인한 경로를 표시합니다. 야생 지닌 도구는 특성 보정 전 확률입니다.</p>';
+const itemScope = '<p class="game-source">확정 배포표의 획득처와 11/16 테스트 ROM과 11/18 최신 작업 소스에서 확인한 경로를 표시합니다. 야생 지닌 도구는 특성 보정 전 확률입니다.</p>';
 function itemRouteText(route) {
   const [method,place,condition,price,extra] = route;
   let text = method + ' · ' + place;
