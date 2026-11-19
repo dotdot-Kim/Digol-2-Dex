@@ -682,12 +682,26 @@ function itemRouteList(routes) {
 const itemCategories = {
   POCKET_ITEMS:'도구', POCKET_KEY_ITEMS:'중요한물건', POCKET_MEDICINE:'회복약',
   POCKET_BERRIES:'나무열매', POCKET_BALLS:'볼', POCKET_BATTLE_ITEMS:'배틀도구',
-  POCKET_TMHMS:'기술머신'
+  POCKET_TMHMS:'기술머신', POCKET_MAIL:'메일'
 };
 const itemUsageLabels = {
   evolution:'진화/폼체인지', battle:'배틀', recovery:'회복',
-  training:'육성', capture:'포획', move:'기술 습득', field:'탐험·이벤트', other:'기타'
+  training:'육성', capture:'포획', move:'기술 습득', field:'필드', event:'이벤트', treasure:'보물', other:'기타'
 };
+const I = names => new Set(names.split(' ').map(name => 'ITEM_' + name));
+// 필드: used from the bag (or registered) for an effect in the field.
+const fieldItems = I('REPEL SUPER_REPEL MAX_REPEL ESCAPE_ROPE BLACK_FLUTE WHITE_FLUTE OLD_ROD GOOD_ROD SUPER_ROD BIKE '
+  + 'DOWSING_MACHINE BERRY_POTS DAMP_MULCH GOOEY_MULCH GROWTH_MULCH STABLE_MULCH APRICORN_BOX COIN_CASE SEAL_CASE '
+  + 'FASHION_CASE PAL_PAD VS_RECORDER UNOWN_REPORT GB_SOUNDS DIGOL_PORTABLE_BOX');
+// 이벤트: only used as a trigger in a story or map event.
+const eventItems = I('SS_TICKET SECRET_MEDICINE BLUE_CARD CLEAR_BELL CARD_KEY_JOHTO BASEMENT_KEY SQUIRT_BOTTLE RED_SCALE '
+  + 'LOST_ITEM PASS MACHINE_PART MYSTERY_EGG TIDAL_BELL SILVER_FEATHER RAINBOW_FEATHER SUN_FLUTE MOON_FLUTE LIGHT_STONE DARK_STONE');
+// 보물: valuables to sell or restore.
+const treasureItems = I('TINY_MUSHROOM BIG_MUSHROOM PEARL BIG_PEARL STARDUST STAR_PIECE NUGGET HEART_SCALE HONEY RARE_BONE '
+  + 'RED_SHARD BLUE_SHARD YELLOW_SHARD GREEN_SHARD');
+const extraFormItems = I('REVEAL_GLASS PRISON_BOTTLE ROTOM_CATALOG MODE_SELECTOR DIGOL_DNA_SPLICERS DIGOL_ZYGARDE_CUBE '
+  + 'CHIPPED_POT MASTERPIECE_TEACUP ICEROOT_CARROT SHADEROOT_CARROT TEAL_MASK PARTNER_CAP');
+const extraTrainingItems = I('DIGOL_EV_ADJUSTER POMEG_BERRY KELPSY_BERRY QUALOT_BERRY HONDEW_BERRY GREPA_BERRY TAMATO_BERRY');
 const evolutionItems = new Set(['ITEM_FORCE_EVOLUTION_DEVICE']);
 const formItems = new Set(pokemonFormData.changes.flatMap(([, ,items]) => items));
 for (const {evolutions} of Object.values(game.all)) {
@@ -710,17 +724,19 @@ function itemCategory(id) {
 function itemUsages(id,category) {
   const {effect} = game.items[id];
   const uses = [];
-  const training = trainingItems.has(id) || id.endsWith('_MINT');
-  if (evolutionItems.has(id) || formItems.has(id)) uses.push('evolution');
+  const training = trainingItems.has(id) || extraTrainingItems.has(id) || id.endsWith('_MINT') || /_FEATHER$/.test(id) && id !== 'ITEM_PRETTY_FEATHER' && !eventItems.has(id);
+  if (evolutionItems.has(id) || formItems.has(id) || extraFormItems.has(id) || id.endsWith('_NECTAR')) uses.push('evolution');
   if (category === 'POCKET_BATTLE_ITEMS' || id.startsWith('ITEM_DIGOL_ULTIMATE_EVIOLITE_')
     || (effect?.startsWith('HOLD_EFFECT_') && !training)) uses.push('battle');
   if ((category === 'POCKET_MEDICINE' && !training && !evolutionItems.has(id))
     || (category === 'POCKET_BERRIES' && effect?.includes('RESTORE'))
     || id === 'ITEM_DIGOL_RECOVERY_KIT') uses.push('recovery');
   if (training) uses.push('training');
-  if (category === 'POCKET_BALLS') uses.push('capture');
+  if (category === 'POCKET_BALLS' || id.endsWith('_APRICORN')) uses.push('capture');
   if (category === 'POCKET_TMHMS') uses.push('move');
-  if (category === 'POCKET_KEY_ITEMS' && !uses.length) uses.push('field');
+  if (fieldItems.has(id)) uses.push('field');
+  if (eventItems.has(id)) uses.push('event');
+  if (treasureItems.has(id) || /_FOSSIL$|^ITEM_FOSSILIZED_|^ITEM_OLD_AMBER$/.test(id)) uses.push('treasure');
   return uses.length ? uses : ['other'];
 }
 const itemFilters = {query:'',category:'',usage:''};
@@ -741,7 +757,9 @@ const itemFamilyOrder = id => {
   const family = itemFamilyRules.find(([pattern]) => pattern.test(id));
   return itemId(family?.[1] ?? id);
 };
+const machineOrder = new Map(learnsetRefresh.machines.map(m => [m.item,(m.kind === 'HM' ? 1000 : 0) + m.number]));
 function compareItemOrder(a,b) {
+  if (machineOrder.has(a) && machineOrder.has(b)) return machineOrder.get(a) - machineOrder.get(b);
   return itemFamilyOrder(a) - itemFamilyOrder(b) || itemId(a) - itemId(b) || a.localeCompare(b);
 }
 const catalogItems = [...selectedItems].filter(id => game.items[id]).sort(compareItemOrder).map(id => {
