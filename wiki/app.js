@@ -42,7 +42,7 @@ for (const [id,{entry,base,personal_data}] of Object.entries(pokemonFormData.ext
 for (const [id,evolutions] of Object.entries(pokemonFormData.overrides)) {
   game.all[id].evolutions = evolutions;
 }
-// 11/18: species data from the latest working tree (stats, types, abilities, wild items, evolutions).
+// 11/19: species data from the v1.0.0 source (GitHub digol-2-game) (stats, types, abilities, wild items, evolutions).
 for (const [id,{entry,base,personal_data}] of Object.entries(speciesRefresh.extra)) {
   pokemonData[id] = entry;
   game.all[id] = {personal_data,evolutions:[]};
@@ -659,7 +659,7 @@ const itemRoutes = id => itemAcquisition.obtained[id] || [];
 const plannedItemRoutes = id => itemAcquisition.planned[id] || [];
 const hasVerifiedItemRoute = id => itemRoutes(id).length > 0 || wildItemSources.has(id);
 const hasItemRoute = id => hasVerifiedItemRoute(id) || plannedItemRoutes(id).length > 0;
-const itemScope = '<p class="game-source">확정 배포표의 획득처와 11/16 테스트 ROM과 11/18 최신 작업 소스에서 확인한 경로를 표시합니다. 야생 지닌 도구는 특성 보정 전 확률입니다.</p>';
+const itemScope = '<p class="game-source">확정 배포표의 획득처와 11/16 테스트 ROM과 v1.0.0 소스에서 확인한 경로를 표시합니다. 야생 지닌 도구는 특성 보정 전 확률입니다.</p>';
 function itemRouteText(route) {
   const [method,place,condition,price,extra] = route;
   let text = method + ' · ' + place;
@@ -678,22 +678,6 @@ function itemRouteText(route) {
 function itemRouteList(routes) {
   const labels = [...new Set(routes.map(itemRouteText))];
   return '<ul class="item-routes">' + labels.map(label => '<li>' + label + '</li>').join('') + '</ul>';
-}
-function itemAudit() {
-  const missingRoutes = [...selectedItems].filter(id => !hasItemRoute(id));
-  const plannedOnly = [...selectedItems].filter(id => plannedItemRoutes(id).length && !hasVerifiedItemRoute(id));
-  const withRoutes = [...new Set([...Object.keys(itemAcquisition.obtained),...wildItemSources.keys()])];
-  const excludedWithRoutes = withRoutes.filter(id => excludedItems.has(id));
-  const unlistedWithRoutes = withRoutes.filter(id => !selectedItems.has(id) && !excludedItems.has(id));
-  const disclosure = (title,items,empty) => '<details class="detail-disclosure"><summary><span>' + title
-    + ' · ' + items.length + '개</span></summary>' + (items.length ? '<ul class="item-routes">'
-      + items.sort(compareItemOrder).map(id => '<li>' + itemLink(id) + '</li>').join('') + '</ul>'
-      : '<p>' + empty + '</p>') + '</details>';
-  main.innerHTML = back('items') + '<h1>배포와 획득처 대조</h1>' + itemScope
-    + disclosure('배포 목록에 있고 획득처 미확인',missingRoutes,'해당 도구가 없습니다.')
-    + disclosure('획득처 확정 · 테스트 ROM 또는 소스에서 미검증',plannedOnly,'해당 도구가 없습니다.')
-    + disclosure('배포 제외 결정 후 획득처 확인',excludedWithRoutes,'해당 도구가 없습니다.')
-    + disclosure('배포 목록 밖에서 획득처 확인',unlistedWithRoutes,'해당 도구가 없습니다.');
 }
 const itemCategories = {
   POCKET_ITEMS:'도구', POCKET_KEY_ITEMS:'중요한물건', POCKET_MEDICINE:'회복약',
@@ -782,7 +766,6 @@ function itemDetails(id) {
 }
 
 function itemCatalog(openId) {
-  if (openId === 'audit') return itemAudit();
   if (removedItems.has(openId)) return missing('items');
   if (openId && !selectedItems.has(openId)) {
     if (!game.items[openId] || !hasItemRoute(openId)) return missing('items');
@@ -799,7 +782,7 @@ function itemCatalog(openId) {
       Object.entries(itemCategories).map(([key,name]) => [key,name + ' 포켓']))) + '</select></label>'
     + '<label><span>용도</span><select id="item-usage">' + catalogSearchOptions(itemUsageLabels) + '</select></label>'
     + '<div class="dex-search-actions"><button type="submit">검색</button><button id="reset" type="button">초기화</button></div></div></form>'
-    + itemScope + '<p><a href="#items/audit">배포와 획득처 대조</a></p><div id="item-results"></div>';
+    + itemScope + '<div id="item-results"></div>';
   const query = main.querySelector('#query');
   const category = main.querySelector('#item-category');
   const usage = main.querySelector('#item-usage');
@@ -1173,7 +1156,7 @@ function render() {
   if (page === 'guides') guidePage(id);
   if (page === 'notes') notes();
   if (page === 'patch') cleanup = patch();
-  const pageTitle = page === 'items' && id ? (id === 'audit' ? '배포와 획득처 대조' : itemName(id))
+  const pageTitle = page === 'items' && id ? itemName(id)
     : id && ['dex','pokemon','moves','abilities'].includes(page) ? title(page,id) : sections[page];
   document.title = pageTitle + ' · 디골 2 위키';
   if (openSpecies && document.querySelector('#dex-detail')) {
