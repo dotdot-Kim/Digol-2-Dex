@@ -1010,7 +1010,8 @@ if (latestPatch) document.querySelector('.brand-subtitle').textContent = 'DIGOL-
 
 function patch() {
   const versions = availablePatchReleases.map(release => '<option value="' + esc(release.version) + '">'
-    + esc(release.version) + (release === latestPatch ? ' (최신)' : '') + '</option>').join('');
+    + esc(release.version) + (Object.keys(release.files).length === 1 && patchDifficulties[Object.keys(release.files)[0]]
+      ? ' · ' + patchDifficulties[Object.keys(release.files)[0]][0] : '') + (release === latestPatch ? ' (최신)' : '') + '</option>').join('');
   main.innerHTML = '<div class="dex-search page-banner"><h1 class="dex-heading">롬 패치</h1></div>'
     + '<form class="patch-form" id="patch-form"><fieldset class="patch-difficulties"><legend>난이도 선택</legend>'
     + Object.entries(patchDifficulties).map(([key,[name,description]]) =>
@@ -1020,6 +1021,7 @@ function patch() {
     + '</fieldset><div class="panel patch-controls">'
     + '<label for="patch-version">버전 선택</label><select id="patch-version"' + (latestPatch ? '' : ' disabled') + '>'
     + (versions || '<option value="">등록된 배포 버전 없음</option>') + '</select>'
+    + '<p class="patch-edition" id="patch-edition" hidden></p>'
     + '<label for="rom">원본 ROM</label><input type="file" id="rom" accept=".nds" required>'
     + '<p class="patch-rom-info" id="patch-rom-info"></p>'
     + '<div class="patch-actions"><button type="submit" id="patch-apply" class="action">패치 적용</button>'
@@ -1040,14 +1042,20 @@ function patch() {
   const availability = form.querySelector('#patch-availability');
   const status = form.querySelector('#patch-status');
   const romInfo = form.querySelector('#patch-rom-info');
+  const edition = form.querySelector('#patch-edition');
   const output = form.querySelector('#output');
   let selectedRelease = latestPatch;
   let worker;
   let request;
   let url;
 
+  // A release with one difficulty hides the cards and names that difficulty instead.
+  const onlyDifficulty = () => {
+    const keys = Object.keys(selectedRelease?.files || {});
+    return keys.length === 1 && Object.hasOwn(patchDifficulties,keys[0]) ? keys[0] : null;
+  };
   const selectedPatch = () => {
-    const entry = selectedRelease?.files[form.elements.difficulty.value];
+    const entry = selectedRelease?.files?.[form.elements.difficulty.value];
     return typeof entry === 'string' ? {file:entry} : entry;
   };
   function resetResult() {
@@ -1061,6 +1069,11 @@ function patch() {
   }
   function refresh() {
     const file = selectedPatch()?.file;
+    const only = onlyDifficulty();
+    if (only) form.elements.difficulty.value = only;
+    form.querySelector('.patch-difficulties').hidden = Boolean(only);
+    edition.hidden = !only;
+    edition.textContent = only ? patchDifficulties[only][0] + ' 난이도 패치입니다. 다른 난이도는 추후 추가됩니다.' : '';
     const busy = Boolean(request || worker);
     form.querySelectorAll('input').forEach(input => { input.disabled = busy; });
     version.disabled = busy || !latestPatch;

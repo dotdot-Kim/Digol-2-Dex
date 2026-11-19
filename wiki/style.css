@@ -454,6 +454,7 @@ form.pokemon-search { background:var(--pokemon-dex-theme); }
 .patch-form { display:grid; grid-template-columns:minmax(0,1fr); gap:16px; width:100%; min-width:0; }
 .patch-difficulties { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; min-width:0; margin:0; padding:0; border:0; }
 .patch-difficulties legend { padding:0; margin-bottom:10px; font-weight:750; }
+.patch-difficulties[hidden] { display:none; }
 .patch-difficulty { position:relative; display:grid; min-width:0; cursor:pointer; }
 .patch-difficulty input { position:absolute; inset:0; width:100%; height:100%; margin:0; opacity:0; cursor:pointer; }
 .patch-difficulty-casual { --patch-card:#4d8965; --patch-card-dark:#2c5f44; }
@@ -478,6 +479,8 @@ form.pokemon-search { background:var(--pokemon-dex-theme); }
 .patch-manual label { display:block; margin-top:8px; }
 .patch-manual input { width:100%; min-width:0; max-width:100%; }
 .patch-rom-info { overflow-wrap:anywhere; font-variant-numeric:tabular-nums; }
+.patch-edition { color:var(--text, inherit); font-weight:750; }
+.patch-edition[hidden] { display:none; }
 .patch-local-note,.patch-credit { color:var(--muted); font-size:.875rem; }
 @media (max-width:520px) {
   .patch-actions { grid-template-columns:minmax(0,1fr); }
