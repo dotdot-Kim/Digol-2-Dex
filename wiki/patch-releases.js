@@ -15,4 +15,9 @@ const patchReleases = [];
 // Register one normalization patch from a known alternate ROM to patchBaseRom.
 // {file:'patches/normalize.xdelta', inputCrc32:'ALTERNATE_CRC',
 //  outputCrc32:patchBaseRom.crc32, outputSize:patchBaseRom.size}
-const patchNormalization = null;
+const patchNormalization = {
+  file:'patches/normalize-xenophobia.xdelta',
+  inputCrc32:'FFD28F00',
+  outputCrc32:patchBaseRom.crc32,
+  outputSize:patchBaseRom.size
+};
