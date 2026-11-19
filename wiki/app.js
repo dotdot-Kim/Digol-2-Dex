@@ -1021,12 +1021,15 @@ function patch() {
     + '<label for="patch-version">버전 선택</label><select id="patch-version"' + (latestPatch ? '' : ' disabled') + '>'
     + (versions || '<option value="">등록된 배포 버전 없음</option>') + '</select>'
     + '<label for="rom">원본 ROM</label><input type="file" id="rom" accept=".nds" required>'
+    + '<p class="patch-rom-info" id="patch-rom-info"></p>'
     + '<div class="patch-actions"><button type="submit" id="patch-apply" class="action">패치 적용</button>'
     + '<a id="patch-download" download>패치 파일만 다운로드</a></div>'
     + '<p class="patch-availability" id="patch-availability" aria-live="polite"></p>'
-    + (latestPatch ? '' : '<details class="patch-manual"><summary>보유한 BPS 패치 사용</summary>'
-      + '<label for="patch-file">BPS 패치</label><input type="file" id="patch-file" accept=".bps"></details>')
-    + '<p id="patch-status" role="status"></p><a id="output" hidden>패치된 ROM 다운로드</a></div></form>';
+    + (latestPatch ? '' : '<details class="patch-manual" open><summary>보유한 패치 파일 사용</summary>'
+      + '<label for="patch-file">xdelta / BPS 패치</label><input type="file" id="patch-file" accept=".xdelta,.vcdiff,.bps"></details>')
+    + '<p id="patch-status" role="status"></p><a id="output" hidden>패치된 ROM 다운로드</a>'
+    + '<p class="patch-local-note">ROM은 기기 안에서 처리됩니다.</p>'
+    + '<small class="patch-credit">Powered by <a href="https://github.com/marcrobledo/RomPatcher.js" target="_blank" rel="noopener noreferrer">RomPatcher.js</a></small></div></form>';
 
   const form = main.querySelector('#patch-form');
   const version = form.querySelector('#patch-version');
@@ -1036,13 +1039,17 @@ function patch() {
   const download = form.querySelector('#patch-download');
   const availability = form.querySelector('#patch-availability');
   const status = form.querySelector('#patch-status');
+  const romInfo = form.querySelector('#patch-rom-info');
   const output = form.querySelector('#output');
   let selectedRelease = latestPatch;
   let worker;
   let request;
   let url;
 
-  const selectedPatch = () => selectedRelease?.files[form.elements.difficulty.value];
+  const selectedPatch = () => {
+    const entry = selectedRelease?.files[form.elements.difficulty.value];
+    return typeof entry === 'string' ? {file:entry} : entry;
+  };
   function resetResult() {
     if (url) URL.revokeObjectURL(url);
     url = undefined;
@@ -1050,9 +1057,10 @@ function patch() {
     output.removeAttribute('href');
     status.className = '';
     status.textContent = '';
+    romInfo.textContent = '';
   }
   function refresh() {
-    const file = selectedPatch();
+    const file = selectedPatch()?.file;
     const busy = Boolean(request || worker);
     form.querySelectorAll('input').forEach(input => { input.disabled = busy; });
     version.disabled = busy || !latestPatch;
@@ -1079,24 +1087,29 @@ function patch() {
     resetResult();
     refresh();
   };
-  function finish(error,buffer,rom) {
+  function finish(data,rom) {
     worker?.terminate();
     worker = undefined;
     request = undefined;
     refresh();
-    status.className = error ? 'error' : '';
-    status.textContent = error || '패치와 결과 검증을 완료했습니다.';
-    if (error) return;
-    url = URL.createObjectURL(new Blob([buffer],{type:'application/octet-stream'}));
+    status.className = data.error ? 'error' : '';
+    status.textContent = data.error || (data.normalized ? '정규화와 패치 적용을 완료했습니다.' : '패치 적용을 완료했습니다.');
+    if (data.error) return;
+    romInfo.textContent = '원본 CRC32 ' + data.sourceCrc32 + ' · 결과 CRC32 ' + data.outputCrc32;
+    url = URL.createObjectURL(new Blob([data.buffer],{type:'application/octet-stream'}));
     output.href = url;
-    output.download = rom.name.replace(/\.nds$/i,'') + '-patched.nds';
+    const difficulty = form.elements.difficulty.value;
+    output.download = selectedPatch()?.outputName || (selectedRelease
+      ? 'Digol-02-' + selectedRelease.version + '-' + difficulty + '.nds'
+      : rom.name.replace(/\.nds$/i,'') + '-patched.nds');
     output.hidden = false;
   }
   form.onsubmit = async event => {
     event.preventDefault();
     if (request || worker || apply.disabled) return;
     const rom = romInput.files[0];
-    const file = selectedPatch();
+    const selected = selectedPatch();
+    const file = selected?.file;
     let delta = manualInput?.files[0];
     const pending = new AbortController();
     request = pending;
@@ -1109,20 +1122,33 @@ function patch() {
         if (!response.ok) throw Error();
         delta = await response.blob();
       } catch {
-        if (!pending.signal.aborted) finish('패치 파일을 불러오지 못했습니다.');
+        if (!pending.signal.aborted) finish({error:'패치 파일을 불러오지 못했습니다.'});
         return;
       }
     }
     if (pending.signal.aborted) return;
     status.textContent = '파일 검증 및 패치 적용 중…';
     try {
-      worker = new Worker('wiki/bps.js');
+      worker = new Worker('wiki/rom-patcher-worker.js?v=1');
       request = undefined;
-      worker.onmessage = ({data}) => finish(data.error,data.buffer,rom);
-      worker.onerror = () => finish('패치 처리 중 오류가 발생했습니다.');
-      worker.postMessage({rom,delta});
+      worker.onmessage = ({data}) => {
+        if (data.type === 'progress') {
+          status.textContent = data.status;
+          if (data.sourceCrc32) romInfo.textContent = '원본 CRC32 ' + data.sourceCrc32;
+        } else finish(data,rom);
+      };
+      worker.onerror = () => finish({error:'패치 처리 중 오류가 발생했습니다. 파일을 확인한 뒤 다시 시도해 주세요.'});
+      worker.onmessageerror = () => finish({error:'패치 결과를 읽지 못했습니다. 다시 시도해 주세요.'});
+      const normalization = patchNormalization && {
+        ...patchNormalization,
+        file:new URL(patchNormalization.file,document.baseURI).href
+      };
+      worker.postMessage({rom,delta,normalization,
+        inputCrc32:selected?.inputCrc32 ?? selectedRelease?.inputCrc32 ?? patchBaseRom.crc32,
+        inputSize:selected?.inputSize ?? selectedRelease?.inputSize ?? patchBaseRom.size,
+        outputCrc32:selected?.outputCrc32});
     } catch {
-      finish('패치 작업을 시작할 수 없습니다.');
+      finish({error:'패치 작업을 시작할 수 없습니다.'});
     }
   };
   refresh();

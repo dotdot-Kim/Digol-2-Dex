@@ -477,6 +477,8 @@ form.pokemon-search { background:var(--pokemon-dex-theme); }
 .patch-manual { padding-top:4px; }
 .patch-manual label { display:block; margin-top:8px; }
 .patch-manual input { max-width:100%; }
+.patch-rom-info { overflow-wrap:anywhere; font-variant-numeric:tabular-nums; }
+.patch-local-note,.patch-credit { color:var(--muted); font-size:.875rem; }
 @media (max-width:520px) {
   .patch-difficulties { gap:8px; }
   .patch-card strong { min-height:56px; }
