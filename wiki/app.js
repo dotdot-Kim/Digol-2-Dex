@@ -1114,7 +1114,7 @@ function patch() {
     output.href = url;
     const difficulty = form.elements.difficulty.value;
     output.download = selectedPatch()?.outputName || (selectedRelease
-      ? 'Digol-02-' + selectedRelease.version + '-' + difficulty + '.nds'
+      ? 'DigiGold-02-' + difficulty + '-v' + selectedRelease.version + '.nds'
       : rom.name.replace(/\.nds$/i,'') + '-patched.nds');
     output.hidden = false;
   }
