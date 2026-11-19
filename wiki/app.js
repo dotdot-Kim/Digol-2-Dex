@@ -1021,7 +1021,6 @@ function patch() {
     + '</fieldset><div class="panel patch-controls">'
     + '<label for="patch-version">버전 선택</label><select id="patch-version"' + (latestPatch ? '' : ' disabled') + '>'
     + (versions || '<option value="">등록된 배포 버전 없음</option>') + '</select>'
-    + '<p class="patch-edition" id="patch-edition" hidden></p>'
     + '<label for="rom">원본 ROM</label><input type="file" id="rom" accept=".nds" required>'
     + '<p class="patch-rom-info" id="patch-rom-info"></p>'
     + '<div class="patch-actions"><button type="submit" id="patch-apply" class="action">패치 적용</button>'
@@ -1042,18 +1041,14 @@ function patch() {
   const availability = form.querySelector('#patch-availability');
   const status = form.querySelector('#patch-status');
   const romInfo = form.querySelector('#patch-rom-info');
-  const edition = form.querySelector('#patch-edition');
   const output = form.querySelector('#output');
   let selectedRelease = latestPatch;
   let worker;
   let request;
   let url;
 
-  // A release with one difficulty hides the cards and names that difficulty instead.
-  const onlyDifficulty = () => {
-    const keys = Object.keys(selectedRelease?.files || {});
-    return keys.length === 1 && Object.hasOwn(patchDifficulties,keys[0]) ? keys[0] : null;
-  };
+  // Difficulties without a file in the selected release stay visible but disabled.
+  const hasDifficulty = key => !selectedRelease || Boolean(selectedRelease.files?.[key]);
   const selectedPatch = () => {
     const entry = selectedRelease?.files?.[form.elements.difficulty.value];
     return typeof entry === 'string' ? {file:entry} : entry;
@@ -1068,14 +1063,20 @@ function patch() {
     romInfo.textContent = '';
   }
   function refresh() {
+    if (!hasDifficulty(form.elements.difficulty.value)) {
+      const first = Object.keys(patchDifficulties).find(hasDifficulty);
+      if (first) form.elements.difficulty.value = first;
+    }
     const file = selectedPatch()?.file;
-    const only = onlyDifficulty();
-    if (only) form.elements.difficulty.value = only;
-    form.querySelector('.patch-difficulties').hidden = Boolean(only);
-    edition.hidden = !only;
-    edition.textContent = only ? patchDifficulties[only][0] + ' 난이도 패치입니다. 다른 난이도는 추후 추가됩니다.' : '';
     const busy = Boolean(request || worker);
     form.querySelectorAll('input').forEach(input => { input.disabled = busy; });
+    form.querySelectorAll('input[name="difficulty"]').forEach(input => {
+      const ready = hasDifficulty(input.value);
+      if (!ready) input.disabled = true;
+      input.closest('label').classList.toggle('patch-difficulty-later',!ready);
+      input.closest('label').querySelector('.patch-card span').textContent = ready
+        ? patchDifficulties[input.value][1] : '추후 추가 예정입니다.';
+    });
     version.disabled = busy || !latestPatch;
     apply.disabled = busy || !romInput.files.length || !(file || manualInput?.files.length);
     if (file) {

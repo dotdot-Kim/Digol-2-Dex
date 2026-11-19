@@ -3,7 +3,7 @@ const patchBaseRom = {crc32:'C180A0E9',size:134217728};
 
 // Add published xdelta files when they are ready. Dates use YYYY-MM-DD.
 // Each files entry accepts a path or {file, outputCrc32, outputName}.
-// A release with only one difficulty hides the cards and shows that difficulty's name.
+// Difficulties missing from a release are shown disabled (추후 추가).
 // Optional release inputCrc32/inputSize override patchBaseRom for older versions.
 // Example shape (replace the paths and checksums before adding a release):
 // {version:'1.0.0', releasedAt:'2026-11-19', files:{
