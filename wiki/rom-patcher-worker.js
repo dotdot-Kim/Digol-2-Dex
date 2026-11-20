@@ -156,12 +156,33 @@ function applyDelta(source,delta) {
   return target;
 }
 
-self.onmessage = async ({data:{rom,delta,inputCrc32,inputSize,outputCrc32,normalization}}) => {
+async function fetchPatch(file,message) {
+  let response;
+  try { response = await fetch(file); } catch { throw Error(message); }
+  if (!response.ok) throw Error(message);
+  return readFile(await response.blob());
+}
+
+self.onmessage = async ({data:{rom,delta,deltaUrl,updates,inputCrc32,inputSize,outputCrc32,normalization}}) => {
   try {
     progress('원본 ROM을 확인하는 중…');
     let source = await readFile(rom);
     const originalCrc = source.hashCRC32();
     progress('원본 ROM을 확인했습니다.',{sourceCrc32:crcHex(originalCrc)});
+    const expectedOutput = crcValue(outputCrc32);
+    // An earlier DigiGold ROM: apply that version's update patch instead.
+    const update = (updates || []).find(entry => crcValue(entry.inputCrc32) === originalCrc);
+    if (update) {
+      progress(update.from + ' 버전 ROM입니다. 업데이트 패치를 불러오는 중…');
+      const updateDelta = await fetchPatch(update.file,'업데이트 패치 파일을 불러오지 못했습니다.');
+      progress(update.from + ' → 최신 버전 업데이트를 적용하고 결과를 확인하는 중…');
+      const target = applyDelta(source,updateDelta);
+      const resultCrc = target.hashCRC32();
+      if (expectedOutput !== null && resultCrc !== expectedOutput) throw Error('결과 ROM CRC32가 등록된 값과 일치하지 않습니다.');
+      self.postMessage({type:'complete',buffer:target._u8array.buffer,sourceCrc32:crcHex(originalCrc),outputCrc32:crcHex(resultCrc),updatedFrom:update.from},[target._u8array.buffer]);
+      return;
+    }
+    if (expectedOutput !== null && originalCrc === expectedOutput) throw Error('이미 이 버전으로 패치된 ROM입니다.');
     const expectedInput = crcValue(inputCrc32);
     let normalized = false;
     if (expectedInput !== null && originalCrc !== expectedInput) {
@@ -181,10 +202,13 @@ self.onmessage = async ({data:{rom,delta,inputCrc32,inputSize,outputCrc32,normal
       progress('정규화를 완료했습니다. 게임 패치를 적용하는 중…');
     }
     if (inputSize != null && source.fileSize !== inputSize) throw Error('원본 ROM 크기가 기준 원본과 일치하지 않습니다.');
+    if (!delta) {
+      progress('패치 파일을 불러오는 중…');
+      delta = await fetchPatch(deltaUrl,'패치 파일을 불러오지 못했습니다.');
+    } else delta = await readFile(delta);
     progress('게임 패치를 적용하고 결과를 확인하는 중…');
-    const target = applyDelta(source,await readFile(delta));
+    const target = applyDelta(source,delta);
     const resultCrc = target.hashCRC32();
-    const expectedOutput = crcValue(outputCrc32);
     if (expectedOutput !== null && resultCrc !== expectedOutput) throw Error('결과 ROM CRC32가 등록된 값과 일치하지 않습니다.');
     self.postMessage({type:'complete',buffer:target._u8array.buffer,sourceCrc32:crcHex(originalCrc),outputCrc32:crcHex(resultCrc),normalized},[target._u8array.buffer]);
   } catch (error) {

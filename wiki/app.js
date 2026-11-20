@@ -1039,7 +1039,7 @@ function patch() {
     + '</fieldset><div class="panel patch-controls">'
     + '<label for="patch-version">버전 선택</label><select id="patch-version"' + (latestPatch ? '' : ' disabled') + '>'
     + (versions || '<option value="">등록된 배포 버전 없음</option>') + '</select>'
-    + '<label for="rom">원본 ROM</label><input type="file" id="rom" accept=".nds" required>'
+    + '<label for="rom">원본 ROM 또는 이전 버전 디지골드 ROM</label><input type="file" id="rom" accept=".nds" required>'
     + '<p class="patch-rom-info" id="patch-rom-info"></p>'
     + '<div class="patch-actions"><button type="submit" id="patch-apply" class="action">패치 적용</button>'
     + '<a id="patch-download" download>패치 파일만 다운로드</a></div>'
@@ -1119,19 +1119,39 @@ function patch() {
     resetResult();
     refresh();
   };
+  // Update patches from earlier releases of the same difficulty: the input is that
+  // release's patched ROM (its outputCrc32).
+  function updateEntries() {
+    const difficulty = form.elements.difficulty.value;
+    return (selectedPatch()?.updates || []).flatMap(entry => {
+      const from = availablePatchReleases.find(release => release.version === entry.from);
+      const source = from?.files?.[difficulty];
+      const inputCrc32 = entry.inputCrc32 || (typeof source === 'object' ? source.outputCrc32 : undefined);
+      return inputCrc32 ? [{from:entry.from,inputCrc32,file:new URL(entry.file,document.baseURI).href}] : [];
+    });
+  }
+  // Keep the uploaded file name and change only its version.
+  function updatedName(name,from,to) {
+    const pattern = new RegExp(from.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'),'g');
+    if (pattern.test(name)) return name.replace(pattern,to);
+    return name.replace(/\.nds$/i,'') + '-v' + to + '.nds';
+  }
   function finish(data,rom) {
     worker?.terminate();
     worker = undefined;
     request = undefined;
     refresh();
     status.className = data.error ? 'error' : '';
-    status.textContent = data.error || (data.normalized ? '정규화와 패치 적용을 완료했습니다.' : '패치 적용을 완료했습니다.');
+    status.textContent = data.error || (data.updatedFrom
+      ? data.updatedFrom + ' → ' + selectedRelease.version + ' 업데이트를 완료했습니다.'
+      : data.normalized ? '정규화와 패치 적용을 완료했습니다.' : '패치 적용을 완료했습니다.');
     if (data.error) return;
     romInfo.textContent = '원본 CRC32 ' + data.sourceCrc32 + ' · 결과 CRC32 ' + data.outputCrc32;
     url = URL.createObjectURL(new Blob([data.buffer],{type:'application/octet-stream'}));
     output.href = url;
     const difficulty = form.elements.difficulty.value;
-    output.download = selectedPatch()?.outputName || (selectedRelease
+    output.download = data.updatedFrom ? updatedName(rom.name,data.updatedFrom,selectedRelease.version)
+      : selectedPatch()?.outputName || (selectedRelease
       ? 'DigiGold-02-' + difficulty + '-v' + selectedRelease.version + '.nds'
       : rom.name.replace(/\.nds$/i,'') + '-patched.nds');
     output.hidden = false;
@@ -1147,21 +1167,11 @@ function patch() {
     request = pending;
     resetResult();
     refresh();
-    status.textContent = file ? '패치 파일을 불러오는 중…' : '파일 검증 및 패치 적용 중…';
-    if (file) {
-      try {
-        const response = await fetch(file,{signal:pending.signal});
-        if (!response.ok) throw Error();
-        delta = await response.blob();
-      } catch {
-        if (!pending.signal.aborted) finish({error:'패치 파일을 불러오지 못했습니다.'});
-        return;
-      }
-    }
+    if (file) delta = undefined;
     if (pending.signal.aborted) return;
     status.textContent = '파일 검증 및 패치 적용 중…';
     try {
-      worker = new Worker('wiki/rom-patcher-worker.js?v=1');
+      worker = new Worker('wiki/rom-patcher-worker.js?v=2');
       request = undefined;
       worker.onmessage = ({data}) => {
         if (data.type === 'progress') {
@@ -1176,6 +1186,8 @@ function patch() {
         file:new URL(patchNormalization.file,document.baseURI).href
       };
       worker.postMessage({rom,delta,normalization,
+        deltaUrl:file ? new URL(file,document.baseURI).href : undefined,
+        updates:file ? updateEntries() : [],
         inputCrc32:selected?.inputCrc32 ?? selectedRelease?.inputCrc32 ?? patchBaseRom.crc32,
         inputSize:selected?.inputSize ?? selectedRelease?.inputSize ?? patchBaseRom.size,
         outputCrc32:selected?.outputCrc32});

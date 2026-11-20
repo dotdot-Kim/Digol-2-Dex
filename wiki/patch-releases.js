@@ -4,6 +4,8 @@ const patchBaseRom = {crc32:'C180A0E9',size:134217728};
 // Add published xdelta files when they are ready. Dates use YYYY-MM-DD.
 // Each files entry accepts a path or {file, outputCrc32, outputName}.
 // Difficulties missing from a release are shown disabled (추후 추가).
+// updates:[{from, file}] lets a ROM patched with an earlier release of the same
+// difficulty (its outputCrc32) be updated directly; the uploaded name keeps, version changes.
 // Optional release inputCrc32/inputSize override patchBaseRom for older versions.
 // Example shape (replace the paths and checksums before adding a release):
 // {version:'1.0.0', releasedAt:'2026-11-19', files:{
@@ -13,7 +15,10 @@ const patchBaseRom = {crc32:'C180A0E9',size:134217728};
 // }}
 const patchReleases = [
   {version:'0.9.2', releasedAt:'2026-11-21', files:{
-    classic:{file:'patches/0.9.2/digol-gold-0.9.2.xdelta', outputCrc32:'47DCD8EE'}
+    classic:{file:'patches/0.9.2/digol-gold-0.9.2.xdelta', outputCrc32:'47DCD8EE', updates:[
+      {from:'0.9.1', file:'patches/0.9.2/classic-from-0.9.1.xdelta'},
+      {from:'0.9.0', file:'patches/0.9.2/classic-from-0.9.0.xdelta'}
+    ]}
   }},
   {version:'0.9.1', releasedAt:'2026-11-20', files:{
     classic:{file:'patches/0.9.1/digol-gold-0.9.1.xdelta', outputCrc32:'0FB406F8'}
