@@ -12,6 +12,9 @@ const patchBaseRom = {crc32:'C180A0E9',size:134217728};
 //   challenge:{file:'patches/1.0.0/challenge.xdelta', outputCrc32:'34567890'}
 // }}
 const patchReleases = [
+  {version:'0.9.2', releasedAt:'2026-11-21', files:{
+    classic:{file:'patches/0.9.2/digol-gold-0.9.2.xdelta', outputCrc32:'47DCD8EE'}
+  }},
   {version:'0.9.1', releasedAt:'2026-11-20', files:{
     classic:{file:'patches/0.9.1/digol-gold-0.9.1.xdelta', outputCrc32:'0FB406F8'}
   }},
