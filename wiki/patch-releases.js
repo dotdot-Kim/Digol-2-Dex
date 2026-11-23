@@ -122,6 +122,35 @@ const patchReleases = [
     "releasedAt": "2026-11-23",
     "files": {
       "classic": {
+        "file": "patches/0.9.5/classic-780BAEDF.xdelta",
+        "outputCrc32": "780BAEDF",
+        "updates": [
+          {
+            "from": "0.9.4-fix",
+            "inputCrc32": "F45ACFB2",
+            "file": "patches/0.9.5/classic-780BAEDF-from-0.9.4-fix-F45ACFB2.xdelta"
+          },
+          {
+            "from": "0.9.0",
+            "inputCrc32": "4978FA97",
+            "file": "patches/0.9.5/classic-780BAEDF-from-0.9.0-4978FA97.xdelta"
+          },
+          {
+            "from": "0.9.5",
+            "inputCrc32": "A1D99C2B",
+            "file": "patches/0.9.5/classic-780BAEDF-from-0.9.5-A1D99C2B.xdelta"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "0.9.5",
+    "releasedAt": "2026-11-23",
+    "archived": true,
+    "hidden": true,
+    "files": {
+      "classic": {
         "file": "patches/0.9.5/classic-A1D99C2B.xdelta",
         "outputCrc32": "A1D99C2B",
         "updates": [
