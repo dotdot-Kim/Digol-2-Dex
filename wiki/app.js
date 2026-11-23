@@ -4,11 +4,12 @@ const menu = document.querySelector('#menu');
 const nav = document.querySelector('#nav');
 const filtersByPage = Object.fromEntries(['dex','pokemon'].map(page => [page,{query:'', stage:'', type:'', scroll:0}]));
 const dictionary = wiki.dictionary;
-// Editor overrides and the 11/16 test ROM are newer than the base wiki snapshot.
+const canonicalItemId = id => id === 'ITEM_MODE_SELCETOR' ? 'ITEM_MODE_SELECTOR' : id;
+// Use the refreshed ROM tables and editor overrides in preference to the base snapshot.
 Object.assign(game.learnsets,learnsetRefresh.sets);
 Object.assign(game.moves,learnsetRefresh.moves);
 Object.assign(game.items,itemRefresh.items);
-// 11/18: in-game text fixes (ability names/descriptions, move descriptions).
+// Use the verified effects where in-game text still describes an older mechanic.
 Object.assign(dictionary.abilities,speciesRefresh.text.abilities);
 Object.assign(abilityEntries,speciesRefresh.text.abilityEntries);
 for (const [id,name] of Object.entries(speciesRefresh.text.items)) dictionary.items[id] ??= name;
@@ -42,7 +43,7 @@ for (const [id,{entry,base,personal_data}] of Object.entries(pokemonFormData.ext
 for (const [id,evolutions] of Object.entries(pokemonFormData.overrides)) {
   game.all[id].evolutions = evolutions;
 }
-// 11/19: species data from the v1.0.0 source (GitHub digol-2-game) (stats, types, abilities, wild items, evolutions).
+// Apply the refreshed stats, types, abilities, held items, and evolutions.
 for (const [id,{entry,base,personal_data}] of Object.entries(speciesRefresh.extra)) {
   pokemonData[id] = entry;
   game.all[id] = {personal_data,evolutions:[]};
@@ -320,16 +321,13 @@ function dex(openId, page) {
   update();
 }
 function condition(evo, source) {
-  if (evo.method === 'EVO_TEXT') return esc(evo.condition).replace(/\{(ITEM_\w+)\}/g,(_,item) => {
-    const itemTitle = itemName(item);
-    return game.items[item] || dictionary.items[item] ? '<a href="' + href('items',item) + '">' + esc(itemTitle) + '</a>' : esc(itemTitle);
-  });
+  if (evo.method === 'EVO_TEXT') return esc(evo.condition).replace(/\{(ITEM_\w+)\}/g,(_,item) => itemLink(item));
   if (Array.isArray(evo.condition)) return evo.condition.map(item => condition({...evo,condition:item},source)).join(' / ');
-  const value = evo.condition;
+  const value = canonicalItemId(evo.condition);
   const prefix = String(value).split('_',1)[0];
   const page = {MOVE:'moves',ITEM:'items',SPECIES:'dex'}[prefix];
   const megaStones = {ITEM_MEGA_STONE_X:'메가스톤 X',ITEM_MEGA_STONE_Y:'메가스톤 Y',ITEM_MEGA_STONE_Z:'메가스톤 Z'};
-  const name = megaStones[value] || (page ? title(page,value) : String(value ?? ''));
+  const name = megaStones[value] || (page === 'items' ? itemName(value) : page ? title(page,value) : String(value ?? ''));
   const exists = page === 'dex' ? game.names[value] : game[page]?.[value] || dictionary[page]?.[value];
   const formatted = exists ? '<a href="' + (page === 'dex' ? speciesLink(value) : href(page,value)) + '">' + esc(name) + '</a>' : esc(name);
   const last = name.trim().slice(-1).charCodeAt(0);
@@ -641,6 +639,7 @@ function wildHeldItems(slots = []) {
 const selectedItems = new Set(itemAcquisition.selected);
 const excludedItems = new Set(itemAcquisition.excluded);
 const removedItems = new Set(itemAcquisition.removed);
+const helperItems = new Set(itemAcquisition.helperItems);
 const wildItemSources = new Map();
 for (const [speciesId,data] of Object.entries(game.all)) {
   if (hiddenCards.has(speciesId) || !Object.keys(encounterChances[speciesId] || {}).length) continue;
@@ -653,13 +652,17 @@ for (const [speciesId,data] of Object.entries(game.all)) {
 }
 const itemNames = {ITEM_EXP_SHARE:'학습장치', ITEM_DIGOL_DNA_SPLICERS:'유전자쐐기', ITEM_DIGOL_ZYGARDE_CUBE:'지가르데큐브'};
 const itemName = id => itemAcquisition.machineNames[id] || itemRefresh.names[id] || itemNames[id] || label('items',id);
-const itemLink = id => selectedItems.has(id) || hasItemRoute(id)
-  ? '<a href="' + href('items',id) + '">' + esc(itemName(id)) + '</a>' : esc(itemName(id));
+const itemLink = rawId => {
+  const id = canonicalItemId(rawId);
+  const name = esc(itemName(id));
+  return game.items[id] && !removedItems.has(id) && (selectedItems.has(id) || hasItemRoute(id))
+    ? '<a href="' + href('items',id) + '">' + name + '</a>' : name;
+};
 const itemRoutes = id => itemAcquisition.obtained[id] || [];
 const plannedItemRoutes = id => itemAcquisition.planned[id] || [];
-const hasVerifiedItemRoute = id => itemRoutes(id).length > 0 || wildItemSources.has(id);
+const hasVerifiedItemRoute = id => itemRoutes(id).length > 0 || wildItemSources.has(id) || helperItems.has(id);
 const hasItemRoute = id => hasVerifiedItemRoute(id) || plannedItemRoutes(id).length > 0;
-const itemScope = '<p class="game-source">확정 배포표의 획득처와 11/16 테스트 ROM과 v1.0.0 소스에서 확인한 경로를 표시합니다. 야생 지닌 도구는 특성 보정 전 확률입니다.</p>';
+const itemScope = '<p class="game-source">0.9.5 테스트 빌드와 소스에서 확인한 획득처 및 배포표를 표시합니다. 야생 지닌 도구는 특성 보정 전 확률입니다.</p>';
 function itemRouteText(route) {
   const [method,place,condition,price,extra] = route;
   let text = method + ' · ' + place;
@@ -707,7 +710,7 @@ const formItems = new Set(pokemonFormData.changes.flatMap(([, ,items]) => items)
 for (const {evolutions} of Object.values(game.all)) {
   for (const {method,condition} of evolutions) {
     if (method.startsWith('EVO_STONE')) {
-      for (const item of [condition].flat()) evolutionItems.add(item);
+      for (const item of [condition].flat()) evolutionItems.add(canonicalItemId(item));
     }
   }
 }
@@ -778,6 +781,7 @@ function itemDetails(id) {
     + (planned.length ? '<h2>확정 배포표의 획득처</h2>' + itemRouteList(planned) : '')
     + (hasVerifiedItemRoute(id) ? '<h2>테스트 ROM·소스에서 확인한 획득처</h2>' : '')
     + (known.length ? itemRouteList(known) : '')
+    + (helperItems.has(id) ? '<p>개발자 전화의 도구 지원으로도 받을 수 있습니다.</p>' : '')
     + (wild.length ? '<h3>야생 지닌 도구</h3><div class="learnset-list">' + wild.map(([key,chance]) =>
       '<a href="' + speciesLink(key) + '">' + esc(title('dex',key)) + ' ' + chance + '%</a>').join('') + '</div>' : '')
     + (!hasItemRoute(id) ? '<h2>획득처</h2><p>확인한 자료에서 획득처를 찾지 못했습니다.</p>' : '');
@@ -1296,6 +1300,7 @@ function render() {
   const page = Object.hasOwn(sections,requested) ? requested : 'dex';
   let id;
   try { id = rawId ? decodeURIComponent(rawId) : undefined; } catch { id = rawId; }
+  if (page === 'items') id = canonicalItemId(id);
   const dexPage = Object.hasOwn(filtersByPage,page);
   const previousSpecies = openSpecies;
   const cardRect = dexPage && id && instantDetailHash !== location.hash ? document.getElementById(id)?.getBoundingClientRect() : undefined;
