@@ -163,6 +163,30 @@ async function fetchPatch(file,message) {
   return readFile(await response.blob());
 }
 
+// Every edge is keyed by the exact ROM checksum, including hidden and replaced releases.
+function findUpdateRoute(updates,source,target) {
+  if (target === null) return null;
+  const outgoing = new Map();
+  for (const edge of updates) {
+    const input = crcValue(edge.inputCrc32);
+    if (!outgoing.has(input)) outgoing.set(input,[]);
+    outgoing.get(input).push(edge);
+  }
+  const seen = new Set([source]);
+  const queue = [{crc:source,route:[]}];
+  for (const step of queue) {
+    for (const edge of outgoing.get(step.crc) || []) {
+      const output = crcValue(edge.outputCrc32);
+      if (seen.has(output)) continue;
+      const route = [...step.route,edge];
+      if (output === target) return route;
+      seen.add(output);
+      queue.push({crc:output,route});
+    }
+  }
+  return null;
+}
+
 self.onmessage = async ({data:{rom,delta,deltaUrl,updates,inputCrc32,inputSize,outputCrc32,normalization}}) => {
   try {
     progress('원본 ROM을 확인하는 중…');
@@ -170,19 +194,21 @@ self.onmessage = async ({data:{rom,delta,deltaUrl,updates,inputCrc32,inputSize,o
     const originalCrc = source.hashCRC32();
     progress('원본 ROM을 확인했습니다.',{sourceCrc32:crcHex(originalCrc)});
     const expectedOutput = crcValue(outputCrc32);
-    // An earlier DigiGold ROM: apply that version's update patch instead.
-    const update = (updates || []).find(entry => crcValue(entry.inputCrc32) === originalCrc);
-    if (update) {
-      progress(update.from + ' 버전 ROM입니다. 업데이트 패치를 불러오는 중…');
-      const updateDelta = await fetchPatch(update.file,'업데이트 패치 파일을 불러오지 못했습니다.');
-      progress(update.from + ' → 최신 버전 업데이트를 적용하고 결과를 확인하는 중…');
-      const target = applyDelta(source,updateDelta);
-      const resultCrc = target.hashCRC32();
-      if (expectedOutput !== null && resultCrc !== expectedOutput) throw Error('결과 ROM CRC32가 등록된 값과 일치하지 않습니다.');
-      self.postMessage({type:'complete',buffer:target._u8array.buffer,sourceCrc32:crcHex(originalCrc),outputCrc32:crcHex(resultCrc),updatedFrom:update.from},[target._u8array.buffer]);
+    if (expectedOutput !== null && originalCrc === expectedOutput) throw Error('이미 이 버전으로 패치된 ROM입니다.');
+    const route = findUpdateRoute(updates || [],originalCrc,expectedOutput);
+    if (route) {
+      for (const [index, edge] of route.entries()) {
+        progress(edge.from + ' → ' + edge.to + ' 업데이트를 적용하는 중… (' + (index + 1) + '/' + route.length + ')');
+        const updateDelta = await fetchPatch(edge.file,'업데이트 패치 파일을 불러오지 못했습니다.');
+        source = applyDelta(source,updateDelta);
+        if (source.hashCRC32() !== crcValue(edge.outputCrc32)) {
+          throw Error(edge.to + ' 버전의 결과 ROM CRC32가 등록된 값과 일치하지 않습니다.');
+        }
+      }
+      self.postMessage({type:'complete',buffer:source._u8array.buffer,sourceCrc32:crcHex(originalCrc),
+        outputCrc32:crcHex(expectedOutput),updatedFrom:route[0].from},[source._u8array.buffer]);
       return;
     }
-    if (expectedOutput !== null && originalCrc === expectedOutput) throw Error('이미 이 버전으로 패치된 ROM입니다.');
     const expectedInput = crcValue(inputCrc32);
     let normalized = false;
     if (expectedInput !== null && originalCrc !== expectedInput) {

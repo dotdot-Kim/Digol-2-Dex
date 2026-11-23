@@ -15,33 +15,130 @@ const patchBaseRom = {crc32:'C180A0E9',size:134217728};
 //   challenge:{file:'patches/1.0.0/challenge.xdelta', outputCrc32:'34567890'}
 // }}
 const patchReleases = [
-  {version:'0.9.4-fix', releasedAt:'2026-11-23', files:{
-    classic:{file:'patches/0.9.4-fix/digol-gold-0.9.4-fix.xdelta', outputCrc32:'F45ACFB2', updates:[
-      {from:'0.9.4', inputCrc32:'92C22566', file:'patches/0.9.4-fix/classic-from-0.9.4.xdelta'},
-      {from:'0.9.3', file:'patches/0.9.4-fix/classic-from-0.9.3.xdelta'}
-    ]}
-  }},
-  // 0.9.4 withdrawn 2026-11-23 (battle freezes / contacts reported); files kept in patches/0.9.4.
-  // {version:'0.9.4', releasedAt:'2026-11-22', files:{classic:{file:'patches/0.9.4/digol-gold-0.9.4.xdelta', outputCrc32:'92C22566'}}},
-  {version:'0.9.3', releasedAt:'2026-11-21', files:{
-    classic:{file:'patches/0.9.3/digol-gold-0.9.3.xdelta', outputCrc32:'880AC2C7', updates:[
-      {from:'0.9.2', file:'patches/0.9.3/classic-from-0.9.2.xdelta'},
-      {from:'0.9.1', file:'patches/0.9.3/classic-from-0.9.1.xdelta'},
-      {from:'0.9.0', file:'patches/0.9.3/classic-from-0.9.0.xdelta'}
-    ]}
-  }},
-  {version:'0.9.2', releasedAt:'2026-11-21', files:{
-    classic:{file:'patches/0.9.2/digol-gold-0.9.2.xdelta', outputCrc32:'47DCD8EE', updates:[
-      {from:'0.9.1', file:'patches/0.9.2/classic-from-0.9.1.xdelta'},
-      {from:'0.9.0', file:'patches/0.9.2/classic-from-0.9.0.xdelta'}
-    ]}
-  }},
-  {version:'0.9.1', releasedAt:'2026-11-20', files:{
-    classic:{file:'patches/0.9.1/digol-gold-0.9.1.xdelta', outputCrc32:'0FB406F8'}
-  }},
-  {version:'0.9.0', releasedAt:'2026-11-19', files:{
-    classic:{file:'patches/0.9.0/digol-gold-0.9.0.xdelta', outputCrc32:'4978FA97'}
-  }}
+  {
+    "version": "0.9.4-fix",
+    "releasedAt": "2026-11-23",
+    "files": {
+      "classic": {
+        "file": "patches/0.9.4-fix/digol-gold-0.9.4-fix.xdelta",
+        "outputCrc32": "F45ACFB2",
+        "updates": [
+          {
+            "from": "0.9.4",
+            "inputCrc32": "92C22566",
+            "file": "patches/0.9.4-fix/classic-from-0.9.4.xdelta"
+          },
+          {
+            "from": "0.9.3",
+            "file": "patches/0.9.4-fix/classic-from-0.9.3.xdelta",
+            "inputCrc32": "880AC2C7"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "0.9.3",
+    "releasedAt": "2026-11-21",
+    "files": {
+      "classic": {
+        "file": "patches/0.9.3/digol-gold-0.9.3.xdelta",
+        "outputCrc32": "880AC2C7",
+        "updates": [
+          {
+            "from": "0.9.2",
+            "file": "patches/0.9.3/classic-from-0.9.2.xdelta",
+            "inputCrc32": "47DCD8EE"
+          },
+          {
+            "from": "0.9.1",
+            "file": "patches/0.9.3/classic-from-0.9.1.xdelta",
+            "inputCrc32": "0FB406F8"
+          },
+          {
+            "from": "0.9.0",
+            "file": "patches/0.9.3/classic-from-0.9.0.xdelta",
+            "inputCrc32": "4978FA97"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "0.9.2",
+    "releasedAt": "2026-11-21",
+    "files": {
+      "classic": {
+        "file": "patches/0.9.2/digol-gold-0.9.2.xdelta",
+        "outputCrc32": "47DCD8EE",
+        "updates": [
+          {
+            "from": "0.9.1",
+            "file": "patches/0.9.2/classic-from-0.9.1.xdelta",
+            "inputCrc32": "0FB406F8"
+          },
+          {
+            "from": "0.9.0",
+            "file": "patches/0.9.2/classic-from-0.9.0.xdelta",
+            "inputCrc32": "4978FA97"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "0.9.1",
+    "releasedAt": "2026-11-20",
+    "files": {
+      "classic": {
+        "file": "patches/0.9.1/digol-gold-0.9.1.xdelta",
+        "outputCrc32": "0FB406F8"
+      }
+    }
+  },
+  {
+    "version": "0.9.0",
+    "releasedAt": "2026-11-19",
+    "files": {
+      "classic": {
+        "file": "patches/0.9.0/digol-gold-0.9.0.xdelta",
+        "outputCrc32": "4978FA97"
+      }
+    }
+  },
+  {
+    "version": "0.9.4",
+    "releasedAt": "2026-11-22",
+    "files": {
+      "classic": {
+        "file": "patches/0.9.4/digol-gold-0.9.4.xdelta",
+        "outputCrc32": "92C22566"
+      }
+    },
+    "hidden": true
+  },
+  {
+    "version": "0.9.5",
+    "releasedAt": "2026-11-23",
+    "files": {
+      "classic": {
+        "file": "patches/0.9.5/classic-A1D99C2B.xdelta",
+        "outputCrc32": "A1D99C2B",
+        "updates": [
+          {
+            "from": "0.9.4-fix",
+            "inputCrc32": "F45ACFB2",
+            "file": "patches/0.9.5/classic-A1D99C2B-from-0.9.4-fix-F45ACFB2.xdelta"
+          },
+          {
+            "from": "0.9.0",
+            "inputCrc32": "4978FA97",
+            "file": "patches/0.9.5/classic-A1D99C2B-from-0.9.0-4978FA97.xdelta"
+          }
+        ]
+      }
+    }
+  }
 ];
 
 // Register one normalization patch from a known alternate ROM to patchBaseRom.

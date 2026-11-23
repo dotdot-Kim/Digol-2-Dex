@@ -1021,8 +1021,9 @@ const patchDifficulties = {
   classic:['클래식','모험과 배틀의 균형을 맞춘 기본 난이도입니다.'],
   challenge:['챌린지','팀 구성과 배틀 전략이 더 중요한 난이도입니다.']
 };
-const availablePatchReleases = [...patchReleases].sort((a,b) =>
-  b.releasedAt.localeCompare(a.releasedAt) || b.version.localeCompare(a.version,undefined,{numeric:true}));
+const availablePatchReleases = patchReleases.filter(release => !release.hidden && !release.archived)
+  .sort((a,b) => b.version.localeCompare(a.version,undefined,{numeric:true})
+    || b.releasedAt.localeCompare(a.releasedAt));
 const latestPatch = availablePatchReleases[0];
 if (latestPatch) document.querySelector('.brand-subtitle').textContent = 'DIGOL-02 WIKI · ' + latestPatch.version;
 
@@ -1206,15 +1207,19 @@ function patch() {
       }
     };
   }
-  // Update patches from earlier releases of the same difficulty: the input is that
-  // release's patched ROM (its outputCrc32).
   function updateEntries() {
     const difficulty = form.elements.difficulty.value;
-    return (selectedPatch()?.updates || []).flatMap(entry => {
-      const from = availablePatchReleases.find(release => release.version === entry.from);
-      const source = from?.files?.[difficulty];
-      const inputCrc32 = entry.inputCrc32 || (typeof source === 'object' ? source.outputCrc32 : undefined);
-      return inputCrc32 ? [{from:entry.from,inputCrc32,file:new URL(entry.file,document.baseURI).href}] : [];
+    return patchReleases.flatMap(release => {
+      const target = release.files?.[difficulty];
+      return (target?.updates || []).flatMap(entry => {
+        const from = patchReleases.find(candidate => !candidate.archived && candidate.version === entry.from);
+        const source = from?.files?.[difficulty];
+        const inputCrc32 = entry.inputCrc32 || source?.outputCrc32;
+        return inputCrc32 && target.outputCrc32 ? [{
+          from:entry.from,to:release.version,inputCrc32,outputCrc32:target.outputCrc32,
+          file:new URL(entry.file,document.baseURI).href
+        }] : [];
+      });
     });
   }
   function finish(data) {
@@ -1252,7 +1257,7 @@ function patch() {
     if (pending.signal.aborted) return;
     status.textContent = '파일 검증 및 패치 적용 중…';
     try {
-      worker = new Worker('wiki/rom-patcher-worker.js?v=2');
+      worker = new Worker('wiki/rom-patcher-worker.js?v=chain-1');
       request = undefined;
       worker.onmessage = ({data}) => {
         if (data.type === 'progress') {
