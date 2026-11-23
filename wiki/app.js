@@ -1027,6 +1027,10 @@ const latestPatch = availablePatchReleases[0];
 if (latestPatch) document.querySelector('.brand-subtitle').textContent = 'DIGOL-02 WIKI · ' + latestPatch.version;
 
 function patch() {
+  const outputName = 'DigiGold-02.nds';
+  const canSaveLocally = typeof window.showOpenFilePicker === 'function'
+    && typeof window.showSaveFilePicker === 'function';
+  const romTypes = [{description:'Nintendo DS ROM',accept:{'application/octet-stream':['.nds']}}];
   const versions = availablePatchReleases.map(release => '<option value="' + esc(release.version) + '">'
     + esc(release.version) + (Object.keys(release.files).length === 1 && patchDifficulties[Object.keys(release.files)[0]]
       ? ' · ' + patchDifficulties[Object.keys(release.files)[0]][0] : '') + (release === latestPatch ? ' (최신)' : '') + '</option>').join('');
@@ -1039,14 +1043,17 @@ function patch() {
     + '</fieldset><div class="panel patch-controls">'
     + '<label for="patch-version">버전 선택</label><select id="patch-version"' + (latestPatch ? '' : ' disabled') + '>'
     + (versions || '<option value="">등록된 배포 버전 없음</option>') + '</select>'
-    + '<label for="rom">원본 ROM 또는 이전 버전 디지골드 ROM</label><input type="file" id="rom" accept=".nds" required>'
+    + '<label for="rom">원본 ROM 또는 이전 버전 디지골드 ROM</label><input type="file" id="rom" accept=".nds">'
+    + (canSaveLocally ? '<button type="button" id="patch-open-local">같은 위치에 저장하려면 여기서 이전 ROM 열기</button>'
+      + '<p id="patch-local-source"></p>' : '')
     + '<p class="patch-rom-info" id="patch-rom-info"></p>'
     + '<div class="patch-actions"><button type="submit" id="patch-apply" class="action">패치 적용</button>'
     + '<a id="patch-download" download>패치 파일만 다운로드</a></div>'
     + '<p class="patch-availability" id="patch-availability" aria-live="polite"></p>'
     + (latestPatch ? '' : '<details class="patch-manual" open><summary>보유한 패치 파일 사용</summary>'
       + '<label for="patch-file">xdelta / BPS 패치</label><input type="file" id="patch-file" accept=".xdelta,.vcdiff,.bps"></details>')
-    + '<p id="patch-status" role="status"></p><a id="output" hidden>패치된 ROM 다운로드</a>'
+    + '<p id="patch-status" role="status"></p><a id="output" hidden download="' + outputName + '">패치된 ROM 다운로드</a>'
+    + (canSaveLocally ? '<button type="button" id="patch-save-local" hidden></button><p id="patch-save-status" role="status"></p>' : '')
     + '<p class="patch-local-note">ROM은 기기 안에서 처리됩니다.</p>'
     + '<small class="patch-credit">Powered by <a href="https://github.com/marcrobledo/RomPatcher.js" target="_blank" rel="noopener noreferrer">RomPatcher.js</a></small></div></form>';
 
@@ -1060,10 +1067,18 @@ function patch() {
   const status = form.querySelector('#patch-status');
   const romInfo = form.querySelector('#patch-rom-info');
   const output = form.querySelector('#output');
+  const openLocal = form.querySelector('#patch-open-local');
+  const localSource = form.querySelector('#patch-local-source');
+  const saveLocal = form.querySelector('#patch-save-local');
+  const saveStatus = form.querySelector('#patch-save-status');
   let selectedRelease = latestPatch;
   let worker;
   let request;
   let url;
+  let localRom;
+  let localHandle;
+  let patchedRom;
+  let usingPicker = false;
 
   // Difficulties without a file in the selected release stay visible but disabled.
   const hasDifficulty = key => !selectedRelease || Boolean(selectedRelease.files?.[key]);
@@ -1074,6 +1089,12 @@ function patch() {
   function resetResult() {
     if (url) URL.revokeObjectURL(url);
     url = undefined;
+    patchedRom = undefined;
+    if (saveLocal) {
+      saveLocal.hidden = true;
+      saveStatus.textContent = '';
+      saveStatus.className = '';
+    }
     output.hidden = true;
     output.removeAttribute('href');
     status.className = '';
@@ -1086,7 +1107,12 @@ function patch() {
       if (first) form.elements.difficulty.value = first;
     }
     const file = selectedPatch()?.file;
-    const busy = Boolean(request || worker);
+    const busy = Boolean(request || worker || usingPicker);
+    if (openLocal) {
+      openLocal.disabled = busy;
+      saveLocal.disabled = busy;
+      localSource.textContent = localRom?.name || '';
+    }
     form.querySelectorAll('input').forEach(input => { input.disabled = busy; });
     form.querySelectorAll('input[name="difficulty"]').forEach(input => {
       const ready = hasDifficulty(input.value);
@@ -1096,7 +1122,7 @@ function patch() {
         ? patchDifficulties[input.value][1] : '추후 추가 예정입니다.';
     });
     version.disabled = busy || !latestPatch;
-    apply.disabled = busy || !romInput.files.length || !(file || manualInput?.files.length);
+    apply.disabled = busy || !(localRom || romInput.files.length) || !(file || manualInput?.files.length);
     if (file) {
       download.href = file;
       download.removeAttribute('aria-disabled');
@@ -1108,6 +1134,10 @@ function patch() {
       : file ? '' : '이 버전에는 선택한 난이도의 패치 파일이 없습니다.';
   }
   form.onchange = event => {
+    if (event.target === romInput) {
+      localRom = undefined;
+      localHandle = undefined;
+    }
     if (event.target === version) {
       const next = availablePatchReleases.find(release => release.version === version.value);
       if (!next || (next !== latestPatch && !window.confirm('이전 버전에는 최신 수정 사항이 포함되지 않을 수 있습니다. 이 버전을 선택하시겠습니까?'))) {
@@ -1119,6 +1149,63 @@ function patch() {
     resetResult();
     refresh();
   };
+  if (openLocal) {
+    openLocal.onclick = async () => {
+      usingPicker = true;
+      refresh();
+      try {
+        const [handle] = await window.showOpenFilePicker({types:romTypes,excludeAcceptAllOption:true});
+        const file = await handle.getFile();
+        localRom = file;
+        localHandle = handle;
+        romInput.value = '';
+        resetResult();
+      } catch (error) {
+        if (error.name !== 'AbortError') {
+          status.className = 'error';
+          status.textContent = '파일을 열 수 없습니다. 일반 파일 선택으로 다시 시도해 주세요.';
+        }
+      } finally {
+        usingPicker = false;
+        refresh();
+      }
+    };
+    saveLocal.onclick = async () => {
+      if (usingPicker || !patchedRom || saveLocal.hidden) return;
+      usingPicker = true;
+      refresh();
+      let stream;
+      try {
+        let handle = localHandle;
+        if (localRom.name === outputName) {
+          if (await handle.requestPermission({mode:'readwrite'}) !== 'granted') {
+            throw Error('기존 ROM에 쓸 권한이 필요합니다.');
+          }
+          const current = await handle.getFile();
+          if (current.size !== localRom.size || current.lastModified !== localRom.lastModified) {
+            throw Error('선택한 ROM이 변경되었습니다. 다시 열어 패치해 주세요.');
+          }
+        } else {
+          handle = await window.showSaveFilePicker({suggestedName:outputName,startIn:handle,types:romTypes});
+        }
+        stream = await handle.createWritable();
+        await stream.write(patchedRom);
+        await stream.close();
+        saveStatus.className = '';
+        saveStatus.textContent = handle.name + ' 저장을 완료했습니다.';
+      } catch (error) {
+        if (stream) await stream.abort().catch(() => {});
+        if (error.name !== 'AbortError') {
+          saveStatus.className = 'error';
+          saveStatus.textContent = error.name === 'Error' ? error.message
+            : '파일에 저장하지 못했습니다. 패치된 ROM 다운로드를 이용해 주세요.';
+        }
+      } finally {
+        usingPicker = false;
+        refresh();
+      }
+    };
+  }
   // Update patches from earlier releases of the same difficulty: the input is that
   // release's patched ROM (its outputCrc32).
   function updateEntries() {
@@ -1130,13 +1217,7 @@ function patch() {
       return inputCrc32 ? [{from:entry.from,inputCrc32,file:new URL(entry.file,document.baseURI).href}] : [];
     });
   }
-  // Keep the uploaded file name and change only its version.
-  function updatedName(name,from,to) {
-    const pattern = new RegExp(from.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'),'g');
-    if (pattern.test(name)) return name.replace(pattern,to);
-    return name.replace(/\.nds$/i,'') + '-v' + to + '.nds';
-  }
-  function finish(data,rom) {
+  function finish(data) {
     worker?.terminate();
     worker = undefined;
     request = undefined;
@@ -1147,19 +1228,19 @@ function patch() {
       : data.normalized ? '정규화와 패치 적용을 완료했습니다.' : '패치 적용을 완료했습니다.');
     if (data.error) return;
     romInfo.textContent = '원본 CRC32 ' + data.sourceCrc32 + ' · 결과 CRC32 ' + data.outputCrc32;
-    url = URL.createObjectURL(new Blob([data.buffer],{type:'application/octet-stream'}));
+    patchedRom = new Blob([data.buffer],{type:'application/octet-stream'});
+    url = URL.createObjectURL(patchedRom);
     output.href = url;
-    const difficulty = form.elements.difficulty.value;
-    output.download = data.updatedFrom ? updatedName(rom.name,data.updatedFrom,selectedRelease.version)
-      : selectedPatch()?.outputName || (selectedRelease
-      ? 'DigiGold-02-' + difficulty + '-v' + selectedRelease.version + '.nds'
-      : rom.name.replace(/\.nds$/i,'') + '-patched.nds');
     output.hidden = false;
+    if (saveLocal && localHandle && data.updatedFrom) {
+      saveLocal.textContent = localRom.name === outputName ? '기존 DigiGold-02.nds 덮어쓰기' : '같은 폴더에 DigiGold-02.nds 저장';
+      saveLocal.hidden = false;
+    }
   }
   form.onsubmit = async event => {
     event.preventDefault();
     if (request || worker || apply.disabled) return;
-    const rom = romInput.files[0];
+    const rom = localRom || romInput.files[0];
     const selected = selectedPatch();
     const file = selected?.file;
     let delta = manualInput?.files[0];
@@ -1177,7 +1258,7 @@ function patch() {
         if (data.type === 'progress') {
           status.textContent = data.status;
           if (data.sourceCrc32) romInfo.textContent = '원본 CRC32 ' + data.sourceCrc32;
-        } else finish(data,rom);
+        } else finish(data);
       };
       worker.onerror = () => finish({error:'패치 처리 중 오류가 발생했습니다. 파일을 확인한 뒤 다시 시도해 주세요.'});
       worker.onmessageerror = () => finish({error:'패치 결과를 읽지 못했습니다. 다시 시도해 주세요.'});
