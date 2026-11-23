@@ -139,6 +139,16 @@ const patchReleases = [
             "from": "0.9.5",
             "inputCrc32": "A1D99C2B",
             "file": "patches/0.9.5/classic-780BAEDF-from-0.9.5-A1D99C2B.xdelta"
+          },
+          {
+            "from": "0.9.3",
+            "inputCrc32": "880AC2C7",
+            "file": "patches/0.9.5/classic-780BAEDF-from-0.9.3-880AC2C7.xdelta"
+          },
+          {
+            "from": "0.9.4",
+            "inputCrc32": "92C22566",
+            "file": "patches/0.9.5/classic-780BAEDF-from-0.9.4-92C22566.xdelta"
           }
         ]
       }
