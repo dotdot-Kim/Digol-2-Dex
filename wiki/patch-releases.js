@@ -177,6 +177,22 @@ const patchReleases = [
         ]
       }
     }
+  },
+  {
+    "version": "0.9.6",
+    "releasedAt": "2026-11-25",
+    "files": {
+      "classic": {
+        "outputCrc32": "D6ACAC28",
+        "updates": [
+          {
+            "from": "0.9.5",
+            "inputCrc32": "780BAEDF",
+            "file": "patches/0.9.6/classic-D6ACAC28-from-0.9.5-780BAEDF.xdelta"
+          }
+        ]
+      }
+    }
   }
 ];
 
