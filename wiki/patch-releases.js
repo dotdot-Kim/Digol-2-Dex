@@ -183,6 +183,29 @@ const patchReleases = [
     "releasedAt": "2026-11-25",
     "files": {
       "classic": {
+        "outputCrc32": "6138E3C0",
+        "updates": [
+          {
+            "from": "0.9.5",
+            "inputCrc32": "780BAEDF",
+            "file": "patches/0.9.6/classic-6138E3C0-from-0.9.5-780BAEDF.xdelta"
+          },
+          {
+            "from": "0.9.6",
+            "inputCrc32": "D6ACAC28",
+            "file": "patches/0.9.6/classic-6138E3C0-from-0.9.6-D6ACAC28.xdelta"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "0.9.6",
+    "releasedAt": "2026-11-25",
+    "archived": true,
+    "hidden": true,
+    "files": {
+      "classic": {
         "outputCrc32": "D6ACAC28",
         "updates": [
           {
