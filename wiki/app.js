@@ -63,9 +63,23 @@ if (typeof romDiffOverrides !== 'undefined') {
     if (index === undefined) target[name] = value;
     else (target[name] ??= [])[Number(index)] = value;
   };
+  // Learnsets and evolutions use MOVE_/SPECIES_ names; learnsets are stored as moveKeys indexes.
+  const learnSlots = ['learnset.level','learnset.machine','learnset.tutor','learnset.egg'];
+  const moveIndex = new Map(game.moveKeys.map((key,index) => [key,index]));
   for (const [id,fields] of Object.entries(romDiffOverrides.species || {})) {
     const personal = game.all[id]?.personal_data;
-    if (personal) for (const [field,value] of Object.entries(fields)) setField(personal,field,value);
+    for (const [field,value] of Object.entries(fields)) {
+      const slot = learnSlots.indexOf(field);
+      if (field === 'evolutions') {
+        if (game.all[id]) game.all[id].evolutions = value.map(evo => ({...evo}));
+      } else if (slot >= 0) {
+        const sets = (game.learnsets[id] || [[],[],[],[]]).map(list => list.slice());
+        sets[slot] = slot === 0
+          ? value.filter(([,move]) => moveIndex.has(move)).map(([level,move]) => [level,moveIndex.get(move)])
+          : value.filter(move => moveIndex.has(move)).map(move => moveIndex.get(move));
+        game.learnsets[id] = sets;
+      } else if (personal) setField(personal,field,value);
+    }
   }
   for (const [id,fields] of Object.entries(romDiffOverrides.moves || {})) {
     if (!game.moves[id]) continue;
