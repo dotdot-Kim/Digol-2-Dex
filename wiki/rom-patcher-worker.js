@@ -197,17 +197,28 @@ self.onmessage = async ({data:{rom,delta,deltaUrl,updates,inputCrc32,inputSize,o
     if (expectedOutput !== null && originalCrc === expectedOutput) throw Error('이미 이 버전으로 패치된 ROM입니다.');
     const route = findUpdateRoute(updates || [],originalCrc,expectedOutput);
     if (route) {
+      let normalized = false;
       for (const [index, edge] of route.entries()) {
-        progress(edge.from + ' → ' + edge.to + ' 업데이트를 적용하는 중… (' + (index + 1) + '/' + route.length + ')');
-        const updateDelta = await fetchPatch(edge.file,'업데이트 패치 파일을 불러오지 못했습니다.');
+        progress((edge.normalize ? '원본 ROM 정규화 중…' : edge.from + ' → ' + edge.to + ' 패치를 적용하는 중…')
+          + ' (' + (index + 1) + '/' + route.length + ')');
+        const updateDelta = await fetchPatch(edge.file,'패치 파일을 불러오지 못했습니다.');
         source = applyDelta(source,updateDelta);
-        if (source.hashCRC32() !== crcValue(edge.outputCrc32)) {
-          throw Error(edge.to + ' 버전의 결과 ROM CRC32가 등록된 값과 일치하지 않습니다.');
+        if (source.hashCRC32() !== crcValue(edge.outputCrc32)
+          || (edge.outputSize != null && source.fileSize !== edge.outputSize)) {
+          throw Error(edge.normalize ? '정규화 결과가 기준 원본 ROM과 일치하지 않습니다.'
+            : edge.to + ' 버전의 결과 ROM CRC32가 등록된 값과 일치하지 않습니다.');
         }
+        if (edge.normalize) normalized = true;
       }
+      const first = route.find(edge => !edge.normalize);
       self.postMessage({type:'complete',buffer:source._u8array.buffer,sourceCrc32:crcHex(originalCrc),
-        outputCrc32:crcHex(expectedOutput),updatedFrom:route[0].from},[source._u8array.buffer]);
+        outputCrc32:crcHex(expectedOutput),normalized,
+        updatedFrom:first && first.from !== '원본' ? first.from : undefined},[source._u8array.buffer]);
       return;
+    }
+    if (updates && updates.length && !delta) {
+      throw Error('이 ROM에서 선택한 버전으로 가는 패치가 없습니다. 원본 ROM 또는 배포된 디지골드 ROM인지 확인해 주세요. (CRC32 '
+        + crcHex(originalCrc) + ')');
     }
     const expectedInput = crcValue(inputCrc32);
     let normalized = false;

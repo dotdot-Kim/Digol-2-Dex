@@ -55,6 +55,39 @@ for (const [id,{evolutions,...fields}] of Object.entries(speciesRefresh.species)
   if (evolutions) game.all[id].evolutions = evolutions;
 }
 pokemonData.SPECIES_MEGA_TYPHLOSION = ['other','스컬블레이몬',157];
+// Values approved in the release tool's ROM review (wiki/romDiffOverrides.js) win over every
+// data file above. Fields are "name" or "name.index" for array values such as base_stats.1.
+if (typeof romDiffOverrides !== 'undefined') {
+  const setField = (target,field,value) => {
+    const [name,index] = field.split('.');
+    if (index === undefined) target[name] = value;
+    else (target[name] ??= [])[Number(index)] = value;
+  };
+  for (const [id,fields] of Object.entries(romDiffOverrides.species || {})) {
+    const personal = game.all[id]?.personal_data;
+    if (personal) for (const [field,value] of Object.entries(fields)) setField(personal,field,value);
+  }
+  for (const [id,fields] of Object.entries(romDiffOverrides.moves || {})) {
+    if (!game.moves[id]) continue;
+    for (const [field,value] of Object.entries(fields)) {
+      setField(game.moves[id],field,value);
+      if (learnsetRefresh.moves[id] && learnsetRefresh.moves[id] !== game.moves[id]) setField(learnsetRefresh.moves[id],field,value);
+      if (field === 'description') moveCatalogData.descriptions[id] = value;
+      if (field === 'name') dictionary.moves[id] = value;
+    }
+  }
+  for (const [id,fields] of Object.entries(romDiffOverrides.items || {})) {
+    for (const [field,value] of Object.entries(fields)) {
+      if (field === 'name') dictionary.items[id] = value;
+      else if (field === 'description') itemDetailText.descriptions[id] = value;
+      else if (game.items[id]) setField(game.items[id],field,value);
+    }
+  }
+  for (const [id,fields] of Object.entries(romDiffOverrides.abilities || {})) {
+    if (fields.name !== undefined) dictionary.abilities[id] = fields.name;
+    if (fields.description !== undefined) abilityEntries[id] = fields.description;
+  }
+}
 Object.assign(wiki.species,game.all);
 const digimonIds = new Set(game.digimonIds);
 const machinesByMove = new Map(game.machines.map(entry => [entry.move,entry]));
@@ -1112,6 +1145,7 @@ function patch() {
       if (first) form.elements.difficulty.value = first;
     }
     const file = selectedPatch()?.file;
+    const ready = Boolean(selectedPatch()?.outputCrc32 || file);
     const busy = Boolean(request || worker || usingPicker);
     if (openLocal) {
       openLocal.disabled = busy;
@@ -1127,16 +1161,19 @@ function patch() {
         ? patchDifficulties[input.value][1] : '추후 추가 예정입니다.';
     });
     version.disabled = busy || !latestPatch;
-    apply.disabled = busy || !(localRom || romInput.files.length) || !(file || manualInput?.files.length);
+    apply.disabled = busy || !(localRom || romInput.files.length) || !(ready || manualInput?.files.length);
     if (file) {
       download.href = file;
+      download.hidden = false;
       download.removeAttribute('aria-disabled');
     } else {
+      // Versions between anchors have no original-ROM patch file; the site chains patches instead.
       download.removeAttribute('href');
+      download.hidden = ready;
       download.setAttribute('aria-disabled','true');
     }
     availability.textContent = !latestPatch ? '아직 배포용 패치 파일이 등록되지 않았습니다.'
-      : file ? '' : '이 버전에는 선택한 난이도의 패치 파일이 없습니다.';
+      : ready ? '' : '이 버전에는 선택한 난이도의 패치 파일이 없습니다.';
   }
   form.onchange = event => {
     if (event.target === romInput) {
@@ -1211,20 +1248,31 @@ function patch() {
       }
     };
   }
+  // Every patch of the selected difficulty, keyed by exact ROM checksums: original -> anchor
+  // patches (release file), update patches between versions, and the normalisation patch.
+  // The worker picks the route with the fewest downloads, so versions without an original
+  // patch are reached from the original ROM through the latest anchor.
   function updateEntries() {
     const difficulty = form.elements.difficulty.value;
-    return patchReleases.flatMap(release => {
-      const target = release.files?.[difficulty];
-      return (target?.updates || []).flatMap(entry => {
+    const entries = [];
+    if (patchNormalization) entries.push({from:'정규화',to:'기준 원본',inputCrc32:patchNormalization.inputCrc32,
+      outputCrc32:patchNormalization.outputCrc32,outputSize:patchNormalization.outputSize,
+      file:new URL(patchNormalization.file,document.baseURI).href,normalize:true});
+    for (const release of patchReleases) {
+      const raw = release.files?.[difficulty];
+      const target = typeof raw === 'string' ? {file:raw} : raw;
+      if (!target?.outputCrc32) continue;
+      if (target.file) entries.push({from:'원본',to:release.version,
+        inputCrc32:release.inputCrc32 || patchBaseRom.crc32,outputCrc32:target.outputCrc32,
+        file:new URL(target.file,document.baseURI).href});
+      for (const entry of target.updates || []) {
         const from = patchReleases.find(candidate => !candidate.archived && candidate.version === entry.from);
-        const source = from?.files?.[difficulty];
-        const inputCrc32 = entry.inputCrc32 || source?.outputCrc32;
-        return inputCrc32 && target.outputCrc32 ? [{
-          from:entry.from,to:release.version,inputCrc32,outputCrc32:target.outputCrc32,
-          file:new URL(entry.file,document.baseURI).href
-        }] : [];
-      });
-    });
+        const inputCrc32 = entry.inputCrc32 || from?.files?.[difficulty]?.outputCrc32;
+        if (inputCrc32) entries.push({from:entry.from,to:release.version,inputCrc32,outputCrc32:target.outputCrc32,
+          file:new URL(entry.file,document.baseURI).href});
+      }
+    }
+    return entries;
   }
   function finish(data) {
     worker?.terminate();
@@ -1252,16 +1300,17 @@ function patch() {
     const rom = localRom || romInput.files[0];
     const selected = selectedPatch();
     const file = selected?.file;
+    const ready = Boolean(selected?.outputCrc32 || file);
     let delta = manualInput?.files[0];
     const pending = new AbortController();
     request = pending;
     resetResult();
     refresh();
-    if (file) delta = undefined;
+    if (ready) delta = undefined;
     if (pending.signal.aborted) return;
     status.textContent = '파일 검증 및 패치 적용 중…';
     try {
-      worker = new Worker('wiki/rom-patcher-worker.js?v=chain-1');
+      worker = new Worker('wiki/rom-patcher-worker.js?v=anchor-chain-1');
       request = undefined;
       worker.onmessage = ({data}) => {
         if (data.type === 'progress') {
@@ -1277,7 +1326,7 @@ function patch() {
       };
       worker.postMessage({rom,delta,normalization,
         deltaUrl:file ? new URL(file,document.baseURI).href : undefined,
-        updates:file ? updateEntries() : [],
+        updates:ready ? updateEntries() : [],
         inputCrc32:selected?.inputCrc32 ?? selectedRelease?.inputCrc32 ?? patchBaseRom.crc32,
         inputSize:selected?.inputSize ?? selectedRelease?.inputSize ?? patchBaseRom.size,
         outputCrc32:selected?.outputCrc32});
