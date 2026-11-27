@@ -1108,8 +1108,11 @@ function patch() {
     + '<li>업데이트 전에 <strong>세이브 파일을 따로 복사해 백업</strong>해 두세요.</li>'
     + '<li>에뮬레이터는 <strong>ROM과 이름이 같은 세이브 파일</strong>을 불러옵니다. 패치된 ROM은 DigiGold-02.nds로 저장되니, 이전 ROM 이름이 달랐다면 세이브 파일 이름도 DigiGold-02로 맞춰 주세요. (예: DigiGold-02.sav)</li>'
     + '<li>새 ROM은 이전 ROM이 있던 폴더에 두고, 이전 ROM은 지우거나 다른 곳으로 옮겨 주세요.</li>'
-    + '<li>세이브 파일 위치는 에뮬레이터마다 다릅니다. melonDS는 보통 ROM과 같은 폴더의 .sav, DeSmuME는 Battery 폴더의 .dsv, DraStic은 backup 폴더의 .dsv입니다.</li>'
-    + '<li><strong>아이폰 Delta</strong>는 파일 이름과 상관없이 앱 안에서 게임마다 세이브를 따로 보관합니다. 새 ROM을 넣으면 다른 게임으로 추가되므로, 이전 게임 아이콘을 길게 눌러 <strong>세이브 파일 내보내기(Export Save File)</strong>를 한 뒤 새 게임 아이콘을 길게 눌러 <strong>세이브 파일 가져오기(Import Save File)</strong>를 하세요. 상태 저장(Save State)은 옮기지 마세요.</li>'
+    + '<li>세이브 파일 위치는 에뮬레이터마다 다릅니다.<ul class="patch-emulators">'
+    + '<li><strong>melonDS</strong>: 보통 ROM과 같은 폴더의 .sav</li>'
+    + '<li><strong>DeSmuME</strong>: Battery 폴더의 .dsv</li>'
+    + '<li><strong>DraStic</strong>: backup 폴더의 .dsv</li>'
+    + '<li><strong>아이폰 Delta</strong>: 파일 이름과 상관없이 앱 안에서 게임마다 세이브를 따로 보관합니다. 새 ROM을 넣으면 다른 게임으로 추가되므로, 이전 게임 아이콘을 길게 눌러 <strong>세이브 파일 내보내기(Export Save File)</strong>를 한 뒤 새 게임 아이콘을 길게 눌러 <strong>세이브 파일 가져오기(Import Save File)</strong>를 하세요. 상태 저장(Save State)은 옮기지 마세요.</li></ul></li>'
     + '</ol></details>'
     + (latestPatch ? '' : '<details class="patch-manual" open><summary>보유한 패치 파일 사용</summary>'
       + '<label for="patch-file">xdelta / BPS 패치</label><input type="file" id="patch-file" accept=".xdelta,.vcdiff,.bps"></details>')
