@@ -483,6 +483,8 @@ form.pokemon-search { background:var(--pokemon-dex-theme); }
 .patch-save summary { cursor:pointer; padding:12px 14px; font-size:1.12rem; font-weight:800; line-height:1.5; color:var(--text); }
 .patch-save ol { margin:0; padding:0 14px 12px 2.4em; display:grid; gap:8px; font-size:1rem; line-height:1.6; color:var(--text); }
 .patch-save strong { color:#000; }
+.patch-save-icon { display:none; }
+.patch-save-alert .patch-save-icon { display:inline; }
 .patch-save-alert { border:2px solid #d99a00; }
 .patch-save-alert summary { background:#ffe9a8; color:#5c3a00; }
 .patch-save-alert:not([open]) summary { animation:patch-save-pulse 2.4s ease-in-out infinite; }
