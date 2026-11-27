@@ -216,6 +216,22 @@ const patchReleases = [
         ]
       }
     }
+  },
+  {
+    "version": "0.9.7",
+    "releasedAt": "2026-11-28",
+    "files": {
+      "classic": {
+        "outputCrc32": "2594134A",
+        "updates": [
+          {
+            "from": "0.9.6",
+            "inputCrc32": "6138E3C0",
+            "file": "patches/0.9.7/classic-2594134A-from-0.9.6-6138E3C0.xdelta"
+          }
+        ]
+      }
+    }
   }
 ];
 
