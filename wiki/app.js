@@ -1103,7 +1103,7 @@ function patch() {
     + '<div class="patch-actions"><button type="submit" id="patch-apply" class="action">패치 적용</button>'
     + '<a id="patch-download" href="#" role="button">패치 파일만 다운로드</a></div>'
     + '<p class="patch-availability" id="patch-availability" aria-live="polite"></p>'
-    + '<details class="patch-save" id="patch-save"><summary>⚠️ 버전 업데이트 전 세이브 안내 (꼭 읽어 주세요)</summary><ol>'
+    + '<details class="patch-save" id="patch-save"><summary>⚠️ 버전 업데이트 전 세이브 안내</summary><ol>'
     + '<li><strong>게임 안에서 리포트를 쓴 뒤</strong> 게임을 끄세요. 에뮬레이터의 상태 저장(세이브 스테이트)은 버전이 바뀌면 불러오지 마세요. 게임이 멈추거나 진행이 꼬일 수 있습니다.</li>'
     + '<li>업데이트 전에 <strong>세이브 파일을 따로 복사해 백업</strong>해 두세요.</li>'
     + '<li>에뮬레이터는 <strong>ROM과 이름이 같은 세이브 파일</strong>을 불러옵니다. 패치된 ROM은 DigiGold-02.nds로 저장되니, 이전 ROM 이름이 달랐다면 세이브 파일 이름도 DigiGold-02로 맞춰 주세요. (예: DigiGold-02.sav)</li>'
@@ -1304,7 +1304,7 @@ function patch() {
       ? data.updatedFrom + ' → ' + selectedRelease.version + ' 업데이트를 완료했습니다. 기존 세이브를 이어 하려면 아래 세이브 안내를 확인하세요.'
       : data.normalized ? '정규화와 패치 적용을 완료했습니다.' : '패치 적용을 완료했습니다.');
     if (data.error) return;
-    if (data.updatedFrom) form.querySelector('#patch-save').open = true;
+    if (data.updatedFrom) form.querySelector('#patch-save').classList.add('patch-save-alert');
     romInfo.textContent = '원본 CRC32 ' + data.sourceCrc32 + ' · 결과 CRC32 ' + data.outputCrc32;
     patchedRom = new Blob([data.buffer],{type:'application/octet-stream'});
     url = URL.createObjectURL(patchedRom);
@@ -1361,7 +1361,7 @@ function patch() {
         romInfo.textContent = (rom ? '올린 ROM CRC32 ' : '원본 ROM CRC32 ') + data.sourceCrc32;
         status.textContent = data.summary.join(', ') + ' 패치 파일을 받았습니다. (' + data.name + ')'
           + (rom ? '' : ' 이전 버전 ROM을 올리면 그 버전부터 필요한 업데이트 패치만 받을 수 있습니다.');
-        if (rom && data.summary[0] && !data.summary[0].startsWith('원본') && data.summary[0] !== '정규화') form.querySelector('#patch-save').open = true;
+        if (rom && data.summary[0] && !data.summary[0].startsWith('원본') && data.summary[0] !== '정규화') form.querySelector('#patch-save').classList.add('patch-save-alert');
       };
       worker.onerror = () => done('패치 파일을 준비하는 중 오류가 발생했습니다.');
       worker.postMessage({mode:'bundle',rom,sourceCrc32:selectedRelease.inputCrc32 || patchBaseRom.crc32,

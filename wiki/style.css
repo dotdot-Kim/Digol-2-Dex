@@ -479,12 +479,15 @@ form.pokemon-search { background:var(--pokemon-dex-theme); }
 .patch-manual { min-width:0; padding-top:4px; }
 .patch-manual label { display:block; margin-top:8px; }
 .patch-manual input { width:100%; min-width:0; max-width:100%; }
-.patch-save { min-width:0; padding:12px 14px; border:2px solid #d99a00; border-left-width:6px; background:#fff6dc; color:#2b2100; }
-.patch-save summary { cursor:pointer; font-size:1.12rem; font-weight:800; color:#6b4300; line-height:1.5; }
-.patch-save summary::after { content:" · 눌러서 펼치기"; font-size:.85rem; font-weight:600; color:#8a5a00; }
-.patch-save[open] summary::after { content:""; }
-.patch-save ol { margin:10px 0 2px; padding-left:1.4em; display:grid; gap:8px; font-size:1rem; line-height:1.6; color:#2b2100; }
+.patch-save { min-width:0; padding:0; border:1px solid var(--line); background:var(--panel); }
+.patch-save summary { cursor:pointer; padding:12px 14px; font-size:1.12rem; font-weight:800; line-height:1.5; color:var(--text); }
+.patch-save ol { margin:0; padding:0 14px 12px 2.4em; display:grid; gap:8px; font-size:1rem; line-height:1.6; color:var(--text); }
 .patch-save strong { color:#000; }
+.patch-save-alert { border:2px solid #d99a00; }
+.patch-save-alert summary { background:#ffe9a8; color:#5c3a00; }
+.patch-save-alert:not([open]) summary { animation:patch-save-pulse 2.4s ease-in-out infinite; }
+@keyframes patch-save-pulse { 0%,100% { background:#fff4cf; } 50% { background:#ffd257; } }
+@media (prefers-reduced-motion:reduce) { .patch-save-alert:not([open]) summary { animation:none; } }
 .patch-emulators { margin:6px 0 0; padding-left:1.1em; display:grid; gap:4px; }
 .patch-rom-info { overflow-wrap:anywhere; font-variant-numeric:tabular-nums; }
 .patch-local-note,.patch-credit { color:var(--muted); font-size:.875rem; }
