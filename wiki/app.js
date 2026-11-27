@@ -1078,6 +1078,7 @@ const availablePatchReleases = patchReleases.filter(release => !release.hidden &
 const latestPatch = availablePatchReleases[0];
 if (latestPatch) document.querySelector('.brand-subtitle').textContent = 'DIGOL-02 WIKI · ' + latestPatch.version;
 
+const patchWorkerUrl = 'wiki/rom-patcher-worker.js?v=patch-bundle-1';
 function patch() {
   const outputName = 'DigiGold-02.nds';
   const canSaveLocally = typeof window.showOpenFilePicker === 'function'
@@ -1100,7 +1101,7 @@ function patch() {
       + '<p id="patch-local-source"></p>' : '')
     + '<p class="patch-rom-info" id="patch-rom-info"></p>'
     + '<div class="patch-actions"><button type="submit" id="patch-apply" class="action">패치 적용</button>'
-    + '<a id="patch-download" download>패치 파일만 다운로드</a></div>'
+    + '<a id="patch-download" href="#" role="button">패치 파일만 다운로드</a></div>'
     + '<p class="patch-availability" id="patch-availability" aria-live="polite"></p>'
     + (latestPatch ? '' : '<details class="patch-manual" open><summary>보유한 패치 파일 사용</summary>'
       + '<label for="patch-file">xdelta / BPS 패치</label><input type="file" id="patch-file" accept=".xdelta,.vcdiff,.bps"></details>')
@@ -1176,16 +1177,10 @@ function patch() {
     });
     version.disabled = busy || !latestPatch;
     apply.disabled = busy || !(localRom || romInput.files.length) || !(ready || manualInput?.files.length);
-    if (file) {
-      download.href = file;
-      download.hidden = false;
-      download.removeAttribute('aria-disabled');
-    } else {
-      // Versions between anchors have no original-ROM patch file; the site chains patches instead.
-      download.removeAttribute('href');
-      download.hidden = ready;
-      download.setAttribute('aria-disabled','true');
-    }
+    // Patch-only download follows the same route as patching (uploaded ROM, or the original ROM).
+    download.hidden = !ready;
+    if (busy || !ready) download.setAttribute('aria-disabled','true');
+    else download.removeAttribute('aria-disabled');
     availability.textContent = !latestPatch ? '아직 배포용 패치 파일이 등록되지 않았습니다.'
       : ready ? '' : '이 버전에는 선택한 난이도의 패치 파일이 없습니다.';
   }
@@ -1308,6 +1303,61 @@ function patch() {
       saveLocal.hidden = false;
     }
   }
+  download.onclick = event => {
+    event.preventDefault();
+    if (request || worker || download.getAttribute('aria-disabled') === 'true') return;
+    const selected = selectedPatch();
+    const difficulty = form.elements.difficulty.value;
+    const rom = localRom || romInput.files[0];
+    resetResult();
+    const done = message => {
+      worker?.terminate();
+      worker = undefined;
+      refresh();
+      if (message) {
+        status.className = 'error';
+        status.textContent = message;
+      }
+    };
+    if (!selected?.outputCrc32) {
+      // Releases registered without a checksum: hand out the single file as is.
+      const link = document.createElement('a');
+      link.href = selected.file;
+      link.download = 'DigiGold-02_' + difficulty + '_original-to-' + selectedRelease.version + '.xdelta';
+      link.click();
+      return;
+    }
+    status.textContent = rom ? 'ROM 버전을 확인하는 중…' : '원본 ROM 기준으로 패치 파일을 준비하는 중…';
+    try {
+      worker = new Worker(patchWorkerUrl);
+      refresh();
+      worker.onmessage = ({data}) => {
+        if (data.type === 'progress') {
+          status.textContent = data.status;
+          return;
+        }
+        if (data.type !== 'bundle') return done(data.error || '패치 파일을 준비하지 못했습니다.');
+        const link = document.createElement('a');
+        const blobUrl = URL.createObjectURL(data.blob);
+        link.href = blobUrl;
+        link.download = data.name;
+        document.body.append(link);
+        link.click();
+        link.remove();
+        setTimeout(() => URL.revokeObjectURL(blobUrl),60000);
+        done();
+        romInfo.textContent = (rom ? '올린 ROM CRC32 ' : '원본 ROM CRC32 ') + data.sourceCrc32;
+        status.textContent = data.summary.join(', ') + ' 패치 파일을 받았습니다. (' + data.name + ')'
+          + (rom ? '' : ' 이전 버전 ROM을 올리면 그 버전부터 필요한 업데이트 패치만 받을 수 있습니다.');
+      };
+      worker.onerror = () => done('패치 파일을 준비하는 중 오류가 발생했습니다.');
+      worker.postMessage({mode:'bundle',rom,sourceCrc32:selectedRelease.inputCrc32 || patchBaseRom.crc32,
+        updates:updateEntries(),outputCrc32:selected.outputCrc32,difficulty,
+        difficultyName:patchDifficulties[difficulty]?.[0],version:selectedRelease.version});
+    } catch {
+      done('패치 파일 준비를 시작할 수 없습니다.');
+    }
+  };
   form.onsubmit = async event => {
     event.preventDefault();
     if (request || worker || apply.disabled) return;
@@ -1324,7 +1374,7 @@ function patch() {
     if (pending.signal.aborted) return;
     status.textContent = '파일 검증 및 패치 적용 중…';
     try {
-      worker = new Worker('wiki/rom-patcher-worker.js?v=anchor-chain-1');
+      worker = new Worker(patchWorkerUrl);
       request = undefined;
       worker.onmessage = ({data}) => {
         if (data.type === 'progress') {

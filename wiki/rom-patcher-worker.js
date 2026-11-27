@@ -187,7 +187,98 @@ function findUpdateRoute(updates,source,target) {
   return null;
 }
 
-self.onmessage = async ({data:{rom,delta,deltaUrl,updates,inputCrc32,inputSize,outputCrc32,normalization}}) => {
+// Store-only ZIP (no compression): xdelta files are already compressed.
+function makeZip(files) {
+  const encoder = new TextEncoder();
+  const parts = [];
+  const central = [];
+  let offset = 0;
+  for (const file of files) {
+    const name = encoder.encode(file.name);
+    const local = new DataView(new ArrayBuffer(30));
+    local.setUint32(0,0x04034b50,true);
+    local.setUint16(4,20,true);
+    local.setUint16(6,0x0800,true);
+    local.setUint16(12,0x21,true);
+    local.setUint32(14,file.crc,true);
+    local.setUint32(18,file.data.length,true);
+    local.setUint32(22,file.data.length,true);
+    local.setUint16(26,name.length,true);
+    const entry = new DataView(new ArrayBuffer(46));
+    entry.setUint32(0,0x02014b50,true);
+    entry.setUint16(4,20,true);
+    entry.setUint16(6,20,true);
+    entry.setUint16(8,0x0800,true);
+    entry.setUint16(14,0x21,true);
+    entry.setUint32(16,file.crc,true);
+    entry.setUint32(20,file.data.length,true);
+    entry.setUint32(24,file.data.length,true);
+    entry.setUint16(28,name.length,true);
+    entry.setUint32(42,offset,true);
+    parts.push(new Uint8Array(local.buffer),name,file.data);
+    central.push(new Uint8Array(entry.buffer),name);
+    offset += 30 + name.length + file.data.length;
+  }
+  const centralSize = central.reduce((sum,part) => sum + part.length,0);
+  const end = new DataView(new ArrayBuffer(22));
+  end.setUint32(0,0x06054b50,true);
+  end.setUint16(8,files.length,true);
+  end.setUint16(10,files.length,true);
+  end.setUint32(12,centralSize,true);
+  end.setUint32(16,offset,true);
+  return new Blob([...parts,...central,new Uint8Array(end.buffer)],{type:'application/zip'});
+}
+
+// "패치 파일만 다운로드": every patch on the shortest route from the uploaded ROM
+// (or the original ROM) to the selected release, with readable ASCII names.
+async function bundlePatches({rom,sourceCrc32,updates,outputCrc32,difficulty,difficultyName,version}) {
+  let source = crcValue(sourceCrc32);
+  if (rom) {
+    progress('ROM 버전을 확인하는 중…');
+    source = (await readFile(rom)).hashCRC32();
+  }
+  const target = crcValue(outputCrc32);
+  if (source === target) throw Error('이미 ' + version + ' 버전으로 패치된 ROM입니다.');
+  const route = findUpdateRoute(updates || [],source,target);
+  if (!route) throw Error('이 ROM에서 ' + version + ' 버전으로 가는 패치가 없습니다. 원본 ROM 또는 배포된 디지골드 ROM인지 확인해 주세요. (CRC32 ' + crcHex(source) + ')');
+  const label = value => value === '원본' ? 'original' : value;
+  const files = [];
+  for (const [index, edge] of route.entries()) {
+    progress('패치 파일을 내려받는 중… (' + (index + 1) + '/' + route.length + ')');
+    const data = await fetchPatch(edge.file,'패치 파일을 불러오지 못했습니다.');
+    const base = edge.normalize ? 'DigiGold-02_normalize-to-original'
+      : 'DigiGold-02_' + difficulty + '_' + label(edge.from) + '-to-' + edge.to;
+    files.push({edge,data:data._u8array,crc:data.hashCRC32(),
+      name:(route.length > 1 ? (index + 1) + '_' : '') + base + '.xdelta'});
+  }
+  const first = route.find(edge => !edge.normalize);
+  const summary = route.map(edge => edge.normalize ? '정규화' : edge.from + ' → ' + edge.to);
+  if (files.length === 1) {
+    const blob = new Blob([files[0].data],{type:'application/octet-stream'});
+    self.postMessage({type:'bundle',blob,name:files[0].name,summary,sourceCrc32:crcHex(source)});
+    return;
+  }
+  const readme = '\ufeff디지골드 02 패치 파일 (' + (difficultyName || difficulty) + ', ' + (route[0].normalize ? '정규화 대상 ROM' : first.from)
+    + ' → ' + version + ')\r\n\r\n아래 순서대로 적용하세요. 앞 단계에서 나온 ROM에 다음 패치를 적용합니다.\r\n'
+    + files.map((file,index) => (index + 1) + '. ' + file.name + '  (' + summary[index] + ')').join('\r\n')
+    + '\r\n\r\n시작 ROM CRC32: ' + crcHex(source) + '\r\n최종 ROM CRC32: ' + crcHex(target)
+    + '\r\n\r\n위키의 롬 패치 페이지에서 한 번에 적용할 수도 있습니다.\r\n';
+  const readmeData = new TextEncoder().encode(readme);
+  const readmeFile = new BinFile(readmeData.buffer.slice(0));
+  progress('패치 파일을 하나로 묶는 중…');
+  const zip = makeZip([{name:'README.txt',data:readmeData,crc:readmeFile.hashCRC32()},...files]);
+  self.postMessage({type:'bundle',blob:zip,name:'DigiGold-02_' + difficulty + '_'
+    + (route[0].normalize ? 'normalize' : label(first.from)) + '-to-' + version + '_patches.zip',
+    summary,sourceCrc32:crcHex(source)});
+}
+
+self.onmessage = async ({data}) => {
+  if (data.mode === 'bundle') {
+    try { await bundlePatches(data); }
+    catch (error) { self.postMessage({type:'error',error:error.message || '패치 파일을 준비하지 못했습니다.'}); }
+    return;
+  }
+  const {rom,delta,deltaUrl,updates,inputCrc32,inputSize,outputCrc32,normalization} = data;
   try {
     progress('원본 ROM을 확인하는 중…');
     let source = await readFile(rom);
